@@ -7,4 +7,4 @@ SRCREV = "${AUTOREV}"
 SRC_URI = "gitsm://github.com/libretro/pcsx_rearmed;protocol=https"
 S = "${WORKDIR}/git"
 
-LIBRETRO_CORE = "pcsx_rearmed_libretro.so"
+LIBRETRO_CORE = "pcsx_rearmed"

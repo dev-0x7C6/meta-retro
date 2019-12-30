@@ -8,10 +8,14 @@ LIBRETRO_PLATFORM ??= "unix"
 FILES_${PN} += "${libdir}/libretro"
 
 do_compile() {
-  oe_runmake -f Makefile.libretro platform="${LIBRETRO_PLATFORM}"
+  if [[ -f "Makefile.libretro" ]]; then
+    oe_runmake -f Makefile.libretro platform="${LIBRETRO_PLATFORM}"
+  else
+    oe_runmake -f Makefile platform="${LIBRETRO_PLATFORM}"
+  fi
 }
 
 do_install() {
   install -d ${D}${libdir}/libretro
-  install -m 644 ${S}/${LIBRETRO_CORE} ${D}${libdir}/libretro/${LIBRETRO_CORE}
+  install -m 644 ${S}/${LIBRETRO_CORE}_libretro.so ${D}${libdir}/libretro/${LIBRETRO_CORE}_libretro.so
 }
