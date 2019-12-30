@@ -1,9 +1,11 @@
 LIBRETRO_CORE ??= ""
 
-LIBRETRO_PLATFORM_raspberrypi4 ??= "rpi4"
-LIBRETRO_PLATFORM_raspberrypi3 ??= "rpi3"
-LIBRETRO_PLATFORM_raspberrypi2 ??= "rpi2"
-LIBRETRO_PLATFORM ??= "unix"
+LIBRETRO_PLATFORM_AUTODETECT = "unix"
+LIBRETRO_PLATFORM_AUTODETECT_raspberrypi4 = "rpi4"
+LIBRETRO_PLATFORM_AUTODETECT_raspberrypi3 = "rpi3"
+LIBRETRO_PLATFORM_AUTODETECT_raspberrypi2 = "rpi2"
+
+LIBRETRO_PLATFORM ??= "${LIBRETRO_PLATFORM_AUTODETECT}"
 
 FILES_${PN} += "${libdir}/libretro"
 
