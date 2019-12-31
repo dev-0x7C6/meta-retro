@@ -1,5 +1,5 @@
 LICENSE = "GPLv2"
-LIC_FILES_CHKSUM="file://Copying;md5=6e233eda45c807aa29aeaa6d94bc48a2"
+LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
 
 inherit libretro
 
