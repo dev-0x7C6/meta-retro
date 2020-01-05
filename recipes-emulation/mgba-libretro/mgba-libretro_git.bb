@@ -8,5 +8,5 @@ SRC_URI = "gitsm://github.com/libretro/mgba.git;protocol=https"
 S = "${WORKDIR}/git"
 
 LIBRETRO_CORE = "mgba"
-LIBRETRO_EXTRA_FLAGS = "HAVE_VFS_FD=0"
+LIBRETRO_EXTRA_MAKEFLAGS = "HAVE_VFS_FD=0"
 LIBRETRO_PLATFORM="unix"

@@ -11,3 +11,5 @@ DEPENDS = "virtual/egl libpng nasm-native"
 
 LIBRETRO_CORE = "mupen64plus_next"
 LIBRETRO_CPU_ARCH_aarch64 = "arm"
+
+LIBRETRO_EXTRA_ASFLAGS = "-f elf64 -d ELF_TYPE"
