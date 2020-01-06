@@ -9,3 +9,5 @@ S = "${WORKDIR}/git"
 
 LIBRETRO_CORE = "dosbox"
 LIBRETRO_PLATFORM = "unix"
+
+LIBRETRO_REPRESENT_X86_64_AS = "x86_64"

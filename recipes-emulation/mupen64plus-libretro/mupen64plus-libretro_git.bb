@@ -10,6 +10,8 @@ S = "${WORKDIR}/git"
 DEPENDS = "virtual/egl libpng nasm-native"
 
 LIBRETRO_CORE = "mupen64plus_next"
-LIBRETRO_CPU_ARCH_aarch64 = "arm"
 
-LIBRETRO_EXTRA_ASFLAGS = "-f elf64 -d ELF_TYPE"
+LIBRETRO_FULL_OVERRIDE_ASFLAGS_x86-64 = "1"
+LIBRETRO_EXTRA_ASFLAGS_x86-64 = "-f elf64 -d ELF_TYPE"
+
+LIBRETRO_REPRESENT_AARCH64_AS = "aarch64"

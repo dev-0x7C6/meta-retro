@@ -7,5 +7,5 @@ SRCREV = "${AUTOREV}"
 SRC_URI = "gitsm://github.com/libretro/beetle-psx-libretro.git;protocol=https"
 S = "${WORKDIR}/git"
 
-LIBRETRO_CORE = "mednafen_psx"
+LIBRETRO_CORE = "mednafen_psx_hw"
 LIBRETRO_PLATFORM = "unix"
