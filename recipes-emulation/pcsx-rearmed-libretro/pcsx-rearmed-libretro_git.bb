@@ -8,3 +8,4 @@ SRC_URI = "gitsm://github.com/libretro/pcsx_rearmed;protocol=https"
 S = "${WORKDIR}/git"
 
 LIBRETRO_CORE = "pcsx_rearmed"
+LIBRETRO_EXTRA_MAKEFLAGS_append = " HAVE_CHD=0"
