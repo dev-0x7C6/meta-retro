@@ -1,11 +1,14 @@
 IMAGE_INSTALL = " \
   packagegroup-core-boot \
   ${CORE_IMAGE_EXTRA_INSTALL} \
-  libretro-bundle \
   binutils \
+  libretro-bundle \
+  kernel-modules \
+  retroarch \
 "
 
 IMAGE_FSTYPES_append_qemux86-64 = " hddimg live"
+IMAGE_FSTYPES_append_qemux86 = " hddimg live"
 
 IMAGE_LINGUAS = ""
 

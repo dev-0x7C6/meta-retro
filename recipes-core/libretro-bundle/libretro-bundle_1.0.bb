@@ -12,7 +12,6 @@ RDEPENDS_${PN} = " \
   beetle-psx-libretro \
   dosbox-libretro \
   fceumm-libretro \
-  flycast-libretro \
   genesis-plus-gx-libretro \
   mame2000-libretro \
   mame2003-libretro \
