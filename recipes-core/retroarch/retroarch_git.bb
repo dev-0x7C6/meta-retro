@@ -1,61 +1,73 @@
-SUMMARY = "RetroArch is a frontend for emulators, game engines and media players"
-HOMEPAGE = "http://www.retroarch.com/"
-SECTION = "emulators"
+SUMMARY = "Cross-platform, sophisticated frontend for the libretro API"
+DESCRIPTION = "RetroArch is the reference frontend for the libretro API. \
+Popular examples of implementations for this API includes video game system \
+emulators and game engines as well as more generalized 3D programs. \
+These programs are instantiated as dynamic libraries. \
+We refer to these as <libretro cores>."
+
+HOMEPAGE = "https://www.retroarch.com/"
+BUGTRACKER = "https://github.com/libretro/RetroArch/issues"
 
 LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-3.0;md5=c79ff39f19dfec6d293b95dea7b07891"
 
-PR = "r1"
-
+PR = "r100"
 S = "${WORKDIR}/git"
+
+# Any version >= 572611f1ca63f3b4d60c117432ef8ff1419d38f7 (>= v.1.8.3) should
+# compile due upstream fixes
+#   https://github.com/libretro/RetroArch/pull/9959
+#   https://github.com/libretro/RetroArch/pull/9944
+
 SRC_URI = "gitsm://github.com/libretro/RetroArch.git"
-SRCREV = "${AUTOREV}"
+SRCREV = "572611f1ca63f3b4d60c117432ef8ff1419d38f7"
 
 inherit autotools-brokensep pkgconfig
 
 DEPENDS = "libxml2"
 
-CONFIGUREOPTS = " \
-  --build=${BUILD_SYS} \
-  --host=${HOST_SYS} \
-  --prefix=${prefix} \
-  --bindir=${bindir} \
-  --sysconfdir=${sysconfdir} \
-"
-
 RASPBERRYPI_DEFAULT_PACKAGECONFIG ??= ""
 RASPBERRYPI_DEFAULT_PACKAGECONFIG_rpi = " \
-  dispmanx \
+  ${@bb.utils.contains('MACHINE_FEATURES', 'vc4graphics', '', 'dispmanx', d)} \
+  ${@bb.utils.contains('MACHINE_FEATURES', 'vc4graphics', '', 'videocore', d)} \
   rpiled \
-  videocore \
-"
-PACKAGECONFIG ??= " \
-  ${RASPBERRYPI_DEFAULT_PACKAGECONFIG} \
-  menu-rgui \
-  menu-materialui \
-  menu-xmb \
-  menu-ozone \
-  menu-stripes \
-  ssl \
-  sdl2 \
-  libusb \
-  dbus \
-  threads \
-  threads-storage \
-  ffmpeg \
-  gles \
-  gles3 \
-  dynlib \
-  network \
-  networkgamepad \
-  kms \
-  egl \
-  freetype \
-  zlib \
-  v4l2 \
 "
 
-PACKAGECONFIG[alsa] = "--enable-alsa,--disable-alsa"
+DEFAULT_GRAPHICS_PACKAGECONFIG ??= " \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'opengl', '', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wayland', '', d)} \
+  egl \
+  gles \
+  kms \
+  no-opengl1 \
+"
+
+PACKAGECONFIG ??= " \
+  ${RASPBERRYPI_DEFAULT_PACKAGECONFIG} \
+  ${DEFAULT_GRAPHICS_PACKAGECONFIG} \
+  ${@bb.utils.contains('TUNE_FEATURES', 'neon', 'neon', '', d)} \
+  ${@bb.utils.contains('TUNE_FEATURES', 'core2', 'sse', '', d)} \
+  dbus \
+  dynlib \
+  ffmpeg \
+  freetype \
+  libusb \
+  menu-materialui \
+  menu-ozone \
+  menu-rgui \
+  menu-xmb \
+  network \
+  networkgamepad \
+  sdl2 \
+  ssl \
+  threads \
+  threads-storage \
+  tinyalsa \
+  v4l2 \
+  zlib \
+"
+
+PACKAGECONFIG[alsa] = "--enable-alsa,--disable-alsa,alsa-lib"
 PACKAGECONFIG[audioio] = "--enable-audioio,--disable-audioio"
 PACKAGECONFIG[builtinflac] = "--enable-builtinflac,--disable-builtinflac "
 PACKAGECONFIG[caca] = "--enable-caca,--disable-caca,libcaca"
@@ -75,12 +87,12 @@ PACKAGECONFIG[flac] = "--enable-flac,--disable-flac"
 PACKAGECONFIG[floathard] = "--enable-floathard"
 PACKAGECONFIG[floatsoftfp] = "--enable-floatsoftfp"
 PACKAGECONFIG[freetype] = "--enable-freetype,--disable-freetype,freetype"
-PACKAGECONFIG[gles] = "--enable-opengles"
-PACKAGECONFIG[gles3] = "--enable-opengles3"
+PACKAGECONFIG[gles] = "--enable-opengles,,virtual/libgles2"
+PACKAGECONFIG[gles3] = "--enable-opengles3,,"
 PACKAGECONFIG[glslang] = "--enable-glslang,--disable-glslang"
 PACKAGECONFIG[gong] = "--enable-gong"
-PACKAGECONFIG[jack] = "--enable-jack,--disable-jack"
-PACKAGECONFIG[kms] = "--enable-kms,--disable-kms"
+PACKAGECONFIG[jack] = "--enable-jack,--disable-jack,jack"
+PACKAGECONFIG[kms] = "--enable-kms,--disable-kms,libdrm virtual/libgbm"
 PACKAGECONFIG[libusb] = "--enable-dbus"
 PACKAGECONFIG[libusb] = "--enable-libusb,--disable-libusb,libusb"
 PACKAGECONFIG[lua] = "--enable-lua"
@@ -127,8 +139,8 @@ PACKAGECONFIG[offscreen] = "--enable-osmesa"
 PACKAGECONFIG[omap] = "--enable-omap"
 PACKAGECONFIG[openal] = "--enable-al,--disable-al"
 PACKAGECONFIG[opendingux-fbdev] = "--enable-opendingux_fbdev"
-PACKAGECONFIG[opengl] = "--enable-opengl,--disable-opengl"
-PACKAGECONFIG[openvg] = "--enable-vg,--disable-vg"
+PACKAGECONFIG[opengl] = "--enable-opengl,--disable-opengl,virtual/libgl"
+PACKAGECONFIG[openvg] = "--enable-vg,--disable-vg,openvg"
 PACKAGECONFIG[oss] = "--enable-oss,--disable-oss"
 PACKAGECONFIG[parport] = "--enable-parport,--disable-parport"
 PACKAGECONFIG[plain-drm] = "--enable-plain_drm"
@@ -151,7 +163,7 @@ PACKAGECONFIG[sunxi] = "--enable-sunxi"
 PACKAGECONFIG[systemd] = "--enable-systemd,--disable-systemd,systemd"
 PACKAGECONFIG[threads-storage] = "--enable-thread_storage,--disable-thread_storage"
 PACKAGECONFIG[threads] = "--enable-threads,--disable-threads"
-PACKAGECONFIG[tinyalsa] = "--enable-tinyalsa,--disable-tinyalsa"
+PACKAGECONFIG[tinyalsa] = "--enable-tinyalsa,--disable-tinyalsa,tinyalsa"
 PACKAGECONFIG[udev] = "--enable-udev,--disable-udev,udev"
 PACKAGECONFIG[v4l2] = "--enable-v4l2,--disable-v4l2,libv4l"
 PACKAGECONFIG[valgrind] = "--enable-preserve_dylib"
@@ -159,7 +171,7 @@ PACKAGECONFIG[videocore] = "--enable-videocore,--disable-videocore,userland"
 PACKAGECONFIG[videoprocessor] = "--enable-videoprocessor,--disable-videoprocessor"
 PACKAGECONFIG[vivante-fbdev] = "--enable-vivante_fbdev"
 PACKAGECONFIG[vulkan] = "--enable-vulkan,--disable-vulkan"
-PACKAGECONFIG[wayland] = "--enable-wayland,--disable-wayland"
+PACKAGECONFIG[wayland] = "--enable-wayland,--disable-wayland,wayland-native wayland wayland-protocols"
 PACKAGECONFIG[x11] = "--enable-x11,--disable-x11"
 PACKAGECONFIG[xaudio] = "--enable-xaudio,--disable-xaudio"
 PACKAGECONFIG[xinerama] = "--enable-xinerama,--disable-xinerama"
@@ -170,13 +182,15 @@ PACKAGECONFIG[zlib] = "--enable-zlib,--disable-zlib,zlib"
 
 EXTRA_OECONF = "${PACKAGECONFIG_CONFARGS}"
 
+CONFIGUREOPTS = " \
+  --build=${BUILD_SYS} \
+  --host=${HOST_SYS} \
+  --bindir=${bindir} \
+  --prefix=${prefix} \
+  --sysconfdir=${sysconfdir} \
+"
+
 do_configure() {
-  CROSS_COMPILE="${STAGING_DIR_NATIVE}/usr/bin/" ./configure --build=${BUILD_SYS} --host=${HOST_SYS} --prefix=${prefix} --bindir=${bindir} --sysconfdir=${sysconfdir} ${PACKAGECONFIG_CONFARGS}
+  export PKG_CONF_PATH="pkg-config"
+  ./configure ${CONFIGUREOPTS} ${PACKAGECONFIG_CONFARGS}
 }
-
-#PACKAGECONFIG[openal]          = "--enable-openal,--disable-openal,openal-soft"
-
-
-#do_configure() {
-#./configure  --build=x86_64-linux --host=aarch64-poky-linux --prefix=/usr --enable-egl --enable-materialui --enable-sdl2 --enable-ffmpeg --enable-zlib
-#}
