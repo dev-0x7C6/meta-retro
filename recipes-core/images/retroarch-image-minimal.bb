@@ -2,9 +2,8 @@ IMAGE_INSTALL = " \
   packagegroup-core-boot \
   ${CORE_IMAGE_EXTRA_INSTALL} \
   binutils \
-  libretro-bundle \
   kernel-modules \
-  retroarch \
+  retroarch-bundle \
 "
 
 IMAGE_FSTYPES_append_qemux86-64 = " hddimg live"
