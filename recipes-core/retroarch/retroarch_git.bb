@@ -45,8 +45,12 @@ DEFAULT_GRAPHICS_PACKAGECONFIG ??= " \
 PACKAGECONFIG ??= " \
   ${RASPBERRYPI_DEFAULT_PACKAGECONFIG} \
   ${DEFAULT_GRAPHICS_PACKAGECONFIG} \
-  ${@bb.utils.contains('TUNE_FEATURES', 'neon', 'neon', '', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'online', '', 'no-online-updater', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'online', '', 'no-update-assets', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'online', '', 'no-update-cores', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'online', '', 'no-discord', d)} \
   ${@bb.utils.contains('TUNE_FEATURES', 'core2', 'sse', '', d)} \
+  ${@bb.utils.contains('TUNE_FEATURES', 'neon', 'neon', '', d)} \
   alsa \
   dbus \
   dynlib \
@@ -68,6 +72,8 @@ PACKAGECONFIG ??= " \
   zlib \
 "
 
+# Switches updated from ea49348db2917b893f298d755a2dd8e82fb4436a
+# Wed Jan 8 19:09:03 CET 2020
 PACKAGECONFIG[alsa] = "--enable-alsa,--disable-alsa,alsa-lib"
 PACKAGECONFIG[audioio] = "--enable-audioio,--disable-audioio"
 PACKAGECONFIG[builtinflac] = "--enable-builtinflac,--disable-builtinflac "
@@ -75,7 +81,7 @@ PACKAGECONFIG[caca] = "--enable-caca,--disable-caca,libcaca"
 PACKAGECONFIG[cdrom] = "--enable-cdrom,--disable-cdrom"
 PACKAGECONFIG[cg] = "--enable-cg,--disable-cg"
 PACKAGECONFIG[coreaudio] = "--enable-coreaudio,--disable-coreaudio"
-PACKAGECONFIG[dbus] = "--enable-libusb,--disable-libusb,libusb"
+PACKAGECONFIG[dbus] = "--enable-dbus"
 PACKAGECONFIG[debug] = "--enable-debug"
 PACKAGECONFIG[dispmanx] = "--enable-dispmanx,,userland"
 PACKAGECONFIG[dsound] = "--enable-dsound,--disable-dsound"
@@ -94,7 +100,6 @@ PACKAGECONFIG[glslang] = "--enable-glslang,--disable-glslang"
 PACKAGECONFIG[gong] = "--enable-gong"
 PACKAGECONFIG[jack] = "--enable-jack,--disable-jack,jack"
 PACKAGECONFIG[kms] = "--enable-kms,--disable-kms,libdrm virtual/libgbm"
-PACKAGECONFIG[libusb] = "--enable-dbus"
 PACKAGECONFIG[libusb] = "--enable-libusb,--disable-libusb,libusb"
 PACKAGECONFIG[lua] = "--enable-lua"
 PACKAGECONFIG[mali-fbdev] = "--enable-mali_fbdev"
