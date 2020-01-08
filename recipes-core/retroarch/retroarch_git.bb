@@ -11,7 +11,7 @@ BUGTRACKER = "https://github.com/libretro/RetroArch/issues"
 LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-3.0;md5=c79ff39f19dfec6d293b95dea7b07891"
 
-PR = "r101"
+PR = "r102"
 S = "${WORKDIR}/git"
 
 # Any version >= 572611f1ca63f3b4d60c117432ef8ff1419d38f7 (>= v.1.8.3) should
@@ -189,7 +189,7 @@ do_patch() {
   RETROARCH_DATA_DIR="${datadir}/${PN}"
 
   sed -i \
-    -e "s:# \(assets_directory =\):\1 \"${RETROARCH_DATA_DIR}/assets\":g" \
+    -e "s:# \(assets_directory =\):\1 \"${LIBRETRO_DATA_DIR}/assets\":g" \
     -e "s:# \(joypad_autoconfig_dir =\):\1 \"${RETROARCH_DATA_DIR}/autoconfig\":g" \
     -e "s:# \(cheat_database_path =\):\1 \"${LIBRETRO_DATA_DIR}/database/cht\":g" \
     -e "s:# \(content_database_path =\):\1 \"${LIBRETRO_DATA_DIR}/database/rdb\":g" \
