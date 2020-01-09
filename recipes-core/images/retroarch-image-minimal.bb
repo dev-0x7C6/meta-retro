@@ -1,3 +1,5 @@
+SYSTEMD_DEFAULT_TARGET = "graphical.target"
+
 IMAGE_INSTALL = " \
   packagegroup-core-boot \
   ${CORE_IMAGE_EXTRA_INSTALL} \
