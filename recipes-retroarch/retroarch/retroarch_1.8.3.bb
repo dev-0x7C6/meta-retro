@@ -20,7 +20,7 @@ S = "${WORKDIR}/git"
 #   https://github.com/libretro/RetroArch/pull/9944
 
 SRC_URI = "gitsm://github.com/libretro/RetroArch.git"
-SRCREV = "572611f1ca63f3b4d60c117432ef8ff1419d38f7"
+SRCREV = "v${PV}"
 
 inherit autotools-brokensep pkgconfig
 
