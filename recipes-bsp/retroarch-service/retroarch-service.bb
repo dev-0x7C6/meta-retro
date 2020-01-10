@@ -12,7 +12,7 @@ inherit systemd
 RDEPENDS_${PN} += "retroarch-user"
 
 SYSTEMD_SERVICE_${PN} = "retroarch.service"
-SYSTEMD_AUTO_ENABLE_${PN} = "enable"
+SYSTEMD_AUTO_ENABLE_${PN} = "${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-autostart', 'enable', 'disable', d)}"
 
 do_install() {
     install -d ${D}${systemd_unitdir}/system

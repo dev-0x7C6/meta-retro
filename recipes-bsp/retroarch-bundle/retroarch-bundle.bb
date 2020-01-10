@@ -6,13 +6,10 @@ PR = "r3"
 PACKAGECONFIG ??= "assets user"
 
 PACKAGECONFIG[assets] = ",,"
-PACKAGECONFIG[autostart] = ",,"
-
-AUTOSTART_METHOD ??= "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'retroarch-service', '', d)}"
 
 RDEPENDS_${PN} = " \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'retroarch-service', '', d)} \
   ${@bb.utils.contains('PACKAGECONFIG', 'assets', 'retroarch-assets', '', d)} \
-  ${@bb.utils.contains('PACKAGECONFIG', 'autostart', '${AUTOSTART_METHOD}', '', d)} \
   ${@bb.utils.contains('PACKAGECONFIG', 'user', 'retroarch-user', '', d)} \
   libretro-bundle \
   retroarch \

@@ -45,10 +45,10 @@ DEFAULT_GRAPHICS_PACKAGECONFIG ??= " \
 PACKAGECONFIG ??= " \
   ${RASPBERRYPI_DEFAULT_PACKAGECONFIG} \
   ${DEFAULT_GRAPHICS_PACKAGECONFIG} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'online', '', 'no-online-updater', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'online', '', 'no-update-assets', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'online', '', 'no-update-cores', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'online', '', 'no-discord', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-updater', '', 'no-online-updater', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-updater', '', 'no-update-assets', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-updater', '', 'no-update-cores', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-online', '', 'no-discord', d)} \
   ${@bb.utils.contains('TUNE_FEATURES', 'core2', 'sse', '', d)} \
   ${@bb.utils.contains('TUNE_FEATURES', 'neon', 'neon', '', d)} \
   alsa \
