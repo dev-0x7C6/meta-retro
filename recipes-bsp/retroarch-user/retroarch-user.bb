@@ -17,7 +17,7 @@ USERADD_PARAM_${PN} = " \
   --groups ${RETROARCH_USER_GROUPS} \
   --uid ${RETROARCH_USER_ID} \
   --home /home/retroarch \
-  --shell /bin/bash \
+  --shell /bin/sh \
   retroarch \
 "
 
