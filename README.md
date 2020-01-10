@@ -5,41 +5,21 @@ recipes for use with OpenEmbedded and/or Yocto.
 
 ![Raspberry Pi 4 Poky build](https://devwork.space/wp-content/uploads/2020/01/IMG_20200108_205652-scaled.jpg)
 
-## Additional DISTRO_FEATURES
+## Introduced DISTRO_FEATURES
 
-* retroarch-autostart - enabling systemd RetroArch startup as main graphics.target  
-* retroarch-online - compile RetroArch with online capabilities
-* retroarch-updater - compile RetroArch with update capabilities
+* **retroarch-autostart** - enabling systemd RetroArch startup as main graphics.target  
+* **retroarch-online** - compile RetroArch with online capabilities
+* **retroarch-updater** - compile RetroArch with update capabilities
 
 ## Dependencies
 This layer depends on:
 ```
   URI: git://git.yoctoproject.org/poky.git
-  layers: meta
-  branch: zeus
-  
-  URI: git://git.yoctoproject.org/poky.git
-  layers: meta-poky
-  branch: zeus
-  
-  URI: git://git.yoctoproject.org/poky.git
-  layers: meta-yocto-bsp
-  branch: zeus
-
-  URI: git://git.openembedded.org/meta-openembedded
-  layers: meta-oe
+  layers: meta, meta-poky, meta-yocto-bsp
   branch: zeus
   
   URI: git://git.openembedded.org/meta-openembedded
-  layers: meta-multimedia
-  branch: zeus
-  
-  URI: git://git.openembedded.org/meta-openembedded
-  layers: meta-networking
-  branch: zeus
-  
-  URI: git://git.openembedded.org/meta-openembedded
-  layers: meta-python
+  layers: meta-oe, meta-multimedia, meta-networking, meta-python
   branch: zeus
 ```
 
