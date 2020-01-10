@@ -5,6 +5,12 @@ recipes for use with OpenEmbedded and/or Yocto.
 
 ![Raspberry Pi 4 Poky build](https://devwork.space/wp-content/uploads/2020/01/IMG_20200108_205652-scaled.jpg)
 
+## Additional DISTRO_FEATURES
+
+* retroarch-autostart - enabling systemd RetroArch startup as main graphics.target  
+* retroarch-online - compile RetroArch with online capabilities
+* retroarch-updater - compile RetroArch with update capabilities
+
 ## Dependencies
 This layer depends on:
 ```
