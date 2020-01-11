@@ -7,7 +7,10 @@ recipes for use with OpenEmbedded and/or Yocto.
 
 ## Introduced DISTRO_FEATURES
 
-* **retroarch-autostart** - enabling systemd RetroArch startup as main graphics.target  
+* **retroarch-automount** - added extra automounting in /var/run/media
+* **retroarch-autostart** - enabling systemd RetroArch startup as main graphics.target
+* **retroarch-gles** - enable for OpenGLES 2.0 support in retroarch and libretro cores
+* **retroarch-gles3** - enable for OpenGLES 3.0 support in retroarch and libretro cores
 * **retroarch-online** - compile RetroArch with online capabilities
 * **retroarch-updater** - compile RetroArch with update capabilities
 
