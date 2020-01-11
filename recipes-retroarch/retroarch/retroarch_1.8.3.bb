@@ -11,7 +11,7 @@ BUGTRACKER = "https://github.com/libretro/RetroArch/issues"
 LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-3.0;md5=c79ff39f19dfec6d293b95dea7b07891"
 
-PR = "r102"
+PR = "r103"
 S = "${WORKDIR}/git"
 
 # Any version >= 572611f1ca63f3b4d60c117432ef8ff1419d38f7 (>= v.1.8.3) should
@@ -35,9 +35,10 @@ RASPBERRYPI_DEFAULT_PACKAGECONFIG_rpi = " \
 
 DEFAULT_GRAPHICS_PACKAGECONFIG ??= " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'opengl', '', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'egl gles', '', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'egl gles gles3', '', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'opengl', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wayland', '', d)} \
-  egl \
-  gles \
   kms \
   no-opengl1 \
 "
@@ -95,7 +96,7 @@ PACKAGECONFIG[floathard] = "--enable-floathard"
 PACKAGECONFIG[floatsoftfp] = "--enable-floatsoftfp"
 PACKAGECONFIG[freetype] = "--enable-freetype,--disable-freetype,freetype"
 PACKAGECONFIG[gles] = "--enable-opengles,,virtual/libgles2"
-PACKAGECONFIG[gles3] = "--enable-opengles3,,"
+PACKAGECONFIG[gles3] = "--enable-opengles3,,virtual/libgles2"
 PACKAGECONFIG[glslang] = "--enable-glslang,--disable-glslang"
 PACKAGECONFIG[gong] = "--enable-gong"
 PACKAGECONFIG[jack] = "--enable-jack,--disable-jack,jack"
