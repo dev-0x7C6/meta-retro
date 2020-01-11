@@ -11,7 +11,7 @@ BUGTRACKER = "https://github.com/libretro/RetroArch/issues"
 LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-3.0;md5=c79ff39f19dfec6d293b95dea7b07891"
 
-PR = "r103"
+PR = "r105"
 S = "${WORKDIR}/git"
 
 # Any version >= 572611f1ca63f3b4d60c117432ef8ff1419d38f7 (>= v.1.8.3) should
@@ -22,7 +22,7 @@ S = "${WORKDIR}/git"
 SRC_URI = "gitsm://github.com/libretro/RetroArch.git"
 SRCREV = "v${PV}"
 
-inherit autotools-brokensep pkgconfig
+inherit autotools-brokensep pkgconfig retroarch-dist-checks
 
 DEPENDS = "libxml2"
 
@@ -33,26 +33,40 @@ RASPBERRYPI_DEFAULT_PACKAGECONFIG_rpi = " \
   rpiled \
 "
 
-DEFAULT_GRAPHICS_PACKAGECONFIG ??= " \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'opengl', '', d)} \
+RETROARCH_GRAPHICS_PACKAGECONFIG_DEFAULTS ??= " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'egl gles', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'egl gles gles3', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'opengl', '', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-vulkan', 'vulkan', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wayland', '', d)} \
   kms \
   no-opengl1 \
 "
 
-PACKAGECONFIG ??= " \
-  ${RASPBERRYPI_DEFAULT_PACKAGECONFIG} \
-  ${DEFAULT_GRAPHICS_PACKAGECONFIG} \
+RETROARCH_AUDIO_PACKAGECONFIG_DEFAULTS ??= " \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'alsa', 'alsa', '', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'alsa', 'tinyalsa', '', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', 'pulseaudio', '', d)} \
+"
+
+RETROARCH_ONLINE_PACKAGECONFIG_DEFAULTS ??= " \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-online', '', 'no-discord', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-updater', '', 'no-online-updater', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-updater', '', 'no-update-assets', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-updater', '', 'no-update-cores', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-online', '', 'no-discord', d)} \
+"
+
+RETROARCH_CPU_PACKAGECONFIG_DEFAULTS ??=" \
   ${@bb.utils.contains('TUNE_FEATURES', 'core2', 'sse', '', d)} \
   ${@bb.utils.contains('TUNE_FEATURES', 'neon', 'neon', '', d)} \
-  alsa \
+"
+
+PACKAGECONFIG ??= " \
+  ${RASPBERRYPI_DEFAULT_PACKAGECONFIG} \
+  ${RETROARCH_AUDIO_PACKAGECONFIG_DEFAULTS} \
+  ${RETROARCH_CPU_PACKAGECONFIG_DEFAULTS} \
+  ${RETROARCH_GRAPHICS_PACKAGECONFIG_DEFAULTS} \
+  ${RETROARCH_ONLINE_PACKAGECONFIG_DEFAULTS} \
   dbus \
   dynlib \
   ffmpeg \
@@ -68,7 +82,6 @@ PACKAGECONFIG ??= " \
   ssl \
   threads \
   threads-storage \
-  tinyalsa \
   v4l2 \
   zlib \
 "
@@ -151,7 +164,7 @@ PACKAGECONFIG[openvg] = "--enable-vg,--disable-vg,openvg"
 PACKAGECONFIG[oss] = "--enable-oss,--disable-oss"
 PACKAGECONFIG[parport] = "--enable-parport,--disable-parport"
 PACKAGECONFIG[plain-drm] = "--enable-plain_drm"
-PACKAGECONFIG[pulse] = "--enable-pulse,--disable-pulse,pulseaudio"
+PACKAGECONFIG[pulseaudio] = "--enable-pulse,--disable-pulse,pulseaudio"
 PACKAGECONFIG[qt] = "--enable-qt,--disable-qt"
 PACKAGECONFIG[roar] = "--enable-roar,--disable-roar"
 PACKAGECONFIG[rpiled] = "--enable-rpiled,--disable-rpiled"
