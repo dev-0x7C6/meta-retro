@@ -1,6 +1,6 @@
 # Class
 
-PR = "r104"
+PR = "r106"
 
 # Auto detection
 
@@ -71,6 +71,8 @@ LIBRETRO_MAKEFILE_HAVE_VULKAN ??= "HAVE_VULKAN=${@bb.utils.contains('DISTRO_FEAT
 LIBRETRO_MAKEFILE_HAVE_NEON ??= "HAVE_NEON=${@bb.utils.contains('TUNE_FEATURES', 'neon', '1', '0', d)}"
 LIBRETRO_MAKEFILE_LIBRETRO_CPU ??= "LIBRETRO_CPU=${LIBRETRO_CPU_ARCH}"
 LIBRETRO_MAKEFILE_HAVE_HARD_FLOAT = "ARM_FLOAT_ABI_HARD=${@bb.utils.contains('TUNE_FEATURES', 'callconvention-hard', '1', '0', d)}"
+LIBRETRO_MAKEFILE_FORCE_GLES ??= "FORCE_GLES=${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', '1', '0', d)}"
+LIBRETRO_MAKEFILE_FORCE_GLES3 ??= "FORCE_GLES3=${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', '1', '0', d)}"
 
 IS_ARM_ARCH ??= "0"
 IS_ARM_ARCH_arm = "1"
@@ -89,6 +91,8 @@ LIBRETRO_FINAL_MAKEFLAGS ??= " \
   ${LIBRETRO_MAKEFILE_HAVE_NEON} \
   ${LIBRETRO_MAKEFILE_LIBRETRO_CPU} \
   ${LIBRETRO_MAKEFILE_HAVE_HARD_FLOAT} \
+  ${LIBRETRO_MAKEFILE_FORCE_GLES} \
+  ${LIBRETRO_MAKEFILE_FORCE_GLES3} \
   ${@bb.utils.contains('LIBRETRO_FULL_OVERRIDE_CXXFLAGS', '1', '\"${LIBRETRO_MAKEFILE_CXXFLAGS}\"', '', d)} \
   ${@bb.utils.contains('LIBRETRO_FULL_OVERRIDE_CFLAGS', '1', '\"${LIBRETRO_MAKEFILE_CFLAGS}\"', '', d)} \
   ${@bb.utils.contains('LIBRETRO_FULL_OVERRIDE_ASFLAGS', '1', '\"${LIBRETRO_MAKEFILE_ASFLAGS}\"', '', d)} \
