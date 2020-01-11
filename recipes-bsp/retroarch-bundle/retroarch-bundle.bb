@@ -8,6 +8,7 @@ PACKAGECONFIG ??= "assets user"
 PACKAGECONFIG[assets] = ",,"
 
 RDEPENDS_${PN} = " \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-automount', 'udev-extraconf', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'retroarch-service', '', d)} \
   ${@bb.utils.contains('PACKAGECONFIG', 'assets', 'retroarch-assets', '', d)} \
   ${@bb.utils.contains('PACKAGECONFIG', 'user', 'retroarch-user', '', d)} \
