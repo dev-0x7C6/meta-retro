@@ -21,7 +21,6 @@ RETROARCH_PACKAGES ?= " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'retroarch-service', '', d)} \
   ${@bb.utils.contains('PACKAGECONFIG', 'assets', '${RETROARCH_ASSETS_PACKAGES}', '', d)} \
   ${@bb.utils.contains('PACKAGECONFIG', 'user', 'retroarch-user', '', d)} \
-  libretro-bundle \
   retroarch \
 "
 
