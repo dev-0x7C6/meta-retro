@@ -16,7 +16,9 @@ ANY_OF_DISTRO_FEATURES = " \
   retroarch-vulkan \
 "
 
-CONFLICT_DISTRO_FEATURES = " \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'retroarch-gles3', '', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'retroarch-gles ', '', d)} \
-"
+# Not sure yet
+
+# CONFLICT_DISTRO_FEATURES = " \
+#   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'retroarch-gles3', '', d)} \
+#   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'retroarch-gles ', '', d)} \
+# "
