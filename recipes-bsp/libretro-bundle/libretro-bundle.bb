@@ -1,9 +1,11 @@
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-PR = "r2"
+PR = "r3"
 
-ARM_SPECIFIC_CORES = " \
+inherit retroarch-overrides
+
+RDEPENDS_${PN}_append_armarch = " \
   pcsx-rearmed-libretro \
 "
 
@@ -23,8 +25,5 @@ RDEPENDS_${PN} = " \
   snes9x2010-libretro \
   vba-next-libretro \
 "
-
-RDEPENDS_${PN}_append_aarch64 = " ${ARM_SPECIFIC_CORES}"
-RDEPENDS_${PN}_append_arm = " ${ARM_SPECIFIC_CORES}"
 
 ALLOW_EMPTY_${PN} = "1"
