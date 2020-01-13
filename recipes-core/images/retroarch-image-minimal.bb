@@ -1,11 +1,9 @@
-SYSTEMD_DEFAULT_TARGET = "graphical.target"
-
 IMAGE_INSTALL = " \
   packagegroup-core-boot \
+  packagegroup-retroarch \
   ${CORE_IMAGE_EXTRA_INSTALL} \
   binutils \
   kernel-modules \
-  retroarch-bundle \
 "
 
 IMAGE_FSTYPES_append_qemux86-64 = " hddimg live"
