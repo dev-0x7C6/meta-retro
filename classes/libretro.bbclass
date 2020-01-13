@@ -1,6 +1,6 @@
 # Class
 
-inherit retroarch-dist-checks
+inherit retroarch-overrides retroarch-paths retroarch-dist-checks
 
 PR = "r109"
 
@@ -35,8 +35,6 @@ LIBRETRO_CORE ??= ""
 
 LIBRETRO_PLATFORM ??= "unix"
 LIBRETRO_EXTRA_MAKEFLAGS ??= ""
-
-FILES_${PN} += "${libdir}/libretro"
 
 LIBRETRO_REPRESENT_AARCH64_AS ??= "arm64"
 LIBRETRO_REPRESENT_ARM_AS ??= "arm"
@@ -93,8 +91,7 @@ LIBRETRO_MAKEFILE_GRAPHICS_OVERRIDES ??= " \
 "
 
 IS_ARM_ARCH ??= "0"
-IS_ARM_ARCH_arm = "1"
-IS_ARM_ARCH_aarch64 = "1"
+IS_ARM_ARCH_armarch = "1"
 
 LIBRETRO_FULL_OVERRIDE_CXXFLAGS ??= "0"
 LIBRETRO_FULL_OVERRIDE_CFLAGS ??= "0"
@@ -130,7 +127,9 @@ do_compile() {
     LDFLAGS_END="${LDFLAGS}"
 }
 
+FILES_${PN} += "${RETROARCH_LIBRETRO_CORES_DIR}"
+
 do_install() {
-  install -d ${D}${libdir}/libretro
-  install -m 644 ${S}/${LIBRETRO_CORE}_libretro.so ${D}${libdir}/libretro/${LIBRETRO_CORE}_libretro.so
+  install -d ${D}${RETROARCH_LIBRETRO_CORES_DIR}
+  install -m 644 ${S}/${LIBRETRO_CORE}_libretro.so ${D}${RETROARCH_LIBRETRO_CORES_DIR}/${LIBRETRO_CORE}_libretro.so
 }
