@@ -9,3 +9,6 @@ S = "${WORKDIR}/git"
 
 LIBRETRO_CORE = "mednafen_psx_hw"
 LIBRETRO_PLATFORM = "unix"
+
+#FIXME
+LIBRETRO_EXTRA_MAKEFLAGS_append = " GLES=0 GL_LIB=-lGL"
