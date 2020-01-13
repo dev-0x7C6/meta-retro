@@ -22,7 +22,7 @@ S = "${WORKDIR}/git"
 SRC_URI = "gitsm://github.com/libretro/RetroArch.git"
 SRCREV = "v${PV}"
 
-inherit autotools-brokensep pkgconfig retroarch-dist-checks
+inherit autotools-brokensep pkgconfig retroarch-overrides retroarch-paths retroarch-dist-checks
 
 DEPENDS = "libxml2"
 
@@ -39,8 +39,11 @@ RETROARCH_GRAPHICS_PACKAGECONFIG_DEFAULTS ??= " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'opengl', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-vulkan', 'vulkan', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wayland', '', d)} \
+  glslang \
   kms \
   no-opengl1 \
+  slang \
+  spirv-cross \
 "
 
 RETROARCH_AUDIO_PACKAGECONFIG_DEFAULTS ??= " \
@@ -56,9 +59,25 @@ RETROARCH_ONLINE_PACKAGECONFIG_DEFAULTS ??= " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-updater', '', 'no-update-cores', d)} \
 "
 
+RETROARCH_CPU_PACKAGECONFIG_ARM_DEFAULTS ??= ""
+RETROARCH_CPU_PACKAGECONFIG_ARM_DEFAULTS_arm32 = " \
+  ${@bb.utils.contains('TUNE_FEATURES', 'callconvention-hard', 'floathard', 'floatsoftfp', d)} \
+"
+
 RETROARCH_CPU_PACKAGECONFIG_DEFAULTS ??=" \
   ${@bb.utils.contains('TUNE_FEATURES', 'core2', 'sse', '', d)} \
   ${@bb.utils.contains('TUNE_FEATURES', 'neon', 'neon', '', d)} \
+  ${RETROARCH_CPU_PACKAGECONFIG_ARM_DEFAULTS} \
+"
+
+RETROARCH_SUPPORTED_MENU ??= "xmb"
+
+RETROARCH_MENU_PACKAGECONFIG_DEFAULTS ??=" \
+  ${@bb.utils.contains('RETROARCH_SUPPORTED_MENU', 'materialui', 'menu-materialui', '', d)} \
+  ${@bb.utils.contains('RETROARCH_SUPPORTED_MENU', 'ozone', 'menu-ozone', '', d)} \
+  ${@bb.utils.contains('RETROARCH_SUPPORTED_MENU', 'rgui', 'menu-rgui', '', d)} \
+  ${@bb.utils.contains('RETROARCH_SUPPORTED_MENU', 'stripes', 'menu-stripes', '', d)} \
+  ${@bb.utils.contains('RETROARCH_SUPPORTED_MENU', 'xmb', 'menu-xmb', '', d)} \
 "
 
 PACKAGECONFIG ??= " \
@@ -66,6 +85,7 @@ PACKAGECONFIG ??= " \
   ${RETROARCH_AUDIO_PACKAGECONFIG_DEFAULTS} \
   ${RETROARCH_CPU_PACKAGECONFIG_DEFAULTS} \
   ${RETROARCH_GRAPHICS_PACKAGECONFIG_DEFAULTS} \
+  ${RETROARCH_MENU_PACKAGECONFIG_DEFAULTS} \
   ${RETROARCH_ONLINE_PACKAGECONFIG_DEFAULTS} \
   dbus \
   dynlib \
@@ -95,7 +115,7 @@ PACKAGECONFIG[caca] = "--enable-caca,--disable-caca,libcaca"
 PACKAGECONFIG[cdrom] = "--enable-cdrom,--disable-cdrom"
 PACKAGECONFIG[cg] = "--enable-cg,--disable-cg"
 PACKAGECONFIG[coreaudio] = "--enable-coreaudio,--disable-coreaudio"
-PACKAGECONFIG[dbus] = "--enable-dbus"
+PACKAGECONFIG[dbus] = "--enable-dbus,,dbus"
 PACKAGECONFIG[debug] = "--enable-debug"
 PACKAGECONFIG[dispmanx] = "--enable-dispmanx,,userland"
 PACKAGECONFIG[dsound] = "--enable-dsound,--disable-dsound"
@@ -174,7 +194,6 @@ PACKAGECONFIG[sdl2] = "--enable-sdl2,--disable-sdl2,libsdl2"
 PACKAGECONFIG[sixel] = "--enable-sixel,--disable-sixel,libsixel"
 PACKAGECONFIG[slang] = "--enable-slang,--disable-slang,slang"
 PACKAGECONFIG[spirv-cross] = "--enable-spirv_cross,--disable-spirv_cross"
-PACKAGECONFIG[spirv-cross] = "--enable-spirv_cross,--disable-spirv_cross"
 PACKAGECONFIG[ssa] = "--enable-ssa,--disable-ssa"
 PACKAGECONFIG[sse] = "--enable-sse"
 PACKAGECONFIG[ssl] = "--enable-ssl,--disable-ssl"
@@ -190,7 +209,7 @@ PACKAGECONFIG[valgrind] = "--enable-preserve_dylib"
 PACKAGECONFIG[videocore] = "--enable-videocore,--disable-videocore,userland"
 PACKAGECONFIG[videoprocessor] = "--enable-videoprocessor,--disable-videoprocessor"
 PACKAGECONFIG[vivante-fbdev] = "--enable-vivante_fbdev"
-PACKAGECONFIG[vulkan] = "--enable-vulkan,--disable-vulkan"
+PACKAGECONFIG[vulkan] = "--enable-vulkan,--disable-vulkan,vulkan-loader"
 PACKAGECONFIG[wayland] = "--enable-wayland,--disable-wayland,wayland-native wayland wayland-protocols"
 PACKAGECONFIG[x11] = "--enable-x11,--disable-x11"
 PACKAGECONFIG[xaudio] = "--enable-xaudio,--disable-xaudio"
@@ -208,12 +227,12 @@ do_patch() {
   RETROARCH_DATA_DIR="${datadir}/${PN}"
 
   sed -i \
-    -e "s:# \(assets_directory =\):\1 \"${LIBRETRO_DATA_DIR}/assets\":g" \
+    -e "s:# \(assets_directory =\):\1 \"${RETROARCH_ASSETS_DIR}\":g" \
     -e "s:# \(joypad_autoconfig_dir =\):\1 \"${RETROARCH_DATA_DIR}/autoconfig\":g" \
     -e "s:# \(cheat_database_path =\):\1 \"${LIBRETRO_DATA_DIR}/database/cht\":g" \
     -e "s:# \(content_database_path =\):\1 \"${LIBRETRO_DATA_DIR}/database/rdb\":g" \
     -e "s:# \(cursor_directory =\):\1 \"${LIBRETRO_DATA_DIR}/database/cursors\":g" \
-    -e "s:# \(libretro_directory =\):\1 \"${LIBRETRO_LIB_DIR}\":g" \
+    -e "s:# \(libretro_directory =\):\1 \"${RETROARCH_LIBRETRO_CORES_DIR}\":g" \
     -e "s:# \(libretro_info_path =\):\1 \"${LIBRETRO_DATA_DIR}/info\":g" \
     -e "s:# \(overlay_directory =\):\1 \"${RETROARCH_DATA_DIR}/overlay\":g" \
     -e "s:# \(video_shader_dir =\):\1 \"${LIBRETRO_DATA_DIR}/shaders\":g" \
