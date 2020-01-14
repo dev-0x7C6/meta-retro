@@ -29,8 +29,12 @@ LIBRETRO_CORE_PACKAGES_append_armarch = " \
 "
 
 LIBRETRO_CORE_PACKAGES ?= " \
+  4do-libretro \
+  81-libretro \
   beetle-gba-libretro \
+  beetle-lynx-libretro \
   beetle-psx-libretro \
+  beetle-supergrafx-libretro \
   dosbox-libretro \
   fceumm-libretro \
   genesis-plus-gx-libretro \
