@@ -17,7 +17,7 @@ You can test this layer and distro (retro) with reference build environment on y
 ```
 
 I'm currently testing builds with those machines: 
-* genericx86_64
+* genericx86-64
 * genericx86
 * raspberrypi4
 
