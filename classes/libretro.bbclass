@@ -30,6 +30,10 @@ PR = "r109"
 # Core
 
 LIBRETRO_CORE ??= ""
+LIBRETRO_MAKEFILE_PREFIX ??= ""
+LIBRETRO_MAKEFILE_FILENAME_OVERRIDE ??= ""
+
+LIBRETRO_CORE_FILE = "${@os.path.basename(d.getVar('LIBRETRO_CORE', d, 1))}"
 
 # Platform
 
@@ -115,8 +119,14 @@ DEPENDS = " \
 "
 
 do_compile() {
+  if [[ ! -z "${LIBRETRO_MAKEFILE_PREFIX}" ]]; then
+    echo "prefix changed: ${LIBRETRO_MAKEFILE_PREFIX}"
+    cd ${LIBRETRO_MAKEFILE_PREFIX}
+  fi
+
   MAKEFILE_PATH="Makefile";
   [[ -f "Makefile.libretro" ]] && MAKEFILE_PATH="Makefile.libretro"
+  [[ -f "${LIBRETRO_MAKEFILE_FILENAME_OVERRIDE}" ]] && MAKEFILE_PATH="${LIBRETRO_MAKEFILE_FILENAME_OVERRIDE}"
 
 # https://stackoverflow.com/questions/2129391/append-to-gnu-make-variables-via-command-line
 
@@ -136,5 +146,5 @@ FILES_${PN} += "${RETROARCH_LIBRETRO_CORES_DIR}"
 
 do_install() {
   install -d ${D}${RETROARCH_LIBRETRO_CORES_DIR}
-  install -m 644 ${S}/${LIBRETRO_CORE}_libretro.so ${D}${RETROARCH_LIBRETRO_CORES_DIR}/${LIBRETRO_CORE}_libretro.so
+  install -m 644 ${S}/${LIBRETRO_CORE}_libretro.so ${D}${RETROARCH_LIBRETRO_CORES_DIR}/${LIBRETRO_CORE_FILE}_libretro.so
 }
