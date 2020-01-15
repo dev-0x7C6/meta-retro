@@ -31,22 +31,52 @@ LIBRETRO_CORE_PACKAGES_append_armarch = " \
 LIBRETRO_CORE_PACKAGES ?= " \
   4do-libretro \
   81-libretro \
+  atari800-libretro \
   beetle-gba-libretro \
   beetle-lynx-libretro \
+  beetle-ngp-libretro \
+  beetle-pce-fast-libretro \
+  beetle-pcfx-libretro \
   beetle-psx-libretro \
   beetle-supergrafx-libretro \
+  beetle-vb-libretro \
+  beetle-wswan-libretro \
+  bluemsx-libretro \
+  caprice32-libretro \
+  dinothawr-libretro \
   dosbox-libretro \
+  fbalpha2012-libretro \
   fceumm-libretro \
+  fmsx-libretro \
+  freechaf-libretro \
+  freeintv-libretro \
+  fuse-libretro \
+  gambatte-libretro \
   genesis-plus-gx-libretro \
+  gw-libretro \
+  hatari-libretro \
   mame2000-libretro \
   mame2003-libretro \
   mame2003-plus-libretro \
   mgba-libretro \
+  mrboom-libretro \
   mupen64plus-libretro \
+  np2kai-libretro \
+  nxengine-libretro \
+  o2em-libretro \
+  pokemini-libretro \
+  prboom-libretro \
+  prosystem-libretro \
+  quicknes-libretro \
   snes9x2002-libretro \
   snes9x2005-libretro \
   snes9x2010-libretro \
+  stella2014-libretro \
+  tgbdual-libretro \
+  tyrquake-libretro \
   vba-next-libretro \
+  vecx-libretro \
+  virtualjaguar-libretro \
 "
 
 RDEPENDS_${PN} = " \
