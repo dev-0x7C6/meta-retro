@@ -6,7 +6,7 @@ do_deploy_append() {
         echo "dtoverlay=pi3-disable-bt" >> ${configfile}
         echo >> ${configfile}
     fi
-    
+
     if [ "${RPI_ALWAYS_FULLHD}" = "1" ]; then
         echo "# Always run in 1080p@60hz HDMI with audio" >> ${configfile}
         echo "hdmi_group=1" >> ${configfile}
@@ -16,16 +16,24 @@ do_deploy_append() {
         echo "hdmi_drive=2" >> ${configfile}
         echo >> ${configfile}
     fi
-    
+
     if [ "${RPI_ENABLE_AUDIO}" = "1" ]; then
         echo "# Enable audio" >> ${configfile}
         echo "dtparam=audio=on" >> ${configfile}
         echo >> ${configfile}
     fi
-    
+
     if [ "${RPI_OVERCLOCK_SD}" = "1" ]; then
         echo "# Overclock sd" >> ${configfile}
         echo "dtparam=sd_overclock=100" >> ${configfile}
+        echo >> ${configfile}
+    fi
+
+    if [ "${RPI4_OVERCLOCK}" = "1" ]; then
+        echo "# Overclock " >> ${configfile}
+        echo "over_voltage=4" >> ${configfile}
+        echo "arm_freq=2000" >> ${configfile}
+        echo "gpu_freq=600" >> ${configfile}
         echo >> ${configfile}
     fi
 }
