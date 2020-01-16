@@ -12,7 +12,7 @@ PR = "r102"
 
 S = "${WORKDIR}/git"
 SRC_URI = "gitsm://github.com/libretro/retroarch-assets.git"
-SRCREV = "c2bbf234195bbad91c827337a2fb2b5bc727407b"
+SRCREV = "${AUTOREV}"
 
 inherit retroarch-paths
 
