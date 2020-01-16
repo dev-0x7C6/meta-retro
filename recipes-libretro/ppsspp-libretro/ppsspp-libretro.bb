@@ -20,7 +20,6 @@ DEPENDS = " \
 PACKAGECONFIG ?=  " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'egl gles', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'egl gles', '', d)} \
-  ffmpeg \
   libretro \
   libzip \
 "
@@ -39,7 +38,7 @@ PACKAGECONFIG[x86-64] = "-DX86_64=ON,-DX86_64=OFF"
 PACKAGECONFIG[discord] = "-DUSE_DISCORD=ON,-DUSE_DISCORD=OFF"
 PACKAGECONFIG[egl] = "-DUSING_EGL=ON,-DUSING_EGL=OFF,virtual/egl"
 PACKAGECONFIG[fbdev] = "-DUSING_FBDEV=ON,-DUSING_FBDEV=OFF"
-PACKAGECONFIG[ffmpeg] = "-DUSE_FFMPEG=ON -DUSE_SYSTEM_FFMPEG=ON,-DUSE_FFMPEG=OFF -USE_SYSTEM_FFMPEG=OFF,ffmpeg"
+PACKAGECONFIG[system-ffmpeg] = "-DUSE_FFMPEG=ON -DUSE_SYSTEM_FFMPEG=ON,-DUSE_FFMPEG=ON -USE_SYSTEM_FFMPEG=OFF,ffmpeg"
 PACKAGECONFIG[gles] = "-DUSING_GLES2=ON,-DUSING_GLES2=OFF,virtual/libgles2"
 PACKAGECONFIG[headless] = "-DHEADLESS=ON,-DHEADLESS=OFF"
 PACKAGECONFIG[libretro] = "-DLIBRETRO=ON,-DLIBRETRO=OFF"

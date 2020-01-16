@@ -112,10 +112,11 @@ LIBRETRO_FINAL_MAKEFLAGS ??= " \
 "
 
 DEPENDS = " \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'virtual/egl virtual/libgles1 virtual/libgles2', '', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'virtual/egl virtual/libgles1 virtual/libgles2', '', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'virtual/libgles2 virtual/egl', '', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'virtual/libgles2 virtual/egl', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'virtual/libgl ', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-vulkan', 'vulkan-loader', '', d)} \
+  zlib \
 "
 
 do_compile() {

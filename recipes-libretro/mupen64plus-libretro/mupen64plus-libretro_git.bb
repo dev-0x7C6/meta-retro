@@ -13,6 +13,7 @@ DEPENDS_append = " libpng nasm-native"
 
 LIBRETRO_CORE = "mupen64plus_next"
 
+LIBRETRO_EXTRA_MAKEFLAGS_append_rpi = " MESA=${@bb.utils.contains('MACHINE_FEATURES', 'vc4graphics', '1', '0', d)}"
 LIBRETRO_PLATFORM_rpi = "${LIBRETRO_PLATFORM_AUTODETECT}"
 
 LIBRETRO_FULL_OVERRIDE_ASFLAGS_x86-64 = "1"

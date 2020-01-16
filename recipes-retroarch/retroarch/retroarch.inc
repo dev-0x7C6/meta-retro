@@ -133,7 +133,6 @@ PACKAGECONFIG ??= " \
   udev \
   v4l2 \
   zlib \
-  sdl2 \
 "
 
 # Switches updated from ea49348db2917b893f298d755a2dd8e82fb4436a

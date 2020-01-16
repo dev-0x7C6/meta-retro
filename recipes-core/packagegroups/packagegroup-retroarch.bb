@@ -39,7 +39,7 @@ LIBRETRO_CORE_PACKAGES ?= " \
   beetle-ngp-libretro \
   beetle-pce-fast-libretro \
   beetle-pcfx-libretro \
-  beetle-psx-libretro \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'beetle-psx-libretro ', '', d)} \
   beetle-supergrafx-libretro \
   beetle-vb-libretro \
   beetle-wswan-libretro \
