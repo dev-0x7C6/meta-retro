@@ -14,6 +14,7 @@ OECMAKE_FIND_ROOT_PATH_MODE_PROGRAM = "/usr/bin"
 DEPENDS = " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'virtual/libgl ', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-vulkan', 'vulkan-loader', '', d)} \
+  spirv-tools \
 "
 
 PACKAGECONFIG ?=  " \
@@ -21,7 +22,7 @@ PACKAGECONFIG ?=  " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'egl gles', '', d)} \
   ffmpeg \
   libretro \
-  zlib \
+  libzip \
 "
 
 PACKAGECONFIG_append_armarch = " ${@bb.utils.contains('TUNE_FEATURES', 'neon', 'armv7 arm', 'arm', d)}"
@@ -51,7 +52,7 @@ PACKAGECONFIG[simulator] = "-DSIMULATOR=ON,-DSIMULATOR=OFF"
 PACKAGECONFIG[tests] = "-DUNITTEST=ON,-DUNITTEST=OFF"
 PACKAGECONFIG[vulkan-x11] = "-DUSING_X11_VULKAN=ON,-DUSING_X11_VULKAN=OFF"
 PACKAGECONFIG[wsi] = "-DUSE_WAYLAND_WSI=ON,-DUSE_WAYLAND_WSI=OFF"
-PACKAGECONFIG[zlib] = "-DUSE_SYSTEM_LIBZIP=ON,-DUSE_SYSTEM_LIBZIP=OFF"
+PACKAGECONFIG[libzip] = "-DUSE_SYSTEM_LIBZIP=ON,-DUSE_SYSTEM_LIBZIP=OFF,libzip"
 
 FILES_${PN} += "${RETROARCH_LIBRETRO_CORES_DIR}"
 
