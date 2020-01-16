@@ -66,6 +66,7 @@ LIBRETRO_CORE_PACKAGES ?= " \
   nxengine-libretro \
   o2em-libretro \
   pokemini-libretro \
+  ppsspp-libretro \
   prboom-libretro \
   prosystem-libretro \
   quicknes-libretro \
