@@ -193,7 +193,7 @@ PACKAGECONFIG[sdl] = "--enable-sdl,--disable-sdl,libsdl"
 PACKAGECONFIG[sdl2] = "--enable-sdl2,--disable-sdl2,libsdl2"
 PACKAGECONFIG[sixel] = "--enable-sixel,--disable-sixel,libsixel"
 PACKAGECONFIG[slang] = "--enable-slang,--disable-slang,slang"
-PACKAGECONFIG[spirv-cross] = "--enable-spirv_cross,--disable-spirv_cross"
+PACKAGECONFIG[spirv-cross] = "--enable-spirv_cross,--disable-spirv_cross,spirv-tools"
 PACKAGECONFIG[ssa] = "--enable-ssa,--disable-ssa"
 PACKAGECONFIG[sse] = "--enable-sse"
 PACKAGECONFIG[ssl] = "--enable-ssl,--disable-ssl"
@@ -235,7 +235,7 @@ do_patch() {
     -e "s:# \(libretro_directory =\):\1 \"${RETROARCH_LIBRETRO_CORES_DIR}\":g" \
     -e "s:# \(libretro_info_path =\):\1 \"${LIBRETRO_DATA_DIR}/info\":g" \
     -e "s:# \(overlay_directory =\):\1 \"${RETROARCH_DATA_DIR}/overlay\":g" \
-    -e "s:# \(video_shader_dir =\):\1 \"${LIBRETRO_DATA_DIR}/shaders\":g" \
+    -e "s:# \(video_shader_dir =\):\1 \"${RETROARCH_SHADERS_DIR}\":g" \
     ${S}/retroarch.cfg || exit 1
 }
 
