@@ -26,6 +26,35 @@ inherit autotools-brokensep pkgconfig retroarch-overrides retroarch-paths retroa
 
 DEPENDS = "libxml2"
 
+# Default retroarch drivers
+
+# Input driver. Depending on video driver, it might force a different input driver.
+RETROARCH_DEFAULT_INPUT_DRIVER ??= "udev"
+
+# Joypad driver. ("udev", "linuxraw", "paraport", "sdl2", "hid", "dinput")
+RETROARCH_DEFAULT_JOYPAD_DRIVER ??= "udev"
+
+# Video driver to use. "gl", "xvideo", "sdl", "d3d"
+RETROARCH_DEFAULT_VIDEO_DRIVER ??= "gl"
+
+# Which context implementation to use.
+# Possible ones for desktop are: glx, x-egl, kms-egl, sdl-gl, wgl.
+# By default, tries to use first suitable driver.
+RETROARCH_DEFAULT_VIDEO_CONTEXT ??= "kms-egl"
+
+# Audio driver backend. Depending on configuration possible candidates are: alsa, pulse, oss, jack, rsound, roar, openal, sdl, xaudio.
+RETROARCH_DEFAULT_AUDIO_DRIVER ??= "alsathread"
+
+# Audio resampler driver backend. Which audio resampler to use.
+# Default will use "sinc".
+RETROARCH_DEFAULT_RESAMPLER_DRIVER ??= "sinc"
+
+# Menu driver to use. ("rgui", "xmb", "glui")
+RETROARCH_DEFAULT_MENU_DRIVER ??= "xmb"
+
+
+# Package config
+
 RASPBERRYPI_DEFAULT_PACKAGECONFIG ??= ""
 RASPBERRYPI_DEFAULT_PACKAGECONFIG_rpi = " \
   ${@bb.utils.contains('MACHINE_FEATURES', 'vc4graphics', '', 'dispmanx', d)} \
@@ -70,7 +99,7 @@ RETROARCH_CPU_PACKAGECONFIG_DEFAULTS ??=" \
   ${RETROARCH_CPU_PACKAGECONFIG_ARM_DEFAULTS} \
 "
 
-RETROARCH_SUPPORTED_MENU ??= "xmb"
+RETROARCH_SUPPORTED_MENU ??= "${RETROARCH_DEFAULT_MENU_DRIVER}"
 
 RETROARCH_MENU_PACKAGECONFIG_DEFAULTS ??=" \
   ${@bb.utils.contains('RETROARCH_SUPPORTED_MENU', 'materialui', 'menu-materialui', '', d)} \
@@ -98,12 +127,13 @@ PACKAGECONFIG ??= " \
   menu-xmb \
   network \
   networkgamepad \
-  sdl2 \
   ssl \
   threads \
   threads-storage \
+  udev \
   v4l2 \
   zlib \
+  sdl2 \
 "
 
 # Switches updated from ea49348db2917b893f298d755a2dd8e82fb4436a
@@ -227,7 +257,13 @@ do_patch() {
   RETROARCH_DATA_DIR="${datadir}/${PN}"
 
   sed -i \
-    -e "s:# \(system_directory =\):\1 \"${RETROARCH_SYSTEM_DIR}\":g" \
+    -e "s:# \(input_driver =\):\1 \"${RETROARCH_DEFAULT_INPUT_DRIVER}\":g" \
+    -e "s:# \(input_joypad_driver =\):\1 \"${RETROARCH_DEFAULT_JOYPAD_DRIVER}\":g" \
+    -e "s:# \(video_driver =\):\1 \"${RETROARCH_DEFAULT_VIDEO_DRIVER}\":g" \
+    -e "s:# \(video_context_driver =\):\1 \"${RETROARCH_DEFAULT_VIDEO_CONTEXT}\":g" \
+    -e "s:# \(audio_driver =\):\1 \"${RETROARCH_DEFAULT_AUDIO_DRIVER}\":g" \
+    -e "s:# \(audio_resampler =\):\1 \"${RETROARCH_DEFAULT_RESAMPLER_DRIVER}\":g" \
+    -e "s:# \(menu_driver =\):\1 \"${RETROARCH_DEFAULT_MENU_DRIVER}\":g" \
     -e "s:# \(assets_directory =\):\1 \"${RETROARCH_ASSETS_DIR}\":g" \
     -e "s:# \(joypad_autoconfig_dir =\):\1 \"${RETROARCH_DATA_DIR}/autoconfig\":g" \
     -e "s:# \(cheat_database_path =\):\1 \"${LIBRETRO_DATA_DIR}/database/cht\":g" \
