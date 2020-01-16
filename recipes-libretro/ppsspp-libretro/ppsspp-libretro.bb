@@ -30,9 +30,6 @@ PACKAGECONFIG_append_mipsarch = " mips"
 PACKAGECONFIG_append_x86 = " x86"
 PACKAGECONFIG_append_x86-64 = " x86-64"
 
-OECMAKE_C_FLAGS_append = " ${@bb.utils.contains('TUNE_FEATURES', 'neon', '-mfpu=neon', '', d)}"
-OECMAKE_CXX_FLAGS_append = " ${@bb.utils.contains('TUNE_FEATURES', 'neon', '-mfpu=neon', '', d)}"
-
 PACKAGECONFIG[armv7] = "-DARMV7=ON,-DARMV7=OFF"
 PACKAGECONFIG[arm] = "-DARM=ON,-DARM=OFF"
 PACKAGECONFIG[mips] = "-DMIPS=ON,-DMIPS=OFF"
@@ -54,9 +51,12 @@ PACKAGECONFIG[vulkan-x11] = "-DUSING_X11_VULKAN=ON,-DUSING_X11_VULKAN=OFF"
 PACKAGECONFIG[wsi] = "-DUSE_WAYLAND_WSI=ON,-DUSE_WAYLAND_WSI=OFF"
 PACKAGECONFIG[libzip] = "-DUSE_SYSTEM_LIBZIP=ON,-DUSE_SYSTEM_LIBZIP=OFF,libzip"
 
-FILES_${PN} += "${RETROARCH_LIBRETRO_CORES_DIR}"
+FILES_${PN} += "${RETROARCH_LIBRETRO_CORES_DIR} ${RETROARCH_SYSTEM_DIR}"
 
 do_install() {
   install -d ${D}${RETROARCH_LIBRETRO_CORES_DIR}
   install -m 644 ${B}/lib/ppsspp_libretro.so ${D}${RETROARCH_LIBRETRO_CORES_DIR}/ppsspp_libretro.so
+
+  install -d ${D}${RETROARCH_SYSTEM_DIR}/PPSSPP/
+  cp -rf ${B}/assets/* ${D}${RETROARCH_SYSTEM_DIR}/PPSSPP/
 }

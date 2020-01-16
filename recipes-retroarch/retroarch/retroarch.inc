@@ -227,6 +227,7 @@ do_patch() {
   RETROARCH_DATA_DIR="${datadir}/${PN}"
 
   sed -i \
+    -e "s:# \(system_directory =\):\1 \"${RETROARCH_SYSTEM_DIR}\":g" \
     -e "s:# \(assets_directory =\):\1 \"${RETROARCH_ASSETS_DIR}\":g" \
     -e "s:# \(joypad_autoconfig_dir =\):\1 \"${RETROARCH_DATA_DIR}/autoconfig\":g" \
     -e "s:# \(cheat_database_path =\):\1 \"${LIBRETRO_DATA_DIR}/database/cht\":g" \
