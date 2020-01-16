@@ -16,7 +16,6 @@ SRCREV = "c2bbf234195bbad91c827337a2fb2b5bc727407b"
 
 inherit retroarch-paths
 
-
 FILES_${PN} += "${RETROARCH_ASSETS_DIR}"
 
 PACKAGES =+ " \
@@ -48,11 +47,11 @@ FILES_retroarch-assets-xmb-retrosystem = "${RETROARCH_ASSETS_DIR}/xmb/retrosyste
 FILES_retroarch-assets-xmb-sysematic = "${RETROARCH_ASSETS_DIR}/xmb/sysematic"
 
 do_install() {
-  install -d ${D}${datadir}/libretro/assets
+  install -d ${D}${RETROARCH_ASSETS_DIR}
 
   rm -rf ${S}/Makefile \
     ${S}/configure \
     ${S}/src
 
-  cp -fr ${S}/* ${D}${datadir}/libretro/assets
+  cp -fr ${S}/* ${D}${RETROARCH_ASSETS_DIR}
 }
