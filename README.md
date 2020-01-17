@@ -16,6 +16,8 @@ You can test this layer and distro (retro) with reference build environment on y
 #~ MACHINE="raspberrypi4" bitbake retroarch-image-minimal
 ```
 
+#### Support and tests
+
 I'm currently testing builds with those machines: 
 * intel-core2-32 *(meta-intel)*
 * intel-corei7-64 *(meta-intel)*
@@ -24,14 +26,20 @@ I'm currently testing builds with those machines:
 
 But feel free to test other machines as well.
 
-## Introduced DISTRO_FEATURES
+## DISTRO_FEATURES
+
+#### RetroArch and system features:
 
 * **retroarch-automount** - added extra automounting in /var/run/media
 * **retroarch-autostart** - enabling systemd RetroArch startup as main graphics.target
-* **retroarch-gles** - enable for OpenGLES 2.0 support in retroarch and libretro cores
-* **retroarch-gles3** - enable for OpenGLES 3.0 support in retroarch and libretro cores
 * **retroarch-online** - compile RetroArch with online capabilities
 * **retroarch-updater** - compile RetroArch with update capabilities
+
+#### Graphical capabilities:
+* **retroarch-gles** - enable for OpenGLES 2.0 support in retroarch and libretro cores
+* **retroarch-gles3** - enable for OpenGLES 3.0 support in retroarch and libretro cores
+* **retroarch-opengl** - enable for OpenGL >= 2.0 support in retroarch and libretro cores
+* **retroarch-vulkan** - enable for OpenGL >= 2.0 support in retroarch and libretro cores
 
 ## Dependencies
 This layer depends on:
