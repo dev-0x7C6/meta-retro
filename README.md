@@ -17,9 +17,10 @@ You can test this layer and distro (retro) with reference build environment on y
 ```
 
 I'm currently testing builds with those machines: 
-* genericx86-64
-* genericx86
-* raspberrypi4
+* intel-core2-32 *(meta-intel)*
+* intel-corei7-64 *(meta-intel)*
+* raspberrypi3 *(meta-raspberrypi)*
+* raspberrypi4 *(meta-raspberrypi)*
 
 But feel free to test other machines as well.
 
