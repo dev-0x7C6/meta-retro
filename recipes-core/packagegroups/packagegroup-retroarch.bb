@@ -10,13 +10,19 @@ inherit retroarch-overrides packagegroup
 PACKAGECONFIG ??= " \
   assets \
   autoconfig \
+  cheats \
+  cursors \
   shaders \
+  titles \
   user \
 "
 
 PACKAGECONFIG[assets] = ",,"
 PACKAGECONFIG[autoconfig] = ",,"
 PACKAGECONFIG[user] = ",,"
+PACKAGECONFIG[cheats] = ",,"
+PACKAGECONFIG[cursors] = ",,"
+PACKAGECONFIG[titles] = ",,"
 
 RETROARCH_ASSETS_PACKAGES ?= " \
   retroarch-assets-xmb-pixel \
@@ -27,9 +33,12 @@ RETROARCH_PACKAGES ?= " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-automount', 'udev-extraconf', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'retroarch-service', '', d)} \
   ${@bb.utils.contains('PACKAGECONFIG', 'assets', '${RETROARCH_ASSETS_PACKAGES}', '', d)} \
-  ${@bb.utils.contains('PACKAGECONFIG', 'shaders', 'retroarch-shaders', '', d)} \
-  ${@bb.utils.contains('PACKAGECONFIG', 'user', 'retroarch-user', '', d)} \
   ${@bb.utils.contains('PACKAGECONFIG', 'autoconfig', 'retroarch-autoconfig', '', d)} \
+  ${@bb.utils.contains('PACKAGECONFIG', 'cheats', 'retroarch-database-cheats', '', d)} \
+  ${@bb.utils.contains('PACKAGECONFIG', 'cursors', 'retroarch-database-cursors', '', d)} \
+  ${@bb.utils.contains('PACKAGECONFIG', 'shaders', 'retroarch-shaders', '', d)} \
+  ${@bb.utils.contains('PACKAGECONFIG', 'titles', 'retroarch-database-titles', '', d)} \
+  ${@bb.utils.contains('PACKAGECONFIG', 'user', 'retroarch-user', '', d)} \
   retroarch \
 "
 

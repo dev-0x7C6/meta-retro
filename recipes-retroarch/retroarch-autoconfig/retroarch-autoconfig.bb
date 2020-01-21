@@ -15,6 +15,11 @@ SRCREV = "${AUTOREV}"
 
 inherit retroarch-paths
 
+DEPENDS += "rsync-native"
+
+do_configure[noexec] = "1"
+do_compile[noexec] = "1"
+
 FILES_${PN} += "${RETROARCH_AUTOCONFIG_DIR}"
 
 do_install() {
@@ -23,5 +28,5 @@ do_install() {
   rm -f ${S}/Makefile \
     ${S}/configure
 
-  cp -fr ${S}/* ${D}${RETROARCH_AUTOCONFIG_DIR}
+  rsync -rlptD ${S}/* ${D}${RETROARCH_AUTOCONFIG_DIR}
 }

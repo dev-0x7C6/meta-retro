@@ -16,35 +16,40 @@ SRCREV = "${AUTOREV}"
 
 inherit retroarch-paths
 
+DEPENDS += "rsync-native"
+
+do_configure[noexec] = "1"
+do_compile[noexec] = "1"
+
 FILES_${PN} += "${RETROARCH_ASSETS_DIR}"
 
 PACKAGES =+ " \
-  retroarch-assets-glui \
-  retroarch-assets-ozone \
-  retroarch-assets-sounds \
-  retroarch-assets-xmb-automatic \
-  retroarch-assets-xmb-dot-art \
-  retroarch-assets-xmb-flatui \
-  retroarch-assets-xmb-monochrome \
-  retroarch-assets-xmb-neoactive \
-  retroarch-assets-xmb-pixel \
-  retroarch-assets-xmb-retroactive \
-  retroarch-assets-xmb-retrosystem \
-  retroarch-assets-xmb-sysematic \
+  ${PN}-glui \
+  ${PN}-ozone \
+  ${PN}-sounds \
+  ${PN}-xmb-automatic \
+  ${PN}-xmb-dot-art \
+  ${PN}-xmb-flatui \
+  ${PN}-xmb-monochrome \
+  ${PN}-xmb-neoactive \
+  ${PN}-xmb-pixel \
+  ${PN}-xmb-retroactive \
+  ${PN}-xmb-retrosystem \
+  ${PN}-xmb-sysematic \
 "
 
-FILES_retroarch-assets-glui = "${RETROARCH_ASSETS_DIR}/glui"
-FILES_retroarch-assets-ozone = "${RETROARCH_ASSETS_DIR}/ozone"
-FILES_retroarch-assets-ozone = "${RETROARCH_ASSETS_DIR}/ozone"
-FILES_retroarch-assets-xmb-automatic = "${RETROARCH_ASSETS_DIR}/xmb/automatic"
-FILES_retroarch-assets-xmb-dot-art = "${RETROARCH_ASSETS_DIR}/xmb/dot-art"
-FILES_retroarch-assets-xmb-flatui = "${RETROARCH_ASSETS_DIR}/xmb/flatui"
-FILES_retroarch-assets-xmb-monochrome = "${RETROARCH_ASSETS_DIR}/xmb/monochrome"
-FILES_retroarch-assets-xmb-neoactive = "${RETROARCH_ASSETS_DIR}/xmb/neoactive"
-FILES_retroarch-assets-xmb-pixel = "${RETROARCH_ASSETS_DIR}/xmb/pixel"
-FILES_retroarch-assets-xmb-retroactive = "${RETROARCH_ASSETS_DIR}/xmb/retroactive"
-FILES_retroarch-assets-xmb-retrosystem = "${RETROARCH_ASSETS_DIR}/xmb/retrosystem"
-FILES_retroarch-assets-xmb-sysematic = "${RETROARCH_ASSETS_DIR}/xmb/sysematic"
+FILES_${PN}-glui = "${RETROARCH_ASSETS_DIR}/glui"
+FILES_${PN}-ozone = "${RETROARCH_ASSETS_DIR}/ozone"
+FILES_${PN}-ozone = "${RETROARCH_ASSETS_DIR}/ozone"
+FILES_${PN}-xmb-automatic = "${RETROARCH_ASSETS_DIR}/xmb/automatic"
+FILES_${PN}-xmb-dot-art = "${RETROARCH_ASSETS_DIR}/xmb/dot-art"
+FILES_${PN}-xmb-flatui = "${RETROARCH_ASSETS_DIR}/xmb/flatui"
+FILES_${PN}-xmb-monochrome = "${RETROARCH_ASSETS_DIR}/xmb/monochrome"
+FILES_${PN}-xmb-neoactive = "${RETROARCH_ASSETS_DIR}/xmb/neoactive"
+FILES_${PN}-xmb-pixel = "${RETROARCH_ASSETS_DIR}/xmb/pixel"
+FILES_${PN}-xmb-retroactive = "${RETROARCH_ASSETS_DIR}/xmb/retroactive"
+FILES_${PN}-xmb-retrosystem = "${RETROARCH_ASSETS_DIR}/xmb/retrosystem"
+FILES_${PN}-xmb-sysematic = "${RETROARCH_ASSETS_DIR}/xmb/sysematic"
 
 do_install() {
   install -d ${D}${RETROARCH_ASSETS_DIR}
@@ -53,5 +58,5 @@ do_install() {
     ${S}/configure \
     ${S}/src
 
-  cp -fr ${S}/* ${D}${RETROARCH_ASSETS_DIR}
+  rsync -rlptD ${S}/* ${D}${RETROARCH_ASSETS_DIR}
 }
