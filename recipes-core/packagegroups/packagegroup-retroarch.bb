@@ -7,9 +7,15 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 inherit retroarch-overrides packagegroup
 
-PACKAGECONFIG ??= "assets shaders user"
+PACKAGECONFIG ??= " \
+  assets \
+  autoconfig \
+  shaders \
+  user \
+"
 
 PACKAGECONFIG[assets] = ",,"
+PACKAGECONFIG[autoconfig] = ",,"
 PACKAGECONFIG[user] = ",,"
 
 RETROARCH_ASSETS_PACKAGES ?= " \
@@ -23,6 +29,7 @@ RETROARCH_PACKAGES ?= " \
   ${@bb.utils.contains('PACKAGECONFIG', 'assets', '${RETROARCH_ASSETS_PACKAGES}', '', d)} \
   ${@bb.utils.contains('PACKAGECONFIG', 'shaders', 'retroarch-shaders', '', d)} \
   ${@bb.utils.contains('PACKAGECONFIG', 'user', 'retroarch-user', '', d)} \
+  ${@bb.utils.contains('PACKAGECONFIG', 'autoconfig', 'retroarch-autoconfig', '', d)} \
   retroarch \
 "
 
