@@ -39,7 +39,7 @@ But feel free to test other machines as well.
 * **retroarch-gles** - enable for OpenGLES 2.0 support in retroarch and libretro cores
 * **retroarch-gles3** - enable for OpenGLES 3.0 support in retroarch and libretro cores
 * **retroarch-opengl** - enable for OpenGL >= 2.0 support in retroarch and libretro cores
-* **retroarch-vulkan** - enable for OpenGL >= 2.0 support in retroarch and libretro cores
+* **retroarch-vulkan** - enable for Vulkan support in retroarch and libretro cores
 
 ## Dependencies
 This layer depends on:
