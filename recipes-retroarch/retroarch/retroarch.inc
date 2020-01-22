@@ -265,9 +265,9 @@ do_patch() {
     -e "s:# \(menu_driver =\):\1 \"${RETROARCH_DEFAULT_MENU_DRIVER}\":g" \
     -e "s:# \(assets_directory =\):\1 \"${RETROARCH_ASSETS_DIR}\":g" \
     -e "s:# \(joypad_autoconfig_dir =\):\1 \"${RETROARCH_AUTOCONFIG_DIR}\":g" \
-    -e "s:# \(cheat_database_path =\):\1 \"${LIBRETRO_DATA_DIR}/database/cht\":g" \
-    -e "s:# \(content_database_path =\):\1 \"${LIBRETRO_DATA_DIR}/database/rdb\":g" \
-    -e "s:# \(cursor_directory =\):\1 \"${LIBRETRO_DATA_DIR}/database/cursors\":g" \
+    -e "s:# \(cheat_database_path =\):\1 \"${RETROARCH_DATABASE_CHEATS_DIR}\":g" \
+    -e "s:# \(content_database_path =\):\1 \"${RETROARCH_DATABASE_TITLES_DIR}\":g" \
+    -e "s:# \(cursor_directory =\):\1 \"${RETROARCH_DATABASE_CURSORS_DIR}\":g" \
     -e "s:# \(libretro_directory =\):\1 \"${RETROARCH_LIBRETRO_CORES_DIR}\":g" \
     -e "s:# \(libretro_info_path =\):\1 \"${LIBRETRO_DATA_DIR}/info\":g" \
     -e "s:# \(overlay_directory =\):\1 \"${RETROARCH_DATA_DIR}/overlay\":g" \
