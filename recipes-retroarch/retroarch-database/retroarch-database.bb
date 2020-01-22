@@ -41,7 +41,9 @@ do_install() {
   install -d ${D}${RETROARCH_DATABASE_CURSORS_DIR}
 
 # FIXME: files with character [ or ] failing at rpm package stage
-  #rsync -rlptD ${S}/cht/ ${D}${RETROARCH_DATABASE_CHEATS_DIR}/
+# WORKAROUND: use ipk by default package class
+# UPSTREAM: https://bugzilla.yoctoproject.org/show_bug.cgi?id=13746
+  rsync -rlptD ${S}/cht/* ${D}${RETROARCH_DATABASE_CHEATS_DIR}/
   rsync -rlptD ${S}/rdb/* ${D}${RETROARCH_DATABASE_TITLES_DIR}/
   rsync -rlptD ${S}/cursors/* ${D}${RETROARCH_DATABASE_CURSORS_DIR}/
 }
