@@ -10,7 +10,7 @@ SRC_URI = "gitsm://github.com/libretro/pcsx_rearmed;protocol=https"
 S = "${WORKDIR}/git"
 
 LIBRETRO_CORE = "pcsx_rearmed"
-LIBRETRO_EXTRA_MAKEFLAGS_append = " HAVE_CHD=0"
 
-LIBRETRO_EXTRA_MAKEFLAGS_append_arm = " ${@bb.utils.contains('TUNE_FEATURES', 'neon', 'BUILTIN_GPU=neon', '', d)} USE_DYNAREC=1"
-LIBRETRO_EXTRA_MAKEFLAGS_append_aarch64 = " BUILTIN_GPU=unai USE_DYNAREC=0"
+LIBRETRO_EXTRA_MAKEFLAGS_append = " HAVE_CHD=0"
+LIBRETRO_EXTRA_MAKEFLAGS_append_arm32 = " ${@bb.utils.contains('TUNE_FEATURES', 'neon', 'BUILTIN_GPU=neon', '', d)} USE_DYNAREC=1"
+LIBRETRO_EXTRA_MAKEFLAGS_append_arm64 = " BUILTIN_GPU=peops USE_DYNAREC=0"
