@@ -269,8 +269,8 @@ do_patch() {
     -e "s:# \(content_database_path =\):\1 \"${RETROARCH_DATABASE_TITLES_DIR}\":g" \
     -e "s:# \(cursor_directory =\):\1 \"${RETROARCH_DATABASE_CURSORS_DIR}\":g" \
     -e "s:# \(libretro_directory =\):\1 \"${RETROARCH_LIBRETRO_CORES_DIR}\":g" \
-    -e "s:# \(libretro_info_path =\):\1 \"${LIBRETRO_DATA_DIR}/info\":g" \
-    -e "s:# \(overlay_directory =\):\1 \"${RETROARCH_DATA_DIR}/overlay\":g" \
+    -e "s:# \(libretro_info_path =\):\1 \"${RETROARCH_LIBRETRO_CORES_INFO_DIR}\":g" \
+    -e "s:# \(overlay_directory =\):\1 \"${RETROARCH_OVERLAY_DIR}\":g" \
     -e "s:# \(video_shader_dir =\):\1 \"${RETROARCH_SHADERS_DIR}\":g" \
     ${S}/retroarch.cfg || exit 1
 }

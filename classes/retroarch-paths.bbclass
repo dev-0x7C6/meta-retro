@@ -25,5 +25,11 @@ RETROARCH_DATABASE_TITLES_DIR ?= "${RETROARCH_DATABASE_DIR}/titles"
 # Cursors for RetroArch
 RETROARCH_DATABASE_CURSORS_DIR ?= "${RETROARCH_DATABASE_DIR}/cursors"
 
+# Libretro core info
+RETROARCH_LIBRETRO_CORES_INFO_DIR ?= "${RETROARCH_ROOT_DIR}/info"
+
+# Overlay for RetroArch
+RETROARCH_OVERLAY_DIR ?= "${RETROARCH_ROOT_DIR}/overlay"
+
 # Libretro plugin directory
 RETROARCH_LIBRETRO_CORES_DIR ?= "${libdir}/libretro"
