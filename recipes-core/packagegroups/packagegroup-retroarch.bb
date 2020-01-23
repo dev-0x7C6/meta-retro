@@ -13,6 +13,7 @@ RETROARCH_ADDONS ?= " \
   cheats \
   cursors \
   info \
+  overlays \
   shaders \
   titles \
   user \
@@ -31,6 +32,7 @@ RETROARCH_PACKAGES ?= " \
   ${@bb.utils.contains('RETROARCH_ADDONS', 'cheats', 'retroarch-database-cheats', '', d)} \
   ${@bb.utils.contains('RETROARCH_ADDONS', 'cursors', 'retroarch-database-cursors', '', d)} \
   ${@bb.utils.contains('RETROARCH_ADDONS', 'info', 'retroarch-libretro-info', '', d)} \
+  ${@bb.utils.contains('RETROARCH_ADDONS', 'overlays', 'retroarch-overlays', '', d)} \
   ${@bb.utils.contains('RETROARCH_ADDONS', 'shaders', 'retroarch-shaders', '', d)} \
   ${@bb.utils.contains('RETROARCH_ADDONS', 'titles', 'retroarch-database-titles', '', d)} \
   ${@bb.utils.contains('RETROARCH_ADDONS', 'user', 'retroarch-user', '', d)} \
