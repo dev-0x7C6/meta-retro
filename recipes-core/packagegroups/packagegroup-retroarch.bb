@@ -45,11 +45,10 @@ RETROARCH_PACKAGES ?= " \
 LIBRETRO_CORE_PACKAGES_append_64bit = " dolphin-libretro"
 LIBRETRO_CORE_PACKAGES_append_armarch = " pcsx-rearmed-libretro"
 
-# TODO: compilation of those failed on aarch64, I'll try to shrink list in future
+# TODO: compilation of those failed on aarch64
 LIBRETRO_CORE_PACKAGES_remove_arm64 = " \
   dosbox-libretro \
   mame2000-libretro \
-  mupen64plus-libretro \
 "
 
 LIBRETRO_CORE_PACKAGES ?= " \
