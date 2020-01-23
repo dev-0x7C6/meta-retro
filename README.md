@@ -22,7 +22,9 @@ I'm currently testing builds with those machines:
 * intel-core2-32 *(meta-intel)*
 * intel-corei7-64 *(meta-intel)*
 * raspberrypi3 *(meta-raspberrypi)*
+* raspberrypi3-64 *(meta-raspberrypi)*
 * raspberrypi4 *(meta-raspberrypi)*
+* raspberrypi4-64 *(meta-raspberrypi)*
 
 But feel free to test other machines as well.
 
