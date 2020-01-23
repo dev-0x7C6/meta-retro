@@ -2,7 +2,7 @@ DESCRIPTION = "RetroArch package group"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-PR = "r4"
+PR = "r5"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 inherit retroarch-overrides packagegroup
@@ -46,10 +46,8 @@ LIBRETRO_CORE_PACKAGES_append_64bit = " dolphin-libretro"
 LIBRETRO_CORE_PACKAGES_append_armarch = " pcsx-rearmed-libretro"
 
 # TODO: compilation of those failed on aarch64
-LIBRETRO_CORE_PACKAGES_remove_arm64 = " \
-  dosbox-libretro \
-  mame2000-libretro \
-"
+LIBRETRO_CORE_PACKAGES_remove_arm64 = "dosbox-libretro"
+LIBRETRO_CORE_PACKAGES_remove_arm64 = "mame2000-libretro"
 
 LIBRETRO_CORE_PACKAGES ?= " \
   4do-libretro \
