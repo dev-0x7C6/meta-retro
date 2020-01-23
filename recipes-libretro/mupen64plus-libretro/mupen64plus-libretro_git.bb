@@ -15,8 +15,10 @@ LIBRETRO_CORE = "mupen64plus_next"
 
 LIBRETRO_MAKEFILE_FORCE_GLES_gles3 = "FORCE_GLES=0"
 
-LIBRETRO_EXTRA_MAKEFLAGS_append_rpi = " MESA=${@bb.utils.contains('MACHINE_FEATURES', 'vc4graphics', '1', '0', d)}"
-LIBRETRO_PLATFORM_rpi = "${LIBRETRO_PLATFORM_AUTODETECT}"
+USE_MESA = "1"
+USE_MESA_rpi = "${@bb.utils.contains('MACHINE_FEATURES', 'vc4graphics', '1', '0', d)}"
+
+LIBRETRO_EXTRA_MAKEFLAGS_append = " MESA=${USE_MESA}"
 
 LIBRETRO_FULL_OVERRIDE_ASFLAGS_x86-64 = "1"
 LIBRETRO_EXTRA_ASFLAGS_x86-64 = "-f elf64 -d ELF_TYPE"
