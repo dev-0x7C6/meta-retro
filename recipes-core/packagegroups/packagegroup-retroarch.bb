@@ -7,38 +7,6 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 inherit retroarch-overrides packagegroup
 
-RETROARCH_ADDONS ?= " \
-  assets \
-  autoconfig \
-  cheats \
-  cursors \
-  info \
-  overlays \
-  shaders \
-  titles \
-  user \
-"
-
-RETROARCH_ASSETS_PACKAGES ?= " \
-  retroarch-assets-xmb-pixel \
-  retroarch-assets-xmb-monochrome \
-"
-
-RETROARCH_PACKAGES ?= " \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-automount', 'udev-extraconf', '', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'retroarch-service', '', d)} \
-  ${@bb.utils.contains('RETROARCH_ADDONS', 'assets', '${RETROARCH_ASSETS_PACKAGES}', '', d)} \
-  ${@bb.utils.contains('RETROARCH_ADDONS', 'autoconfig', 'retroarch-autoconfig', '', d)} \
-  ${@bb.utils.contains('RETROARCH_ADDONS', 'cheats', 'retroarch-database-cheats', '', d)} \
-  ${@bb.utils.contains('RETROARCH_ADDONS', 'cursors', 'retroarch-database-cursors', '', d)} \
-  ${@bb.utils.contains('RETROARCH_ADDONS', 'info', 'retroarch-libretro-info', '', d)} \
-  ${@bb.utils.contains('RETROARCH_ADDONS', 'overlays', 'retroarch-overlays', '', d)} \
-  ${@bb.utils.contains('RETROARCH_ADDONS', 'shaders', 'retroarch-shaders', '', d)} \
-  ${@bb.utils.contains('RETROARCH_ADDONS', 'titles', 'retroarch-database-titles', '', d)} \
-  ${@bb.utils.contains('RETROARCH_ADDONS', 'user', 'retroarch-user', '', d)} \
-  retroarch \
-"
-
 LIBRETRO_CORE_PACKAGES_append_64bit = " dolphin-libretro"
 LIBRETRO_CORE_PACKAGES_append_armarch = " pcsx-rearmed-libretro"
 
@@ -98,6 +66,8 @@ LIBRETRO_CORE_PACKAGES ?= " \
 "
 
 RDEPENDS_${PN} = " \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-automount', 'udev-extraconf', '', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'retroarch-service', '', d)} \
   ${LIBRETRO_CORE_PACKAGES} \
-  ${RETROARCH_PACKAGES} \
+  retroarch \
 "

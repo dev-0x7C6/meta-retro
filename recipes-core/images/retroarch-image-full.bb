@@ -9,8 +9,13 @@ IMAGE_INSTALL_append = " \
   packagegroup-core-boot \
   packagegroup-retroarch \
   retroarch-assets-xmb-monochrome \
+  retroarch-assets-xmb-pixel \
   retroarch-autoconfig \
+  retroarch-database-cheats \
+  retroarch-database-cursors \
+  retroarch-database-titles \
   retroarch-libretro-info \
+  retroarch-overlays \
   retroarch-shaders \
   retroarch-user \
 "
