@@ -1,6 +1,6 @@
 DESCRIPTION = "Arcade emu - Final Burn Alpha (0.2.97.30) port for libretro"
 
-LICENSE = "proprietary"
+LICENSE = "FB-ALPHA"
 LIC_FILES_CHKSUM = "file://docs/license.txt;md5=c700302a5d98b278343c625651db5a48"
 
 inherit libretro

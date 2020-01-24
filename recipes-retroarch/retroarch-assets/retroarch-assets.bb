@@ -5,7 +5,7 @@ Also contains the official branding."
 HOMEPAGE = "https://www.retroarch.com/"
 BUGTRACKER = "https://github.com/libretro/retroarch-assets/issues"
 
-LICENSE = "CC-BY-4.0"
+LICENSE = "CC-BY-SA-4.0"
 LIC_FILES_CHKSUM = "file://COPYING;md5=7bd61880991ed797753fcc00acae2c51"
 
 PR = "r102"
