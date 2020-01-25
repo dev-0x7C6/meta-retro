@@ -3,9 +3,8 @@ SUMMARY = "RetroArch additional headers with info about libretro cores"
 HOMEPAGE = "https://www.retroarch.com/"
 BUGTRACKER = "https://github.com/libretro/libretro-super/issues"
 
-# FIXME: License for repository content is missing
-# I reported this bug: https://github.com/libretro/libretro-super/issues/1220
-LICENSE = "CLOSED"
+LICENSE = "MIT"
+LIC_FILES_CHKSUM = "file://COPYING;md5=5400ab930bc7a77040ea8e75206294c4"
 
 S = "${WORKDIR}/git"
 SRC_URI = "gitsm://github.com/libretro/libretro-super.git;protocol=https"
