@@ -119,6 +119,9 @@ DEPENDS = " \
   zlib \
 "
 
+do_patch() {
+}
+
 do_compile() {
   if [[ ! -z "${LIBRETRO_MAKEFILE_PREFIX}" ]]; then
     echo "prefix changed: ${LIBRETRO_MAKEFILE_PREFIX}"
