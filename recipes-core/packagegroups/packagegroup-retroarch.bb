@@ -49,6 +49,7 @@ LIBRETRO_CORE_PACKAGES ?= " \
   np2kai-libretro \
   nxengine-libretro \
   o2em-libretro \
+  parallel-n64-libretro \
   pokemini-libretro \
   ppsspp-libretro \
   prboom-libretro \
