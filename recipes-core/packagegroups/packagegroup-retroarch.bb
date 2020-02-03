@@ -26,6 +26,7 @@ LIBRETRO_CORE_PACKAGES ?= " \
   beetle-supergrafx-libretro \
   beetle-vb-libretro \
   beetle-wswan-libretro \
+  bk-libretro \
   bluemsx-libretro \
   caprice32-libretro \
   dinothawr-libretro \
@@ -46,6 +47,7 @@ LIBRETRO_CORE_PACKAGES ?= " \
   mgba-libretro \
   mrboom-libretro \
   mupen64plus-libretro \
+  neocd-libretro \
   np2kai-libretro \
   nxengine-libretro \
   o2em-libretro \
