@@ -3,15 +3,12 @@ DESCRIPTION = "N64 emulator - Mupen64Plus + GLideN64 for libretro (next version)
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
 
-inherit libretro libretro-overrides
-
-SRCREV = "${AUTOREV}"
-SRC_URI = "gitsm://github.com/libretro/mupen64plus-libretro-nx.git;protocol=https;branch=develop"
-S = "${WORKDIR}/git"
-
-DEPENDS_append = " libpng nasm-native"
+inherit libretro-git libretro-overrides
 
 LIBRETRO_CORE = "mupen64plus_next"
+LIBRETRO_REPO = "github.com/libretro/mupen64plus-libretro-nx.git;branch=develop"
+
+DEPENDS_append = " libpng nasm-native"
 
 LIBRETRO_MAKEFILE_FORCE_GLES_gles3 = "FORCE_GLES=0"
 

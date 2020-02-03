@@ -1,17 +1,13 @@
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
 
-inherit libretro
-
-SRCREV = "${AUTOREV}"
-SRC_URI = "gitsm://github.com/libretro/flycast.git;protocol=https"
-S = "${WORKDIR}/git"
+inherit libretro-git
 
 DEPENDS += "libpng"
 
 LIBRETRO_CORE = "flycast"
+LIBRETRO_REPO = "github.com/libretro/flycast.git"
 
-FLYCAST_HOST_CPU ??= ""
 FLYCAST_HOST_CPU_x86 = "0x20000001"
 FLYCAST_HOST_CPU_arm = "0x20000002"
 FLYCAST_HOST_CPU_mips = "0x20000003"
