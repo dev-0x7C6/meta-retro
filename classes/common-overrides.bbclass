@@ -1,3 +1,5 @@
+OVERRIDES_append = "${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', ':opengles:gles', '', d)}"
+OVERRIDES_append = "${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', ':opengles:gles3', '0', d)}"
 OVERRIDES_append_aarch64 = ":armarch:arm64:64bit"
 OVERRIDES_append_aarch64_be = ":armarch:arm64:64bit"
 OVERRIDES_append_arm = ":armarch:arm32:32bit"

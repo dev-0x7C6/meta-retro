@@ -4,7 +4,7 @@ games for these two platforms on PC with improvements."
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://license.txt;md5=751419260aa954499f7abaabaa882bbe"
 
-inherit cmake retroarch-overrides retroarch-paths retroarch-dist-checks
+inherit cmake common-overrides retroarch-paths retroarch-dist-checks
 
 S = "${WORKDIR}/git"
 SRC_URI = "gitsm://github.com/libretro/dolphin.git;protocol=https"

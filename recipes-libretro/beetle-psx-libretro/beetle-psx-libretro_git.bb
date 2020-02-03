@@ -8,5 +8,4 @@ inherit libretro-git
 LIBRETRO_CORE = "mednafen_psx_hw"
 LIBRETRO_REPO = "github.com/libretro/beetle-psx-libretro.git"
 
-#FIXME
-LIBRETRO_EXTRA_MAKEFLAGS_append = " GLES=0 GL_LIB=-lGL"
+LIBRETRO_PLATFORM_opengles = "unix,gles"

@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 PR = "r5"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-inherit retroarch-overrides packagegroup
+inherit common-overrides packagegroup
 
 LIBRETRO_CORE_PACKAGES_append_64bit = " dolphin-libretro"
 LIBRETRO_CORE_PACKAGES_append_armarch = " pcsx-rearmed-libretro"

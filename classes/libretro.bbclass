@@ -1,6 +1,6 @@
 # Class
 
-inherit retroarch-overrides retroarch-paths retroarch-dist-checks
+inherit common-overrides retroarch-paths retroarch-dist-checks
 
 PR = "r109"
 
@@ -36,6 +36,7 @@ LIBRETRO_MAKEFILE_FILENAME_OVERRIDE ??= ""
 LIBRETRO_CORE_FILE = "${@os.path.basename(d.getVar('LIBRETRO_CORE', d, 1))}"
 
 # Platform
+
 
 LIBRETRO_PLATFORM ??= "unix"
 LIBRETRO_EXTRA_MAKEFLAGS ??= ""
