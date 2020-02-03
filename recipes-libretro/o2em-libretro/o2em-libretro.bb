@@ -1,8 +1,7 @@
 DESCRIPTION = "Odyssey 2 / Videopac emu - O2EM port for libretro"
 
-#FIXME: missing license
-# issue: https://github.com/libretro/libretro-o2em/issues/31
-LICENSE = "CLOSED"
+LICENSE = "Artistic-2.0"
+LIC_FILES_CHKSUM = "file://COPYING;md5=644d36008177e116829e23185f125968"
 
 inherit libretro-git
 
