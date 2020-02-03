@@ -1,5 +1,8 @@
 inherit libretro
 
+LIBRETRO_GIT_PROTOCOL ?= ";protocol=https"
+LIBRETRO_GIT_FETCHER ?= "gitsm://"
+
 S = "${WORKDIR}/git"
-SRC_URI = "${LIBRETRO_URI}"
+SRC_URI = "${LIBRETRO_GIT_FETCHER}${LIBRETRO_URI}${LIBRETRO_GIT_PROTOCOL}"
 SRCREV ?= "${AUTOREV}"
