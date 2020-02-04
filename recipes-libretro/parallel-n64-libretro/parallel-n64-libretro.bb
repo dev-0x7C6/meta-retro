@@ -5,11 +5,14 @@ LIC_FILES_CHKSUM = "file://mupen64plus-core/LICENSES;md5=6bf42b6befd3315498f3374
 
 inherit libretro-git
 
+DEPENDS += "bc-native"
+
 LIBRETRO_CORE = "parallel_n64"
 LIBRETRO_REPO = "github.com/libretro/parallel-n64.git"
-SRCREV = "ab155da18068f638e5ace2e5e6f7387bddc3511b"
 
-LIBRETRO_EXTRA_COMPILATION_FLAGS_armarch = " -DARM -DARM_ASM -D__NEON_OPT -DNOSSE"
+LIBRETRO_PLATFORM_arm32 = "unix,classic_armv7_a7"
+LIBRETRO_PLATFORM_arm64 = "unix,armv8"
+LIBRETRO_EXTRA_MAKEFLAGS_armarch = "USE_SSE2NEON=1"
 
 do_patch_append_opengles() {
   sed -i -e "/^typedef GLfloat GLdouble/d" "${S}/libretro-common/include/glsm/glsm.h"
