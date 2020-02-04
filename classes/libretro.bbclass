@@ -2,7 +2,7 @@
 
 inherit common-overrides retroarch-paths retroarch-dist-checks
 
-PR = "r109"
+PR = "r111"
 
 # Auto detection
 
@@ -140,7 +140,6 @@ do_compile() {
 
   oe_runmake -f "${MAKEFILE_PATH}" ${LIBRETRO_FINAL_MAKEFLAGS} \
     CC_PREFIX=${TARGET_PREFIX} \
-    CC_AS="${CC}" \
     ARCH=${LIBRETRO_CPU_ARCH} \
     ARM="${IS_ARM_ARCH}" \
     CPU_ARCH=${TUNE_ARCH} \
