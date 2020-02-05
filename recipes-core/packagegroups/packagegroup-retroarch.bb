@@ -10,9 +10,14 @@ inherit common-overrides packagegroup
 LIBRETRO_CORE_PACKAGES_append_64bit = " dolphin-libretro"
 LIBRETRO_CORE_PACKAGES_append_armarch = " pcsx-rearmed-libretro"
 
-# TODO: compilation of those failed on aarch64
-LIBRETRO_CORE_PACKAGES_remove_arm64 = "dosbox-libretro"
-LIBRETRO_CORE_PACKAGES_remove_arm64 = "mame2000-libretro"
+# TODO: compilation of those failed on specific architectures:
+
+LIBRETRO_CORE_PACKAGES_remove_arm64 = " \
+  dosbox-libretro \
+  mame2000-libretro \
+  parallel-n64-libretro \
+  yabause-libretro \
+"
 
 LIBRETRO_CORE_PACKAGES ?= " \
   4do-libretro \
@@ -68,6 +73,7 @@ LIBRETRO_CORE_PACKAGES ?= " \
   vba-next-libretro \
   vecx-libretro \
   virtualjaguar-libretro \
+  yabause-libretro \
 "
 
 RDEPENDS_${PN} = " \
