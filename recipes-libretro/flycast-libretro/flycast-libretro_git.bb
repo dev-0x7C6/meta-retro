@@ -14,4 +14,7 @@ LIBRETRO_PLATFORM_arm32 = "classic_armv7_a7"
 LIBRETRO_PLATFORM_arm64 = "arm64"
 
 # Flycast overrides passed LDFLAGS and have special LDFLAGS_END to append them if needed
-LIBRETRO_EXTRA_MAKEFLAGS = "LDFLAGS_END="${LDFLAGS}""
+LIBRETRO_EXTRA_MAKEFLAGS = " \
+    CC_PREFIX="${TARGET_PREFIX}" \
+    LDFLAGS_END="${LDFLAGS}" \
+"
