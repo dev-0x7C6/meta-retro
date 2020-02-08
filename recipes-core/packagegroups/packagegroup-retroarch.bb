@@ -8,7 +8,6 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 inherit common-overrides packagegroup
 
 LIBRETRO_CORE_PACKAGES_append_64bit = " dolphin-libretro"
-LIBRETRO_CORE_PACKAGES_append_armarch = " pcsx-rearmed-libretro"
 
 # TODO: compilation of those failed on specific architectures:
 
@@ -59,6 +58,7 @@ LIBRETRO_CORE_PACKAGES ?= " \
   nxengine-libretro \
   o2em-libretro \
   parallel-n64-libretro \
+  pcsx-rearmed-libretro \
   pokemini-libretro \
   ppsspp-libretro \
   prboom-libretro \
