@@ -7,6 +7,7 @@ DEPENDS += "libpng"
 
 LIBRETRO_CORE = "flycast"
 LIBRETRO_REPO = "github.com/libretro/flycast.git"
+SRCREV = "0ef6827486d8d873b81b2bf0890464890c8b3aa0"
 
 LIBRETRO_REPRESENT_ARM64 = "arm64"
 
