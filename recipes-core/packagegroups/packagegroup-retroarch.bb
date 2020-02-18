@@ -19,7 +19,6 @@ LIBRETRO_CORE_PACKAGES_remove_arm64 = " \
 "
 
 LIBRETRO_CORE_PACKAGES ?= " \
-  4do-libretro \
   81-libretro \
   atari800-libretro \
   beetle-gba-libretro \
@@ -57,6 +56,7 @@ LIBRETRO_CORE_PACKAGES ?= " \
   np2kai-libretro \
   nxengine-libretro \
   o2em-libretro \
+  opera-libretro \
   parallel-n64-libretro \
   pcsx-rearmed-libretro \
   pokemini-libretro \
