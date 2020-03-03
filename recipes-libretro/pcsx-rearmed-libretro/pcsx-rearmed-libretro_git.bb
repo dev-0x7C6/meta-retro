@@ -9,7 +9,7 @@ LIBRETRO_CORE = "pcsx_rearmed"
 LIBRETRO_REPO = "github.com/libretro/pcsx_rearmed.git"
 
 PREFFERED_DYNAMIC_RECOMPILER ?= "lightrec"
-PREFFERED_DYNAMIC_RECOMPILER_armarch = "ari64"
+PREFFERED_DYNAMIC_RECOMPILER_arm32 = "ari64"
 
 LIBRETRO_EXTRA_MAKEFLAGS_append = " HAVE_CHD=0 DYNAREC=${PREFFERED_DYNAMIC_RECOMPILER}"
 LIBRETRO_EXTRA_MAKEFLAGS_append_armarch = " ${@bb.utils.contains('TUNE_FEATURES', 'neon', 'BUILTIN_GPU=neon', 'BUILTIN_GPU=peops', d)}"

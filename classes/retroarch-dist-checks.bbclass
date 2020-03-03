@@ -13,7 +13,7 @@ ANY_OF_DISTRO_FEATURES = " \
   retroarch-gles \
   retroarch-gles3 \
   retroarch-opengl \
-  retroarch-vulkan \
+  vulkan \
 "
 
 # Not sure yet

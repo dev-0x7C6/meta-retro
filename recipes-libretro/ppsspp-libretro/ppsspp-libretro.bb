@@ -13,13 +13,13 @@ OECMAKE_FIND_ROOT_PATH_MODE_PROGRAM = "/usr/bin"
 
 DEPENDS = " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'virtual/libgl ', '', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-vulkan', 'vulkan-loader', '', d)} \
   spirv-tools \
 "
 
 PACKAGECONFIG ?=  " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'egl gles', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'egl gles', '', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'vulkan', '', d)} \
   libretro \
   libzip \
   system-ffmpeg \
@@ -41,17 +41,18 @@ PACKAGECONFIG[x86-64] = "-DX86_64=ON,-DX86_64=OFF"
 PACKAGECONFIG[discord] = "-DUSE_DISCORD=ON,-DUSE_DISCORD=OFF"
 PACKAGECONFIG[egl] = "-DUSING_EGL=ON,-DUSING_EGL=OFF,virtual/egl"
 PACKAGECONFIG[fbdev] = "-DUSING_FBDEV=ON,-DUSING_FBDEV=OFF"
-PACKAGECONFIG[system-ffmpeg] = "-DUSE_FFMPEG=ON -DUSE_SYSTEM_FFMPEG=ON,-DUSE_FFMPEG=ON -USE_SYSTEM_FFMPEG=OFF,ffmpeg"
 PACKAGECONFIG[gles] = "-DUSING_GLES2=ON,-DUSING_GLES2=OFF,virtual/libgles2"
 PACKAGECONFIG[headless] = "-DHEADLESS=ON,-DHEADLESS=OFF"
 PACKAGECONFIG[libretro] = "-DLIBRETRO=ON,-DLIBRETRO=OFF"
+PACKAGECONFIG[libzip] = "-DUSE_SYSTEM_LIBZIP=ON,-DUSE_SYSTEM_LIBZIP=OFF,libzip"
 PACKAGECONFIG[mobile] = "-DMOBILE_DEVICE=ON,-DMOBILE_DEVICE=OFF"
 PACKAGECONFIG[qt] = "-DUSING_QT_UI=ON,-DUSING_QT_UI=OFF"
 PACKAGECONFIG[simulator] = "-DSIMULATOR=ON,-DSIMULATOR=OFF"
+PACKAGECONFIG[system-ffmpeg] = "-DUSE_FFMPEG=ON -DUSE_SYSTEM_FFMPEG=ON,-DUSE_FFMPEG=ON -USE_SYSTEM_FFMPEG=OFF,ffmpeg"
 PACKAGECONFIG[tests] = "-DUNITTEST=ON,-DUNITTEST=OFF"
 PACKAGECONFIG[vulkan-x11] = "-DUSING_X11_VULKAN=ON,-DUSING_X11_VULKAN=OFF"
+PACKAGECONFIG[vulkan] = ",,vulkan-loader"
 PACKAGECONFIG[wsi] = "-DUSE_WAYLAND_WSI=ON,-DUSE_WAYLAND_WSI=OFF"
-PACKAGECONFIG[libzip] = "-DUSE_SYSTEM_LIBZIP=ON,-DUSE_SYSTEM_LIBZIP=OFF,libzip"
 
 FILES_${PN} += "${RETROARCH_LIBRETRO_CORES_DIR} ${RETROARCH_SYSTEM_DIR}"
 

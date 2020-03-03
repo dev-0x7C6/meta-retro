@@ -14,7 +14,6 @@ OECMAKE_FIND_ROOT_PATH_MODE_PROGRAM = "/usr/bin"
 
 DEPENDS = " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'virtual/libgl ', '', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-vulkan', 'vulkan-loader', '', d)} \
   spirv-tools \
   libusb \
 "
@@ -22,6 +21,7 @@ DEPENDS = " \
 PACKAGECONFIG ?=  " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'egl', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'egl', '', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'vulkan', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'x11', '', d)} \
   evdev \
   sdl \
@@ -55,6 +55,7 @@ PACKAGECONFIG[sdl] = "-DENABLE_SDL=ON,-DENABLE_SDL=OFF"
 PACKAGECONFIG[system-enet] = "-DUSE_SHARED_ENET=ON,-DUSE_SHARED_ENET=OFF,,libenet"
 PACKAGECONFIG[upnp] = "-DUSE_UPNP=ON,-DUSE_UPNP=OFF"
 PACKAGECONFIG[vtune] = "-DENABLE_VTUNE=ON,-DENABLE_VTUNE=OFF"
+PACKAGECONFIG[vulkan] = ",,vulkan-loader"
 PACKAGECONFIG[x11] = "-DENABLE_X11=ON,-DENABLE_X11=OFF"
 
 FILES_${PN} += "${RETROARCH_LIBRETRO_CORES_DIR} ${RETROARCH_SYSTEM_DIR}"

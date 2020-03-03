@@ -86,7 +86,7 @@ LIBRETRO_MAKEFILE_ARCHITECTURE_OVERRIDES ??= " \
 LIBRETRO_MAKEFILE_FORCE_GLES ??= "FORCE_GLES=${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', '1', '0', d)}"
 LIBRETRO_MAKEFILE_FORCE_GLES3 ??= "FORCE_GLES3=${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', '1', '0', d)}"
 LIBRETRO_MAKEFILE_HAVE_OPENGL ??= "HAVE_OPENGL=${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', '1', '0', d)}"
-LIBRETRO_MAKEFILE_HAVE_VULKAN ??= "HAVE_VULKAN=${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-vulkan', '1', '0', d)}"
+LIBRETRO_MAKEFILE_HAVE_VULKAN ??= "HAVE_VULKAN=${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', '1', '0', d)}"
 
 LIBRETRO_MAKEFILE_GRAPHICS_OVERRIDES ??= " \
   ${LIBRETRO_MAKEFILE_FORCE_GLES} \
@@ -116,7 +116,7 @@ DEPENDS = " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'virtual/libgles2 virtual/egl', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'virtual/libgles2 virtual/egl', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'virtual/libgl ', '', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-vulkan', 'vulkan-loader', '', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'vulkan-loader', '', d)} \
   zlib \
 "
 
