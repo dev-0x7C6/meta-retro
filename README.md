@@ -46,8 +46,8 @@ But feel free to test other machines as well.
 ## Dependencies
 This layer depends on:
 ```
-  URI: git://git.yoctoproject.org/poky.git
-  layers: meta, meta-poky, meta-yocto-bsp
+  URI: git://git.openembedded.org/openembedded-core
+  layers: meta
   branch: zeus
   
   URI: git://git.openembedded.org/meta-openembedded
