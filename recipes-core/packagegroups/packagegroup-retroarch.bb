@@ -78,6 +78,7 @@ LIBRETRO_CORE_PACKAGES ?= " \
 
 RDEPENDS_${PN} = " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-automount', 'udev-extraconf', '', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', 'pulseaudio-server', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'retroarch-service', '', d)} \
   ${LIBRETRO_CORE_PACKAGES} \
   ${RETRO_ADDITIONAL_MULTIMEDIA_PACKAGES} \
