@@ -16,13 +16,14 @@ DEPENDS = " \
   spirv-tools \
 "
 
+# system-ffmpeg probably causing laggy video playback
+
 PACKAGECONFIG ?=  " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'egl gles', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'egl gles', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'vulkan', '', d)} \
   libretro \
   libzip \
-  system-ffmpeg \
 "
 
 CCACHE_DISABLE = "1"
