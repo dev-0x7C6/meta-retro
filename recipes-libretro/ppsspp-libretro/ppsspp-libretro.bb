@@ -6,7 +6,11 @@ LIC_FILES_CHKSUM = "file://LICENSE.TXT;md5=e336f8162cddec7981e240f46825d8a2"
 inherit cmake common-overrides retroarch-paths retroarch-dist-checks
 
 S = "${WORKDIR}/git"
-SRC_URI = "gitsm://github.com/hrydgard/ppsspp.git;protocol=https"
+SRC_URI = " \
+  gitsm://github.com/hrydgard/ppsspp.git;protocol=https \
+  file://0001-Revert-Mpeg-Parse-video-streams-from-PSMF-header.patch \
+"
+
 SRCREV = "${AUTOREV}"
 
 OECMAKE_FIND_ROOT_PATH_MODE_PROGRAM = "/usr/bin"
@@ -16,20 +20,16 @@ DEPENDS = " \
   spirv-tools \
 "
 
-# system-ffmpeg probably causing laggy video playback
-
 PACKAGECONFIG ?=  " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'egl gles', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'egl gles', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'vulkan', '', d)} \
   libretro \
   libzip \
+  system-ffmpeg \
 "
 
 CCACHE_DISABLE = "1"
-
-OECMAKE_C_FLAGS_append = " -fPIC"
-OECMAKE_CXX_FLAGS_append = " -fPIC"
 
 PACKAGECONFIG_append_armarch = " ${@bb.utils.contains('TUNE_FEATURES', 'neon', 'armv7 arm', 'arm', d)}"
 PACKAGECONFIG_append_mipsarch = " mips"

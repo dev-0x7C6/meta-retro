@@ -1,0 +1,306 @@
+From e735137eaf23156e34c61e5ce13089dea6d4731b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?R=C3=A9mi=20Verschelde?= <rverschelde@gmail.com>
+Date: Tue, 6 Nov 2018 14:13:32 +0100
+Subject: [PATCH] Revert "Mpeg: Parse video streams from PSMF header."
+
+This reverts commit 558b4620e8643ef46c1bf0d45cba5eae75e26860.
+---
+ Core/HLE/sceMpeg.cpp    |   2 +
+ Core/HLE/sceMpeg.h      |   3 --
+ Core/HLE/scePsmf.cpp    |   2 +
+ Core/HW/MediaEngine.cpp | 106 ++++++++++------------------------------
+ Core/HW/MediaEngine.h   |   5 +-
+ 5 files changed, 32 insertions(+), 86 deletions(-)
+
+diff --git a/Core/HLE/sceMpeg.cpp b/Core/HLE/sceMpeg.cpp
+index e6bd1e068..b59811dd1 100644
+--- a/Core/HLE/sceMpeg.cpp
++++ b/Core/HLE/sceMpeg.cpp
+@@ -345,6 +345,8 @@ static void AnalyzeMpeg(u8 *buffer, u32 validSize, MpegContext *ctx) {
+ 		// the MPEG ringbuffer.
+ 		// Mark the current MPEG as analyzed to filter this, and restore it at sceMpegFinish.
+ 		ctx->isAnalyzed = true;
++
++		ctx->mediaengine->setVideoDim();
+ 	}
+ 
+ 	// copy header struct to mpeg header.
+diff --git a/Core/HLE/sceMpeg.h b/Core/HLE/sceMpeg.h
+index ca310bf40..6b64d6dfd 100644
+--- a/Core/HLE/sceMpeg.h
++++ b/Core/HLE/sceMpeg.h
+@@ -43,9 +43,6 @@ static const int PSMF_STREAM_SIZE_OFFSET = 0xC;
+ static const int PSMF_FIRST_TIMESTAMP_OFFSET = 0x54;
+ static const int PSMF_LAST_TIMESTAMP_OFFSET = 0x5A;
+ 
+-static const int PSMF_VIDEO_STREAM_ID = 0xE0;
+-static const int PSMF_AUDIO_STREAM_ID = 0xBD;
+-
+ struct SceMpegAu {
+ 	s64_le pts;  // presentation time stamp
+ 	s64_le dts;  // decode time stamp
+diff --git a/Core/HLE/scePsmf.cpp b/Core/HLE/scePsmf.cpp
+index e05ea4b3a..d22cc8ba4 100644
+--- a/Core/HLE/scePsmf.cpp
++++ b/Core/HLE/scePsmf.cpp
+@@ -34,6 +34,8 @@
+ #include <algorithm>
+ 
+ // "Go Sudoku" is a good way to test this code...
++const int PSMF_VIDEO_STREAM_ID = 0xE0;
++const int PSMF_AUDIO_STREAM_ID = 0xBD;
+ const int PSMF_AVC_STREAM = 0;
+ const int PSMF_ATRAC_STREAM = 1;
+ const int PSMF_PCM_STREAM = 2;
+diff --git a/Core/HW/MediaEngine.cpp b/Core/HW/MediaEngine.cpp
+index 62832f65c..d17272e4a 100644
+--- a/Core/HW/MediaEngine.cpp
++++ b/Core/HW/MediaEngine.cpp
+@@ -168,7 +168,7 @@ void MediaEngine::closeMedia() {
+ }
+ 
+ void MediaEngine::DoState(PointerWrap &p) {
+-	auto s = p.Section("MediaEngine", 1, 5);
++	auto s = p.Section("MediaEngine", 1, 4);
+ 	if (!s)
+ 		return;
+ 
+@@ -181,11 +181,6 @@ void MediaEngine::DoState(PointerWrap &p) {
+ 	} else {
+ 		m_mpegheaderSize = sizeof(m_mpegheader);
+ 	}
+-	if (s >= 5) {
+-		p.Do(m_mpegheaderReadPos);
+-	} else {
+-		m_mpegheaderReadPos = m_mpegheaderSize;
+-	}
+ 
+ 	p.Do(m_ringbuffersize);
+ 
+@@ -199,6 +194,8 @@ void MediaEngine::DoState(PointerWrap &p) {
+ 	u32 hasopencontext = false;
+ #endif
+ 	p.Do(hasopencontext);
++	if (hasopencontext && p.mode == p.MODE_READ)
++		openContext();
+ 	if (m_pdata)
+ 		m_pdata->DoState(p);
+ 	if (m_demux)
+@@ -212,10 +209,6 @@ void MediaEngine::DoState(PointerWrap &p) {
+ 		p.Do(m_lastTimeStamp);
+ 	}
+ 
+-	if (hasopencontext && p.mode == p.MODE_READ) {
+-		openContext(true);
+-	}
+-
+ 	p.Do(m_isVideoEnd);
+ 	bool noAudioDataRemoved;
+ 	p.Do(noAudioDataRemoved);
+@@ -226,7 +219,8 @@ void MediaEngine::DoState(PointerWrap &p) {
+ 	}
+ }
+ 
+-static int MpegReadbuffer(void *opaque, uint8_t *buf, int buf_size) {
++int _MpegReadbuffer(void *opaque, uint8_t *buf, int buf_size)
++{
+ 	MediaEngine *mpeg = (MediaEngine *)opaque;
+ 
+ 	int size = buf_size;
+@@ -234,6 +228,8 @@ static int MpegReadbuffer(void *opaque, uint8_t *buf, int buf_size) {
+ 		size = std::min(buf_size, mpeg->m_mpegheaderSize - mpeg->m_mpegheaderReadPos);
+ 		memcpy(buf, mpeg->m_mpegheader + mpeg->m_mpegheaderReadPos, size);
+ 		mpeg->m_mpegheaderReadPos += size;
++	} else if (mpeg->m_mpegheaderReadPos == mpeg->m_mpegheaderSize) {
++		return 0;
+ 	} else {
+ 		size = mpeg->m_pdata->pop_front(buf, buf_size);
+ 		if (size > 0)
+@@ -242,73 +238,33 @@ static int MpegReadbuffer(void *opaque, uint8_t *buf, int buf_size) {
+ 	return size;
+ }
+ 
+-bool MediaEngine::SetupStreams() {
+-#ifdef USE_FFMPEG
+-	const u32 magic = *(u32_le *)&m_mpegheader[0];
+-	if (magic != PSMF_MAGIC) {
+-		WARN_LOG_REPORT(ME, "Could not setup streams, bad magic: %08x", magic);
+-		return false;
+-	}
+-	int numStreams = *(u16_be *)&m_mpegheader[0x80];
+-	if (numStreams <= 0 || numStreams > 8) {
+-		// Looks crazy.  Let's bail out and let FFmpeg handle it.
+-		WARN_LOG_REPORT(ME, "Could not setup streams, unexpected stream count: %d", numStreams);
+-		return false;
+-	}
+-
+-	// Looking good.  Let's add those streams.
+-	const AVCodec *h264_codec = avcodec_find_decoder(AV_CODEC_ID_H264);
+-	for (int i = 0; i < numStreams; i++) {
+-		const u8 *const currentStreamAddr = m_mpegheader + 0x82 + i * 16;
+-		int streamId = currentStreamAddr[0];
+-
+-		// We only set video streams.  We demux the audio stream separately.
+-		if ((streamId & PSMF_VIDEO_STREAM_ID) == PSMF_VIDEO_STREAM_ID) {
+-			AVStream *stream = avformat_new_stream(m_pFormatCtx, h264_codec);
+-			stream->id = 0x00000100 | streamId;
+-			stream->request_probe = 0;
+-			stream->need_parsing = AVSTREAM_PARSE_FULL;
+-			// We could set the width here, but we don't need to.
+-		}
+-	}
+-
+-#endif
+-	return true;
+-}
+-
+-bool MediaEngine::openContext(bool keepReadPos) {
++bool MediaEngine::openContext() {
+ #ifdef USE_FFMPEG
+ 	InitFFmpeg();
+ 
+ 	if (m_pFormatCtx || !m_pdata)
+ 		return false;
+-	if (!keepReadPos) {
+-		m_mpegheaderReadPos = 0;
+-	}
++	m_mpegheaderReadPos = 0;
+ 	m_decodingsize = 0;
+ 
+-	m_bufSize = std::max(m_bufSize, m_mpegheaderSize);
+-	u8 *tempbuf = (u8*)av_malloc(m_bufSize);
++	u8* tempbuf = (u8*)av_malloc(m_bufSize);
+ 
+ 	m_pFormatCtx = avformat_alloc_context();
+-	m_pIOContext = avio_alloc_context(tempbuf, m_bufSize, 0, (void*)this, &MpegReadbuffer, nullptr, nullptr);
++	m_pIOContext = avio_alloc_context(tempbuf, m_bufSize, 0, (void*)this, _MpegReadbuffer, NULL, 0);
+ 	m_pFormatCtx->pb = m_pIOContext;
+ 
+ 	// Open video file
+     AVDictionary *open_opt = nullptr;
+     av_dict_set_int(&open_opt, "probesize", m_mpegheaderSize, 0);
+-	if (avformat_open_input((AVFormatContext**)&m_pFormatCtx, nullptr, nullptr, &open_opt) != 0) {
++	if (avformat_open_input((AVFormatContext**)&m_pFormatCtx, NULL, NULL, &open_opt) != 0) {
+ 		av_dict_free(&open_opt);
+ 		return false;
+ 	}
+ 	av_dict_free(&open_opt);
+ 
+-	if (!SetupStreams()) {
+-		// Fallback to old behavior.
+-		if (avformat_find_stream_info(m_pFormatCtx, NULL) < 0) {
+-			closeContext();
+-			return false;
+-		}
++	if (avformat_find_stream_info(m_pFormatCtx, NULL) < 0) {
++		closeContext();
++		return false;
+ 	}
+ 
+ 	if (m_videoStream >= (int)m_pFormatCtx->nb_streams) {
+@@ -334,6 +290,8 @@ bool MediaEngine::openContext(bool keepReadPos) {
+ 	setVideoDim();
+ 	m_audioContext = new SimpleAudio(m_audioType, 44100, 2);
+ 	m_isVideoEnd = false;
++	m_mpegheaderReadPos++;
++	av_seek_frame(m_pFormatCtx, m_videoStream, 0, 0);
+ #endif // USE_FFMPEG
+ 	return true;
+ }
+@@ -398,8 +356,7 @@ int MediaEngine::addStreamData(const u8 *buffer, int addSize) {
+ 			m_mpegheaderSize = m_pdata->get_front(m_mpegheader, sizeof(m_mpegheader));
+ 			int streamOffset = (int)(*(s32_be *)(m_mpegheader + 8));
+ 			if (streamOffset <= m_mpegheaderSize) {
+-				m_mpegheaderSize = streamOffset;
+-				m_pdata->pop_front(0, m_mpegheaderSize);
++				m_pdata->pop_front(0, streamOffset);
+ 				openContext();
+ 			}
+ 		}
+@@ -508,19 +465,11 @@ bool MediaEngine::setVideoDim(int width, int height)
+ 	}
+ 
+ 	// Allocate video frame
+-	if (!m_pFrame) {
+-		m_pFrame = av_frame_alloc();
+-	}
++	m_pFrame = av_frame_alloc();
+ 
+ 	sws_freeContext(m_sws_ctx);
+ 	m_sws_ctx = NULL;
+ 	m_sws_fmt = -1;
+-
+-	if (m_desWidth == 0 || m_desHeight == 0) {
+-		// Can't setup SWS yet, so stop for now.
+-		return false;
+-	}
+-
+ 	updateSwsFormat(GE_CMODE_32BIT_ABGR8888);
+ 
+ 	// Allocate video frame for RGB24
+@@ -588,9 +537,14 @@ bool MediaEngine::stepVideo(int videoPixelMode, bool skipFrame) {
+ 		return false;
+ 	if (!m_pCodecCtx)
+ 		return false;
+-	if (!m_pFrame)
++	if ((!m_pFrame)||(!m_pFrameRGB))
+ 		return false;
+ 
++	updateSwsFormat(videoPixelMode);
++	// TODO: Technically we could set this to frameWidth instead of m_desWidth for better perf.
++	// Update the linesize for the new format too.  We started with the largest size, so it should fit.
++	m_pFrameRGB->linesize[0] = getPixelFormatBytes(videoPixelMode) * m_desWidth;
++
+ 	AVPacket packet;
+ 	av_init_packet(&packet);
+ 	int frameFinished;
+@@ -611,15 +565,7 @@ bool MediaEngine::stepVideo(int videoPixelMode, bool skipFrame) {
+ 
+ 			int result = avcodec_decode_video2(m_pCodecCtx, m_pFrame, &frameFinished, &packet);
+ 			if (frameFinished) {
+-				if (!m_pFrameRGB) {
+-					setVideoDim();
+-				}
+-				if (m_pFrameRGB && !skipFrame) {
+-					updateSwsFormat(videoPixelMode);
+-					// TODO: Technically we could set this to frameWidth instead of m_desWidth for better perf.
+-					// Update the linesize for the new format too.  We started with the largest size, so it should fit.
+-					m_pFrameRGB->linesize[0] = getPixelFormatBytes(videoPixelMode) * m_desWidth;
+-
++				if (!skipFrame) {
+ 					sws_scale(m_sws_ctx, m_pFrame->data, m_pFrame->linesize, 0,
+ 						m_pCodecCtx->height, m_pFrameRGB->data, m_pFrameRGB->linesize);
+ 				}
+diff --git a/Core/HW/MediaEngine.h b/Core/HW/MediaEngine.h
+index 6561176b0..fc1f80ef4 100644
+--- a/Core/HW/MediaEngine.h
++++ b/Core/HW/MediaEngine.h
+@@ -60,7 +60,7 @@ class MediaEngine
+ 	bool loadStream(const u8 *buffer, int readSize, int RingbufferSize);
+ 	bool reloadStream();
+ 	// open the mpeg context
+-	bool openContext(bool keepReadPos = false);
++	bool openContext();
+ 	void closeContext();
+ 
+ 	// Returns number of packets actually added. I guess the buffer might be full.
+@@ -81,6 +81,7 @@ class MediaEngine
+ 	                             int xpos, int ypos, int width, int height);
+ 	int getAudioSamples(u32 bufferPtr);
+ 
++	bool setVideoDim(int width = 0, int height = 0);
+ 	s64 getVideoTimeStamp();
+ 	s64 getAudioTimeStamp();
+ 	s64 getLastTimeStamp();
+@@ -93,8 +94,6 @@ class MediaEngine
+ 	void DoState(PointerWrap &p);
+ 
+ private:
+-	bool SetupStreams();
+-	bool setVideoDim(int width = 0, int height = 0);
+ 	void updateSwsFormat(int videoPixelMode);
+ 	int getNextAudioFrame(u8 **buf, int *headerCode1, int *headerCode2);
+ 
+-- 
+2.19.1
+
