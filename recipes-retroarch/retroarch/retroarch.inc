@@ -255,21 +255,23 @@ do_patch() {
   RETROARCH_DATA_DIR="${datadir}/${PN}"
 
   sed -i \
-    -e "s:# \(input_driver =\):\1 \"${RETROARCH_DEFAULT_INPUT_DRIVER}\":g" \
-    -e "s:# \(input_joypad_driver =\):\1 \"${RETROARCH_DEFAULT_JOYPAD_DRIVER}\":g" \
-    -e "s:# \(video_driver =\):\1 \"${RETROARCH_DEFAULT_VIDEO_DRIVER}\":g" \
-    -e "s:# \(video_context_driver =\):\1 \"${RETROARCH_DEFAULT_VIDEO_CONTEXT}\":g" \
+    -e "s:# \(assets_directory =\):\1 \"${RETROARCH_ASSETS_DIR}\":g" \
     -e "s:# \(audio_driver =\):\1 \"${RETROARCH_DEFAULT_AUDIO_DRIVER}\":g" \
     -e "s:# \(audio_resampler =\):\1 \"${RETROARCH_DEFAULT_RESAMPLER_DRIVER}\":g" \
-    -e "s:# \(menu_driver =\):\1 \"${RETROARCH_DEFAULT_MENU_DRIVER}\":g" \
-    -e "s:# \(assets_directory =\):\1 \"${RETROARCH_ASSETS_DIR}\":g" \
-    -e "s:# \(joypad_autoconfig_dir =\):\1 \"${RETROARCH_AUTOCONFIG_DIR}\":g" \
     -e "s:# \(cheat_database_path =\):\1 \"${RETROARCH_DATABASE_CHEATS_DIR}\":g" \
     -e "s:# \(content_database_path =\):\1 \"${RETROARCH_DATABASE_TITLES_DIR}\":g" \
     -e "s:# \(cursor_directory =\):\1 \"${RETROARCH_DATABASE_CURSORS_DIR}\":g" \
+    -e "s:# \(input_driver =\):\1 \"${RETROARCH_DEFAULT_INPUT_DRIVER}\":g" \
+    -e "s:# \(input_joypad_driver =\):\1 \"${RETROARCH_DEFAULT_JOYPAD_DRIVER}\":g" \
+    -e "s:# \(joypad_autoconfig_dir =\):\1 \"${RETROARCH_AUTOCONFIG_DIR}\":g" \
     -e "s:# \(libretro_directory =\):\1 \"${RETROARCH_LIBRETRO_CORES_DIR}\":g" \
     -e "s:# \(libretro_info_path =\):\1 \"${RETROARCH_LIBRETRO_CORES_INFO_DIR}\":g" \
+    -e "s:# \(menu_driver =\):\1 \"${RETROARCH_DEFAULT_MENU_DRIVER}\":g" \
     -e "s:# \(overlay_directory =\):\1 \"${RETROARCH_OVERLAY_DIR}\":g" \
+    -e "s:# \(rgui_browser_directory =\):\1 \"${RETROARCH_MEDIA_DIR}\":g" \
+    -e "s:# \(system_directory =\):\1 \"${RETROARCH_SYSTEM_DIR}\":g" \
+    -e "s:# \(video_context_driver =\):\1 \"${RETROARCH_DEFAULT_VIDEO_CONTEXT}\":g" \
+    -e "s:# \(video_driver =\):\1 \"${RETROARCH_DEFAULT_VIDEO_DRIVER}\":g" \
     -e "s:# \(video_shader_dir =\):\1 \"${RETROARCH_SHADERS_DIR}\":g" \
     ${S}/retroarch.cfg || exit 1
 }

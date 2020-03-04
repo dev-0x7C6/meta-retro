@@ -13,6 +13,9 @@ RETROARCH_SHADERS_DIR ?= "${RETROARCH_ROOT_DIR}/shaders"
 # Home directory for libretro core, contains bioses, system assets and configs
 RETROARCH_SYSTEM_DIR ?= "${RETROARCH_ROOT_DIR}/bios"
 
+# Starting directory, media, drives
+RETROARCH_MEDIA_DIR ?= "/var/run/media"
+
 # Database path
 RETROARCH_DATABASE_DIR ?= "${RETROARCH_ROOT_DIR}/database"
 
