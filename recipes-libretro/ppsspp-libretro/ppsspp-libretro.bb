@@ -28,6 +28,9 @@ PACKAGECONFIG ?=  " \
 
 CCACHE_DISABLE = "1"
 
+OECMAKE_C_FLAGS_append = " -fPIC"
+OECMAKE_CXX_FLAGS_append = " -fPIC"
+
 PACKAGECONFIG_append_armarch = " ${@bb.utils.contains('TUNE_FEATURES', 'neon', 'armv7 arm', 'arm', d)}"
 PACKAGECONFIG_append_mipsarch = " mips"
 PACKAGECONFIG_append_x86 = " x86"
