@@ -13,8 +13,17 @@ You can test this layer and distro (retro) with reference build environment on y
 #~ git clone --recursive https://github.com/dev-0x7C6/retro-build-environment.git
 #~ cd retro-build-environment
 #~ source source.me
-#~ MACHINE="raspberrypi4" bitbake retroarch-image-minimal
+#~ MACHINE="raspberrypi4" bitbake retro-image-full
 ```
+
+## Images
+
+There are:
+* retro-image-full - retroarch, all libretro cores, cheats, titles, themes and more
+* retro-image-standard - retroarch, all libretro cores, titles
+* retro-image-minimal - retroarch, all libretro cores, minimal build 
+
+It's recommended to use **retro-image-full**.
 
 #### Support and tests
 
