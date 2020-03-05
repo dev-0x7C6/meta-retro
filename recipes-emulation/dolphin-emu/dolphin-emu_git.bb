@@ -10,17 +10,20 @@ S = "${WORKDIR}/git"
 inherit cmake_qt5 common-overrides
 
 PACKAGECONFIG ?= " \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'alsa', 'alsa', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', 'pulseaudio', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'x11', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'bluetooth', 'bluetooth', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'vulkan', '', d)} \
     egl \
-    upnp \
+    encode \
+    ffmpeg \
     frontend-nogui \
     frontend-qt \
-    alsa \
-    encode \
+    upnp \
 "
 
-DEPENDS += "bluez5 mbedtls hidapi curl zlib vulkan-loader"
-RDEPENDS_${PN} += "bluez5"
+DEPENDS += "mbedtls hidapi curl zlib"
 
 FILES_${PN} += "${datadir}/icons"
 
@@ -30,18 +33,22 @@ PACKAGECONFIG_append_32bit = " generic"
 
 EXTRA_OECMAKE_append = " -DDISTRIBUTOR="${DISTRO_NAME}""
 
-PACKAGECONFIG[x11] = "-DENABLE_X11=ON,-DENABLE_X11=OFF"
+PACKAGECONFIG[alsa] = "-DENABLE_ALSA=ON,-DENABLE_ALSA=OFF,alsa-lib"
+PACKAGECONFIG[analytics] = "-DENABLE_ANALYTICS=ON,-DENABLE_ANALYTICS=OFF"
+PACKAGECONFIG[bluetooth] = ",,bluez5,bluez5"
+PACKAGECONFIG[discord] = "-DUSE_DISCORD_PRESENCE=ON,-DUSE_DISCORD_PRESENCE=OFF"
 PACKAGECONFIG[egl] = "-DENABLE_EGL=ON,-DENABLE_EGL=OFF,virtual/egl"
-PACKAGECONFIG[generic] = "-DENABLE_GENERIC=ON,-DENABLE_GENERIC=OFF"
-PACKAGECONFIG[upnp] = "-DUSE_UPNP=ON,-DUSE_UPNP=OFF"
+PACKAGECONFIG[encode] = "-DENCODE_FRAMEDUMPS=ON,-DENCODE_FRAMEDUMPS=OFF"
+PACKAGECONFIG[evdev] = "-DENABLE_EVDEV=ON,-DENABLE_EVDEV=OFF,libevdev"
+PACKAGECONFIG[ffmpeg] = ",,ffmpeg"
 PACKAGECONFIG[frontend-nogui] = "-DENABLE_NOGUI=ON,-DENABLE_NOGUI=OFF"
 PACKAGECONFIG[frontend-qt] = "-DENABLE_QT=ON,-DENABLE_QT=OFF"
-PACKAGECONFIG[lto] = "-DENABLE_LTO=ON,-DENABLE_QT=OFF,qtbase"
+PACKAGECONFIG[generic] = "-DENABLE_GENERIC=ON,-DENABLE_GENERIC=OFF"
 PACKAGECONFIG[headless] = "-DENABLE_HEADLESS=ON,-DENABLE_HEADLESS=OFF"
-PACKAGECONFIG[alsa] = "-DENABLE_ALSA=ON,-DENABLE_ALSA=OFF,alsa-lib"
-PACKAGECONFIG[pulseaudio] = "-DENABLE_PULSEAUDIO=ON,-DENABLE_PULSEAUDIO=OFF,pulseaudio"
 PACKAGECONFIG[llvm] = "-DENABLE_LLVM=ON,-DENABLE_LLVM=OFF,llvm"
+PACKAGECONFIG[lto] = "-DENABLE_LTO=ON,-DENABLE_QT=OFF,qtbase"
+PACKAGECONFIG[pulseaudio] = "-DENABLE_PULSEAUDIO=ON,-DENABLE_PULSEAUDIO=OFF,pulseaudio"
 PACKAGECONFIG[tests] = "-DENABLE_TESTS=ON,-DENABLE_TESTS=OFF"
-PACKAGECONFIG[discord] = "-DUSE_DISCORD_PRESENCE=ON,-DUSE_DISCORD_PRESENCE=OFF"
-PACKAGECONFIG[analytics] = "-DENABLE_ANALYTICS=ON,-DENABLE_ANALYTICS=OFF"
-PACKAGECONFIG[encode] = "-DENCODE_FRAMEDUMPS=ON,-DENCODE_FRAMEDUMPS=OFF"
+PACKAGECONFIG[upnp] = "-DUSE_UPNP=ON,-DUSE_UPNP=OFF"
+PACKAGECONFIG[vulkan] = ",,vulkan-loader"
+PACKAGECONFIG[x11] = "-DENABLE_X11=ON,-DENABLE_X11=OFF"
