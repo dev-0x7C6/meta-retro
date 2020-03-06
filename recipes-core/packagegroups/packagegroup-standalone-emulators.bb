@@ -8,6 +8,6 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 inherit common-overrides packagegroup
 
 EMULATOR_PACKAGES ?= ""
-EMULATOR_PACKAGES_append_64bit = " weston dolphin-emu"
+EMULATOR_PACKAGES_append_64bit = " dolphin-emu"
 
 RDEPENDS_${PN} = "${EMULATOR_PACKAGES}"
