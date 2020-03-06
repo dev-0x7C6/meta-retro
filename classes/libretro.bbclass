@@ -2,8 +2,6 @@
 
 inherit common-overrides retroarch-paths retroarch-dist-checks
 
-PR = "r111"
-
 # Auto detection
 
 LIBRETRO_PLATFORM_AUTODETECT = "unix"
