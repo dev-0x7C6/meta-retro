@@ -4,8 +4,10 @@ ROOT="$(git rev-parse --show-toplevel)"
 
 IFS=$'\n'
 
-for repo in `grep -r ${ROOT}/recipes-libretro/ -e 'LIBRETRO_GIT_REPO'`; do 
-	package=${repo%.bb:*}
+function get_pn()
+{
+	repo=$1
+	package=${repo%_git.bb:*}
 	package=${package##*/}
 	IFS=$' '
 	repo=${repo##*.bb:}
@@ -14,4 +16,10 @@ for repo in `grep -r ${ROOT}/recipes-libretro/ -e 'LIBRETRO_GIT_REPO'`; do
 	hash=`git ls-remote https://${LIBRETRO_GIT_REPO} master --refs`
 	hash=${hash%%ref*}
 	echo "LIBRETRO_GIT_REV_pn-${package} = \"${hash//[[:space:]]/}\""
+}
+
+for repo in `grep -r ${ROOT}/recipes-libretro/ -e 'LIBRETRO_GIT_REPO'`; do
+	get_pn "$repo" &
 done
+
+wait
