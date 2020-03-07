@@ -1,4 +1,4 @@
-DESCRIPTION = "RetroArch package group"
+DESCRIPTION = "Libretro cores package group"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
@@ -76,11 +76,4 @@ LIBRETRO_CORE_PACKAGES ?= " \
   yabause-libretro \
 "
 
-RDEPENDS_${PN} = " \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-automount', 'udev-extraconf', '', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', 'pulseaudio-server', '', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'retroarch-service', '', d)} \
-  ${LIBRETRO_CORE_PACKAGES} \
-  ${RETRO_ADDITIONAL_MULTIMEDIA_PACKAGES} \
-  retroarch \
-"
+RDEPENDS_${PN} = "${LIBRETRO_CORE_PACKAGES}"
