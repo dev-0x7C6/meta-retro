@@ -6,6 +6,7 @@ inherit core-image
 
 IMAGE_INSTALL_append = " \
   kernel-modules \
+  networkmanager \
   packagegroup-core-boot \
   packagegroup-retroarch \
   retroarch-assets-xmb-monochrome \
