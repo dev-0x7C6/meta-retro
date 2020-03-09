@@ -9,18 +9,32 @@ inherit common-overrides packagegroup
 
 LIBRETRO_CORE_PACKAGES_append_64bit = " dolphin-libretro"
 
-PACKAGECONFIG ??= "dc mame n64 psx snes"
+PACKAGECONFIG ??= "atari arcade dc gba gbc n64 psx snes"
 
+LIBRETRO_ATARI_CORES ?= " \
+  atari800-libretro \
+  beetle-lynx-libretro \
+  hatari-libretro \
+  prosystem-libretro \
+  stella2014-libretro \
+  virtualjaguar-libretro \
+"
+
+LIBRETRO_ARCADE_CORES ?= "mame2000-libretro mame2003-libretro mame2003-plus-libretro"
 LIBRETRO_DC_CORES ?= "flycast-libretro"
-LIBRETRO_MAME_CORES ?= "mame2000-libretro mame2003-libretro mame2003-plus-libretro"
+LIBRETRO_GBA_CORES ?= "beetle-gba-libretro mgba-libretro vba-next-libretro"
+LIBRETRO_GBC_CORES ?= "gambatte-libretro tgbdual-libretro"
 LIBRETRO_N64_CORES ?= "mupen64plus-libretro parallel-n64-libretro"
 LIBRETRO_PSX_CORES ?= "pcsx-rearmed-libretro"
 LIBRETRO_SNES_CORES ?= "snes9x2002-libretro snes9x2005-libretro snes9x2010-libretro"
 
-PACKAGECONFIG[mame] ?= ",,,,${LIBRETRO_MAME_CORES}"
+PACKAGECONFIG[arcade] = ",,,,${LIBRETRO_ARCADE_CORES}"
+PACKAGECONFIG[atari] = ",,,,${LIBRETRO_ATARI_CORES}"
+PACKAGECONFIG[gba] = ",,,,${LIBRETRO_GBA_CORES}"
+PACKAGECONFIG[gbc] = ",,,,${LIBRETRO_GBC_CORES}"
 PACKAGECONFIG[n64] = ",,,,${LIBRETRO_N64_CORES}"
 PACKAGECONFIG[psx] = ",,,,${LIBRETRO_PSX_CORES}"
-PACKAGECONFIG[snes] = ",,,,${LIBRETRO_PSX_CORES}"
+PACKAGECONFIG[snes] = ",,,,${LIBRETRO_SNES_CORES}"
 
 # TODO: compilation of those failed on specific architectures:
 
@@ -34,9 +48,6 @@ LIBRETRO_N64_CORES_remove_arm64 = "mame2000-libretro"
 
 LIBRETRO_CORE_PACKAGES ?= " \
   81-libretro \
-  atari800-libretro \
-  beetle-gba-libretro \
-  beetle-lynx-libretro \
   beetle-ngp-libretro \
   beetle-pce-fast-libretro \
   beetle-pcfx-libretro \
@@ -54,11 +65,8 @@ LIBRETRO_CORE_PACKAGES ?= " \
   freechaf-libretro \
   freeintv-libretro \
   fuse-libretro \
-  gambatte-libretro \
   genesis-plus-gx-libretro \
   gw-libretro \
-  hatari-libretro \
-  mgba-libretro \
   neocd-libretro \
   np2kai-libretro \
   nxengine-libretro \
@@ -66,13 +74,8 @@ LIBRETRO_CORE_PACKAGES ?= " \
   opera-libretro \
   pokemini-libretro \
   ppsspp-libretro \
-  prosystem-libretro \
   quicknes-libretro \
-  stella2014-libretro \
-  tgbdual-libretro \
-  vba-next-libretro \
   vecx-libretro \
-  virtualjaguar-libretro \
   yabause-libretro \
 "
 
