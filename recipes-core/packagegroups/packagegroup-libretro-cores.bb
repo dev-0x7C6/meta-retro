@@ -49,6 +49,7 @@ LIBRETRO_CORE_PACKAGES ?= " \
   genesis-plus-gx-libretro \
   gw-libretro \
   neocd-libretro \
+  nestopia-libretro \
   np2kai-libretro \
   nxengine-libretro \
   o2em-libretro \
