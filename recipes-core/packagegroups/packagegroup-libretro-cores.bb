@@ -33,7 +33,6 @@ LIBRETRO_CORE_PACKAGES ?= " \
   bk-libretro \
   bluemsx-libretro \
   caprice32-libretro \
-  dinothawr-libretro \
   dosbox-libretro \
   fbalpha2012-libretro \
   fceumm-libretro \
@@ -50,7 +49,6 @@ LIBRETRO_CORE_PACKAGES ?= " \
   mame2003-libretro \
   mame2003-plus-libretro \
   mgba-libretro \
-  mrboom-libretro \
   mupen64plus-libretro \
   neocd-libretro \
   np2kai-libretro \
@@ -69,7 +67,6 @@ LIBRETRO_CORE_PACKAGES ?= " \
   snes9x2010-libretro \
   stella2014-libretro \
   tgbdual-libretro \
-  tyrquake-libretro \
   vba-next-libretro \
   vecx-libretro \
   virtualjaguar-libretro \
