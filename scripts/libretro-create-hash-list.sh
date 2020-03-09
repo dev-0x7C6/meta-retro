@@ -18,8 +18,14 @@ function get_pn()
 	echo "LIBRETRO_GIT_REV_pn-${package} = \"${hash//[[:space:]]/}\""
 }
 
-for repo in `grep -r ${ROOT}/recipes-libretro/ -e 'LIBRETRO_GIT_REPO'`; do
-	get_pn "$repo" &
-done
+function gen_from_dir()
+{
+	for repo in `grep -r $1 -e 'LIBRETRO_GIT_REPO'`; do
+		get_pn "$repo" &
+	done
+}
+
+gen_from_dir ${ROOT}/recipes-libretro/
+gen_from_dir ${ROOT}/recipes-libretro-extra/
 
 wait
