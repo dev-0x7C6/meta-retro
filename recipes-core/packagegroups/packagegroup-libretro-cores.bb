@@ -9,32 +9,16 @@ inherit common-overrides packagegroup
 
 LIBRETRO_CORE_PACKAGES_append_64bit = " dolphin-libretro"
 
-PACKAGECONFIG ??= "atari arcade dc gba gbc n64 psx snes"
+PACKAGECONFIG ??= "arcade atari dreamcast gba gbc n64 psx snes"
 
-LIBRETRO_ATARI_CORES ?= " \
-  atari800-libretro \
-  beetle-lynx-libretro \
-  hatari-libretro \
-  prosystem-libretro \
-  stella2014-libretro \
-  virtualjaguar-libretro \
-"
-
-LIBRETRO_ARCADE_CORES ?= "mame2000-libretro mame2003-libretro mame2003-plus-libretro"
-LIBRETRO_DC_CORES ?= "flycast-libretro"
-LIBRETRO_GBA_CORES ?= "beetle-gba-libretro mgba-libretro vba-next-libretro"
-LIBRETRO_GBC_CORES ?= "gambatte-libretro tgbdual-libretro"
-LIBRETRO_N64_CORES ?= "mupen64plus-libretro parallel-n64-libretro"
-LIBRETRO_PSX_CORES ?= "pcsx-rearmed-libretro"
-LIBRETRO_SNES_CORES ?= "snes9x2002-libretro snes9x2005-libretro snes9x2010-libretro"
-
-PACKAGECONFIG[arcade] = ",,,,${LIBRETRO_ARCADE_CORES}"
-PACKAGECONFIG[atari] = ",,,,${LIBRETRO_ATARI_CORES}"
-PACKAGECONFIG[gba] = ",,,,${LIBRETRO_GBA_CORES}"
-PACKAGECONFIG[gbc] = ",,,,${LIBRETRO_GBC_CORES}"
-PACKAGECONFIG[n64] = ",,,,${LIBRETRO_N64_CORES}"
-PACKAGECONFIG[psx] = ",,,,${LIBRETRO_PSX_CORES}"
-PACKAGECONFIG[snes] = ",,,,${LIBRETRO_SNES_CORES}"
+PACKAGECONFIG[arcade] = ",,,,packagegroup-libretro-arcade"
+PACKAGECONFIG[atari] = ",,,,packagegroup-libretro-atari"
+PACKAGECONFIG[dreamcast] = ",,,,packagegroup-libretro-dreamcast"
+PACKAGECONFIG[gba] = ",,,,packagegroup-libretro-gba"
+PACKAGECONFIG[gbc] = ",,,,packagegroup-libretro-gbc"
+PACKAGECONFIG[n64] = ",,,,packagegroup-libretro-n64"
+PACKAGECONFIG[psx] = ",,,,packagegroup-libretro-psx"
+PACKAGECONFIG[snes] = ",,,,packagegroup-libretro-snes"
 
 # TODO: compilation of those failed on specific architectures:
 
@@ -42,9 +26,6 @@ LIBRETRO_CORE_PACKAGES_remove_arm64 = " \
   dosbox-libretro \
   yabause-libretro \
 "
-
-LIBRETRO_MAME_CORES_remove_arm64 = "parallel-n64-libretro"
-LIBRETRO_N64_CORES_remove_arm64 = "mame2000-libretro"
 
 LIBRETRO_CORE_PACKAGES ?= " \
   81-libretro \
