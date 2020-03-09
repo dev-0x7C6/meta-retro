@@ -14,6 +14,7 @@ LIBRETRO_GIT_REV_pn-beetle-vb-libretro = "9a4e604a7320a3c6ed30601989fe0bc417fa9a
 LIBRETRO_GIT_REV_pn-beetle-wswan-libretro = "5b03d1b09f70dc208387d3c8b59e12e1f0d2692f"
 LIBRETRO_GIT_REV_pn-bk-libretro = "626c31596ab3bd62320bd90ea001675d67fd0da9"
 LIBRETRO_GIT_REV_pn-bluemsx-libretro = "7a1d40e750860580ab7cc21fbc244b5bc6db6586"
+LIBRETRO_GIT_REV_pn-bsnes-libretro.git" = "95350550af6c76b57593dea980b5c3a27e5bf09e"
 LIBRETRO_GIT_REV_pn-caprice32-libretro = "8681fbdc5623830078b38d713935caf4682e5295"
 LIBRETRO_GIT_REV_pn-dinothawr-libretro = "18118f66f4a04897fd1cbbfa87cd8957f5bd22ad"
 LIBRETRO_GIT_REV_pn-dosbox-libretro = "e4ed503b14ed59d5d745396ef1cc7d52cf912328"
