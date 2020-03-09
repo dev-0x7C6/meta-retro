@@ -9,6 +9,7 @@ inherit common-overrides packagegroup
 LIBRETRO_EXTRA_CORE_PACKAGES ?= " \
   dinothawr-libretro \
   mrboom-libretro \
+  prboom-libretro \
   tyrquake-libretro \
 "
 

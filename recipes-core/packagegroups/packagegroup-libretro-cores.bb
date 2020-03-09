@@ -9,14 +9,28 @@ inherit common-overrides packagegroup
 
 LIBRETRO_CORE_PACKAGES_append_64bit = " dolphin-libretro"
 
+PACKAGECONFIG ??= "dc mame n64 psx snes"
+
+LIBRETRO_DC_CORES ?= "flycast-libretro"
+LIBRETRO_MAME_CORES ?= "mame2000-libretro mame2003-libretro mame2003-plus-libretro"
+LIBRETRO_N64_CORES ?= "mupen64plus-libretro parallel-n64-libretro"
+LIBRETRO_PSX_CORES ?= "pcsx-rearmed-libretro"
+LIBRETRO_SNES_CORES ?= "snes9x2002-libretro snes9x2005-libretro snes9x2010-libretro"
+
+PACKAGECONFIG[mame] ?= ",,,,${LIBRETRO_MAME_CORES}"
+PACKAGECONFIG[n64] = ",,,,${LIBRETRO_N64_CORES}"
+PACKAGECONFIG[psx] = ",,,,${LIBRETRO_PSX_CORES}"
+PACKAGECONFIG[snes] = ",,,,${LIBRETRO_PSX_CORES}"
+
 # TODO: compilation of those failed on specific architectures:
 
 LIBRETRO_CORE_PACKAGES_remove_arm64 = " \
   dosbox-libretro \
-  mame2000-libretro \
-  parallel-n64-libretro \
   yabause-libretro \
 "
+
+LIBRETRO_MAME_CORES_remove_arm64 = "parallel-n64-libretro"
+LIBRETRO_N64_CORES_remove_arm64 = "mame2000-libretro"
 
 LIBRETRO_CORE_PACKAGES ?= " \
   81-libretro \
@@ -36,7 +50,6 @@ LIBRETRO_CORE_PACKAGES ?= " \
   dosbox-libretro \
   fbalpha2012-libretro \
   fceumm-libretro \
-  flycast-libretro \
   fmsx-libretro \
   freechaf-libretro \
   freeintv-libretro \
@@ -45,26 +58,16 @@ LIBRETRO_CORE_PACKAGES ?= " \
   genesis-plus-gx-libretro \
   gw-libretro \
   hatari-libretro \
-  mame2000-libretro \
-  mame2003-libretro \
-  mame2003-plus-libretro \
   mgba-libretro \
-  mupen64plus-libretro \
   neocd-libretro \
   np2kai-libretro \
   nxengine-libretro \
   o2em-libretro \
   opera-libretro \
-  parallel-n64-libretro \
-  pcsx-rearmed-libretro \
   pokemini-libretro \
   ppsspp-libretro \
-  prboom-libretro \
   prosystem-libretro \
   quicknes-libretro \
-  snes9x2002-libretro \
-  snes9x2005-libretro \
-  snes9x2010-libretro \
   stella2014-libretro \
   tgbdual-libretro \
   vba-next-libretro \
@@ -73,4 +76,4 @@ LIBRETRO_CORE_PACKAGES ?= " \
   yabause-libretro \
 "
 
-RDEPENDS_${PN} = "${LIBRETRO_CORE_PACKAGES}"
+RRECOMMENDS_${PN}_append = " ${LIBRETRO_CORE_PACKAGES}"
