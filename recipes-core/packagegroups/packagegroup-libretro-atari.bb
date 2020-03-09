@@ -7,6 +7,7 @@ inherit packagegroup
 LIBRETRO_ATARI_CORES ?= " \
   atari800-libretro \
   beetle-lynx-libretro \
+  handy-libretro \
   hatari-libretro \
   prosystem-libretro \
   stella2014-libretro \
