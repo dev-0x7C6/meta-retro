@@ -1,4 +1,13 @@
-PACKAGECONFIG_append = " gbm eglfs kms gles2 widgets freetype fontconfig glib"
+PACKAGECONFIG_append = " \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'gl', 'gles2', d)} \
+    eglfs \
+    fontconfig \
+    freetype \
+    gbm \
+    glib \
+    kms \
+    widgets \
+"
 
 RDEPENDS_${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland', '', d)} \

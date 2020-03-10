@@ -20,7 +20,7 @@ PACKAGECONFIG ?= " \
     upnp \
 "
 
-DEPENDS += "mbedtls hidapi curl zlib"
+DEPENDS += "mbedtls hidapi curl zlib lzo"
 
 FILES_${PN} += "${datadir}/icons"
 
@@ -48,5 +48,5 @@ PACKAGECONFIG[lto] = "-DENABLE_LTO=ON,-DENABLE_LTO=OFF"
 PACKAGECONFIG[pulseaudio] = "-DENABLE_PULSEAUDIO=ON,-DENABLE_PULSEAUDIO=OFF,pulseaudio"
 PACKAGECONFIG[tests] = "-DENABLE_TESTS=ON,-DENABLE_TESTS=OFF"
 PACKAGECONFIG[upnp] = "-DUSE_UPNP=ON,-DUSE_UPNP=OFF"
-PACKAGECONFIG[vulkan] = ",,vulkan-loader"
+PACKAGECONFIG[vulkan] = ",,vulkan-loader,vulkan-loader"
 PACKAGECONFIG[x11] = "-DENABLE_X11=ON,-DENABLE_X11=OFF"
