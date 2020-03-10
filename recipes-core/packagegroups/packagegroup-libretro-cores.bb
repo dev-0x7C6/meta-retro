@@ -39,6 +39,7 @@ LIBRETRO_CORE_PACKAGES ?= " \
   bk-libretro \
   bluemsx-libretro \
   caprice32-libretro \
+  desmume-libretro \
   dosbox-libretro \
   fbalpha2012-libretro \
   fceumm-libretro \
