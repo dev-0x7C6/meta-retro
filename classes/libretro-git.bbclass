@@ -1,7 +1,4 @@
-inherit libretro libretro-git-revs gitpkgv
-
-PV = "1.0+gitr${SRCPV}"
-PKGV = "1.0+gitr${GITPKGV}"
+inherit libretro libretro-git-revs gitpkgv retro-git-schema
 
 LIBRETRO_GIT_PROTOCOL ?= "https"
 LIBRETRO_GIT_BRANCH ?= "master"

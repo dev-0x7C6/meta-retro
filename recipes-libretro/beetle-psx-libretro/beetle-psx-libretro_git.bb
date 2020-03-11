@@ -5,10 +5,12 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425
 
 inherit libretro-git
 
-LIBRETRO_CORE = "mednafen_psx_hw"
-LIBRETRO_GIT_REPO = "github.com/libretro/beetle-psx-libretro.git"
+DEPENDS += "virtual/libgl"
 
-LIBRETRO_PLATFORM_opengles = "unix gles"
+LIBRETRO_CORE = "mednafen_psx_hw"
+LIBRETRO_GIT_REPO = "github.com/dev-0x7C6/beetle-psx-libretro.git"
+
+LIBRETRO_PLATFORM = "unix gles"
 LIBRETRO_EXTRA_MAKEFLAGS_append = " HAVE_CHD=1 HAVE_LIGHTREC=1 HAVE_OPENGL=1"
 
 do_patch_append_opengles() {

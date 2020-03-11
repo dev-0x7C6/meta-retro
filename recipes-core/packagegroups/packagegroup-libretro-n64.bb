@@ -4,6 +4,8 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 inherit common-overrides packagegroup
 
+PACKAGE_ARCH = "${MACHINE_ARCH}"
+
 LIBRETRO_N64_CORES ?= " \
   mupen64plus-libretro \
   parallel-n64-libretro \

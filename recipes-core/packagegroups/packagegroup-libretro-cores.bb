@@ -23,6 +23,7 @@ PACKAGECONFIG[snes] = ",,,,packagegroup-libretro-snes"
 # TODO: compilation of those failed on specific architectures:
 
 LIBRETRO_CORE_PACKAGES_remove_arm64 = " \
+  desmume-libretro \
   dosbox-libretro \
   yabause-libretro \
 "
