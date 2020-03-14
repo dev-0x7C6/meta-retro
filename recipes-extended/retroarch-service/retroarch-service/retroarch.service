@@ -1,18 +1,9 @@
 [Unit]
 Description=RetroArch
-Conflicts=getty@tty1.service
 
 [Service]
-Environment=SDL_AUDIODRIVER=alsa
-Environment=HOME=/home/retroarch
-WorkingDirectory=/home/retroarch
-User=retroarch
-Group=retroarch
-PAMName=login
-TTYPath=/dev/tty1
 ExecStart=/usr/bin/retroarch
-Restart=always
-StandardInput=tty
+Restart=on-failure
 
 [Install]
-WantedBy=graphical.target
+WantedBy=default.target

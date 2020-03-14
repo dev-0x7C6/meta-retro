@@ -9,5 +9,4 @@ IMAGE_INSTALL_append = " \
   retroarch-autoconfig \
   retroarch-libretro-info \
   retroarch-shaders \
-  retroarch-user \
 "

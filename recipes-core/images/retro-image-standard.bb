@@ -12,5 +12,4 @@ IMAGE_INSTALL_append = " \
   retroarch-libretro-info \
   retroarch-overlays \
   retroarch-shaders \
-  retroarch-user \
 "

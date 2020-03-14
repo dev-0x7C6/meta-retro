@@ -9,6 +9,7 @@ IMAGE_INSTALL_append = " \
     networkmanager \
     packagegroup-core-boot \
     packagegroup-libretro-cores \
+    retro-user \
     retroarch \
 "
 
