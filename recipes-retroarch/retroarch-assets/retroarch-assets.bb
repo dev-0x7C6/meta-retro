@@ -14,7 +14,7 @@ S = "${WORKDIR}/git"
 SRC_URI = "gitsm://github.com/libretro/retroarch-assets.git"
 SRCREV = "${AUTOREV}"
 
-inherit retroarch-paths
+inherit retroarch/paths
 
 DEPENDS += "rsync-native"
 

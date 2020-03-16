@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-inherit common-overrides packagegroup
+inherit retro/overrides packagegroup
 
 LIBRETRO_EXTRA_CORE_PACKAGES ?= " \
   dinothawr-libretro \

@@ -1,4 +1,4 @@
-inherit retro-user-defaults
+inherit retro/user
 
 DEPENDS += "retro-user"
 

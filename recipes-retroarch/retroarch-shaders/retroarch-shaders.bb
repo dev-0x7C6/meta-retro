@@ -14,7 +14,7 @@ S = "${WORKDIR}/git"
 SRC_URI = "gitsm://github.com/libretro/slang-shaders.git;protocol=https"
 SRCREV = "${AUTOREV}"
 
-inherit retroarch-paths
+inherit retroarch/paths
 
 DEPENDS += "rsync-native"
 

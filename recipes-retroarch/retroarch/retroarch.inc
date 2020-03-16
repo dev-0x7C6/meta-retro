@@ -22,7 +22,7 @@ S = "${WORKDIR}/git"
 SRC_URI = "gitsm://github.com/libretro/RetroArch.git"
 SRCREV = "v${PV}"
 
-inherit autotools-brokensep pkgconfig common-overrides retroarch-paths retroarch-dist-checks
+inherit autotools-brokensep pkgconfig retro/overrides retroarch/paths retroarch/checks
 
 DEPENDS = "libxml2"
 
