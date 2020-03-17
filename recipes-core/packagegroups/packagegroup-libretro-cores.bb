@@ -47,6 +47,7 @@ LIBRETRO_CORE_PACKAGES ?= " \
   bluemsx-libretro \
   caprice32-libretro \
   desmume-libretro \
+  desmume2015-libretro \
   dosbox-libretro \
   fbalpha2012-libretro \
   fmsx-libretro \
@@ -62,6 +63,7 @@ LIBRETRO_CORE_PACKAGES ?= " \
   opera-libretro \
   pokemini-libretro \
   ppsspp-libretro \
+  px68k-libretro \
   vecx-libretro \
 "
 
