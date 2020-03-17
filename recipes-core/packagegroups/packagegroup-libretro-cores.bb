@@ -32,6 +32,7 @@ PACKAGECONFIG[snes] = ",,,,packagegroup-libretro-snes"
 
 LIBRETRO_CORE_PACKAGES_remove_arm64 = " \
   desmume-libretro \
+  desmume2015-libretro \
   dosbox-libretro \
 "
 
