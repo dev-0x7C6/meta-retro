@@ -16,6 +16,7 @@ PACKAGECONFIG ??= " \
   gba \
   gbc \
   n64 \
+  nes \
   psx \
   saturn \
   snes \
@@ -27,8 +28,9 @@ PACKAGECONFIG[dreamcast] = ",,,,packagegroup-libretro-dreamcast"
 PACKAGECONFIG[gba] = ",,,,packagegroup-libretro-gba"
 PACKAGECONFIG[gbc] = ",,,,packagegroup-libretro-gbc"
 PACKAGECONFIG[n64] = ",,,,packagegroup-libretro-n64"
+PACKAGECONFIG[nes] = ",,,,packagegroup-libretro-nes"
 PACKAGECONFIG[psx] = ",,,,packagegroup-libretro-psx"
-PACKAGECONFIG[saturn] = ",,,,packagegroup-libretro-snes"
+PACKAGECONFIG[saturn] = ",,,,packagegroup-libretro-saturn"
 PACKAGECONFIG[snes] = ",,,,packagegroup-libretro-snes"
 
 # TODO: compilation of those failed on specific architectures:
@@ -52,7 +54,6 @@ LIBRETRO_CORE_PACKAGES ?= " \
   desmume-libretro \
   dosbox-libretro \
   fbalpha2012-libretro \
-  fceumm-libretro \
   fmsx-libretro \
   freechaf-libretro \
   freeintv-libretro \
@@ -60,14 +61,12 @@ LIBRETRO_CORE_PACKAGES ?= " \
   genesis-plus-gx-libretro \
   gw-libretro \
   neocd-libretro \
-  nestopia-libretro \
   np2kai-libretro \
   nxengine-libretro \
   o2em-libretro \
   opera-libretro \
   pokemini-libretro \
   ppsspp-libretro \
-  quicknes-libretro \
   vecx-libretro \
 "
 
