@@ -8,6 +8,7 @@ inherit libretro/core/git
 DEPENDS += "libpcap libglu"
 
 LIBRETRO_MAKEFILE_PREFIX = "desmume/src/frontend/libretro"
+LIBRETRO_CORE_FILE_append = "2015"
 
 LIBRETRO_PLATFORM_append_arm32 = " armv"
 LIBRETRO_PLATFORM_append_opengles = " gles"
