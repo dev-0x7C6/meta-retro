@@ -9,7 +9,17 @@ inherit retro/overrides packagegroup
 
 LIBRETRO_CORE_PACKAGES_append_64bit = " dolphin-libretro"
 
-PACKAGECONFIG ??= "arcade atari dreamcast gba gbc n64 psx snes"
+PACKAGECONFIG ??= " \
+  arcade \
+  atari \
+  dreamcast \
+  gba \
+  gbc \
+  n64 \
+  psx \
+  saturn \
+  snes \
+"
 
 PACKAGECONFIG[arcade] = ",,,,packagegroup-libretro-arcade"
 PACKAGECONFIG[atari] = ",,,,packagegroup-libretro-atari"
@@ -18,6 +28,7 @@ PACKAGECONFIG[gba] = ",,,,packagegroup-libretro-gba"
 PACKAGECONFIG[gbc] = ",,,,packagegroup-libretro-gbc"
 PACKAGECONFIG[n64] = ",,,,packagegroup-libretro-n64"
 PACKAGECONFIG[psx] = ",,,,packagegroup-libretro-psx"
+PACKAGECONFIG[saturn] = ",,,,packagegroup-libretro-snes"
 PACKAGECONFIG[snes] = ",,,,packagegroup-libretro-snes"
 
 # TODO: compilation of those failed on specific architectures:
@@ -25,7 +36,6 @@ PACKAGECONFIG[snes] = ",,,,packagegroup-libretro-snes"
 LIBRETRO_CORE_PACKAGES_remove_arm64 = " \
   desmume-libretro \
   dosbox-libretro \
-  yabause-libretro \
 "
 
 LIBRETRO_CORE_PACKAGES ?= " \
@@ -33,7 +43,6 @@ LIBRETRO_CORE_PACKAGES ?= " \
   beetle-ngp-libretro \
   beetle-pce-fast-libretro \
   beetle-pcfx-libretro \
-  beetle-saturn-libretro \
   beetle-supergrafx-libretro \
   beetle-vb-libretro \
   beetle-wswan-libretro \
@@ -60,7 +69,6 @@ LIBRETRO_CORE_PACKAGES ?= " \
   ppsspp-libretro \
   quicknes-libretro \
   vecx-libretro \
-  yabause-libretro \
 "
 
 RRECOMMENDS_${PN}_append = " ${LIBRETRO_CORE_PACKAGES}"
