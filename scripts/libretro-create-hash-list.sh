@@ -6,16 +6,22 @@ IFS=$'\n'
 
 function get_pn()
 {
+	LIBRETRO_GIT_BRANCH="master"
 	repo=$1
+	to_eval=`grep ${repo%:*} -e 'LIBRETRO_GIT_BRANCH'`
+	to_eval=${to_eval// }
+	eval ${to_eval}
+
 	package=${repo%_git.bb:*}
 	package=${package##*/}
+
 	IFS=$' '
 	repo=${repo##*.bb:}
 	repo=${repo/\$\{BPN\}/${package}}
 	eval ${repo// }
-	hash=`git ls-remote https://${LIBRETRO_GIT_REPO} master --refs`
+	hash=`git ls-remote https://${LIBRETRO_GIT_REPO} ${LIBRETRO_GIT_BRANCH} --refs`
 	hash=${hash%%ref*}
-	echo "LIBRETRO_GIT_REV_pn-${package} = \"${hash//[[:space:]]/}\""
+	echo "LIBRETRO_GIT_REV_pn-${package} ?= \"${hash//[[:space:]]/}\""
 }
 
 function gen_from_dir()
