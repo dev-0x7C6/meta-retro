@@ -16,4 +16,4 @@ do_install_append() {
     fi
 }
 
-INSANE_SKIP_${PN} += "host-user-contaminated"
+INSANE_SKIP_${PN}-server += "host-user-contaminated"
