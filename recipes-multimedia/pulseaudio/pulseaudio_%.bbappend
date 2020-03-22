@@ -15,3 +15,5 @@ do_install_append() {
         chown ${RETRO_USER_NAME}:${RETRO_USER_NAME} -R ${D}${RETRO_USER_HOMEDIR}
     fi
 }
+
+INSANE_SKIP_${PN} += "host-user-contaminated"
