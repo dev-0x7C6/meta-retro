@@ -4,6 +4,7 @@ inherit retro/packagegroup
 
 LIBRETRO_PC_CORES ?= " \
   dosbox-libretro \
+  quasi88-libretro \
   vice-libretro \
 "
 
