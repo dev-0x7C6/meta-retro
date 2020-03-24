@@ -1,1 +1,1 @@
-PACKAGECONFIG_remove = "systemd"
+RRECOMMENDS_${PN}_remove = "weston-init"
