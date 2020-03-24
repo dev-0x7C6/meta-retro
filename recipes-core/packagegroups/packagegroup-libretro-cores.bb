@@ -12,6 +12,7 @@ PACKAGECONFIG ??= " \
   gbc \
   n64 \
   nes \
+  pc \
   psx \
   saturn \
   snes \
@@ -24,6 +25,7 @@ PACKAGECONFIG[gba] = ",,,,packagegroup-libretro-gba"
 PACKAGECONFIG[gbc] = ",,,,packagegroup-libretro-gbc"
 PACKAGECONFIG[n64] = ",,,,packagegroup-libretro-n64"
 PACKAGECONFIG[nes] = ",,,,packagegroup-libretro-nes"
+PACKAGECONFIG[pc] = ",,,,packagegroup-libretro-pc"
 PACKAGECONFIG[psx] = ",,,,packagegroup-libretro-psx"
 PACKAGECONFIG[saturn] = ",,,,packagegroup-libretro-saturn"
 PACKAGECONFIG[snes] = ",,,,packagegroup-libretro-snes"
@@ -33,7 +35,6 @@ PACKAGECONFIG[snes] = ",,,,packagegroup-libretro-snes"
 LIBRETRO_CORE_PACKAGES_remove_arm64 = " \
   desmume-libretro \
   desmume2015-libretro \
-  dosbox-libretro \
 "
 
 LIBRETRO_CORE_PACKAGES ?= " \
@@ -49,7 +50,6 @@ LIBRETRO_CORE_PACKAGES ?= " \
   caprice32-libretro \
   desmume-libretro \
   desmume2015-libretro \
-  dosbox-libretro \
   fmsx-libretro \
   freechaf-libretro \
   freeintv-libretro \
