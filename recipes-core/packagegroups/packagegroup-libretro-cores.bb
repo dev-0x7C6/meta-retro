@@ -50,7 +50,6 @@ LIBRETRO_CORE_PACKAGES ?= " \
   desmume-libretro \
   desmume2015-libretro \
   dosbox-libretro \
-  fbalpha2012-libretro \
   fmsx-libretro \
   freechaf-libretro \
   freeintv-libretro \
