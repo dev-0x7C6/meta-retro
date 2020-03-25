@@ -3,7 +3,10 @@ DESCRIPTION = "Libretro PC cores"
 inherit retro/packagegroup
 
 LIBRETRO_PC_CORES ?= " \
+  bk-libretro \
+  bluemsx-libretro \
   dosbox-libretro \
+  fmsx-libretro \
   quasi88-libretro \
   vice-libretro \
 "

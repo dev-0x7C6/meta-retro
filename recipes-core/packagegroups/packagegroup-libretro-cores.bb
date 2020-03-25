@@ -45,12 +45,9 @@ LIBRETRO_CORE_PACKAGES ?= " \
   beetle-supergrafx-libretro \
   beetle-vb-libretro \
   beetle-wswan-libretro \
-  bk-libretro \
-  bluemsx-libretro \
   caprice32-libretro \
   desmume-libretro \
   desmume2015-libretro \
-  fmsx-libretro \
   freechaf-libretro \
   freeintv-libretro \
   fuse-libretro \
