@@ -90,9 +90,7 @@ RETROARCH_GRAPHICS_PACKAGECONFIG_DEFAULTS ??= " \
 "
 
 RETROARCH_AUDIO_PACKAGECONFIG_DEFAULTS ??= " \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'alsa', 'alsa', '', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'alsa', 'tinyalsa', '', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', 'pulseaudio', '', d)} \
+  ${@bb.utils.filter('DISTRO_FEATURES', 'alsa pulseaudio', d)} \
 "
 
 RETROARCH_ONLINE_PACKAGECONFIG_DEFAULTS ??= " \
@@ -268,33 +266,6 @@ PACKAGECONFIG[zlib] = "--enable-zlib,--disable-zlib,zlib"
 
 EXTRA_OECONF = "${PACKAGECONFIG_CONFARGS}"
 
-do_patch() {
-  LIBRETRO_LIB_DIR="${libdir}/libretro"
-  LIBRETRO_DATA_DIR="${datadir}/libretro"
-  RETROARCH_DATA_DIR="${datadir}/${PN}"
-
-  sed -i \
-    -e "s:# \(assets_directory =\):\1 \"${RETROARCH_ASSETS_DIR}\":g" \
-    -e "s:# \(audio_driver =\):\1 \"${RETROARCH_DEFAULT_AUDIO_DRIVER}\":g" \
-    -e "s:# \(audio_resampler =\):\1 \"${RETROARCH_DEFAULT_RESAMPLER_DRIVER}\":g" \
-    -e "s:# \(cheat_database_path =\):\1 \"${RETROARCH_DATABASE_CHEATS_DIR}\":g" \
-    -e "s:# \(content_database_path =\):\1 \"${RETROARCH_DATABASE_TITLES_DIR}\":g" \
-    -e "s:# \(cursor_directory =\):\1 \"${RETROARCH_DATABASE_CURSORS_DIR}\":g" \
-    -e "s:# \(input_driver =\):\1 \"${RETROARCH_DEFAULT_INPUT_DRIVER}\":g" \
-    -e "s:# \(input_joypad_driver =\):\1 \"${RETROARCH_DEFAULT_JOYPAD_DRIVER}\":g" \
-    -e "s:# \(joypad_autoconfig_dir =\):\1 \"${RETROARCH_AUTOCONFIG_DIR}\":g" \
-    -e "s:# \(libretro_directory =\):\1 \"${RETROARCH_LIBRETRO_CORES_DIR}\":g" \
-    -e "s:# \(libretro_info_path =\):\1 \"${RETROARCH_LIBRETRO_CORES_INFO_DIR}\":g" \
-    -e "s:# \(menu_driver =\):\1 \"${RETROARCH_DEFAULT_MENU_DRIVER}\":g" \
-    -e "s:# \(overlay_directory =\):\1 \"${RETROARCH_OVERLAY_DIR}\":g" \
-    -e "s:# \(rgui_browser_directory =\):\1 \"${RETROARCH_MEDIA_DIR}\":g" \
-    -e "s:# \(system_directory =\):\1 \"${RETROARCH_SYSTEM_DIR}\":g" \
-    -e "s:# \(video_context_driver =\):\1 \"${RETROARCH_DEFAULT_VIDEO_CONTEXT}\":g" \
-    -e "s:# \(video_driver =\):\1 \"${RETROARCH_DEFAULT_VIDEO_DRIVER}\":g" \
-    -e "s:# \(video_shader_dir =\):\1 \"${RETROARCH_SHADERS_DIR}\":g" \
-    ${S}/retroarch.cfg || exit 1
-}
-
 CONFIGUREOPTS = " \
   --build=${BUILD_SYS} \
   --host=${HOST_SYS} \
@@ -302,6 +273,55 @@ CONFIGUREOPTS = " \
   --prefix=${prefix} \
   --sysconfdir=${sysconfdir} \
 "
+
+RETROARCH_CONFIG_FONT_SIZE ?= "10"
+
+RETROARCH_CONFIG_XMB_SHADOWS ?= "true"
+RETROARCH_CONFIG_XMB_THEME_COLOR ?= "5"
+RETROARCH_CONFIG_XMB_THEME_INDEX ?= "0"
+
+do_retroarch_config() {
+  RETROARCH_CONFIG_FILE="${S}/retroarch.cfg"
+
+  cd ${S}
+  git checkout -- "retroarch.cfg"
+
+  sed -i \
+    -e "s:# \(assets_directory =\).*:\1 \"${RETROARCH_ASSETS_DIR}\":g" \
+    -e "s:# \(audio_driver =\).*:\1 \"${RETROARCH_DEFAULT_AUDIO_DRIVER}\":g" \
+    -e "s:# \(audio_resampler =\).*:\1 \"${RETROARCH_DEFAULT_RESAMPLER_DRIVER}\":g" \
+    -e "s:# \(cheat_database_path =\).*:\1 \"${RETROARCH_DATABASE_CHEATS_DIR}\":g" \
+    -e "s:# \(content_database_path =\).*:\1 \"${RETROARCH_DATABASE_TITLES_DIR}\":g" \
+    -e "s:# \(cursor_directory =\).*:\1 \"${RETROARCH_DATABASE_CURSORS_DIR}\":g" \
+    -e "s:# \(input_driver =\).*:\1 \"${RETROARCH_DEFAULT_INPUT_DRIVER}\":g" \
+    -e "s:# \(input_joypad_driver =\).*:\1 \"${RETROARCH_DEFAULT_JOYPAD_DRIVER}\":g" \
+    -e "s:# \(joypad_autoconfig_dir =\).*:\1 \"${RETROARCH_AUTOCONFIG_DIR}\":g" \
+    -e "s:# \(libretro_directory =\).*:\1 \"${RETROARCH_LIBRETRO_CORES_DIR}\":g" \
+    -e "s:# \(libretro_info_path =\).*:\1 \"${RETROARCH_LIBRETRO_CORES_INFO_DIR}\":g" \
+    -e "s:# \(menu_driver =\).*:\1 \"${RETROARCH_DEFAULT_MENU_DRIVER}\":g" \
+    -e "s:# \(overlay_directory =\).*:\1 \"${RETROARCH_OVERLAY_DIR}\":g" \
+    -e "s:# \(rgui_browser_directory =\).*:\1 \"${RETROARCH_MEDIA_DIR}\":g" \
+    -e "s:# \(system_directory =\).*:\1 \"${RETROARCH_SYSTEM_DIR}\":g" \
+    -e "s:# \(video_context_driver =\).*:\1 \"${RETROARCH_DEFAULT_VIDEO_CONTEXT}\":g" \
+    -e "s:# \(video_driver =\).*:\1 \"${RETROARCH_DEFAULT_VIDEO_DRIVER}\":g" \
+    -e "s:# \(video_shader_dir =\).*:\1 \"${RETROARCH_SHADERS_DIR}\":g" \
+    ${RETROARCH_CONFIG_FILE} || exit 1
+
+  echo -e "\n# Video" >> ${RETROARCH_CONFIG_FILE}
+  echo "video_font_size = \"${RETROARCH_CONFIG_FONT_SIZE}\"" >> ${RETROARCH_CONFIG_FILE}
+
+  echo -e "\n# Themes" >> ${RETROARCH_CONFIG_FILE}
+  echo "xmb_menu_color_theme = \"${RETROARCH_CONFIG_XMB_THEME_COLOR}\"" >> ${RETROARCH_CONFIG_FILE}
+  echo "xmb_shadows_enable = \"${RETROARCH_CONFIG_XMB_SHADOWS}\"" >> ${RETROARCH_CONFIG_FILE}
+  echo "xmb_theme = \"${RETROARCH_CONFIG_XMB_THEME_INDEX}\"" >> ${RETROARCH_CONFIG_FILE}
+
+  echo -e "\n# Input" >> ${RETROARCH_CONFIG_FILE}
+  for index in {1..16}; do
+    echo "input_player${index}_left = \"left\"" >> ${RETROARCH_CONFIG_FILE}
+  done
+}
+
+addtask retroarch_config after do_unpack before do_patch
 
 do_configure() {
   export PKG_CONF_PATH="pkg-config"
