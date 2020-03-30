@@ -11,7 +11,7 @@ BUGTRACKER = "https://github.com/libretro/RetroArch/issues"
 LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-3.0;md5=c79ff39f19dfec6d293b95dea7b07891"
 
-PR ?= "r105"
+PR = "r107"
 S = "${WORKDIR}/git"
 
 # Any version >= 572611f1ca63f3b4d60c117432ef8ff1419d38f7 (>= v.1.8.3) should
@@ -19,12 +19,27 @@ S = "${WORKDIR}/git"
 #   https://github.com/libretro/RetroArch/pull/9959
 #   https://github.com/libretro/RetroArch/pull/9944
 
-SRC_URI = "gitsm://github.com/libretro/RetroArch.git"
+SRC_URI = "gitsm://github.com/libretro/RetroArch.git ${RETROARCH_PATCHES}"
 SRCREV = "v${PV}"
+
+RETROARCH_WIFI_PATCHES ?= " \
+  file://enable-wifi-driver.patch \
+  file://enable-wifi-menu.patch \
+  file://enable-wifi-messages.patch \
+"
+
+RETROARCH_PATCHES ?= " \
+  ${@bb.utils.contains('PACKAGECONFIG', 'wifi', '${RETROARCH_WIFI_PATCHES}', '', d)} \
+"
 
 inherit autotools-brokensep pkgconfig retro/overrides retroarch/paths retroarch/checks
 
-DEPENDS = "libxml2"
+DEPENDS = " \
+  git-native \
+  libxml2 \
+  mbedtls \
+  zlib \
+"
 
 # Default retroarch drivers
 
@@ -66,8 +81,7 @@ RETROARCH_GRAPHICS_PACKAGECONFIG_DEFAULTS ??= " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'egl gles', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'egl gles gles3', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'opengl', '', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'vulkan', '', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wayland', '', d)} \
+  ${@bb.utils.filter('DISTRO_FEATURES', 'vulkan wayland wifi', d)} \
   glslang \
   kms \
   no-opengl1 \
@@ -176,7 +190,7 @@ PACKAGECONFIG[mmap] = "--enable-mmap,--disable-mmap,nmap"
 PACKAGECONFIG[mpv] = "--enable-mpv,,mpv"
 PACKAGECONFIG[neon] = "--enable-neon"
 PACKAGECONFIG[network-video] = "--enable-network_video"
-PACKAGECONFIG[network] = "--enable-networking,--disable-networking,connman,connman"
+PACKAGECONFIG[network] = "--enable-networking,--disable-networking"
 PACKAGECONFIG[networkgamepad] = "--enable-networkgamepad,--disable-networkgamepad"
 PACKAGECONFIG[no-7zip] = "--disable-7zip,,,7z"
 PACKAGECONFIG[no-accessibility] = "--disable-accessibility"
@@ -243,6 +257,7 @@ PACKAGECONFIG[videoprocessor] = "--enable-videoprocessor,--disable-videoprocesso
 PACKAGECONFIG[vivante-fbdev] = "--enable-vivante_fbdev"
 PACKAGECONFIG[vulkan] = "--enable-vulkan,--disable-vulkan,vulkan-loader virtual/mesa"
 PACKAGECONFIG[wayland] = "--enable-wayland,--disable-wayland,wayland-native wayland wayland-protocols"
+PACKAGECONFIG[wifi] = ",,connman,connman"
 PACKAGECONFIG[x11] = "--enable-x11,--disable-x11,libx11"
 PACKAGECONFIG[xaudio] = "--enable-xaudio,--disable-xaudio"
 PACKAGECONFIG[xinerama] = "--enable-xinerama,--disable-xinerama,libxinerama"
