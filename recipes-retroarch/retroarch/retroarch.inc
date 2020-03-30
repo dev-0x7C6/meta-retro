@@ -23,6 +23,7 @@ SRC_URI = "gitsm://github.com/libretro/RetroArch.git ${RETROARCH_PATCHES}"
 SRCREV = "v${PV}"
 
 RETROARCH_WIFI_PATCHES ?= " \
+  file://enable-wifi-custom.patch \
   file://enable-wifi-driver.patch \
   file://enable-wifi-menu.patch \
   file://enable-wifi-messages.patch \
@@ -256,7 +257,7 @@ PACKAGECONFIG[videoprocessor] = "--enable-videoprocessor,--disable-videoprocesso
 PACKAGECONFIG[vivante-fbdev] = "--enable-vivante_fbdev"
 PACKAGECONFIG[vulkan] = "--enable-vulkan,--disable-vulkan,vulkan-loader virtual/mesa"
 PACKAGECONFIG[wayland] = "--enable-wayland,--disable-wayland,wayland-native wayland wayland-protocols"
-PACKAGECONFIG[wifi] = ",,connman,connman"
+PACKAGECONFIG[wifi] = ",,connman,connman-client"
 PACKAGECONFIG[x11] = "--enable-x11,--disable-x11,libx11"
 PACKAGECONFIG[xaudio] = "--enable-xaudio,--disable-xaudio"
 PACKAGECONFIG[xinerama] = "--enable-xinerama,--disable-xinerama,libxinerama"
