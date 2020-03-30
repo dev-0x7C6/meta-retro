@@ -7,7 +7,6 @@ IMAGE_INSTALL_append = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'weston', '', d)} \
     ${RETRO_ADDITIONAL_MULTIMEDIA_PACKAGES} \
     kernel-modules \
-    networkmanager \
     packagegroup-core-boot \
     packagegroup-libretro-cores \
     retro-user \
