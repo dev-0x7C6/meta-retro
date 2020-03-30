@@ -11,7 +11,7 @@ BUGTRACKER = "https://github.com/libretro/RetroArch/issues"
 LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-3.0;md5=c79ff39f19dfec6d293b95dea7b07891"
 
-PR = "r107"
+PR = "r108"
 S = "${WORKDIR}/git"
 
 # Any version >= 572611f1ca63f3b4d60c117432ef8ff1419d38f7 (>= v.1.8.3) should
@@ -26,6 +26,7 @@ RETROARCH_WIFI_PATCHES ?= " \
   file://enable-wifi-driver.patch \
   file://enable-wifi-menu.patch \
   file://enable-wifi-messages.patch \
+  file://enable-wifi-register.patch \
 "
 
 RETROARCH_PATCHES ?= " \

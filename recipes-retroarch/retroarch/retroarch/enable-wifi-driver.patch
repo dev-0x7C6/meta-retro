@@ -1,0 +1,15 @@
+diff --git a/Makefile.common b/Makefile.common
+index e1b6b8a2fb..96073b2720 100644
+--- a/Makefile.common
++++ b/Makefile.common
+@@ -555,9 +555,7 @@ ifeq ($(HAVE_EMSCRIPTEN), 1)
+           camera/drivers/rwebcam.o
+ endif
+ 
+-ifeq ($(HAVE_LAKKA), 1)
+-   OBJ += wifi/drivers/connmanctl.o
+-endif
++OBJ += wifi/drivers/connmanctl.o
+ 
+ # Audio
+ 
