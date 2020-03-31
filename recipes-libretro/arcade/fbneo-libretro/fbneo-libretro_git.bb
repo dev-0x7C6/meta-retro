@@ -13,3 +13,7 @@ LIBRETRO_MAKEFILE_PREFIX = "src/burner/libretro/"
 
 # Unable to compile with -Werror=format-security
 SECURITY_STRINGFORMAT = "-Wformat -Wformat-security"
+
+# Workaround missing make clean
+do_configure() {
+}

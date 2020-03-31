@@ -110,7 +110,7 @@ LIBRETRO_FINAL_MAKEFLAGS ??= " \
   ${@bb.utils.contains('LIBRETRO_FULL_OVERRIDE_ASFLAGS', '1', '\"${LIBRETRO_MAKEFILE_ASFLAGS}\"', '', d)} \
 "
 
-DEPENDS = " \
+DEPENDS += " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'virtual/libgles2 virtual/egl', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'virtual/libgles2 virtual/egl', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'virtual/libgl', '', d)} \
@@ -118,7 +118,7 @@ DEPENDS = " \
   zlib \
 "
 
-RDEPENDS_${PN} = " \
+RDEPENDS_${PN} += " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'vulkan-loader', '', d)} \
 "
 
