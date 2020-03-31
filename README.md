@@ -35,8 +35,6 @@ I'm currently testing builds with those machines:
 * raspberrypi4 *(meta-raspberrypi)*
 * raspberrypi4-64 *(meta-raspberrypi)*
 
-But feel free to test other machines as well.
-
 ## DISTRO_FEATURES
 
 #### RetroArch and system features:
