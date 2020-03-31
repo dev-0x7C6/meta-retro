@@ -35,7 +35,9 @@ I'm currently testing builds with those machines:
 * raspberrypi4 *(meta-raspberrypi)*
 * raspberrypi4-64 *(meta-raspberrypi)*
 
-## DISTRO_FEATURES
+## Distro features
+
+Meta-retro introduced a collection of switches that can be set by **DISTRO_FEATURES** in *local.conf* or *distro.conf*
 
 #### RetroArch and system features:
 
@@ -52,7 +54,7 @@ I'm currently testing builds with those machines:
 
 ## Customizable variables
 
-There is a collection of variables that can be overriden by local.conf or your distro.conf:
+There is a collection of variables that can be set in *local.conf* or *distro.conf*:
 
 #### Default drivers
 * **RETROARCH_DEFAULT_INPUT_DRIVER** - default is udev
