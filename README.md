@@ -19,11 +19,11 @@ You can test this layer and distro (retro) with reference build environment on y
 ## Images
 
 There are:
-* retro-image-full - retroarch, all libretro cores, cheats, titles, themes and more
-* retro-image-standard - retroarch, all libretro cores, titles
-* retro-image-minimal - retroarch, all libretro cores, minimal build 
+* **[retro-image-full](recipes-core/images/retro-image-full.bb)** - retroarch, all libretro cores, cheats, titles, themes and more
+* **[retro-image-standard](recipes-core/images/retro-image-standard.bb)** - retroarch, all libretro cores, titles
+* **[retro-image-minimal](recipes-core/images/retro-image-minimal.bb)** - retroarch, all libretro cores, minimal build 
 
-It's recommended to use **retro-image-full**.
+It's recommended to use **[retro-image-full](recipes-core/images/retro-image-full.bb)**.
 
 #### Support and tests
 
