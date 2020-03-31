@@ -52,6 +52,29 @@ But feel free to test other machines as well.
 * **retroarch-opengl** - enable for OpenGL >= 2.0 support in retroarch and libretro cores
 * **vulkan** - enable for Vulkan support in retroarch and libretro cores
 
+## Customizable variables
+
+There is a collection of variables that can be overriden by local.conf or your distro.conf:
+
+#### Default drivers
+* **RETROARCH_DEFAULT_INPUT_DRIVER** - default is udev
+* **RETROARCH_DEFAULT_JOYPAD_DRIVER** - default is udev
+* **RETROARCH_DEFAULT_VIDEO_DRIVER** - default is gl
+* **RETROARCH_DEFAULT_VIDEO_CONTEXT** - default is kms-egl
+* **RETROARCH_DEFAULT_AUDIO_DRIVER** - default is pulseaudio or alsathread
+* **RETROARCH_DEFAULT_RESAMPLER_DRIVER** - default is sinc
+* **RETROARCH_DEFAULT_MENU_DRIVER** - default is xmb
+
+#### Video settings
+* **RETROARCH_CONFIG_FONT_SIZE**
+
+#### Themes
+* **RETROARCH_CONFIG_XMB_SHADOWS**
+* **RETROARCH_CONFIG_XMB_THEME_COLOR**
+* **RETROARCH_CONFIG_XMB_THEME_INDEX**
+
+For more information see file: [retroarch.inc](recipes-retroarch/retroarch/retroarch.inc)
+
 ## Dependencies
 This layer depends on:
 ```
