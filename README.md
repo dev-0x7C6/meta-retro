@@ -60,7 +60,7 @@ There is a collection of variables that can be overriden by local.conf or your d
 * **RETROARCH_DEFAULT_VIDEO_DRIVER** - default is gl
 * **RETROARCH_DEFAULT_VIDEO_CONTEXT** - default is kms-egl
 * **RETROARCH_DEFAULT_AUDIO_DRIVER** - default is pulseaudio or alsathread
-* **RETROARCH_DEFAULT_RESAMPLER_DRIVER** - default is sinc
+* **RETROARCH_DEFAULT_RESAMPLER_DRIVER** - default is sinc
 * **RETROARCH_DEFAULT_MENU_DRIVER** - default is xmb
 
 #### Video settings
