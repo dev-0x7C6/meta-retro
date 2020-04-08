@@ -5,7 +5,8 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425
 
 inherit libretro/core/git
 
-DEPENDS += "libpng nasm-native"
+DEPENDS += "libpng"
+DEPENDS_append_x86arch = " nasm-native"
 
 LIBRETRO_CORE = "mupen64plus_next"
 LIBRETRO_GIT_REPO = "github.com/libretro/mupen64plus-libretro-nx.git"
