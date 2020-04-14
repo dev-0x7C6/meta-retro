@@ -135,6 +135,7 @@ PACKAGECONFIG ??= " \
   ffmpeg \
   freetype \
   libusb \
+  lto \
   menu-materialui \
   menu-ozone \
   menu-rgui \
@@ -148,6 +149,12 @@ PACKAGECONFIG ??= " \
   v4l2 \
   zlib \
 "
+
+RETROARCH_LTO_FLAGS ?= "-flto=${@oe.utils.cpu_count()}"
+
+TARGET_CXXFLAGS += "${@bb.utils.contains('PACKAGECONFIG', 'lto', '${RETROARCH_LTO_FLAGS}', '', d)}"
+TARGET_CFLAGS += "${@bb.utils.contains('PACKAGECONFIG', 'lto', '${RETROARCH_LTO_FLAGS}', '', d)}"
+
 
 # Switches updated from v1.8.5
 # Mon Mar 30 01:56:31 CEST 2020
@@ -178,6 +185,7 @@ PACKAGECONFIG[gong] = "--enable-gong"
 PACKAGECONFIG[jack] = "--enable-jack,--disable-jack,jack"
 PACKAGECONFIG[kms] = "--enable-kms,--disable-kms,libdrm virtual/libgbm"
 PACKAGECONFIG[libusb] = "--enable-libusb,--disable-libusb,libusb"
+PACKAGECONFIG[lto] = ",,"
 PACKAGECONFIG[lua] = "--enable-lua"
 PACKAGECONFIG[mali-fbdev] = "--enable-mali_fbdev"
 PACKAGECONFIG[menu-materialui] = "--enable-materialui,--disable-materialui"
