@@ -1,4 +1,4 @@
-PR = "retro-r100"
+PR = "r100"
 
 # Retroarch checking for /mnt and /media directories as candidates
 # since mountpoint is in /var/run/media
