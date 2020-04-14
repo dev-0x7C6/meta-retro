@@ -15,7 +15,7 @@ S = "${WORKDIR}/git"
 SRC_URI = "gitsm://github.com/libretro/libretro-database.git;protocol=https"
 SRCREV = "${AUTOREV}"
 
-inherit retroarch/paths
+inherit allarch retroarch/paths
 
 PACKAGES =+ " \
   ${PN}-cheats \
