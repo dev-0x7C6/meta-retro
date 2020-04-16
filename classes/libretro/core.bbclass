@@ -63,8 +63,8 @@ LIBRETRO_EXTRA_CXXFLAGS ??= ""
 LIBRETRO_EXTRA_CFLAGS ??= ""
 LIBRETRO_EXTRA_ASFLAGS ??= ""
 
-LIBRETRO_LTO_ENABLED ?= "1"
-LIBRETRO_LTO_CFLAGS ?= "-flto=${@oe.utils.cpu_count()}"
+LIBRETRO_LTO_ENABLED ??= "1"
+LIBRETRO_LTO_CFLAGS ??= "-flto=${@oe.utils.cpu_count()}"
 
 LIBRETRO_OPTIMIZATION_CXXFLAGS ??= "${@bb.utils.contains('LIBRETRO_LTO_ENABLED', '1', '${LIBRETRO_LTO_CFLAGS}', '', d)}"
 LIBRETRO_OPTIMIZATION_CFLAGS ??= "${@bb.utils.contains('LIBRETRO_LTO_ENABLED', '1', '${LIBRETRO_LTO_CFLAGS}', '', d)}"
