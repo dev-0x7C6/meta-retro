@@ -5,6 +5,8 @@ LIC_FILES_CHKSUM = "file://yabause/COPYING;md5=4b446a5a0b773c458f6a5b3288522b62"
 
 inherit libretro/core/git
 
+LIBRETRO_LTO_ENABLED = "0"
+
 LIBRETRO_PLATFORM_arm32 = "armv,unix"
 LIBRETRO_PLATFORM_arm64 = "arm64,unix"
 
