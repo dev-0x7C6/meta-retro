@@ -9,8 +9,3 @@ OVERRIDES_append_arm = ":armarch:arm32:32bit"
 OVERRIDES_append_armeb = ":armarch:arm32:32bit"
 OVERRIDES_append_x86 = ":x86arch:32bit"
 OVERRIDES_append_x86-64 = ":x86arch:64bit"
-
-# Deprecated stuff
-PYTHON2_SUPPORT_REMOVED ??= "${@bb.utils.contains_any('METADATA_BRANCH', 'dunfell gatesgarth', '1', '0', d)}"
-
-OVERRIDES_append = "${@bb.utils.contains('PYTHON2_SUPPORT_REMOVED', '1', ':python2-deprecated', '', d)}"

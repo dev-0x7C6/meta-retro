@@ -7,7 +7,7 @@
 # CONFLICT_DISTRO_FEATURES: ensure no item in this list is included in
 #                           DISTRO_FEATURES.
 
-inherit ${@bb.utils.contains_any('METADATA_BRANCH', 'dunfell gatesgarth', 'features_check', 'distro_features_check', d)}
+inherit features_check
 
 ANY_OF_DISTRO_FEATURES = " \
   retroarch-gles \

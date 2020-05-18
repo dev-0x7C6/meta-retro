@@ -1,4 +1,4 @@
-inherit libretro/core/git
+inherit libretro/core/git python-dir pythonnative
 
 # Too much debug symbols are generated
 DEBUG_FLAGS = ""
