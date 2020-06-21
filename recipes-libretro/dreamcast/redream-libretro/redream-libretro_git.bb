@@ -7,5 +7,5 @@ inherit libretro/core/git
 
 LIBRETRO_MAKEFILE_PREFIX = "deps/libretro"
 
-LIBRETRO_CORE = "deps/libretro/redream"
+LIBRETRO_CORE = "deps/libretro/retrodream"
 LIBRETRO_GIT_REPO = "github.com/libretro/redream.git"
