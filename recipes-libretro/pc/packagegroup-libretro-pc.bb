@@ -9,6 +9,14 @@ LIBRETRO_PC_CORES ?= " \
   fmsx-libretro \
   quasi88-libretro \
   vice-libretro \
+  vice-x128-libretro \
+  vice-x64sc-libretro \
+  vice-xcbm2-libretro \
+  vice-xcbm5x0-libretro \
+  vice-xpet-libretro \
+  vice-xplus4-libretro \
+  vice-xscpu64-libretro \
+  vice-xvic-libretro \
 "
 
 LIBRETRO_PC_CORES_remove_arm64 = "dosbox-libretro"
