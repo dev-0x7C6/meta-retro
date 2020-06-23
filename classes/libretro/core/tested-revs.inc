@@ -31,6 +31,7 @@ LIBRETRO_GIT_REV_pn-freeintv-libretro ?= "68322b4ab4a93f82a934fb4f7469247270b4f7
 LIBRETRO_GIT_REV_pn-fuse-libretro ?= "c2f03e6f08f3e2a03d7888fe756e0beb7979f983"
 LIBRETRO_GIT_REV_pn-gambatte-libretro ?= "132f36e990dfc6effdafa6cf261373432464f9bf"
 LIBRETRO_GIT_REV_pn-genesis-plus-gx-libretro ?= "50551066f71f8a5ea782ea3747891fd6d24ebe67"
+LIBRETRO_GIT_REV_pn-gme-libretro ?= "5ba9fb506cb1f18d6e371e4fdb5cd7ee154a00a9"
 LIBRETRO_GIT_REV_pn-gpsp-libretro ?= "856af16ba64951d99a6a9aa84b1a10dc1540a868"
 LIBRETRO_GIT_REV_pn-gw-libretro ?= "819b1dde560013003eeac86c2069c5be7af25c6d"
 LIBRETRO_GIT_REV_pn-handy-libretro ?= "5ff55817eafbb1930e222ea2493c22804c872904"
