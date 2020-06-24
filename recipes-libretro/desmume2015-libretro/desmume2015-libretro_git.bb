@@ -3,7 +3,7 @@ DESCRIPTION = "NDS emu - DESMUME (2015 version)"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://desmume/COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
-inherit libretro/core/git
+inherit libretro-core-git
 
 DEPENDS += "libpcap libglu"
 

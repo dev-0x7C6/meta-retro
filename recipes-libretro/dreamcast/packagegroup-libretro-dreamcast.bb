@@ -1,6 +1,6 @@
 DESCRIPTION = "Libretro Dreamcast cores"
 
-inherit retro/packagegroup
+inherit retro-packagegroup
 
 LIBRETRO_DREAMCAST_CORES ?= "flycast-libretro redream-libretro"
 

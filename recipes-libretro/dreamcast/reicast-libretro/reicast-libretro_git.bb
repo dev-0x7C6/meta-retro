@@ -3,7 +3,7 @@ DESCRIPTION = "Dreamcast emulator - reicast"
 LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=f1637c76115ca31de8eaf5f93b64c7ff"
 
-inherit cmake retro/overrides retroarch/paths retroarch/checks retro/git
+inherit cmake retro-overrides retroarch-paths retroarch-checks
 
 S = "${WORKDIR}/git"
 SRC_URI = "gitsm://github.com/reicast/reicast-emulator.git;protocol=https;branch=alpha"

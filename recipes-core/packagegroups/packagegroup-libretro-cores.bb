@@ -1,6 +1,6 @@
 DESCRIPTION = "Libretro cores package group"
 
-inherit retro/packagegroup
+inherit retro-packagegroup
 
 # TODO: broken on GCC 10.1
 # LIBRETRO_CORE_PACKAGES_append_64bit = " dolphin-libretro"

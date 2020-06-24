@@ -3,7 +3,7 @@ DESCRIPTION = "PlayStation Portable emu - PPSSPP port for libretro"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://LICENSE.TXT;md5=e336f8162cddec7981e240f46825d8a2"
 
-inherit cmake retro/overrides retroarch/paths retroarch/checks retro/git
+inherit cmake retro-overrides retroarch-paths retroarch-checks
 
 S = "${WORKDIR}/git"
 SRC_URI = " \

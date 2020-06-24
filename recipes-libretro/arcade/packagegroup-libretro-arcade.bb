@@ -1,6 +1,6 @@
 DESCRIPTION = "Libretro Arcade cores"
 
-inherit retro/packagegroup
+inherit retro-packagegroup
 
 LIBRETRO_ARCADE_CORES ?= " \
   fbalpha2012-cps1-libretro \

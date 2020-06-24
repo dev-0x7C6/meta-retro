@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425
 
 PR = "r100"
 
-inherit libretro/core/git
+inherit libretro-core-git
 
 LIBRETRO_CORE = "pcsx_rearmed"
 LIBRETRO_GIT_REPO = "github.com/libretro/pcsx_rearmed.git"

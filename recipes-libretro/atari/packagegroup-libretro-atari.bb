@@ -1,6 +1,6 @@
 DESCRIPTION = "Libretro Atari cores"
 
-inherit retro/packagegroup
+inherit retro-packagegroup
 
 # TODO: hatari-libretro fails with GCC 10.1
 

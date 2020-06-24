@@ -3,7 +3,7 @@ DESCRIPTION = "C64 emulator - port of VICE for libretro"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://vice/COPYING;md5=c93c0550bd3173f4504b2cbd8991e50b"
 
-inherit libretro/core/git
+inherit libretro-core-git
 
 DEPENDS += "flex-native bison-native"
 

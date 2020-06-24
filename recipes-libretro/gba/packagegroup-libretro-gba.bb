@@ -1,6 +1,6 @@
 DESCRIPTION = "Libretro GameBoy Advanced cores"
 
-inherit retro/packagegroup
+inherit retro-packagegroup
 
 LIBRETRO_GBA_CORES ?= " \
   beetle-gba-libretro \

@@ -1,6 +1,6 @@
 DESCRIPTION = "Libretro PlayStation (One) cores"
 
-inherit retro/packagegroup
+inherit retro-packagegroup
 
 LIBRETRO_PSX_CORES ?= "pcsx-rearmed-libretro"
 #LIBRETRO_PSX_CORES_remove_arm64 = "beetle-psx-libretro"

@@ -1,6 +1,6 @@
 DESCRIPTION = "Libretro Sega Saturn cores"
 
-inherit retro/packagegroup
+inherit retro-packagegroup
 
 LIBRETRO_SATURN_CORES ?= " \
     beetle-saturn-libretro \

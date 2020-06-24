@@ -34,7 +34,7 @@ RETROARCH_PATCHES ?= " \
   ${@bb.utils.contains('PACKAGECONFIG', 'wifi', '${RETROARCH_WIFI_PATCHES}', '', d)} \
 "
 
-inherit autotools-brokensep pkgconfig retro/overrides retroarch/paths retroarch/checks
+inherit autotools-brokensep pkgconfig retro-overrides retroarch-paths retroarch-checks
 
 DEPENDS = " \
   git-native \

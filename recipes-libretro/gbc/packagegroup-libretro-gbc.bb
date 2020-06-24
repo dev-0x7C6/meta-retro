@@ -1,6 +1,6 @@
 DESCRIPTION = "Libretro GameBoy Color cores"
 
-inherit retro/packagegroup
+inherit retro-packagegroup
 
 LIBRETRO_GBC_CORES ?= " \
   gambatte-libretro \

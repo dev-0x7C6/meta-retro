@@ -1,6 +1,6 @@
 DESCRIPTION = "Libretro PC cores"
 
-inherit retro/packagegroup
+inherit retro-packagegroup
 
 LIBRETRO_PC_CORES ?= " \
   bk-libretro \
