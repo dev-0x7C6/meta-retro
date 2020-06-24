@@ -8,7 +8,7 @@ inherit libretro/core/git
 DEPENDS += "virtual/libgl"
 
 LIBRETRO_CORE = "mednafen_psx_hw"
-LIBRETRO_GIT_REPO = "github.com/dev-0x7C6/beetle-psx-libretro.git"
+LIBRETRO_GIT_REPO = "github.com/libretro/beetle-psx-libretro.git"
 
 LIBRETRO_PLATFORM = "unix gles"
 LIBRETRO_EXTRA_MAKEFLAGS_append = " HAVE_CHD=1 HAVE_LIGHTREC=1 HAVE_OPENGL=1"
