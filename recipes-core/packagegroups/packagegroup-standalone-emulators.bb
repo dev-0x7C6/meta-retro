@@ -1,6 +1,6 @@
 DESCRIPTION = "Standalone emulators package group"
 
-inherit retro/packagegroup
+inherit retro-packagegroup
 
 EMULATOR_PACKAGES ?= ""
 EMULATOR_PACKAGES_append_64bit = " dolphin-emu"

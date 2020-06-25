@@ -1,6 +1,6 @@
 DESCRIPTION = "Libretro Nintendo Entertainment System cores"
 
-inherit retro/packagegroup
+inherit retro-packagegroup
 
 LIBRETRO_NES_CORES ?= " \
   fceumm-libretro \

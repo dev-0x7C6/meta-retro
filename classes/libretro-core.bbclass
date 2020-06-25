@@ -1,6 +1,8 @@
 # Class
 
-inherit retro/overrides retroarch/paths retroarch/checks
+inherit retro-overrides
+inherit retroarch-checks
+inherit retroarch-paths
 
 # Auto detection
 

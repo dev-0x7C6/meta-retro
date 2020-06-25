@@ -12,7 +12,7 @@ S = "${WORKDIR}/git"
 SRC_URI = "gitsm://github.com/libretro/common-overlays.git;protocol=https"
 SRCREV = "${AUTOREV}"
 
-inherit allarch retroarch/paths
+inherit allarch retroarch-paths
 
 DEPENDS += "rsync-native"
 

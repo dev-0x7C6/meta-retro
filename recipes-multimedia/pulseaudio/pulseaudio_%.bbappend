@@ -1,4 +1,4 @@
-inherit retro/user
+inherit retro-user
 
 DEPENDS += "retro-user"
 

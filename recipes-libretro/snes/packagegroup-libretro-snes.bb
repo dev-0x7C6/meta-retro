@@ -1,6 +1,6 @@
 DESCRIPTION = "Libretro SNES cores"
 
-inherit retro/packagegroup
+inherit retro-packagegroup
 
 LIBRETRO_SNES_CORES ?= " \
   bsnes-libretro \

@@ -7,7 +7,7 @@ SRC_URI = "gitsm://github.com/dolphin-emu/dolphin.git;protocol=https"
 SRCREV = "${AUTOREV}"
 S = "${WORKDIR}/git"
 
-inherit cmake_qt5 retro/overrides
+inherit cmake_qt5 retro-overrides
 
 PACKAGECONFIG ?= " \
     ${@bb.utils.filter('DISTRO_FEATURES', 'alsa bluetooth pulseaudio vulkan x11', d)} \

@@ -1,6 +1,6 @@
 DESCRIPTION = "Libretro extra cores package group"
 
-inherit retro/packagegroup
+inherit retro-packagegroup
 
 LIBRETRO_EXTRA_CORE_PACKAGES ?= " \
   dinothawr-libretro \

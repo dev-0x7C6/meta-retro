@@ -1,6 +1,6 @@
 DESCRIPTION = "Libretro Nintendo 64 cores"
 
-inherit retro/packagegroup
+inherit retro-packagegroup
 
 LIBRETRO_N64_CORES ?= " \
   mupen64plus-libretro \
