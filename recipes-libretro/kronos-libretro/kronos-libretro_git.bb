@@ -3,7 +3,7 @@ DESCRIPTION = "Saturn & ST-V emulator - Kronos port for libretro"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://yabause/COPYING;md5=4b446a5a0b773c458f6a5b3288522b62"
 
-inherit libretro-core-git
+inherit libretro
 
 LIBRETRO_LTO_ENABLED ?= "0"
 

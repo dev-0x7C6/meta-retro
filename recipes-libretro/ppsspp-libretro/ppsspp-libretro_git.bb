@@ -3,17 +3,13 @@ DESCRIPTION = "PlayStation Portable emu - PPSSPP port for libretro"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://LICENSE.TXT;md5=e336f8162cddec7981e240f46825d8a2"
 
-inherit cmake retro-overrides retroarch-paths retroarch-checks
+inherit libretro-cmake
 
-S = "${WORKDIR}/git"
-SRC_URI = " \
-  gitsm://github.com/hrydgard/ppsspp.git;protocol=https \
-  file://0001-Revert-Mpeg-Parse-video-streams-from-PSMF-header.patch \
-"
+LIBRETRO_GIT_REPO = "github.com/hrydgard/ppsspp.git"
 
-SRCREV = "${AUTOREV}"
-
-OECMAKE_FIND_ROOT_PATH_MODE_PROGRAM = "/usr/bin"
+LIBRETRO_CORE = "ppsspp"
+LIBRETRO_CORE_PATCHES = "file://0001-Revert-Mpeg-Parse-video-streams-from-PSMF-header.patch"
+LIBRETRO_CORE_SOURCE_PATH = "lib"
 
 DEPENDS = " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'virtual/libgl ', '', d)} \
@@ -28,8 +24,6 @@ PACKAGECONFIG ?=  " \
   libzip \
   system-ffmpeg \
 "
-
-CCACHE_DISABLE = "1"
 
 PACKAGECONFIG_append_armarch = " ${@bb.utils.contains('TUNE_FEATURES', 'neon', 'armv7 arm', 'arm', d)}"
 PACKAGECONFIG_append_mipsarch = " mips"
@@ -58,12 +52,9 @@ PACKAGECONFIG[vulkan-x11] = "-DUSING_X11_VULKAN=ON,-DUSING_X11_VULKAN=OFF"
 PACKAGECONFIG[vulkan] = ",,vulkan-loader,vulkan-loader"
 PACKAGECONFIG[wsi] = "-DUSE_WAYLAND_WSI=ON,-DUSE_WAYLAND_WSI=OFF"
 
-FILES_${PN} += "${RETROARCH_LIBRETRO_CORES_DIR} ${RETROARCH_SYSTEM_DIR}"
+FILES_${PN} += "${RETROARCH_SYSTEM_DIR}"
 
-do_install() {
-  install -d ${D}${RETROARCH_LIBRETRO_CORES_DIR}
-  install -m 644 ${B}/lib/ppsspp_libretro.so ${D}${RETROARCH_LIBRETRO_CORES_DIR}/ppsspp_libretro.so
-
+do_install_append() {
   install -d ${D}${RETROARCH_SYSTEM_DIR}/PPSSPP/
   cp -rf ${B}/assets/* ${D}${RETROARCH_SYSTEM_DIR}/PPSSPP/
 }

@@ -4,13 +4,10 @@ games for these two platforms on PC with improvements."
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://license.txt;md5=751419260aa954499f7abaabaa882bbe"
 
-inherit cmake retro-overrides retroarch-paths retroarch-checks
+inherit libretro-cmake
 
-S = "${WORKDIR}/git"
-SRC_URI = "gitsm://github.com/libretro/dolphin.git;protocol=https"
-SRCREV = "${AUTOREV}"
-
-OECMAKE_FIND_ROOT_PATH_MODE_PROGRAM = "/usr/bin"
+LIBRETRO_GIT_REPO = "github.com/libretro/dolphin.git"
+LIBRETRO_CORE = "dolphin"
 
 DEPENDS = " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'virtual/libgl ', '', d)} \
@@ -31,8 +28,6 @@ PACKAGECONFIG ?=  " \
 
 OECMAKE_C_FLAGS += "-fno-common"
 OECMAKE_CXX_FLAGS += "-fno-common"
-
-CCACHE_DISABLE = "1"
 
 PACKAGECONFIG_append_32bit = " generic"
 
@@ -60,10 +55,3 @@ PACKAGECONFIG[upnp] = "-DUSE_UPNP=ON,-DUSE_UPNP=OFF"
 PACKAGECONFIG[vtune] = "-DENABLE_VTUNE=ON,-DENABLE_VTUNE=OFF"
 PACKAGECONFIG[vulkan] = ",,vulkan-loader,vulkan-loader"
 PACKAGECONFIG[x11] = "-DENABLE_X11=ON,-DENABLE_X11=OFF,libxi"
-
-FILES_${PN} += "${RETROARCH_LIBRETRO_CORES_DIR} ${RETROARCH_SYSTEM_DIR}"
-
-do_install() {
-  install -d ${D}${RETROARCH_LIBRETRO_CORES_DIR}
-  install -m 644 ${B}/dolphin_libretro.so ${D}${RETROARCH_LIBRETRO_CORES_DIR}/dolphin_libretro.so
-}
