@@ -2,21 +2,18 @@ DESCRIPTION = "Libretro cores package group"
 
 inherit retro-packagegroup
 
-# TODO: broken on GCC 10.1
-# LIBRETRO_CORE_PACKAGES_append_64bit = " dolphin-libretro"
-
 PACKAGECONFIG ??= " \
-  arcade \
-  atari \
-  dreamcast \
-  gba \
-  gbc \
-  n64 \
-  nes \
-  pc \
-  psx \
-  saturn \
-  snes \
+    arcade \
+    atari \
+    dreamcast \
+    gba \
+    gbc \
+    n64 \
+    nes \
+    pc \
+    psx \
+    saturn \
+    snes \
 "
 
 PACKAGECONFIG[arcade] = ",,,,packagegroup-libretro-arcade"
@@ -26,10 +23,12 @@ PACKAGECONFIG[gba] = ",,,,packagegroup-libretro-gba"
 PACKAGECONFIG[gbc] = ",,,,packagegroup-libretro-gbc"
 PACKAGECONFIG[n64] = ",,,,packagegroup-libretro-n64"
 PACKAGECONFIG[nes] = ",,,,packagegroup-libretro-nes"
+PACKAGECONFIG[ngc] = ",,,,packagegroup-libretro-ngc"
 PACKAGECONFIG[pc] = ",,,,packagegroup-libretro-pc"
 PACKAGECONFIG[psx] = ",,,,packagegroup-libretro-psx"
 PACKAGECONFIG[saturn] = ",,,,packagegroup-libretro-saturn"
 PACKAGECONFIG[snes] = ",,,,packagegroup-libretro-snes"
+PACKAGECONFIG[wii] = ",,,,packagegroup-libretro-wii"
 
 # TODO: compilation of those failed on specific architectures:
 

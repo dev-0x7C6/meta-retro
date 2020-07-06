@@ -29,6 +29,9 @@ PACKAGECONFIG ?=  " \
   llvm \
 "
 
+OECMAKE_C_FLAGS += "-fno-common"
+OECMAKE_CXX_FLAGS += "-fno-common"
+
 CCACHE_DISABLE = "1"
 
 PACKAGECONFIG_append_32bit = " generic"
