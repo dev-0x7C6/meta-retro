@@ -80,11 +80,9 @@ This layer depends on:
 ```
   URI: git://git.openembedded.org/openembedded-core
   layers: meta
-  branch: zeus
   
   URI: git://git.openembedded.org/meta-openembedded
   layers: meta-oe, meta-multimedia, meta-networking, meta-python
-  branch: zeus
 ```
 
 ## Patches
