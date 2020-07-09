@@ -5,5 +5,4 @@ LIC_FILES_CHKSUM = "file://license;md5=d32239bcb673463ab874e80d47fae504"
 
 inherit libretro
 
-LIBRETRO_CORE = "3dengine"
 LIBRETRO_GIT_REPO = "github.com/libretro/libretro-3dengine.git"

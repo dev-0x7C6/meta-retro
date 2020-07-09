@@ -7,7 +7,6 @@ LIC_FILES_CHKSUM = "file://license.txt;md5=751419260aa954499f7abaabaa882bbe"
 inherit libretro-cmake
 
 LIBRETRO_GIT_REPO = "github.com/libretro/dolphin.git"
-LIBRETRO_CORE = "dolphin"
 
 DEPENDS = " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'virtual/libgl ', '', d)} \

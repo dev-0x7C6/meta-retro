@@ -7,7 +7,6 @@ inherit libretro-cmake
 
 LIBRETRO_GIT_REPO = "github.com/hrydgard/ppsspp.git"
 
-LIBRETRO_CORE = "ppsspp"
 LIBRETRO_CORE_PATCHES = "file://0001-Revert-Mpeg-Parse-video-streams-from-PSMF-header.patch"
 LIBRETRO_CORE_SOURCE_PATH = "lib"
 

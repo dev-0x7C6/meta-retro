@@ -7,7 +7,6 @@ inherit libretro
 
 DEPENDS += "libpng"
 
-LIBRETRO_CORE = "flycast"
 LIBRETRO_GIT_REPO = "github.com/libretro/flycast.git"
 
 LIBRETRO_REPRESENT_ARM64 = "arm64"

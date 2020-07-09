@@ -8,7 +8,6 @@ inherit libretro-cmake
 LIBRETRO_GIT_REPO = "github.com/reicast/reicast-emulator.git"
 
 LIBRETRO_GIT_BRANCH = "stable"
-LIBRETRO_CORE = "reicast"
 
 PACKAGECONFIG ?= "libretro"
 

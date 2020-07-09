@@ -5,5 +5,4 @@ LIC_FILES_CHKSUM = "file://License.txt;md5=ec2ee434a4ad8ef5c1eae190fff988a9"
 
 inherit libretro
 
-LIBRETRO_CORE = "prosystem"
 LIBRETRO_GIT_REPO = "github.com/libretro/prosystem-libretro.git"

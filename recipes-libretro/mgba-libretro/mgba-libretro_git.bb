@@ -3,7 +3,6 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425
 
 inherit libretro
 
-LIBRETRO_CORE = "mgba"
 LIBRETRO_GIT_REPO = "github.com/libretro/mgba.git"
 
 LIBRETRO_EXTRA_MAKEFLAGS = "HAVE_VFS_FD=0"

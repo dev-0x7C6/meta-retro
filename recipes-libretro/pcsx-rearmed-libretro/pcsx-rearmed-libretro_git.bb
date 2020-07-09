@@ -5,7 +5,6 @@ PR = "r100"
 
 inherit libretro
 
-LIBRETRO_CORE = "pcsx_rearmed"
 LIBRETRO_GIT_REPO = "github.com/libretro/pcsx_rearmed.git"
 
 PREFFERED_DYNAMIC_RECOMPILER ?= "lightrec"

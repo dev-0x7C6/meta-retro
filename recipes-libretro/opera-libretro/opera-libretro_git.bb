@@ -5,7 +5,6 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/LGPL-2.0;md5=9427b8ccf5cf3df47c
 
 inherit libretro
 
-LIBRETRO_CORE = "opera"
 LIBRETRO_GIT_REPO = "github.com/libretro/opera-libretro.git"
 
 #FIXME: upstream: CC and AR is overriden and --sysroot flag is lost

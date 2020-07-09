@@ -9,7 +9,6 @@ DEPENDS += "bc-native"
 
 LIBRETRO_LTO_ENABLED ?= "0"
 
-LIBRETRO_CORE = "parallel_n64"
 LIBRETRO_GIT_REPO = "github.com/libretro/parallel-n64.git"
 
 LIBRETRO_PLATFORM_arm32 = "unix,classic_armv7_a7"

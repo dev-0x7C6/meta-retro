@@ -11,6 +11,8 @@ inherit cmake
 
 # Variables
 
+LIBRETRO_CORE ?= "${@d.getVar("PN").split('-libretro')[0].replace('-', '_')}"
+
 OECMAKE_FIND_ROOT_PATH_MODE_PROGRAM = "/usr/bin"
 CCACHE_DISABLE = "1"
 

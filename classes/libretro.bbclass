@@ -32,7 +32,7 @@ LIBRETRO_PLATFORM_AUTODETECT_raspberrypi4-64 = "${LIBRETRO_PLATFORM_AUTODETECT_R
 
 # Core
 
-LIBRETRO_CORE ??= ""
+LIBRETRO_CORE ?= "${@d.getVar("PN").split('-libretro')[0].replace('-', '_')}"
 LIBRETRO_MAKEFILE_PREFIX ??= ""
 LIBRETRO_MAKEFILE_FILENAME_OVERRIDE ??= ""
 

@@ -6,5 +6,3 @@ LIC_FILES_CHKSUM = "file://lynx/license.txt;md5=79e740318fa817fd77c119393656df93
 inherit libretro
 
 LIBRETRO_GIT_REPO = "github.com/libretro/libretro-handy.git"
-LIBRETRO_CORE = "handy"
-

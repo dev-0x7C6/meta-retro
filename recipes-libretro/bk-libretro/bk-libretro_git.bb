@@ -5,5 +5,4 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=6ad70b1941b6bf33cc0bd21a2a7c958b"
 
 inherit libretro
 
-LIBRETRO_CORE = "bk"
 LIBRETRO_GIT_REPO = "github.com/libretro/bk-emulator.git"

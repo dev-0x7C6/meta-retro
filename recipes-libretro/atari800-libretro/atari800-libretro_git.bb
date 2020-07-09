@@ -7,5 +7,4 @@ inherit libretro
 
 LIBRETRO_LTO_ENABLED ?= "0"
 
-LIBRETRO_CORE = "atari800"
 LIBRETRO_GIT_REPO = "github.com/libretro/libretro-atari800.git"

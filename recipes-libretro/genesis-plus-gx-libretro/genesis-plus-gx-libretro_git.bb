@@ -3,7 +3,6 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425
 
 inherit libretro
 
-LIBRETRO_CORE = "genesis_plus_gx"
 LIBRETRO_GIT_REPO = "github.com/libretro/Genesis-Plus-GX.git"
 
 LIBRETRO_PLATFORM_AUTODETECT_RPI4 = "${LIBRETRO_PLATFORM_AUTODETECT_RPI3}"
