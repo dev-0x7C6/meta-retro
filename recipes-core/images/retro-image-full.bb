@@ -5,7 +5,6 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 inherit retro-core-image
 
 IMAGE_INSTALL_append = " \
-  packagegroup-libretro-extra-cores \
   packagegroup-standalone-emulators \
   retroarch-assets-xmb-monochrome \
   retroarch-assets-xmb-pixel \

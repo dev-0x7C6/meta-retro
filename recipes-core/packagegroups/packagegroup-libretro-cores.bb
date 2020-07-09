@@ -6,6 +6,7 @@ PACKAGECONFIG ??= " \
     arcade \
     atari \
     dreamcast \
+    extra \
     gba \
     gbc \
     n64 \
@@ -19,6 +20,7 @@ PACKAGECONFIG ??= " \
 PACKAGECONFIG[arcade] = ",,,,packagegroup-libretro-arcade"
 PACKAGECONFIG[atari] = ",,,,packagegroup-libretro-atari"
 PACKAGECONFIG[dreamcast] = ",,,,packagegroup-libretro-dreamcast"
+PACKAGECONFIG[extra] = ",,,,packagegroup-libretro-extra"
 PACKAGECONFIG[gba] = ",,,,packagegroup-libretro-gba"
 PACKAGECONFIG[gbc] = ",,,,packagegroup-libretro-gbc"
 PACKAGECONFIG[n64] = ",,,,packagegroup-libretro-n64"
