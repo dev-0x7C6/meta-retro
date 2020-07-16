@@ -5,8 +5,6 @@ LIC_FILES_CHKSUM = "file://src/license.txt;md5=e1fed87bd6bd0f0ec211e3d2ba85737e"
 
 inherit libretro
 
-PR = "r1000"
-
 LIBRETRO_GIT_REPO = "github.com/libretro/FBNeo.git"
 LIBRETRO_CORE = "src/burner/libretro/fbneo"
 LIBRETRO_MAKEFILE_PREFIX = "src/burner/libretro/"

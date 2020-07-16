@@ -19,6 +19,10 @@ CCACHE_DISABLE = "1"
 LIBRETRO_CORE_SOURCE_PATH ?= ""
 LIBRETRO_CORE_FILENAME ?= "${LIBRETRO_CORE}_libretro.so"
 
+# Flags
+
+inherit libretro-cflags
+
 # Depends
 
 DEPENDS += " \
