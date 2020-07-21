@@ -4,6 +4,7 @@ inherit retro-packagegroup
 
 LIBRETRO_NES_CORES ?= " \
   fceumm-libretro \
+  masen-libretro \
   nestopia-libretro \
   quicknes-libretro \
 "
