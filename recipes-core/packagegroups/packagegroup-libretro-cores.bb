@@ -14,6 +14,7 @@ PACKAGECONFIG ??= " \
     pc \
     psx \
     saturn \
+    sms \
     snes \
 "
 
@@ -29,6 +30,7 @@ PACKAGECONFIG[ngc] = ",,,,packagegroup-libretro-ngc"
 PACKAGECONFIG[pc] = ",,,,packagegroup-libretro-pc"
 PACKAGECONFIG[psx] = ",,,,packagegroup-libretro-psx"
 PACKAGECONFIG[saturn] = ",,,,packagegroup-libretro-saturn"
+PACKAGECONFIG[snes] = ",,,,packagegroup-libretro-sms"
 PACKAGECONFIG[snes] = ",,,,packagegroup-libretro-snes"
 PACKAGECONFIG[wii] = ",,,,packagegroup-libretro-wii"
 
