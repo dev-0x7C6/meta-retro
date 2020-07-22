@@ -8,6 +8,7 @@ LIBRETRO_PC_CORES ?= " \
   dosbox-libretro \
   fmsx-libretro \
   quasi88-libretro \
+  theodore-libretro \
   vice-libretro \
   vice-x128-libretro \
   vice-x64sc-libretro \
