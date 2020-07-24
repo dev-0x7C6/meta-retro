@@ -152,9 +152,8 @@ PACKAGECONFIG ??= " \
 
 RETROARCH_LTO_FLAGS ?= "-flto=${@oe.utils.cpu_count()}"
 
-TARGET_CXXFLAGS += "${@bb.utils.contains('PACKAGECONFIG', 'lto', '${RETROARCH_LTO_FLAGS}', '', d)}"
 TARGET_CFLAGS += "${@bb.utils.contains('PACKAGECONFIG', 'lto', '${RETROARCH_LTO_FLAGS}', '', d)}"
-
+TARGET_LDFLAGS += "${@bb.utils.contains('PACKAGECONFIG', 'lto', '${TARGET_CFLAGS}', '', d)}"
 
 # Switches updated from v1.8.5
 # Mon Mar 30 01:56:31 CEST 2020
