@@ -35,5 +35,5 @@ do_patch() {
 
 do_install() {
     install -d ${D}${RETROARCH_SYSTEM_DIR}
-    cp -rf ${S} ${D}${RETROARCH_SYSTEM_DIR}
+    cp -rf ${S}/* ${D}${RETROARCH_SYSTEM_DIR}
 }
