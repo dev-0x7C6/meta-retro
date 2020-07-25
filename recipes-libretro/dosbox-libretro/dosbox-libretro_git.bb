@@ -5,6 +5,4 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425
 
 inherit libretro
 
-LIBRETRO_LTO_ENABLED ?= "0"
-
 LIBRETRO_GIT_REPO = "github.com/libretro/dosbox-libretro.git"

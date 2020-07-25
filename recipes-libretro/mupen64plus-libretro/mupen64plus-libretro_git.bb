@@ -8,10 +8,6 @@ inherit libretro
 LIBRETRO_CORE_PATCHES_raspberrypi4 = "file://mupen64plus_next-rpi4-gles3-fix.patch"
 LIBRETRO_CORE_PATCHES_raspberrypi4-64 = "file://mupen64plus_next-rpi4-gles3-fix.patch"
 
-# LTO is causing nasm to fail
-
-LIBRETRO_LTO_ENABLED = "0"
-
 DEPENDS += "libpng"
 DEPENDS_append_x86arch = " nasm-native"
 
