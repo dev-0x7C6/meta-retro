@@ -2,6 +2,9 @@ DESCRIPTION = "Libretro Nintendo Wii cores"
 
 inherit retro-packagegroup
 
-LIBRETRO_WII_CORES ?= "dolphin-libretro"
+LIBRETRO_WII_CORES_ARCH_SPECIFIC = ""
+LIBRETRO_WII_CORES_ARCH_SPECIFIC_64bit += "dolphin-libretro"
+
+LIBRETRO_WII_CORES ?= "${LIBRETRO_WII_CORES_ARCH_SPECIFIC}"
 
 RRECOMMENDS_${PN} = "${LIBRETRO_WII_CORES}"
