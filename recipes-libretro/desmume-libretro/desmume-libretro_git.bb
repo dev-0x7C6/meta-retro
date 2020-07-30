@@ -9,12 +9,14 @@ DEPENDS += "libpcap libglu"
 
 LIBRETRO_MAKEFILE_PREFIX = "desmume/src/frontend/libretro"
 
-LIBRETRO_PLATFORM_append_arm32 = " armv"
-LIBRETRO_PLATFORM_append_opengles = " gles"
+LIBRETRO_PLATFORM_append_arm32 = "-armv"
+LIBRETRO_PLATFORM_append_opengles = "-gles"
 
 LIBRETRO_GIT_REPO = "github.com/libretro/desmume.git"
 LIBRETRO_CORE = "desmume/src/frontend/libretro/desmume"
 
-COMPATIBLE_MACHINE = "(-)"
-COMPATIBLE_MACHINE_x86arch = "(.*)"
-COMPATIBLE_MACHINE_arm32 = "(.*)"
+# Unable to compile on 64-bit platforms
+COMPATIBLE_MACHINE = "(32bit)"
+
+# Maybe glvnd support that's comming in future will help
+REQUIRED_DISTRO_FEATURES = "x11"
