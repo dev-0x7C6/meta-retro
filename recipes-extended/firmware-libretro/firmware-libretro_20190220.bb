@@ -1,10 +1,12 @@
-inherit retroarch-paths allarch
-
 HOMEPAGE = "https://archive.org/details/system_20190220"
 BUGTRACKER = "https://archive.org/details/system_20190220"
 
 LICENSE = "Proprietary"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/Proprietary;md5=0557f9d92cf58f2ccdd50f62f8ac0b28"
+
+inherit retroarch-paths allarch
+
+PR = "r1"
 
 SRC_URI = "https://archive.org/download/system_20190220/system.zip"
 SRC_URI[sha256sum] = "46e4b65ee23bf89b7b7adce349215155defb0293ea034d990f398bdbbdb1f456"
@@ -28,6 +30,8 @@ do_patch() {
     rm -fv ${S}/libbassmidi.so
 # ppsspp provide own firmware and assets
     rm -rfv ${S}/PPSSPP
+# dreamcast emulators expect DC directory with lowercase encoding
+    mv ${S}/DC ${S}/dc
 }
 
 do_install() {
