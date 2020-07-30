@@ -15,12 +15,7 @@ S = "${WORKDIR}/system"
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"
 
-PACKAGES =+ " \
-    ${PN}-ppsspp \
-"
-
 FILES_${PN} += "${RETROARCH_ASSETS_DIR}"
-FILES_${PN}-ppsspp += "${RETROARCH_ASSETS_DIR}/PPSSPP"
 
 do_patch() {
 # Remove architecture specific stuff
@@ -31,6 +26,8 @@ do_patch() {
     rm -fv ${S}/libbass.so
     rm -fv ${S}/libbassmidi.dynlib
     rm -fv ${S}/libbassmidi.so
+# ppsspp provide own firmware and assets
+    rm -rfv ${S}/PPSSPP
 }
 
 do_install() {
