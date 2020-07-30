@@ -25,9 +25,6 @@ PACKAGECONFIG ?=  " \
   llvm \
 "
 
-OECMAKE_C_FLAGS += "-fno-common"
-OECMAKE_CXX_FLAGS += "-fno-common"
-
 PACKAGECONFIG_append_32bit = " generic"
 
 PACKAGECONFIG[alsa] = "-DENABLE_ALSA=ON,-DENABLE_ALSA=OFF"
