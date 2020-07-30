@@ -4,6 +4,7 @@ LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://LICENSE.TXT;md5=e336f8162cddec7981e240f46825d8a2"
 
 inherit libretro-cmake
+inherit libretro-vulkan-deps
 
 LIBRETRO_GIT_REPO = "github.com/hrydgard/ppsspp.git"
 
@@ -18,7 +19,6 @@ DEPENDS = " \
 PACKAGECONFIG ?=  " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'egl gles', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'egl gles', '', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'vulkan', '', d)} \
   libretro \
   libzip \
   system-ffmpeg \
@@ -48,5 +48,7 @@ PACKAGECONFIG[simulator] = "-DSIMULATOR=ON,-DSIMULATOR=OFF"
 PACKAGECONFIG[system-ffmpeg] = "-DUSE_FFMPEG=ON -DUSE_SYSTEM_FFMPEG=ON,-DUSE_FFMPEG=ON -USE_SYSTEM_FFMPEG=OFF,ffmpeg"
 PACKAGECONFIG[tests] = "-DUNITTEST=ON,-DUNITTEST=OFF"
 PACKAGECONFIG[vulkan-x11] = "-DUSING_X11_VULKAN=ON,-DUSING_X11_VULKAN=OFF"
-PACKAGECONFIG[vulkan] = ",,vulkan-loader,vulkan-loader"
 PACKAGECONFIG[wsi] = "-DUSE_WAYLAND_WSI=ON,-DUSE_WAYLAND_WSI=OFF"
+
+# Now libretro-vulkan-deps will take care
+# PACKAGECONFIG[vulkan] = ",,${VULKAN_DEPENDS},${VULKAN_DEPENDS}"

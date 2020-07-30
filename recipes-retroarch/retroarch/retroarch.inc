@@ -262,7 +262,10 @@ PACKAGECONFIG[valgrind] = "--enable-preserve_dylib"
 PACKAGECONFIG[videocore] = "--enable-videocore,--disable-videocore,userland"
 PACKAGECONFIG[videoprocessor] = "--enable-videoprocessor,--disable-videoprocessor"
 PACKAGECONFIG[vivante-fbdev] = "--enable-vivante_fbdev"
-PACKAGECONFIG[vulkan] = "--enable-vulkan,--disable-vulkan,vulkan-loader virtual/mesa"
+
+inherit libretro-vulkan-deps
+PACKAGECONFIG[vulkan] = "--enable-vulkan,--disable-vulkan"
+
 PACKAGECONFIG[wayland] = "--enable-wayland,--disable-wayland,wayland-native wayland wayland-protocols"
 PACKAGECONFIG[wifi] = ",,connman,connman-client"
 PACKAGECONFIG[x11] = "--enable-x11,--disable-x11,libx11"
