@@ -23,11 +23,11 @@ PACKAGECONFIG ?= " \
 "
 
 DEPENDS += " \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'sfml', '', d)} \
     curl \
     hidapi \
     lzo \
     mbedtls \
-    sfml \
     zlib \
 "
 
