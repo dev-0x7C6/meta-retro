@@ -11,6 +11,7 @@ IMAGE_INSTALL_append = " \
     kernel-modules \
     packagegroup-core-boot \
     packagegroup-libretro-cores \
+    retro-menu \
     retro-user \
     retroarch \
 "
