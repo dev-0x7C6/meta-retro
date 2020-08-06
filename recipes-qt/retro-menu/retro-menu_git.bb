@@ -9,7 +9,7 @@ inherit cmake_qt5
 PR = "r1"
 
 SRC_URI = "git://github.com/dev-0x7C6/retro-menu.git;protocol=https;branch=master"
-SRCREV = "02c6616cbcd272a7f0ec798e596faa8262ccb9d2"
+SRCREV = "2d58123375f496024b90e4305abed56d789d60d8"
 S = "${WORKDIR}/git"
 
 PACKAGECONFIG ?= "quickcompiler"
