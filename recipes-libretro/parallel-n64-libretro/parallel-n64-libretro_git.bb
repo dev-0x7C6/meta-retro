@@ -9,10 +9,8 @@ DEPENDS += "bc-native"
 
 LIBRETRO_GIT_REPO = "github.com/libretro/parallel-n64.git"
 
-LIBRETRO_PLATFORM_arm32 = "unix,classic_armv7_a7"
-LIBRETRO_PLATFORM_arm64 = "unix,armv8"
-LIBRETRO_EXTRA_MAKEFLAGS_armarch = "USE_SSE2NEON=1"
+LIBRETRO_PLATFORM_append_arm32 = "-classic_armv7_a7"
+LIBRETRO_PLATFORM_append_arm64 = "-armv8"
+LIBRETRO_PLATFORM_append_opengles = "-gles"
 
-do_patch_append_opengles() {
-  sed -i -e "/^typedef GLfloat GLdouble/d" "${S}/libretro-common/include/glsm/glsm.h"
-}
+LIBRETRO_EXTRA_MAKEFLAGS_armarch = "USE_SSE2NEON=1"
