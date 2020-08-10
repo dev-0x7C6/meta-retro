@@ -11,7 +11,6 @@ BUGTRACKER = "https://github.com/libretro/RetroArch/issues"
 LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-3.0;md5=c79ff39f19dfec6d293b95dea7b07891"
 
-PR = "r108"
 S = "${WORKDIR}/git"
 
 # Any version >= 572611f1ca63f3b4d60c117432ef8ff1419d38f7 (>= v.1.8.3) should
@@ -20,19 +19,8 @@ S = "${WORKDIR}/git"
 #   https://github.com/libretro/RetroArch/pull/9944
 
 SRC_URI = "gitsm://github.com/libretro/RetroArch.git ${RETROARCH_PATCHES}"
-SRCREV = "v${PV}"
 
-RETROARCH_WIFI_PATCHES ?= " \
-  file://enable-wifi-custom.patch \
-  file://enable-wifi-driver.patch \
-  file://enable-wifi-menu.patch \
-  file://enable-wifi-messages.patch \
-  file://enable-wifi-register.patch \
-"
-
-RETROARCH_PATCHES ?= " \
-  ${@bb.utils.contains('PACKAGECONFIG', 'wifi', '${RETROARCH_WIFI_PATCHES}', '', d)} \
-"
+RETROARCH_PATCHES ?= ""
 
 inherit autotools-brokensep pkgconfig retro-overrides retroarch-paths retroarch-checks
 
@@ -291,6 +279,8 @@ RETROARCH_CONFIG_FONT_SIZE ?= "10"
 RETROARCH_CONFIG_XMB_SHADOWS ?= "true"
 RETROARCH_CONFIG_XMB_THEME_COLOR ?= "5"
 RETROARCH_CONFIG_XMB_THEME_INDEX ?= "0"
+
+FILES_${PN} += "/usr/share/metainfo"
 
 do_retroarch_config() {
   RETROARCH_CONFIG_FILE="${S}/retroarch.cfg"
