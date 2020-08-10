@@ -9,3 +9,5 @@ LIBRETRO_GIT_REPO = "github.com/libretro/libretro-uae.git"
 
 SECURITY_STRINGFORMAT = ""
 INSANE_SKIP_${PN} += "already-stripped"
+
+LIBRETRO_CORE_PATCHES = "file://0001-Fixed-missing-sys-sysctl.h.patch"
