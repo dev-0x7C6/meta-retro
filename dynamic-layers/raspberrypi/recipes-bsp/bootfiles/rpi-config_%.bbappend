@@ -1,5 +1,5 @@
 do_deploy_append() {
-    local configfile=${DEPLOYDIR}/bcm2835-bootfiles/config.txt
+    local configfile=${DEPLOYDIR}/${BOOTFILES_DIR_NAME}/config.txt
 
     if [ "${DISABLE_BLUETOOTH}" = "1" ]; then
         echo "# Disable bluetooth" >> ${configfile}
