@@ -8,6 +8,7 @@ IMAGE_INSTALL_append = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'retroarch-service', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'weston', '', d)} \
     ${RETRO_ADDITIONAL_MULTIMEDIA_PACKAGES} \
+    cool-retro-term \
     kernel-modules \
     packagegroup-core-boot \
     packagegroup-libretro-cores \
