@@ -21,5 +21,5 @@ FILES_${PN} += " \
   ${libdir}/qml \
 "
 
-DEPENDS = "qtdeclarative qtquickcontrols2 qtgraphicaleffects"
-RDEPENDS_${PN} = "liberation-fonts qtquickcontrols2 qtdeclarative-qmlplugins qtgraphicaleffects-qmlplugins"
+DEPENDS = "qtdeclarative qtquickcontrols qtquickcontrols2 qtgraphicaleffects"
+RDEPENDS_${PN} = "liberation-fonts qtquickcontrols qtquickcontrols2 qtdeclarative-qmlplugins qtgraphicaleffects-qmlplugins"
