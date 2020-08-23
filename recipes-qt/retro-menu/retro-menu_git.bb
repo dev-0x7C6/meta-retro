@@ -6,11 +6,16 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
 inherit cmake_qt5 retroarch-paths
 
+PV = "2020+git${SRCPV}"
 PR = "r1"
 
 SRC_URI = "git://github.com/dev-0x7C6/retro-menu.git;protocol=https;branch=master"
-SRCREV = "3ea519380bc4406b7f296f6f671b5a01de522be2"
+SRCREV = "f624b41aae3fdc019c1523c0ce8a6a95ffa31d60"
 S = "${WORKDIR}/git"
+
+PACKAGECONFIG ?= "analyse"
+
+PACKAGECONFIG[analyse] = "-DLIBRETRO_ANALYSE=ON,-DLIBRETRO_ANALYSE=OFF"
 
 EXTRA_OECMAKE_append = " \
     -D LIBRETRO_CORE_INFO_PATH:PATH="${RETROARCH_LIBRETRO_CORES_INFO_DIR}" \
