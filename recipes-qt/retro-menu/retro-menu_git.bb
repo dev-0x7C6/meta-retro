@@ -10,7 +10,7 @@ PV = "2020+git${SRCPV}"
 PR = "r1"
 
 SRC_URI = "git://github.com/dev-0x7C6/retro-menu.git;protocol=https;branch=master"
-SRCREV = "f624b41aae3fdc019c1523c0ce8a6a95ffa31d60"
+SRCREV = "c21f262fad2ff150cea32f317febcbe61bc72881"
 S = "${WORKDIR}/git"
 
 PACKAGECONFIG ?= "analyse"
