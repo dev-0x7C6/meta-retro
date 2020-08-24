@@ -10,9 +10,10 @@ S = "${WORKDIR}/git"
 SRC_URI = "gitsm://github.com/libretro/libretro-super.git;protocol=https"
 SRCREV = "${AUTOREV}"
 
-inherit allarch retroarch-paths
+PV = "2020+git${SRCPV}"
+PR = "r1"
 
-DEPENDS += "rsync-native"
+inherit allarch retroarch-paths
 
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"
@@ -21,5 +22,5 @@ FILES_${PN} += "${RETROARCH_LIBRETRO_CORES_INFO_DIR}"
 
 do_install() {
   install -d ${D}${RETROARCH_LIBRETRO_CORES_INFO_DIR}
-  rsync -rlptD ${S}/dist/info/* ${D}${RETROARCH_LIBRETRO_CORES_INFO_DIR}
+  cp -rf --preserve=mode ${S}/dist/info/* ${D}${RETROARCH_LIBRETRO_CORES_INFO_DIR}
 }

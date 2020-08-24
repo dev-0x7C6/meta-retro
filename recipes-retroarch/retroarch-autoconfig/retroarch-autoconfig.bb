@@ -15,7 +15,8 @@ SRCREV = "${AUTOREV}"
 
 inherit allarch retroarch-paths
 
-DEPENDS += "rsync-native"
+PV = "2020+git${SRCPV}"
+PR = "r1"
 
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"
@@ -23,10 +24,13 @@ do_compile[noexec] = "1"
 FILES_${PN} += "${RETROARCH_AUTOCONFIG_DIR}"
 
 do_install() {
-  install -d ${D}${RETROARCH_AUTOCONFIG_DIR}
-
   rm -f ${S}/Makefile \
     ${S}/configure
 
-  rsync -rlptD ${S}/* ${D}${RETROARCH_AUTOCONFIG_DIR}
+  install -m 0755 -d ${D}${RETROARCH_AUTOCONFIG_DIR}
+
+  rm -f ${S}/Makefile \
+    ${S}/configure
+ 
+  cp -rf --preserve=mode ${S}/* ${D}${RETROARCH_AUTOCONFIG_DIR}
 }
