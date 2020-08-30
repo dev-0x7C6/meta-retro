@@ -9,7 +9,7 @@ inherit retroarch-paths allarch
 PR = "r1"
 
 SRC_URI = "https://archive.org/download/system_20190220/system.zip"
-SRC_URI[sha256sum] = "46e4b65ee23bf89b7b7adce349215155defb0293ea034d990f398bdbbdb1f456"
+SRC_URI[sha256sum] = "9434c62625e3a26b439d7d1fa55e33309265117c0bb52798f5790555e26e170c"
 
 FILES_${PN} += "${RETROARCH_SYSTEM_DIR}"
 S = "${WORKDIR}/system"
@@ -36,5 +36,5 @@ do_patch() {
 
 do_install() {
     install -d ${D}${RETROARCH_SYSTEM_DIR}
-    cp -rf ${S}/* ${D}${RETROARCH_SYSTEM_DIR}
+    cp -R --no-dereference --preserve=mode,links -v ${S}/* ${D}${RETROARCH_SYSTEM_DIR}
 }
