@@ -34,7 +34,7 @@ PACKAGES =+ " \
   ${PN}-xmb-pixel \
   ${PN}-xmb-retroactive \
   ${PN}-xmb-retrosystem \
-  ${PN}-xmb-sysematic \
+  ${PN}-xmb-systematic \
 "
 
 FILES_${PN}-glui = "${RETROARCH_ASSETS_DIR}/glui"
@@ -48,7 +48,7 @@ FILES_${PN}-xmb-neoactive = "${RETROARCH_ASSETS_DIR}/xmb/neoactive"
 FILES_${PN}-xmb-pixel = "${RETROARCH_ASSETS_DIR}/xmb/pixel"
 FILES_${PN}-xmb-retroactive = "${RETROARCH_ASSETS_DIR}/xmb/retroactive"
 FILES_${PN}-xmb-retrosystem = "${RETROARCH_ASSETS_DIR}/xmb/retrosystem"
-FILES_${PN}-xmb-sysematic = "${RETROARCH_ASSETS_DIR}/xmb/sysematic"
+FILES_${PN}-xmb-systematic = "${RETROARCH_ASSETS_DIR}/xmb/systematic"
 
 do_install() {
   install -d ${D}${RETROARCH_ASSETS_DIR}

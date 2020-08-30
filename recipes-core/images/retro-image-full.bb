@@ -8,6 +8,7 @@ IMAGE_INSTALL_append = " \
   packagegroup-standalone-emulators \
   retroarch-assets-xmb-monochrome \
   retroarch-assets-xmb-pixel \
+  retroarch-assets-xmb-systematic \
   retroarch-autoconfig \
   retroarch-database-cheats \
   retroarch-database-cursors \
