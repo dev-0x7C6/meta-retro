@@ -135,14 +135,14 @@ do_patch() {
 }
 
 do_compile() {
-  if [[ ! -z "${LIBRETRO_MAKEFILE_PREFIX}" ]]; then
+  if [ ! -z "${LIBRETRO_MAKEFILE_PREFIX}" ]; then
     echo "prefix changed: ${LIBRETRO_MAKEFILE_PREFIX}"
     cd ${LIBRETRO_MAKEFILE_PREFIX}
   fi
 
   MAKEFILE_PATH="Makefile";
-  [[ -f "Makefile.libretro" ]] && MAKEFILE_PATH="Makefile.libretro"
-  [[ -f "${LIBRETRO_MAKEFILE_FILENAME_OVERRIDE}" ]] && MAKEFILE_PATH="${LIBRETRO_MAKEFILE_FILENAME_OVERRIDE}"
+  [ -f "Makefile.libretro" ] && MAKEFILE_PATH="Makefile.libretro"
+  [ -f "${LIBRETRO_MAKEFILE_FILENAME_OVERRIDE}" ] && MAKEFILE_PATH="${LIBRETRO_MAKEFILE_FILENAME_OVERRIDE}"
 
   oe_runmake -f "${MAKEFILE_PATH}" ${LIBRETRO_FINAL_MAKEFLAGS} \
     ARCH=${LIBRETRO_CPU_ARCH} \
