@@ -13,16 +13,19 @@ SRC_URI = "gitsm://github.com/libretro/common-overlays.git;protocol=https"
 SRCREV = "${AUTOREV}"
 
 PV = "2020+git${SRCPV}"
-PR = "r1"
+PR = "r2"
 
 inherit allarch retroarch-paths
 
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"
 
+# retroarch-overlays provides some sh template scripts inside
+RDEPENDS_${PN} += "bash"
+
 FILES_${PN} += "${RETROARCH_OVERLAY_DIR}"
 
 do_install() {
   install -d ${D}${RETROARCH_OVERLAY_DIR}
-  cp -rf --preserve=mode ${S}/* ${D}${RETROARCH_OVERLAY_DIR}
+  cp -R --no-dereference --preserve=mode,links -v ${S}/* ${D}${RETROARCH_OVERLAY_DIR}
 }
