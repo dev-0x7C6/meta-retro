@@ -39,7 +39,7 @@ RETROARCH_DEFAULT_INPUT_DRIVER ??= "udev"
 # Joypad driver. ("udev", "linuxraw", "paraport", "sdl2", "hid", "dinput")
 RETROARCH_DEFAULT_JOYPAD_DRIVER ??= "udev"
 
-# Video driver to use. "gl", "xvideo", "sdl", "d3d"
+# Video driver to use. "gl", "xvideo", "sdl", "d3d", "vulkan"
 RETROARCH_DEFAULT_VIDEO_DRIVER ??= "gl"
 
 # Which context implementation to use.
@@ -57,6 +57,8 @@ RETROARCH_DEFAULT_RESAMPLER_DRIVER ??= "sinc"
 # Menu driver to use. ("rgui", "xmb", "glui")
 RETROARCH_DEFAULT_MENU_DRIVER ??= "xmb"
 
+# Start in fullscreen. Can be changed at runtime.
+RETROARCH_CONFIG_FULLSCREEN ??= "true"
 
 # Package config
 
@@ -307,6 +309,10 @@ do_retroarch_config() {
     -e "s:# \(video_context_driver =\).*:\1 \"${RETROARCH_DEFAULT_VIDEO_CONTEXT}\":g" \
     -e "s:# \(video_driver =\).*:\1 \"${RETROARCH_DEFAULT_VIDEO_DRIVER}\":g" \
     -e "s:# \(video_shader_dir =\).*:\1 \"${RETROARCH_SHADERS_DIR}\":g" \
+    ${RETROARCH_CONFIG_FILE} || exit 1
+
+  sed -i \
+    -e "s:# \(video_fullscreen =\).*:\1 ${RETROARCH_CONFIG_FULLSCREEN}:g" \
     ${RETROARCH_CONFIG_FILE} || exit 1
 
   echo -e "\n# Video" >> ${RETROARCH_CONFIG_FILE}
