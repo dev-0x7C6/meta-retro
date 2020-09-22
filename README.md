@@ -65,6 +65,11 @@ There is a collection of variables that can be set in *local.conf* or *distro.co
 * **RETROARCH_DEFAULT_RESAMPLER_DRIVER** - default is sinc
 * **RETROARCH_DEFAULT_MENU_DRIVER** - default is xmb
 
+#### Configuration
+* **RETROARCH_CONFIG_FULLSCREEN** - default is true, go for fullscreen mode, this respects initial resolutions (tested with rpi4)
+* **RETROARCH_CONFIG_THREADED_VIDEO** - default is true, use another thread for renderer
+* **RETROARCH_CONFIG_AUDIO_LATENCY** - default is 256, stock value is 64, I got better performance with higher values on rpi platforms
+
 #### Video settings
 * **RETROARCH_CONFIG_FONT_SIZE**
 
