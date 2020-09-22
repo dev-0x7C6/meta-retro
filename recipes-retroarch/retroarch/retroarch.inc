@@ -283,6 +283,7 @@ do_retroarch_config() {
     ${RETROARCH_CONFIG_FILE} || exit 1
 
   sed -i \
+    -e "s:# \(audio_latency =\).*:\1 ${RETROARCH_CONFIG_AUDIO_LATENCY}:g" \
     -e "s:# \(video_fullscreen =\).*:\1 ${RETROARCH_CONFIG_FULLSCREEN}:g" \
     -e "s:# \(video_threaded =\).*:\1 ${RETROARCH_CONFIG_THREADED_VIDEO}:g" \
     ${RETROARCH_CONFIG_FILE} || exit 1
