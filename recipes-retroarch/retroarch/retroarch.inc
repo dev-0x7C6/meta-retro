@@ -60,6 +60,9 @@ RETROARCH_DEFAULT_MENU_DRIVER ??= "xmb"
 # Start in fullscreen. Can be changed at runtime.
 RETROARCH_CONFIG_FULLSCREEN ??= "true"
 
+# Use threaded video driver. Using this might improve performance at possible cost of latency and more video stuttering.
+RETROARCH_CONFIG_THREADED_VIDEO ??= "true"
+
 # Package config
 
 RASPBERRYPI_DEFAULT_PACKAGECONFIG ??= ""
@@ -313,6 +316,7 @@ do_retroarch_config() {
 
   sed -i \
     -e "s:# \(video_fullscreen =\).*:\1 ${RETROARCH_CONFIG_FULLSCREEN}:g" \
+    -e "s:# \(video_threaded =\).*:\1 ${RETROARCH_CONFIG_THREADED_VIDEO}:g" \
     ${RETROARCH_CONFIG_FILE} || exit 1
 
   echo -e "\n# Video" >> ${RETROARCH_CONFIG_FILE}
