@@ -247,12 +247,6 @@ CONFIGUREOPTS = " \
   --sysconfdir=${sysconfdir} \
 "
 
-RETROARCH_CONFIG_FONT_SIZE ?= "10"
-
-RETROARCH_CONFIG_XMB_SHADOWS ?= "true"
-RETROARCH_CONFIG_XMB_THEME_COLOR ?= "5"
-RETROARCH_CONFIG_XMB_THEME_INDEX ?= "0"
-
 FILES_${PN} += "/usr/share/metainfo"
 
 do_retroarch_config() {

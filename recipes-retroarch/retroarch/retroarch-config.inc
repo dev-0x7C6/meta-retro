@@ -32,3 +32,10 @@ RETROARCH_CONFIG_THREADED_VIDEO ??= "true"
 
 # Desired audio latency in milliseconds. Might not be honored if driver can't provide given latency.
 RETROARCH_CONFIG_AUDIO_LATENCY ??= "256"
+
+# XMB Theme settings
+RETROARCH_CONFIG_FONT_SIZE ?= "10"
+
+RETROARCH_CONFIG_XMB_SHADOWS ?= "true"
+RETROARCH_CONFIG_XMB_THEME_COLOR ?= "3"
+RETROARCH_CONFIG_XMB_THEME_INDEX ?= "0"
