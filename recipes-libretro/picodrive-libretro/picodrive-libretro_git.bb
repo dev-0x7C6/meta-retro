@@ -7,20 +7,5 @@ inherit libretro
 
 LIBRETRO_GIT_REPO = "github.com/libretro/picodrive.git"
 
-do_compile() {
-  if [ ! -z "${LIBRETRO_MAKEFILE_PREFIX}" ]; then
-    echo "prefix changed: ${LIBRETRO_MAKEFILE_PREFIX}"
-    cd ${LIBRETRO_MAKEFILE_PREFIX}
-  fi
-  
-  if [ "${TUNE_ARCH}" = "arm" ]; then
-    oe_runmake -f Makefile.libretro platform=armv
-  elif [ "${TUNE_ARCH}" = "aarch64" ]; then
-    oe_runmake -f Makefile.libretro platform=aarch64
-  else   
-    oe_runmake -f Makefile.libretro ${LIBRETRO_FINAL_MAKEFLAGS} \
-    ARCH=${LIBRETRO_CPU_ARCH} \
-    ARM="${IS_ARM_ARCH}" \
-    CPU_ARCH=${TUNE_ARCH}
-  fi
-}
+# More details here: https://github.com/dev-0x7C6/meta-retro/pull/2#
+LIBRETRO_PLATFORM_arm32 = "armv"
