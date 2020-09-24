@@ -55,6 +55,7 @@ LIBRETRO_CORE_PACKAGES ?= " \
   nxengine-libretro \
   o2em-libretro \
   opera-libretro \
+  picodrive-libretro \
   pokemini-libretro \
   ppsspp-libretro \
   px68k-libretro \
