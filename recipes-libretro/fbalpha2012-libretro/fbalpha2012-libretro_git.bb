@@ -9,4 +9,3 @@ LIBRETRO_CORE = "svn-current/trunk/fbalpha2012"
 LIBRETRO_GIT_REPO = "github.com/libretro/fbalpha2012.git"
 
 LIBRETRO_MAKEFILE_PREFIX = "svn-current/trunk"
-LIBRETRO_MAKEFILE_FILENAME_OVERRIDE = "makefile.libretro"

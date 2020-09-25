@@ -6,4 +6,3 @@ inherit libretro
 LIBRETRO_GIT_REPO = "github.com/libretro/mgba.git"
 
 LIBRETRO_EXTRA_MAKEFLAGS = "HAVE_VFS_FD=0"
-LIBRETRO_PLATFORM="unix"

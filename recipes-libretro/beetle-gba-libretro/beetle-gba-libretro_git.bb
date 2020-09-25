@@ -7,6 +7,3 @@ inherit libretro
 
 LIBRETRO_CORE = "mednafen_gba"
 LIBRETRO_GIT_REPO = "github.com/libretro/beetle-gba-libretro.git"
-
-LIBRETRO_PLATFORM = "unix"
-LIBRETRO_PLATFORM_AUTODETECT_RPI1 = "unix"
