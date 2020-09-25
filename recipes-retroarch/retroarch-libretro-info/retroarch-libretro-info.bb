@@ -22,5 +22,5 @@ FILES_${PN} += "${RETROARCH_LIBRETRO_CORES_INFO_DIR}"
 
 do_install() {
   install -d ${D}${RETROARCH_LIBRETRO_CORES_INFO_DIR}
-  cp -rf --preserve=mode ${S}/dist/info/* ${D}${RETROARCH_LIBRETRO_CORES_INFO_DIR}
+  cp -R --no-dereference --preserve=mode,links -v ${S}/dist/info/* ${D}${RETROARCH_LIBRETRO_CORES_INFO_DIR}
 }

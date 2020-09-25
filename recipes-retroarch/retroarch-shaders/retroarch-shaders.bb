@@ -31,5 +31,5 @@ do_install() {
     ${S}/README.md \
     ${S}/configure
 
-  cp -rf --preserve=mode ${S}/* ${D}${RETROARCH_SHADERS_DIR}
+  cp -R --no-dereference --preserve=mode,links -v ${S}/* ${D}${RETROARCH_SHADERS_DIR}
 }

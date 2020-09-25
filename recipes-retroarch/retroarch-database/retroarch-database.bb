@@ -42,7 +42,7 @@ do_install() {
 # FIXME: files with character [ or ] failing at rpm package stage
 # WORKAROUND: use ipk by default package class
 # UPSTREAM: https://bugzilla.yoctoproject.org/show_bug.cgi?id=13746
-  cp -rf --preserve=mode ${S}/cht/* ${D}${RETROARCH_DATABASE_CHEATS_DIR}/
-  cp -rf --preserve=mode ${S}/rdb/* ${D}${RETROARCH_DATABASE_TITLES_DIR}/
-  cp -rf --preserve=mode ${S}/cursors/* ${D}${RETROARCH_DATABASE_CURSORS_DIR}/
+  cp -R --no-dereference --preserve=mode,links -v ${S}/cht/* ${D}${RETROARCH_DATABASE_CHEATS_DIR}/
+  cp -R --no-dereference --preserve=mode,links -v ${S}/rdb/* ${D}${RETROARCH_DATABASE_TITLES_DIR}/
+  cp -R --no-dereference --preserve=mode,links -v ${S}/cursors/* ${D}${RETROARCH_DATABASE_CURSORS_DIR}/
 }

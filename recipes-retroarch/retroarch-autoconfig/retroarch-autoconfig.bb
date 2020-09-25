@@ -32,5 +32,5 @@ do_install() {
   rm -f ${S}/Makefile \
     ${S}/configure
  
-  cp -rf --preserve=mode ${S}/* ${D}${RETROARCH_AUTOCONFIG_DIR}
+  cp -R --no-dereference --preserve=mode,links -v ${S}/* ${D}${RETROARCH_AUTOCONFIG_DIR}
 }

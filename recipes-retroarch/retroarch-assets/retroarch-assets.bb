@@ -57,5 +57,5 @@ do_install() {
     ${S}/configure \
     ${S}/src
 
-  cp -rf --preserve=mode ${S}/* ${D}${RETROARCH_ASSETS_DIR}
+  cp -R --no-dereference --preserve=mode,links -v ${S}/* ${D}${RETROARCH_ASSETS_DIR}
 }
