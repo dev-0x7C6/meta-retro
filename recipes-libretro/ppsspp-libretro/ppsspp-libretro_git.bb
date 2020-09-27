@@ -5,15 +5,15 @@ LIC_FILES_CHKSUM = "file://LICENSE.TXT;md5=e336f8162cddec7981e240f46825d8a2"
 
 inherit cmake retro-overrides retroarch-paths retroarch-checks
 
+SRC_URI = "git://github.com/hrydgard/ppsspp.git;nobranch=1;protocol=https"
+SRCREV = "v1.11"
+
 S = "${WORKDIR}/git"
-SRC_URI = " \
-  gitsm://github.com/hrydgard/ppsspp.git;protocol=https \
-  file://0001-Revert-Mpeg-Parse-video-streams-from-PSMF-header.patch \
-"
 
-SRCREV = "${AUTOREV}"
+#Need to be reworked, switched to included ffmpeg
+#LIBRETRO_CORE_PATCHES += "file://0001-Revert-Mpeg-Parse-video-streams-from-PSMF-header.patch"
 
-OECMAKE_FIND_ROOT_PATH_MODE_PROGRAM = "/usr/bin"
+#LIBRETRO_CORE_SOURCE_PATH = "lib"
 
 DEPENDS = " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'virtual/libgl ', '', d)} \
@@ -26,10 +26,10 @@ PACKAGECONFIG ?=  " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'vulkan', '', d)} \
   libretro \
   libzip \
-  system-ffmpeg \
 "
 
-CCACHE_DISABLE = "1"
+# Workaround for aarch64
+PACKAGECONFIG_append_arm64 = " system-ffmpeg"
 
 PACKAGECONFIG_append_armarch = " ${@bb.utils.contains('TUNE_FEATURES', 'neon', 'armv7 arm', 'arm', d)}"
 PACKAGECONFIG_append_mipsarch = " mips"
