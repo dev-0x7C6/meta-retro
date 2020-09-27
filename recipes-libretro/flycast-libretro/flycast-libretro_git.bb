@@ -15,9 +15,13 @@ LIBRETRO_REPRESENT_ARM64 = "arm64"
 LIBRETRO_PLATFORM_arm32 = "armv"
 LIBRETRO_PLATFORM_arm64 = "arm64"
 
+# Use AS as default for x86 and x86_64, CC for others
+CC_AS = "${CC}"
+CC_AS_x86arch = "${AS}"
+
 # Port patches from lakka
 LIBRETRO_CORE_PATCHES = "file://flycast-01-buildfix.patch"
-LIBRETRO_EXTRA_MAKEFLAGS += "AS="${AS}" CC_AS="${CC}" HAVE_OPENMP=0 HAVE_LTCG=0"
+LIBRETRO_EXTRA_MAKEFLAGS += "AS="${AS}" CC_AS="${CC_AS}" HAVE_OPENMP=0 HAVE_LTCG=0"
 TARGET_LDFLAGS += "-lrt"
 
 # Flycast overrides passed LDFLAGS and have special LDFLAGS_END to append them if needed
