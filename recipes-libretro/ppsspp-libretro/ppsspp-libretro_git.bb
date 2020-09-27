@@ -8,7 +8,9 @@ inherit libretro-vulkan-deps
 
 LIBRETRO_GIT_REPO = "github.com/hrydgard/ppsspp.git"
 
-LIBRETRO_CORE_PATCHES = "file://0001-Revert-Mpeg-Parse-video-streams-from-PSMF-header.patch"
+#Need to be reworked, switched to included ffmpeg
+#LIBRETRO_CORE_PATCHES += "file://0001-Revert-Mpeg-Parse-video-streams-from-PSMF-header.patch"
+
 LIBRETRO_CORE_SOURCE_PATH = "lib"
 
 DEPENDS = " \
@@ -21,8 +23,10 @@ PACKAGECONFIG ?=  " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'egl gles', '', d)} \
   libretro \
   libzip \
-  system-ffmpeg \
 "
+
+# Workaround for aarch64
+PACKAGECONFIG_append_arm64 = " system-ffmpeg"
 
 PACKAGECONFIG_append_armarch = " ${@bb.utils.contains('TUNE_FEATURES', 'neon', 'armv7 arm', 'arm', d)}"
 PACKAGECONFIG_append_mipsarch = " mips"
