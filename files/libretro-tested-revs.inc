@@ -82,6 +82,7 @@ LIBRETRO_GIT_REV_pn-theodore-libretro ?= "a965b9890ae4c7f56b8154176561624881d041
 LIBRETRO_GIT_REV_pn-tyrquake-libretro ?= "7f175ba5c51c65e815a239ff32fb4aae6564c0a7"
 LIBRETRO_GIT_REV_pn-vba-next-libretro ?= "b3af9086575ecc2fa99e9d0249c7a7ac3605b5bf"
 LIBRETRO_GIT_REV_pn-vecx-libretro ?= "dceb538e5d9bcec5fdb08970c581afbab63c88e9"
+LIBRETRO_GIT_REV_pn-vemulator-libretro ?= "314051da88345d46070e09898f9f7771cc8626d3"
 LIBRETRO_GIT_REV_pn-vice-libretro ?= "1e3ca90d869a57d1410f75071a0591631b3399a9"
 LIBRETRO_GIT_REV_pn-vice-x128-libretro ?= "1e3ca90d869a57d1410f75071a0591631b3399a9"
 LIBRETRO_GIT_REV_pn-vice-x64sc-libretro ?= "1e3ca90d869a57d1410f75071a0591631b3399a9"
