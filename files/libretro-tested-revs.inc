@@ -80,6 +80,7 @@ LIBRETRO_GIT_REV_pn-stella2014-libretro ?= "3e8c0805df27a7bab3fe31f831521bab5c16
 LIBRETRO_GIT_REV_pn-tgbdual-libretro ?= "a7b8bb3a3faabcb2f449d3f65ab53357ec074d99"
 LIBRETRO_GIT_REV_pn-theodore-libretro ?= "a965b9890ae4c7f56b8154176561624881d041eb"
 LIBRETRO_GIT_REV_pn-tyrquake-libretro ?= "7f175ba5c51c65e815a239ff32fb4aae6564c0a7"
+LIBRETRO_GIT_REV_pn-uzem-libretro ?= "faa6c67ce9bc2d1540c9ace78e63124202c5eb44"
 LIBRETRO_GIT_REV_pn-vba-next-libretro ?= "b3af9086575ecc2fa99e9d0249c7a7ac3605b5bf"
 LIBRETRO_GIT_REV_pn-vbam-libretro ?= "36b011c72e5e6f7be4cebb24f3b8324ec209aef0"
 LIBRETRO_GIT_REV_pn-vecx-libretro ?= "dceb538e5d9bcec5fdb08970c581afbab63c88e9"

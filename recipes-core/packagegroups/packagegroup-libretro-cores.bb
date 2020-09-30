@@ -59,6 +59,7 @@ LIBRETRO_CORE_PACKAGES ?= " \
   pokemini-libretro \
   ppsspp-libretro \
   px68k-libretro \
+  uzem-libretro \
   vecx-libretro \
 "
 
