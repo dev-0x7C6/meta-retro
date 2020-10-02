@@ -1,0 +1,29 @@
+From 1fd1db8d7f6baadddd795e118a1570355d1868f9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bart=C5=82omiej=20Burdukiewicz?=
+ <bartlomiej.burdukiewicz@gmail.com>
+Date: Fri, 2 Oct 2020 14:06:00 +0200
+Subject: [PATCH] Fixed missing cstring include.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Bartłomiej Burdukiewicz <bartlomiej.burdukiewicz@gmail.com>
+---
+ Common/FakeCPUDetect.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Common/FakeCPUDetect.cpp b/Common/FakeCPUDetect.cpp
+index d6244a9ee..e110f0cdc 100644
+--- a/Common/FakeCPUDetect.cpp
++++ b/Common/FakeCPUDetect.cpp
+@@ -15,8 +15,9 @@
+ // Official SVN repository and contact information can be found at
+ // http://code.google.com/p/dolphin-emu/
+ 
+-#include <memory>
+ #include <cstdint>
++#include <cstring>
++#include <memory>
+ 
+ #include "Common.h"
+ #include "CPUDetect.h"
