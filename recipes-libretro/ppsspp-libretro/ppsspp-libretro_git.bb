@@ -11,8 +11,6 @@ LIBRETRO_GIT_REPO = "github.com/hrydgard/ppsspp.git"
 #Need to be reworked, switched to included ffmpeg
 #LIBRETRO_CORE_PATCHES += "file://0001-Revert-Mpeg-Parse-video-streams-from-PSMF-header.patch"
 
-LIBRETRO_CORE_PATCHES += "file://0001-Fixed-missing-cstring-include.patch"
-
 LIBRETRO_CORE_SOURCE_PATH = "lib"
 
 DEPENDS = " \
