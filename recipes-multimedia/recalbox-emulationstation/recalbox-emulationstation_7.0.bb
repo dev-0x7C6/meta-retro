@@ -3,8 +3,10 @@ LIC_FILES_CHKSUM="file://LICENSE.md;md5=a1de4af539197c968484564e2632ac9e"
 
 inherit cmake
 
-SRCREV = "v${PV}"
-SRC_URI = "gitsm://github.com/RetroPie/EmulationStation.git;protocol=https;branch=stable"
+SRCREV = "7.0-Reloaded"
+SRC_URI = "gitsm://gitlab.com/recalbox/recalbox-emulationstation.git;protocol=https;branch=master \
+           file://0001-Fixed-missing-string-include.patch \
+           "
 S = "${WORKDIR}/git"
 
 DEPENDS = " \
@@ -12,10 +14,12 @@ DEPENDS = " \
   curl \
   freeimage \
   freetype \
+  ffmpeg \
+  libzip \
   libeigen \
   libsdl2 \
+  libsdl2-mixer \
   rapidjson \
-  vlc \
 "
 
 PACKAGECONFIG_rpi ??= " \
