@@ -2,6 +2,8 @@ inherit bundle
 
 LICENSE = "MIT"
 
+RAUC_BUNDLE_COMPATIBLE = "${MACHINE}-${DISTRO_NAME}"
+
 RAUC_BUNDLE_SLOTS = "rootfs"
 
 RETRO_RAUC_KEY_FILE ?= "${THISDIR}/test.key.pem"
