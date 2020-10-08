@@ -1,11 +1,25 @@
 inherit core-image
 
+SPLASH_rpi = "psplash-raspberrypi"
+
+RETRO_IMAGE_INSTALL_DEBUG_TWEAKS ?= " \
+    strace \
+    htop \
+    mc \
+    vim \
+"
+
+RETRO_IMAGE_FEATURES_FOR_DEBUG_TWEAKS ?= "ssh-server-dropbear"
+
+IMAGE_FEATURES += "${RETRO_IMAGE_FEATURES_FOR_DEBUG_TWEAKS} splash"
+
 IMAGE_INSTALL_append = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', 'pulseaudio-server', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-automount', 'udev-extraconf', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-firmware', 'firmware-libretro', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'retroarch-service', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'weston', '', d)} \
+    ${@bb.utils.contains('EXTRA_IMAGE_FEATURES', 'debug-tweaks', '${RETRO_IMAGE_INSTALL_DEBUG_TWEAKS}', '', d)} \
     ${@bb.utils.filter('DISTRO_FEATURES', 'kodi rauc', d)} \
     ${RETRO_ADDITIONAL_MULTIMEDIA_PACKAGES} \
     cool-retro-term \
