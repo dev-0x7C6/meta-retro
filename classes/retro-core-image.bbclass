@@ -3,9 +3,10 @@ inherit core-image
 SPLASH_rpi = "psplash-raspberrypi"
 
 RETRO_IMAGE_INSTALL_DEBUG_TWEAKS ?= " \
-    strace \
     htop \
     mc \
+    net-tools \
+    strace \
     vim \
 "
 
