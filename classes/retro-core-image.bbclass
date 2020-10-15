@@ -4,10 +4,14 @@ SPLASH_rpi = "psplash-raspberrypi"
 
 RETRO_IMAGE_INSTALL_DEBUG_TWEAKS ?= " \
     htop \
+    iotop \
     mc \
     net-tools \
     strace \
     vim \
+    wget \
+    bzip2 \
+    tar \
 "
 
 RETRO_IMAGE_FEATURES_FOR_DEBUG_TWEAKS ?= "ssh-server-dropbear"
