@@ -36,4 +36,12 @@ do_deploy_append() {
         echo "gpu_freq=600" >> ${configfile}
         echo >> ${configfile}
     fi
+
+    if [ "${RPI4_OVERCLOCK_HIGH}" = "1" ]; then
+        echo "# Overclock " >> ${configfile}
+        echo "over_voltage=6" >> ${configfile}
+        echo "arm_freq=2100" >> ${configfile}
+        echo "gpu_freq=750" >> ${configfile}
+        echo >> ${configfile}
+    fi
 }
