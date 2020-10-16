@@ -12,7 +12,7 @@ TARGET_LDFLAGS += "-lpng"
 
 #TARGET_CC_ARCH += "${LDFLAGS}"
 
-S = "${WORKDIR}/FreeImage/"
+S = "${WORKDIR}/FreeImage"
 
 DEPENDS = " \
   jpeg \
