@@ -9,7 +9,7 @@ inherit bundle
 
 SRC_URI += "file://hook.sh"
 
-RAUC_BUNDLE_COMPATIBLE = "${MACHINE}-${DISTRO_NAME}"
+RAUC_BUNDLE_COMPATIBLE = "${MACHINE}-${DISTRO}"
 
 RAUC_BUNDLE_HOOKS[file] ?= "hook.sh"
 RAUC_BUNDLE_SLOTS = "rootfs"
