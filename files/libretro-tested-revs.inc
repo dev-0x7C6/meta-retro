@@ -96,4 +96,5 @@ LIBRETRO_GIT_REV_pn-vice-xplus4-libretro ?= "254f5b4d17989c83271aaa24958894b1e53
 LIBRETRO_GIT_REV_pn-vice-xscpu64-libretro ?= "254f5b4d17989c83271aaa24958894b1e538580d"
 LIBRETRO_GIT_REV_pn-vice-xvic-libretro ?= "254f5b4d17989c83271aaa24958894b1e538580d"
 LIBRETRO_GIT_REV_pn-virtualjaguar-libretro ?= "575371decc78b186273146126140268c3efb7ce4"
+LIBRETRO_GIT_REV_pn-xmil-libretro ?= "fa41c8ba36d55241da8c0406a88bde61a79cc2ec"
 LIBRETRO_GIT_REV_pn-yabause-libretro ?= "f515e5a49336195c61b751e539aadae72fbe0aa7"
