@@ -59,8 +59,10 @@ LIBRETRO_CORE_PACKAGES ?= " \
   pokemini-libretro \
   ppsspp-libretro \
   px68k-libretro \
+  race-libretro \
   uzem-libretro \
   vecx-libretro \
+  xmil-libretro \
 "
 
 RRECOMMENDS_${PN}_append = " ${LIBRETRO_CORE_PACKAGES}"
