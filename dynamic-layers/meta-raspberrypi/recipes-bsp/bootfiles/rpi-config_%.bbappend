@@ -1,7 +1,7 @@
 # Check overclocking settings before running
 RPI_ENABLE_MANUAL_OVERCLOCKING ?= "0"
 RPI_OC_OVER_VOLTAGE ?= "0"
-RPI_OC_ARM_FREQ ?= "1"
+RPI_OC_ARM_FREQ ?= "0"
 RPI_OC_GPU_FREQ ?= "0"
 
 do_deploy_append() {
