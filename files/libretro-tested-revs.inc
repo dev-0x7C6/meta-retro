@@ -50,6 +50,7 @@ LIBRETRO_GIT_REV_pn-mame2010-libretro ?= "2d2e86b5d8dced24a390bbb3b44d913833a1f6
 LIBRETRO_GIT_REV_pn-mame2015-libretro ?= "969bf4a4376866f046c885237ee6aee37fe04bf4"
 LIBRETRO_GIT_REV_pn-mame2016-libretro ?= "d53c379892b0bd91b4a52fc2de491e1199f03e32"
 LIBRETRO_GIT_REV_pn-masen-libretro ?= "aa2f444467ab92b8f4faaffbf013c728e79e2d8a"
+LIBRETRO_GIT_REV_pn-masen-s-libretro ?= "56989d162671cfb8fe1720b72eec315ec9e4f844"
 LIBRETRO_GIT_REV_pn-melonds-libretro ?= "27582dcd2ae36dcce2a4f38833aaa510e0a4ab8d"
 LIBRETRO_GIT_REV_pn-mgba-libretro ?= "d90a2e7f448bc95eef795af44c1770095705343e"
 LIBRETRO_GIT_REV_pn-mrboom-libretro ?= "c118aed759088cd176d5ab7d84c658430448c12d"
