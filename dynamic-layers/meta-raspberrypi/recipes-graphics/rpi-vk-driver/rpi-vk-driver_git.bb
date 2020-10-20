@@ -35,3 +35,33 @@ PACKAGECONFIG ??= "${@bb.utils.filter('DISTRO_FEATURES', 'wayland x11', d)}"
 
 PACKAGECONFIG[x11] = "-DBUILD_WSI_XLIB_SUPPORT=ON -DBUILD_WSI_XCB_SUPPORT=ON, -DBUILD_WSI_XLIB_SUPPORT=OFF -DBUILD_WSI_XCB_SUPPORT=OFF, libxcb libx11 libxrandr"
 PACKAGECONFIG[wayland] = "-DBUILD_WSI_WAYLAND_SUPPORT=ON, -DBUILD_WSI_WAYLAND_SUPPORT=OFF, wayland"
+
+#  The driver currently supports the following Raspberry Pi models:
+#
+#  Zero
+#  Zero W
+#  1 Model A
+#  1 Model A+
+#  1 Model B
+#  1 Model B+
+#  2 Model B
+#  3 Model A+
+#  3 Model B
+#  3 Model B+
+#  Compute Module 1
+#  Compute Module 3
+#  Compute Module 3 lite
+#  Compute Module 3+
+#  Compute Module 3+ lite
+
+COMPATIBLE_MACHINE_raspberrypi = "(.*)"
+COMPATIBLE_MACHINE_raspberrypi-cm = "(.*)"
+COMPATIBLE_MACHINE_raspberrypi-cm3 = "(.*)"
+COMPATIBLE_MACHINE_raspberrypi0 = "(.*)"
+COMPATIBLE_MACHINE_raspberrypi0-wifi = "(.*)"
+COMPATIBLE_MACHINE_raspberrypi2 = "(.*)"
+COMPATIBLE_MACHINE_raspberrypi3 = "(.*)"
+COMPATIBLE_MACHINE_raspberrypi3-64 = "(.*)"
+
+# It is not compatible with raspberrypi4 (Video Core VI) chipsets 
+COMPATIBLE_MACHINE = "(!.*)"
