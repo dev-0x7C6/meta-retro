@@ -9,6 +9,8 @@ SRC_URI = "git://github.com/Yours3lf/rpi-vk-driver.git;protocol=https;branch=mas
 SRCREV = "39bb5f20e39185bf41a636a238437d55dc6ded5a"
 S = "${WORKDIR}/git"
 
+PV = "1.0+git${SRCPV}"
+
 DEPENDS += "libdrm vulkan-headers expat zlib"
 
 REQUIRED_DISTRO_FEATURES = "vulkan"
