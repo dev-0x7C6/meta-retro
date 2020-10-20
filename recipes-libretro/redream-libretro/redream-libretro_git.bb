@@ -9,5 +9,3 @@ LIBRETRO_MAKEFILE_PREFIX = "deps/libretro"
 
 LIBRETRO_CORE = "deps/libretro/retrodream"
 LIBRETRO_GIT_REPO = "github.com/libretro/redream.git"
-
-LIBRETRO_PLATFORM_append_opengles = "-gles"
