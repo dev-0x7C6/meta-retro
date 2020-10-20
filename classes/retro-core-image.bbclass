@@ -18,6 +18,7 @@ RETRO_IMAGE_INSTALL_DEBUG_TWEAKS ?= " \
 "
 
 RETRO_IMAGE_FEATURES_FOR_DEBUG_TWEAKS ?= "ssh-server-dropbear"
+RETRO_CORE_IMAGE_EXTRA ?= ""
 
 IMAGE_FEATURES += "${RETRO_IMAGE_FEATURES_FOR_DEBUG_TWEAKS} splash"
 
@@ -30,6 +31,7 @@ IMAGE_INSTALL_append = " \
     ${@bb.utils.contains('EXTRA_IMAGE_FEATURES', 'debug-tweaks', '${RETRO_IMAGE_INSTALL_DEBUG_TWEAKS}', '', d)} \
     ${@bb.utils.filter('DISTRO_FEATURES', 'kodi rauc', d)} \
     ${RETRO_ADDITIONAL_MULTIMEDIA_PACKAGES} \
+    ${RETRO_CORE_IMAGE_EXTRA} \
     cool-retro-term \
     kernel-modules \
     packagegroup-core-boot \
