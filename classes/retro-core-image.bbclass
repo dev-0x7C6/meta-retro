@@ -1,6 +1,6 @@
 inherit core-image
 
-IMAGE_FSTYPES += "wic ext4"
+IMAGE_FSTYPES += "ext4"
 
 SPLASH_rpi = "psplash-raspberrypi"
 
