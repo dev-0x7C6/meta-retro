@@ -5,6 +5,7 @@ IMAGE_FSTYPES += "ext4"
 SPLASH_rpi = "psplash-raspberrypi"
 
 RETRO_IMAGE_INSTALL_DEBUG_TWEAKS ?= " \
+    alsa-utils \
     bzip2 \
     hdparm \
     htop \
