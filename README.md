@@ -34,6 +34,8 @@ I'm currently testing builds with those machines:
 * raspberrypi3-64 *(meta-raspberrypi)*
 * raspberrypi4 *(meta-raspberrypi)*
 * raspberrypi4-64 *(meta-raspberrypi)*
+* orange-pi-pc *(meta-sunxi)*
+* cubietruck *(meta-sunxi)* (unfortunately unable to run kms with lima(mesa) driver, probably some silicon issues)
 
 ## Distro features
 
