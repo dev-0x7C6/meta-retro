@@ -25,7 +25,7 @@ There are:
 
 It's recommended to use **[retro-image-full](recipes-core/images/retro-image-full.bb)**.
 
-#### Support and tests
+## Tested platforms
 
 I'm currently testing builds with those machines: 
 * intel-core2-32 *(meta-intel)*
@@ -35,7 +35,7 @@ I'm currently testing builds with those machines:
 * raspberrypi4 *(meta-raspberrypi)*
 * raspberrypi4-64 *(meta-raspberrypi)*
 * orange-pi-pc *(meta-sunxi)*
-* cubietruck *(meta-sunxi)* (unfortunately unable to run kms with lima(mesa) driver, probably some silicon issues)
+* cubietruck *(meta-sunxi)* - unfortunately unable to run kms with lima(mesa) driver, probably some silicon issues.
 
 ## Distro features
 
