@@ -12,3 +12,5 @@ LIBRETRO_EXTRA_MAKEFLAGS = "EMUTYPE=${VICE_EMU_TYPE} LEX=flex"
 
 LIBRETRO_GIT_REPO ?= "github.com/libretro/vice-libretro.git"
 LIBRETRO_CORE = "vice_${VICE_EMU_TYPE}"
+
+INSANE_SKIP_${PN} += "already-stripped"
