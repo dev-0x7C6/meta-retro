@@ -1,0 +1,13 @@
+# short-description: Create Raspberry Pi SD card image suitable for Retro distro with rauc
+
+part /boot --source bootimg-partition --ondisk mmcblk0 --fstype=vfat --label boot --active --align 4096 --size 20
+
+# Setup for rootfs A/B
+part / --source rootfs --ondisk mmcblk0 --fstype=ext4 --label rootfs.0 --align 4096
+part / --source rootfs --ondisk mmcblk0 --fstype=ext4 --label rootfs.1 --align 4096
+
+#BUG: --exclude-path=home/ make everything owned by 1000:1000 in rootfs
+#BUG: https://bugzilla.yoctoproject.org/show_bug.cgi?id=14129
+
+# Partition for application and user data
+part /home --source rootfs --change-directory=home --ondisk mmcblk0 --fstype=ext4 --label homefs --align 4096 --size 256
