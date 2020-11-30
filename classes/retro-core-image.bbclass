@@ -6,6 +6,7 @@ SPLASH_rpi = "psplash-raspberrypi"
 
 RETRO_IMAGE_INSTALL_DEBUG_TWEAKS ?= " \
     alsa-utils \
+    blktrace \
     bzip2 \
     elfutils \
     gptfdisk \
@@ -14,6 +15,7 @@ RETRO_IMAGE_INSTALL_DEBUG_TWEAKS ?= " \
     iotop \
     mc \
     net-tools \
+    procps \
     strace \
     tar \
     util-linux \
