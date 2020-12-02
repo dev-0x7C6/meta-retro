@@ -6,6 +6,7 @@ SPLASH_rpi = "psplash-raspberrypi"
 
 RETRO_IMAGE_INSTALL_DEBUG_TWEAKS ?= " \
     alsa-utils \
+    binutils \
     blktrace \
     bzip2 \
     elfutils \
@@ -22,6 +23,8 @@ RETRO_IMAGE_INSTALL_DEBUG_TWEAKS ?= " \
     vim \
     wget \
 "
+
+RETRO_IMAGE_INSTALL_DEBUG_TWEAKS_append_rpi = " userland"
 
 RETRO_IMAGE_FEATURES_FOR_DEBUG_TWEAKS ?= "ssh-server-dropbear"
 RETRO_CORE_IMAGE_EXTRA ?= ""
