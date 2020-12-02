@@ -22,7 +22,7 @@ DEPENDS += "dbus polkit systemd vim-native"
 REQUIRED_DISTRO_FEATURES = "polkit systemd"
 
 USERADD_PACKAGES = "${PN}"
-USERADD_PARAM_${PN} = "--system --no-create-home --user-group rtkit"
+USERADD_PARAM_${PN} = "--system --no-create-home --home /dev/null --shell /bin/nologin --user-group rtkit"
 
 PACKAGECONFIG ??= "${@bb.utils.filter('DISTRO_FEATURES', 'systemd', d)}"
 
