@@ -17,12 +17,10 @@ DEPENDS = " \
 PACKAGECONFIG ?=  " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'egl', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'egl', '', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'vulkan', '', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'x11', '', d)} \
+  ${@bb.utils.filter('DISTRO_FEATURES', 'llvm vulkan x11', d)} \
   evdev \
   sdl \
   libretro \
-  llvm \
 "
 
 PACKAGECONFIG_append_32bit = " generic"
