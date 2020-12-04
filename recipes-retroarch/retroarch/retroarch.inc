@@ -22,7 +22,7 @@ SRC_URI = "gitsm://github.com/libretro/RetroArch.git ${RETROARCH_PATCHES}"
 
 RETROARCH_PATCHES ?= ""
 
-inherit autotools-brokensep pkgconfig retro-overrides retroarch-paths retroarch-checks
+inherit autotools-brokensep pkgconfig retro-overrides retroarch-paths retroarch-checks deploy
 require retroarch-config.inc
 
 DEPENDS = " \
@@ -254,6 +254,7 @@ do_retroarch_config() {
 
   cd ${S}
   git checkout -- "retroarch.cfg"
+  cp "retroarch.cfg" "retroarch.cfg.stock"
 
   sed -i \
     -e "s:# \(assets_directory =\).*:\1 \"${RETROARCH_ASSETS_DIR}\":g" \
@@ -302,3 +303,11 @@ do_configure() {
   export PKG_CONF_PATH="pkg-config"
   ./configure ${CONFIGUREOPTS} ${PACKAGECONFIG_CONFARGS}
 }
+
+do_deploy() {
+  install -d ${DEPLOYDIR}
+  install -m 644 ${S}/retroarch.cfg.stock ${DEPLOYDIR}
+  install -m 644 ${S}/retroarch.cfg ${DEPLOYDIR}
+}
+
+addtask deploy after do_install
