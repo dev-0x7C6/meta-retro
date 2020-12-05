@@ -23,7 +23,13 @@ SRC_URI = "gitsm://github.com/libretro/RetroArch.git ${RETROARCH_PATCHES}"
 RETROARCH_PATCHES ?= ""
 
 inherit autotools-brokensep pkgconfig retro-overrides retroarch-paths retroarch-checks deploy
-require retroarch-config.inc
+
+require include/retroarch-directories.inc
+require include/retroarch-drivers.inc
+require include/retroarch-joystick.inc
+require include/retroarch-latency.inc
+require include/retroarch-theme.inc
+require include/retroarch-video.inc
 
 DEPENDS = " \
   git-native \
@@ -249,52 +255,24 @@ CONFIGUREOPTS = " \
 
 FILES_${PN} += "/usr/share/metainfo"
 
-do_retroarch_config() {
-  RETROARCH_CONFIG_FILE="${S}/retroarch.cfg"
+RETROARCH_CONFIG_FILE = "${S}/retroarch.cfg"
 
+write_comment() {
+  echo -e "\n# ${1}" >> ${RETROARCH_CONFIG_FILE}
+}
+
+write_cfg() {
+  echo -e "${1} = \"${2}\""  >> ${RETROARCH_CONFIG_FILE}
+}
+
+write_cfg_replace() {
+  sed -i -e "s:# \(${1} =\).*:\1 \"${2}\":g" ${RETROARCH_CONFIG_FILE} || exit 1
+}
+
+do_retroarch_config() {
   cd ${S}
   git checkout -- "retroarch.cfg"
   cp "retroarch.cfg" "retroarch.cfg.stock"
-
-  sed -i \
-    -e "s:# \(assets_directory =\).*:\1 \"${RETROARCH_ASSETS_DIR}\":g" \
-    -e "s:# \(audio_driver =\).*:\1 \"${RETROARCH_DEFAULT_AUDIO_DRIVER}\":g" \
-    -e "s:# \(audio_resampler =\).*:\1 \"${RETROARCH_DEFAULT_RESAMPLER_DRIVER}\":g" \
-    -e "s:# \(cheat_database_path =\).*:\1 \"${RETROARCH_DATABASE_CHEATS_DIR}\":g" \
-    -e "s:# \(content_database_path =\).*:\1 \"${RETROARCH_DATABASE_TITLES_DIR}\":g" \
-    -e "s:# \(cursor_directory =\).*:\1 \"${RETROARCH_DATABASE_CURSORS_DIR}\":g" \
-    -e "s:# \(input_driver =\).*:\1 \"${RETROARCH_DEFAULT_INPUT_DRIVER}\":g" \
-    -e "s:# \(input_joypad_driver =\).*:\1 \"${RETROARCH_DEFAULT_JOYPAD_DRIVER}\":g" \
-    -e "s:# \(joypad_autoconfig_dir =\).*:\1 \"${RETROARCH_AUTOCONFIG_DIR}\":g" \
-    -e "s:# \(libretro_directory =\).*:\1 \"${RETROARCH_LIBRETRO_CORES_DIR}\":g" \
-    -e "s:# \(libretro_info_path =\).*:\1 \"${RETROARCH_LIBRETRO_CORES_INFO_DIR}\":g" \
-    -e "s:# \(menu_driver =\).*:\1 \"${RETROARCH_DEFAULT_MENU_DRIVER}\":g" \
-    -e "s:# \(overlay_directory =\).*:\1 \"${RETROARCH_OVERLAY_DIR}\":g" \
-    -e "s:# \(rgui_browser_directory =\).*:\1 \"${RETROARCH_MEDIA_DIR}\":g" \
-    -e "s:# \(system_directory =\).*:\1 \"${RETROARCH_SYSTEM_DIR}\":g" \
-    -e "s:# \(video_context_driver =\).*:\1 \"${RETROARCH_DEFAULT_VIDEO_CONTEXT}\":g" \
-    -e "s:# \(video_driver =\).*:\1 \"${RETROARCH_DEFAULT_VIDEO_DRIVER}\":g" \
-    -e "s:# \(video_shader_dir =\).*:\1 \"${RETROARCH_SHADERS_DIR}\":g" \
-    ${RETROARCH_CONFIG_FILE} || exit 1
-
-  sed -i \
-    -e "s:# \(audio_latency =\).*:\1 ${RETROARCH_CONFIG_AUDIO_LATENCY}:g" \
-    -e "s:# \(video_fullscreen =\).*:\1 ${RETROARCH_CONFIG_FULLSCREEN}:g" \
-    -e "s:# \(video_threaded =\).*:\1 ${RETROARCH_CONFIG_THREADED_VIDEO}:g" \
-    ${RETROARCH_CONFIG_FILE} || exit 1
-
-  echo -e "\n# Video" >> ${RETROARCH_CONFIG_FILE}
-  echo "video_font_size = \"${RETROARCH_CONFIG_FONT_SIZE}\"" >> ${RETROARCH_CONFIG_FILE}
-
-  echo -e "\n# Themes" >> ${RETROARCH_CONFIG_FILE}
-  echo "xmb_menu_color_theme = \"${RETROARCH_CONFIG_XMB_THEME_COLOR}\"" >> ${RETROARCH_CONFIG_FILE}
-  echo "xmb_shadows_enable = \"${RETROARCH_CONFIG_XMB_SHADOWS}\"" >> ${RETROARCH_CONFIG_FILE}
-  echo "xmb_theme = \"${RETROARCH_CONFIG_XMB_THEME_INDEX}\"" >> ${RETROARCH_CONFIG_FILE}
-
-  echo -e "\n# Input" >> ${RETROARCH_CONFIG_FILE}
-  for index in {1..16}; do
-    echo "input_player${index}_left = \"left\"" >> ${RETROARCH_CONFIG_FILE}
-  done
 }
 
 addtask retroarch_config after do_unpack before do_patch

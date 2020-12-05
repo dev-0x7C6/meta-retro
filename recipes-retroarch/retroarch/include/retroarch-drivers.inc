@@ -1,4 +1,4 @@
-# Default retroarch drivers
+# meta-retro defaults for retroarch
 
 # Input driver. Depending on video driver, it might force a different input driver.
 RETROARCH_DEFAULT_INPUT_DRIVER ??= "udev"
@@ -24,18 +24,12 @@ RETROARCH_DEFAULT_RESAMPLER_DRIVER ??= "sinc"
 # Menu driver to use. ("rgui", "xmb", "glui")
 RETROARCH_DEFAULT_MENU_DRIVER ??= "xmb"
 
-# Start in fullscreen. Can be changed at runtime.
-RETROARCH_CONFIG_FULLSCREEN ??= "true"
-
-# Use threaded video driver. Using this might improve performance at possible cost of latency and more video stuttering.
-RETROARCH_CONFIG_THREADED_VIDEO ??= "true"
-
-# Desired audio latency in milliseconds. Might not be honored if driver can't provide given latency.
-RETROARCH_CONFIG_AUDIO_LATENCY ??= "256"
-
-# XMB Theme settings
-RETROARCH_CONFIG_FONT_SIZE ?= "10"
-
-RETROARCH_CONFIG_XMB_SHADOWS ?= "true"
-RETROARCH_CONFIG_XMB_THEME_COLOR ?= "3"
-RETROARCH_CONFIG_XMB_THEME_INDEX ?= "0"
+do_retroarch_config_append() {
+  write_cfg_replace "audio_driver" "${RETROARCH_DEFAULT_AUDIO_DRIVER}"
+  write_cfg_replace "audio_resampler" "${RETROARCH_DEFAULT_RESAMPLER_DRIVER}"
+  write_cfg_replace "input_driver" "${RETROARCH_DEFAULT_INPUT_DRIVER}"
+  write_cfg_replace "input_joypad_driver" "${RETROARCH_DEFAULT_JOYPAD_DRIVER}"
+  write_cfg_replace "menu_driver" "${RETROARCH_DEFAULT_MENU_DRIVER}"
+  write_cfg_replace "video_context_driver" "${RETROARCH_DEFAULT_VIDEO_CONTEXT}"
+  write_cfg_replace "video_driver" "${RETROARCH_DEFAULT_VIDEO_DRIVER}"
+}
