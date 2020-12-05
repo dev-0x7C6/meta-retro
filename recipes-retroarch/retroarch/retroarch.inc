@@ -35,7 +35,6 @@ DEPENDS = " \
   git-native \
   libxml2 \
   mbedtls \
-  zlib \
 "
 # Package config
 
