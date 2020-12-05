@@ -1,6 +1,7 @@
 RPI_ALWAYS_FULLHD ?= "1"
 RPI_ENABLE_AUDIO ?= "1"
 
+MESA_ARM_PREFERRED_DRIVERS_rpi = ""
 PACKAGECONFIG_append_pn-mesa_rpi = " v3d vc4"
 
 MACHINEOVERRIDES =. "${@bb.utils.contains('MACHINE_FEATURES', 'full-kms', 'full-kms:', '', d)}"
