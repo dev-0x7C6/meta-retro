@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 SRC_URI = "file://10-home.conf"
 
-inherit systemd feature-check
+inherit systemd features_check
 
 REQUIRED_COMBINED_FEATURES = "gpt"
 
