@@ -1,3 +1,7 @@
+BENCHMARK_COLLECTION ?= " \
+    nbench-byte \
+"
+
 DEBUG_TOOLS_COLLECTION ?= " \
     alsa-utils \
     binutils \
@@ -18,4 +22,5 @@ DEBUG_TOOLS_COLLECTION ?= " \
     wget \
 "
 
+IMAGE_INSTALL += "${@bb.utils.contains('EXTRA_IMAGE_FEATURES', 'tools-debug', '${BENCHMARK_COLLECTION}', '', d)}"
 IMAGE_INSTALL += "${@bb.utils.contains('EXTRA_IMAGE_FEATURES', 'tools-debug', '${DEBUG_TOOLS_COLLECTION}', '', d)}"
