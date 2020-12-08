@@ -4,6 +4,7 @@ Description=RetroArch
 [Service]
 ExecStart=/usr/bin/retroarch
 Restart=on-failure
+User=@@RETRO_USER_NAME@@
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target
