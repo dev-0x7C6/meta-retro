@@ -29,6 +29,7 @@ require include/retroarch-directories.inc
 require include/retroarch-drivers.inc
 require include/retroarch-joystick.inc
 require include/retroarch-latency.inc
+require include/retroarch-save-strategy.inc
 require include/retroarch-theme.inc
 require include/retroarch-video.inc
 
