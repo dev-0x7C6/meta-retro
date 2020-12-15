@@ -7,7 +7,6 @@ RETROARCH_CONFIG_THREADED_VIDEO ??= "true"
 RETROARCH_CONFIG_AUDIO_LATENCY ??= "256"
 
 do_retroarch_config_append() {
-  write_comment "Latency"
   write_cfg_replace "audio_latency" "${RETROARCH_CONFIG_AUDIO_LATENCY}"
   write_cfg_replace "video_threaded" "${RETROARCH_CONFIG_THREADED_VIDEO}"
 }
