@@ -8,6 +8,8 @@ inherit libretro-cmake
 LIBRETRO_GIT_REPO = "github.com/stenzek/duckstation.git"
 LIBRETRO_CORE = "duckstation"
 
+LIBRETRO_COMMON_FLAGS = "-fPIC -shared"
+
 EXTRA_OECMAKE_append = " -DBUILD_LIBRETRO_CORE=ON"
 
 DEPENDS += " \
