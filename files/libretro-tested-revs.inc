@@ -76,6 +76,7 @@ LIBRETRO_GIT_REV_pn-quicknes-libretro ?= "b0222a87bd688b9e276b61c1c011ef0830a98b
 LIBRETRO_GIT_REV_pn-race-libretro ?= "a9bac4c2b4ea26a5efe137549c2b9c2e2a699d24"
 LIBRETRO_GIT_REV_pn-redream-libretro ?= "bf4d812daf326c56e99208a4c30acae1475fd701"
 LIBRETRO_GIT_REV_pn-reicast-libretro ?= "333b7c536071ea77b0ecc46e534cb28206e471b4"
+LIBRETRO_GIT_REV_pn-retro8-libretro ?= "b82bc9b08b757fb4a00a0d8f90605b33e998195d"
 LIBRETRO_GIT_REV_pn-smsplus-gx-libretro ?= "fc0e05d797b9c6f854ccd9fccfebd55e95aac93f"
 LIBRETRO_GIT_REV_pn-snes9x2002-libretro ?= "e6e67dc965f41dcb470692949af39e54d1cdf355"
 LIBRETRO_GIT_REV_pn-snes9x2005-libretro ?= "894fd7ddaa3c621413dbc6704840a7cc13d15a9d"
