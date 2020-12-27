@@ -1,3 +1,5 @@
+DESCRIPTION = "Snes9x 2005. Port of SNES9x 1.43 for libretro (was previously called CAT SFC)."
+
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
 
