@@ -3,9 +3,9 @@ SUMMARY = "RetroArch systemd service"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-inherit retro-user systemd deploy
+inherit deploy retro-user service-creator systemd
 
-PV = "2.0"
+PV = "2.1"
 
 # https://www.freedesktop.org/software/systemd/man/systemd.unit.html
 #
@@ -20,6 +20,7 @@ RETROARCH_SERVICE_SUCCESS_ACTION ?= "none"
 
 RETROARCH_SERVICE_USER ?= "${RETRO_USER_NAME}"
 RETROARCH_SERVICE_BINARY ?= "${bindir}/retroarch"
+RETROARCH_SERVICE_FILE ?= "retroarch.service"
 
 # Verbose mode by default
 RETROARCH_SERVICE_PARAMETERS ?= "-v"
@@ -34,27 +35,9 @@ RETROARCH_SERVICE_START_COMMAND = "${@' '.join('${RETROARCH_SERVICE_BINARY} ${RE
 RCONFLICTS_${PN} += "psplash"
 
 RDEPENDS_${PN} += "retroarch"
-SYSTEMD_SERVICE_${PN} = "retroarch.service"
-SERVICE_FILE ?= "${WORKDIR}/retroarch.service"
-
-service_create_file() {
-    echo -n > ${SERVICE_FILE}
-}
-
-service_emit_section() {
-    [ -n "${1}" ] && echo "[$1]" >> ${SERVICE_FILE}
-}
-
-service_emit_variable() {
-    [ -n "${1}" ] && [ -n "${2}" ] && echo "$1=$2" >> ${SERVICE_FILE}
-}
-
-service_emit_separator() {
-    echo >> ${SERVICE_FILE}
-}
+SYSTEMD_SERVICE_${PN} = "${RETROARCH_SERVICE_FILE}"
 
 do_compile() {
-    service_create_file
     service_emit_section "Unit"
     service_emit_variable "Description" "${SUMMARY}"
 
@@ -82,16 +65,18 @@ do_compile() {
 
     service_emit_section "Install"
     service_emit_variable "WantedBy" "multi-user.target"
+
+    service_commit ${B}/${RETROARCH_SERVICE_FILE}
 }
 
 do_install() {
     install -d ${D}${systemd_unitdir}/system
-    install -m 0644 ${WORKDIR}/retroarch.service ${D}${systemd_unitdir}/system
+    install -m 0644 ${B}/${RETROARCH_SERVICE_FILE} ${D}${systemd_unitdir}/system
 }
 
 addtask deploy after do_install
 
 do_deploy() {
     install -d ${DEPLOYDIR}/config
-    install -m 644 ${WORKDIR}/retroarch.service ${DEPLOYDIR}/config
+    install -m 644 ${B}/${RETROARCH_SERVICE_FILE} ${DEPLOYDIR}/config
 }
