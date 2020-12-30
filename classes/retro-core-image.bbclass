@@ -9,7 +9,7 @@ IMAGE_INSTALL += " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'polkit systemd', 'rtkit', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', 'pulseaudio-server', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-automount', 'udev-extraconf', '', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-autostart systemd', 'retroarch-autostart-service', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-autostart systemd', 'retroarch-service', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-firmware', 'firmware-libretro', '', d)} \
     ${@bb.utils.filter('DISTRO_FEATURES', 'kodi rauc polkit', d)} \
     kernel-modules \
