@@ -5,8 +5,6 @@ require classes/include/retro-core-image-development.inc
 require classes/include/retro-core-image-raspberrypi.inc
 require classes/include/retro-core-image-rauc.inc
 
-IMAGE_FEATURES += "splash"
-
 IMAGE_INSTALL += " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'polkit systemd', 'rtkit', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', 'pulseaudio-server', '', d)} \
