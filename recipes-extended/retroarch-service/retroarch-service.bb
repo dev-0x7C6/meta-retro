@@ -3,9 +3,9 @@ SUMMARY = "RetroArch systemd service"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-inherit deploy retro-user service-creator systemd
+inherit artifact-preview retro-user service-creator systemd
 
-PV = "2.1"
+PV = "2.2"
 
 # https://www.freedesktop.org/software/systemd/man/systemd.unit.html
 #
@@ -36,6 +36,7 @@ RCONFLICTS_${PN} += "psplash"
 
 RDEPENDS_${PN} += "retroarch"
 SYSTEMD_SERVICE_${PN} = "${RETROARCH_SERVICE_FILE}"
+ARTIFACT_PREVIEW_FILES += "${B}/${RETROARCH_SERVICE_FILE}"
 
 do_compile() {
     service_emit_section "Unit"
@@ -72,11 +73,4 @@ do_compile() {
 do_install() {
     install -d ${D}${systemd_unitdir}/system
     install -m 0644 ${B}/${RETROARCH_SERVICE_FILE} ${D}${systemd_unitdir}/system
-}
-
-addtask deploy after do_install
-
-do_deploy() {
-    install -d ${DEPLOYDIR}/config
-    install -m 644 ${B}/${RETROARCH_SERVICE_FILE} ${DEPLOYDIR}/config
 }
