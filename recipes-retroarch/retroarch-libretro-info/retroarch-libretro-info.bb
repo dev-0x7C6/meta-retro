@@ -10,10 +10,7 @@ S = "${WORKDIR}/git"
 SRC_URI = "gitsm://github.com/libretro/libretro-super.git;protocol=https"
 SRCREV = "${AUTOREV}"
 
-PV = "2020+git${SRCPV}"
-PR = "r1"
-
-inherit allarch retroarch-paths
+inherit allarch libretro-version retroarch-paths
 
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"

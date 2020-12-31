@@ -4,10 +4,7 @@ HOMEPAGE = "https://github.com/dev-0x7C6/retro-menu.git"
 LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
-inherit cmake_qt5 retroarch-paths
-
-PV = "2020+git${SRCPV}"
-PR = "r1"
+inherit cmake_qt5 libretro-version retroarch-paths
 
 SRC_URI = "git://github.com/dev-0x7C6/retro-menu.git;protocol=https;branch=master"
 SRCREV = "c21f262fad2ff150cea32f317febcbe61bc72881"

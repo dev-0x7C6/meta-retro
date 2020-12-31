@@ -12,10 +12,7 @@ S = "${WORKDIR}/git"
 SRC_URI = "gitsm://github.com/libretro/common-overlays.git;protocol=https"
 SRCREV = "${AUTOREV}"
 
-PV = "2020+git${SRCPV}"
-PR = "r2"
-
-inherit allarch retroarch-paths
+inherit allarch libretro-version retroarch-paths
 
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"

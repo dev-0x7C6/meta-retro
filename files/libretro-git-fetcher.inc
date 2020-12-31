@@ -8,4 +8,4 @@ S = "${WORKDIR}/git"
 SRC_URI = "${LIBRETRO_GIT_FETCHER}${LIBRETRO_GIT_REPO};protocol=${LIBRETRO_GIT_PROTOCOL};branch=${LIBRETRO_GIT_BRANCH} ${LIBRETRO_CORE_PATCHES}"
 SRCREV ?= "${@bb.utils.contains('DISTRO_FEATURES', 'libretro-latest', '${AUTOREV}', '${LIBRETRO_GIT_REV}', d)}"
 
-PV = "2020+git${SRCPV}"
+inherit libretro-version
