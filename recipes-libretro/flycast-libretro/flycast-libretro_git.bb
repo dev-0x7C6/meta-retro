@@ -19,8 +19,6 @@ LIBRETRO_PLATFORM_arm64 = "arm64"
 CC_AS = "${CC}"
 CC_AS_x86arch = "${AS}"
 
-# Port patches from lakka
-LIBRETRO_CORE_PATCHES = "file://flycast-01-buildfix.patch"
 LIBRETRO_EXTRA_MAKEFLAGS += "AS="${AS}" CC_AS="${CC_AS}" HAVE_OPENMP=0 HAVE_LTCG=0"
 TARGET_LDFLAGS += "-lrt"
 
