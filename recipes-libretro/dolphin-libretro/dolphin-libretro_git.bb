@@ -23,7 +23,14 @@ PACKAGECONFIG ?=  " \
   libretro \
 "
 
+# 32-bit platforms are not supported by dolphin-emu
+# it's possible to compile 32bit version with "generic" PACKAGECONFIG
+# but it's resulting in very poor performance
 PACKAGECONFIG_append_32bit = " generic"
+
+do_configure_prepend_32bit() {
+    bbwarn "compiling 32-bit version of this software will result with poor performance (disabled JIT)"
+}
 
 PACKAGECONFIG[alsa] = "-DENABLE_ALSA=ON,-DENABLE_ALSA=OFF"
 PACKAGECONFIG[analytics] = "-DENABLE_ANALYTICS=ON,-DENABLE_ANALYTICS=OFF"
