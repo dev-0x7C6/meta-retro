@@ -5,6 +5,7 @@ LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://license.txt;md5=751419260aa954499f7abaabaa882bbe"
 
 inherit libretro-cmake
+require files/dolphin-32bit-configuration.inc
 
 LIBRETRO_GIT_REPO = "github.com/libretro/dolphin.git"
 
@@ -23,15 +24,6 @@ PACKAGECONFIG ?=  " \
   libretro \
 "
 
-# 32-bit platforms are not supported by dolphin-emu
-# it's possible to compile 32bit version with "generic" PACKAGECONFIG
-# but it's resulting in very poor performance
-PACKAGECONFIG_append_32bit = " generic"
-
-do_configure_prepend_32bit() {
-    bbwarn "compiling 32-bit version of this software will result with poor performance (disabled JIT)"
-}
-
 PACKAGECONFIG[alsa] = "-DENABLE_ALSA=ON,-DENABLE_ALSA=OFF"
 PACKAGECONFIG[analytics] = "-DENABLE_ANALYTICS=ON,-DENABLE_ANALYTICS=OFF"
 PACKAGECONFIG[discord] = "-DUSE_DISCORD_PRESENCE=ON,-DUSE_DISCORD_PRESENCE=OFF"
@@ -41,7 +33,6 @@ PACKAGECONFIG[evdev] = "-DENABLE_EVDEV=ON,-DENABLE_EVDEV=OFF"
 PACKAGECONFIG[fastlog] = "-DENCODE_FRAMEDUMPS=ON,-DENCODE_FRAMEDUMPS=OFF"
 PACKAGECONFIG[framedumps] = "-DENCODE_FRAMEDUMPS=ON,-DENCODE_FRAMEDUMPS=OFF"
 PACKAGECONFIG[gdbstub] = "-DGDBSTUB=ON,-DGDBSTUB=OFF"
-PACKAGECONFIG[generic] = "-DENABLE_GENERIC=ON,-DENABLE_GENERIC=OFF"
 PACKAGECONFIG[gprof] = "-DENCODE_FRAMEDUMPS=ON,-DENCODE_FRAMEDUMPS=OFF"
 PACKAGECONFIG[headless] = "-DENABLE_HEADLESS=ON,-DENABLE_HEADLESS=OFF"
 PACKAGECONFIG[libretro] = "-DLIBRETRO=ON -DLIBRETRO_STATIC=1,-DLIBRETRO=OFF"
