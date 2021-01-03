@@ -7,7 +7,7 @@ SRC_URI = "gitsm://github.com/dolphin-emu/dolphin.git;protocol=https"
 SRCREV = "${AUTOREV}"
 S = "${WORKDIR}/git"
 
-inherit cmake_qt5 retro-overrides gettext
+inherit cmake_qt5 retro-overrides gettext logging libretro-version
 
 OECMAKE_FIND_ROOT_PATH_MODE_PROGRAM = "BOTH"
 
@@ -60,8 +60,10 @@ PACKAGECONFIG[x11] = "-DENABLE_X11=ON,-DENABLE_X11=OFF"
 # 32-bit platforms are not supported by dolphin-emu
 # it's possible to compile 32bit version with "generic" PACKAGECONFIG
 # but it's resulting in very poor performance
+PACKAGECONFIG_append_32bit = " generic"
 
-COMPATIBLE_MACHINE = "(64bit)"
+do_configure_prepend_32bit() {
+    bbwarn "compiling 32-bit version of this software will result with poor performance (disabled JIT)"
+}
 
-# Don't use it
 PACKAGECONFIG[generic] = "-DENABLE_GENERIC=ON,-DENABLE_GENERIC=OFF"
