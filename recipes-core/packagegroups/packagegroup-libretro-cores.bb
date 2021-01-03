@@ -2,7 +2,7 @@ DESCRIPTION = "Libretro cores package group"
 
 inherit retro-packagegroup
 
-PACKAGECONFIG ??= " \
+LIBRETRO_TARGET_PLATFORMS ?= " \
     arcade \
     atari \
     dreamcast \
@@ -18,6 +18,8 @@ PACKAGECONFIG ??= " \
     sms \
     snes \
 "
+
+PACKAGECONFIG ?= "${LIBRETRO_TARGET_PLATFORMS}"
 
 PACKAGECONFIG[arcade] = ",,,,packagegroup-libretro-arcade"
 PACKAGECONFIG[atari] = ",,,,packagegroup-libretro-atari"
