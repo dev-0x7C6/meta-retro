@@ -6,6 +6,7 @@ LIBRETRO_PC_CORES ?= " \
   bk-libretro \
   bluemsx-libretro \
   dosbox-libretro \
+  dosbox-pure-libretro \
   fmsx-libretro \
   quasi88-libretro \
   theodore-libretro \
