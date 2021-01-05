@@ -22,6 +22,7 @@ LIBRETRO_GIT_REV_pn-dinothawr-libretro ?= "12162019b650f9fcce6669fd0969399ae75fe
 LIBRETRO_GIT_REV_pn-dolphin-launcher-libretro ?= "6d72f3093d33461821e4f7fde6d3308187e644b9"
 LIBRETRO_GIT_REV_pn-dolphin-libretro ?= "a2afe5334bef76b8a6e0f7807ebdc074ac11fe2d"
 LIBRETRO_GIT_REV_pn-dosbox-libretro ?= "aa71b67d54eaaf9e41cdd3cb5153d9cff0ad116e"
+LIBRETRO_GIT_REV_pn-dosbox-pure-libretro ?= "7735aa3b78b9fc56cfbe8ac8b1c5b8d6eca598a7"
 LIBRETRO_GIT_REV_pn-duckstation-libretro ?= "affffca3da9bc26634fcf8a0c81ee23fc9c3405d"
 LIBRETRO_GIT_REV_pn-fbalpha2012-cps1-libretro ?= "6c5e49e9ccca7112eb338dadfdd36a9e7c7aa1ff"
 LIBRETRO_GIT_REV_pn-fbalpha2012-cps2-libretro ?= "f6d7aa4416929b38036f873c917ab4042d90e202"
