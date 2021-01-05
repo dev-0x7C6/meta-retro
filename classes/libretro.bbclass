@@ -96,9 +96,19 @@ do_compile() {
     CPU_ARCH=${TUNE_ARCH}
 }
 
-FILES_${PN} += "${RETROARCH_LIBRETRO_CORES_DIR}"
+# Some cores provide additional info file
+LIBRETRO_INFO_FILE ?= ""
+
+FILES_${PN} += "${RETROARCH_LIBRETRO_CORES_DIR} ${RETROARCH_LIBRETRO_CORES_INFO_DIR}"
 
 do_install() {
+# install core
   install -d ${D}${RETROARCH_LIBRETRO_CORES_DIR}
   install -m 644 ${S}/${LIBRETRO_CORE}_libretro.so ${D}${RETROARCH_LIBRETRO_CORES_DIR}/${LIBRETRO_CORE_FILE}_libretro.so
+
+# install core info
+  if [ -n "${LIBRETRO_INFO_FILE}" ]; then
+    install -d ${D}/${RETROARCH_LIBRETRO_CORES_INFO_DIR}
+    install -m 644 ${S}/${LIBRETRO_INFO_FILE} ${D}/${RETROARCH_LIBRETRO_CORES_INFO_DIR}
+  fi
 }
