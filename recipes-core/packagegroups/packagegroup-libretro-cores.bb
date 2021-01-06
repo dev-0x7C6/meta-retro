@@ -57,6 +57,7 @@ LIBRETRO_CORE_PACKAGES ?= " \
   neocd-libretro \
   nxengine-libretro \
   o2em-libretro \
+  oberon-libretro \
   opera-libretro \
   picodrive-libretro \
   pokemini-libretro \

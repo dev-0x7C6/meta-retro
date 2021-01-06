@@ -64,6 +64,7 @@ LIBRETRO_GIT_REV_pn-nestopia-libretro ?= "5f6d854b8b9a23b22da60fff5e44afb7b2bd76
 LIBRETRO_GIT_REV_pn-np2kai-libretro ?= "1c9eb5c62f8474c9deec81aad9502701775ad993"
 LIBRETRO_GIT_REV_pn-nxengine-libretro ?= "2efb7d3f90c509dad104a9cd024051b4f3c6c365"
 LIBRETRO_GIT_REV_pn-o2em-libretro ?= "dcc7b7af8b8cab2a6d3994b4b10a35c7d72da238"
+LIBRETRO_GIT_REV_pn-oberon-libretro ?= "f8cc5d5bb98f07b6c63695e314eb492d7c7a4d0b"
 LIBRETRO_GIT_REV_pn-opera-libretro ?= "b1f2d55468f6142fb70f9708721d3d2621b4450f"
 LIBRETRO_GIT_REV_pn-parallel-n64-libretro ?= "dba9fc8b64351b6cf3dfb0bec2ec39f01101f48e"
 LIBRETRO_GIT_REV_pn-pcsx-rearmed-libretro ?= "3aa64bba481bc15f82e607e8b04f48fdb58b5118"
