@@ -14,3 +14,5 @@ LIBRETRO_CORE_PATCHES = "file://0001-Do-not-override-default-LDFLAGS.patch"
 
 # Unable to compile with -Werror=format-security
 SECURITY_STRINGFORMAT = "-Wformat -Wformat-security"
+
+INSANE_SKIP_${PN} = "already-stripped"
