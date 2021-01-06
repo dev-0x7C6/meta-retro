@@ -10,8 +10,6 @@ inherit libretro
 LIBRETRO_GIT_REPO = "github.com/libretro/dosbox-pure.git"
 LIBRETRO_GIT_BRANCH = "main"
 
-LIBRETRO_INFO_FILE = "dosbox_pure_libretro.info"
-
 LIBRETRO_CORE_PATCHES = "file://0001-Do-not-override-default-LDFLAGS.patch"
 
 # Unable to compile with -Werror=format-security
