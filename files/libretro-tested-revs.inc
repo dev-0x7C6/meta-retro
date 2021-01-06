@@ -55,6 +55,7 @@ LIBRETRO_GIT_REV_pn-mame2016-libretro ?= "d53c379892b0bd91b4a52fc2de491e1199f03e
 LIBRETRO_GIT_REV_pn-masen-libretro ?= "c807df70fbc719cc3e4149cee6302afe69c72697"
 LIBRETRO_GIT_REV_pn-masen-s-libretro ?= "0fecf119a2c621245e7e8eec9c71ed66fb5e3f8f"
 LIBRETRO_GIT_REV_pn-melonds-libretro ?= "5a33650693ea8c367b34e53095945508519acd8c"
+LIBRETRO_GIT_REV_pn-meow-pc98-libretro ?= "3a8cf48306b300b07c0919bcb901d6499cdcaf21"
 LIBRETRO_GIT_REV_pn-mgba-libretro ?= "a278955df44eea255873a63d777dbe616bb3f358"
 LIBRETRO_GIT_REV_pn-mrboom-libretro ?= "797ddee437aaa9b5618a08ea2b80c3763df4350e"
 LIBRETRO_GIT_REV_pn-mupen64plus-libretro ?= "26ee0b7826a3250d4075c718f84b7e30aa610cf0"
