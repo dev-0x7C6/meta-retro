@@ -13,6 +13,7 @@ LIBRETRO_TARGET_PLATFORMS ?= " \
     nds \
     nes \
     pc \
+    pc98 \
     psx \
     saturn \
     sms \
@@ -31,6 +32,7 @@ PACKAGECONFIG[n64] = ",,,,packagegroup-libretro-n64"
 PACKAGECONFIG[nds] = ",,,,packagegroup-libretro-nds"
 PACKAGECONFIG[nes] = ",,,,packagegroup-libretro-nes"
 PACKAGECONFIG[ngc] = ",,,,packagegroup-libretro-ngc"
+PACKAGECONFIG[pc98] = ",,,,packagegroup-libretro-pc98"
 PACKAGECONFIG[pc] = ",,,,packagegroup-libretro-pc"
 PACKAGECONFIG[psx] = ",,,,packagegroup-libretro-psx"
 PACKAGECONFIG[saturn] = ",,,,packagegroup-libretro-saturn"
@@ -53,7 +55,6 @@ LIBRETRO_CORE_PACKAGES ?= " \
   genesis-plus-gx-libretro \
   gw-libretro \
   neocd-libretro \
-  np2kai-libretro \
   nxengine-libretro \
   o2em-libretro \
   opera-libretro \
