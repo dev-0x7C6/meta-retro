@@ -10,7 +10,10 @@ inherit libretro
 LIBRETRO_GIT_REPO = "github.com/libretro/dosbox-pure.git"
 LIBRETRO_GIT_BRANCH = "main"
 
-LIBRETRO_CORE_PATCHES = "file://0001-Do-not-override-default-LDFLAGS.patch"
+do_patch() {
+# Do not use strong LDFLAGS override, avoid override Yocto defaults
+    sed -i "s/LDFLAGS :=/LDFLAGS +=/g" ${S}/Makefile
+}
 
 # Unable to compile with -Werror=format-security
 SECURITY_STRINGFORMAT = "-Wformat -Wformat-security"
