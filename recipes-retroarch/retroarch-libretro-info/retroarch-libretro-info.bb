@@ -10,14 +10,17 @@ S = "${WORKDIR}/git"
 SRC_URI = "gitsm://github.com/libretro/libretro-super.git;protocol=https"
 SRCREV = "${AUTOREV}"
 
-inherit allarch libretro-version retroarch-paths
+inherit allarch artifact-preview libretro-version retroarch-paths
 
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"
 
 FILES_${PN} += "${RETROARCH_LIBRETRO_CORES_INFO_DIR}"
 
+ARTIFACT_PREVIEW_FILES = "${S}/dist/info/*"
+
 do_install() {
   install -d ${D}${RETROARCH_LIBRETRO_CORES_INFO_DIR}
   cp -R --no-dereference --preserve=mode,links -v ${S}/dist/info/* ${D}${RETROARCH_LIBRETRO_CORES_INFO_DIR}
 }
+
