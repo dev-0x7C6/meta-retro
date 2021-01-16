@@ -10,7 +10,9 @@ inherit kodi-addon
 DEPENDS += "pcsx-rearmed-libretro"
 RDEPENDS_${PN} += "kodi"
 
-SRCREV = "22.0.0.19-Matrix"
+PV = "22.0.0.19-Matrix"
+
+SRCREV = "${PV}"
 SRC_URI = "git://github.com/kodi-game/game.libretro.pcsx-rearmed;nobranch=1;protocol=https"
 S = "${WORKDIR}/git"
 

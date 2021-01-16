@@ -9,7 +9,9 @@ inherit kodi-addon
 
 RDEPENDS_${PN} += "kodi"
 
-SRCREV = "2.2.0-Matrix"
+PV = "2.2.0-Matrix"
+
+SRCREV = "${PV}"
 SRC_URI = "git://github.com/kodi-game/game.libretro;nobranch=1;protocol=https"
 S = "${WORKDIR}/git"
 
