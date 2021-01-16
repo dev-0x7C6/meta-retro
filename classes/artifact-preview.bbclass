@@ -16,11 +16,11 @@ do_deploy_preview[stamp-extra-info] = "${MACHINE_ARCH}"
 ARTIFACT_PREVIEW_FILES ?= ""
 ARTIFACT_PREVIEW_DIRECTORY ?= "previews/${PN}"
 
-addtask deploy_preview after do_install
-
 do_deploy_preview() {
     if [ -n "${ARTIFACT_PREVIEW_FILES}" ]; then
         install -d ${DEPLOYPREVIEWDIR}/${ARTIFACT_PREVIEW_DIRECTORY}
         cp -R --no-dereference --preserve=mode,links -v ${ARTIFACT_PREVIEW_FILES} ${DEPLOYPREVIEWDIR}/${ARTIFACT_PREVIEW_DIRECTORY}
     fi
 }
+
+addtask deploy_preview before do_package after do_install
