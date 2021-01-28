@@ -8,5 +8,4 @@ IMAGE_INSTALL += " \
   retroarch-assets-xmb-monochrome \
   retroarch-autoconfig \
   retroarch-libretro-info \
-  retroarch-shaders \
 "

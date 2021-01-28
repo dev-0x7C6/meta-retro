@@ -20,5 +20,4 @@ IMAGE_INSTALL += " \
   retroarch-database-titles \
   retroarch-libretro-info \
   retroarch-overlays \
-  retroarch-shaders \
 "

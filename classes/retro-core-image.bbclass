@@ -16,6 +16,9 @@ IMAGE_INSTALL += " \
     packagegroup-libretro-cores \
     retro-user \
     retroarch \
+    retroarch-cg-shaders \
+    retroarch-glsl-shaders \
+    retroarch-slang-shaders \
 "
 
 IMAGE_ROOTFS_EXTRA_SPACE_append = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', ' + 4096', '' ,d)}"
