@@ -245,6 +245,7 @@ PACKAGECONFIG[xvideo] = "--enable-xvideo,--disable-xvideo"
 PACKAGECONFIG[zlib] = "--enable-zlib,--disable-zlib,zlib"
 
 EXTRA_OECONF = "${PACKAGECONFIG_CONFARGS}"
+EXTRA_OEMAKE += "NEED_CXX_LINKER=1"
 
 CONFIGUREOPTS = " \
   --build=${BUILD_SYS} \
