@@ -13,6 +13,8 @@ LIBRETRO_GIT_BRANCH = "main"
 do_patch() {
 # Do not use strong LDFLAGS override, avoid override Yocto defaults
     sed -i "s/LDFLAGS :=/LDFLAGS +=/g" ${S}/Makefile
+# Avoid switching to g++-9
+    sed -i "s/CXX := g++-9//g" ${S}/Makefile
 }
 
 # Unable to compile with -Werror=format-security
