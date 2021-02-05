@@ -56,7 +56,7 @@ do_compile() {
     service_emit_variable "Type" "exec"
     service_emit_variable "ExecStart" "${RETROARCH_SERVICE_START_COMMAND}"
 
-    if [ "${RETROARCH_SERVICE_FAILURE_ACTION}" == "none" ]; then
+    if [ "${RETROARCH_SERVICE_FAILURE_ACTION}" = "none" ]; then
         service_emit_variable "RestartSec" "1"
         service_emit_variable "Restart" "on-failure"
     fi
