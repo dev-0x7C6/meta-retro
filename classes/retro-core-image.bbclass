@@ -11,7 +11,7 @@ IMAGE_INSTALL += " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-automount', 'udev-extraconf', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-autostart systemd', 'retroarch-service', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-firmware', 'firmware-libretro', '', d)} \
-    ${@bb.utils.filter('DISTRO_FEATURES', 'kodi rauc polkit', d)} \
+    ${@bb.utils.filter('DISTRO_FEATURES', 'kodi rauc resize-helper polkit', d)} \
     kernel-modules \
     packagegroup-libretro-cores \
     retro-user \
