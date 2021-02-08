@@ -50,6 +50,9 @@ do_compile() {
         service_emit_variable "SuccessAction" "${RETROARCH_SERVICE_SUCCESS_ACTION}"
     fi
 
+    service_emit_variable "Conflicts" "getty@tty1.service"
+    service_emit_variable "After" "getty@tty1.service"
+
     service_emit_separator
 
     service_emit_section "Service"
