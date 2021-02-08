@@ -8,17 +8,11 @@ We refer to these as <libretro cores>."
 HOMEPAGE = "https://www.retroarch.com/"
 BUGTRACKER = "https://github.com/libretro/RetroArch/issues"
 
-LICENSE = "GPLv3"
-LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-3.0;md5=c79ff39f19dfec6d293b95dea7b07891"
-
-S = "${WORKDIR}/git"
-
-# Any version >= 572611f1ca63f3b4d60c117432ef8ff1419d38f7 (>= v.1.8.3) should
-# compile due upstream fixes
-#   https://github.com/libretro/RetroArch/pull/9959
-#   https://github.com/libretro/RetroArch/pull/9944
+LICENSE = "GPL-3.0"
+LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
 SRC_URI = "gitsm://github.com/libretro/RetroArch.git ${RETROARCH_PATCHES}"
+S = "${WORKDIR}/git"
 
 RETROARCH_PATCHES ?= ""
 
