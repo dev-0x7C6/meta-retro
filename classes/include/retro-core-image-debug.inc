@@ -17,6 +17,7 @@ DEBUG_TOOLS_COLLECTION ?= " \
     procps \
     strace \
     tar \
+    usbutils \
     util-linux \
     vim \
     wget \
