@@ -36,7 +36,7 @@ PACKAGES =+ " \
 
 FILES_${PN}-glui = "${RETROARCH_ASSETS_DIR}/glui"
 FILES_${PN}-ozone = "${RETROARCH_ASSETS_DIR}/ozone"
-FILES_${PN}-ozone = "${RETROARCH_ASSETS_DIR}/ozone"
+FILES_${PN}-sounds = "${RETROARCH_ASSETS_DIR}/sounds"
 FILES_${PN}-xmb-automatic = "${RETROARCH_ASSETS_DIR}/xmb/automatic"
 FILES_${PN}-xmb-dot-art = "${RETROARCH_ASSETS_DIR}/xmb/dot-art"
 FILES_${PN}-xmb-flatui = "${RETROARCH_ASSETS_DIR}/xmb/flatui"
@@ -47,12 +47,13 @@ FILES_${PN}-xmb-retroactive = "${RETROARCH_ASSETS_DIR}/xmb/retroactive"
 FILES_${PN}-xmb-retrosystem = "${RETROARCH_ASSETS_DIR}/xmb/retrosystem"
 FILES_${PN}-xmb-systematic = "${RETROARCH_ASSETS_DIR}/xmb/systematic"
 
+do_patch() {
+  rm -f ${S}/Makefile
+  rm -f ${S}/do_configure
+  rm -rf ${S}/src
+}
+
 do_install() {
   install -d ${D}${RETROARCH_ASSETS_DIR}
-
-  rm -rf ${S}/Makefile \
-    ${S}/configure \
-    ${S}/src
-
   cp -R --no-dereference --preserve=mode,links -v ${S}/* ${D}${RETROARCH_ASSETS_DIR}
 }
