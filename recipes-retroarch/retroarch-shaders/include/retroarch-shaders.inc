@@ -1,10 +1,4 @@
-inherit allarch libretro-version retroarch-paths
-
-SRCREV = "${AUTOREV}"
-S = "${WORKDIR}/git"
-
-do_configure[noexec] = "1"
-do_compile[noexec] = "1"
+inherit retroarch-allarch
 
 do_patch() {
 	rm -f ${S}/Makefile

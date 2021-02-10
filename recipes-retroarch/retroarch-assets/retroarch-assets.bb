@@ -8,14 +8,9 @@ BUGTRACKER = "https://github.com/libretro/retroarch-assets/issues"
 LICENSE = "CC-BY-SA-4.0"
 LIC_FILES_CHKSUM = "file://COPYING;md5=7bd61880991ed797753fcc00acae2c51"
 
-S = "${WORKDIR}/git"
 SRC_URI = "gitsm://github.com/libretro/retroarch-assets.git"
-SRCREV = "${AUTOREV}"
 
-inherit allarch libretro-version retroarch-paths
-
-do_configure[noexec] = "1"
-do_compile[noexec] = "1"
+inherit retroarch-allarch
 
 FILES_${PN} += "${RETROARCH_ASSETS_DIR}"
 
@@ -49,7 +44,7 @@ FILES_${PN}-xmb-systematic = "${RETROARCH_ASSETS_DIR}/xmb/systematic"
 
 do_patch() {
   rm -f ${S}/Makefile
-  rm -f ${S}/do_configure
+  rm -f ${S}/configure
   rm -rf ${S}/src
 }
 

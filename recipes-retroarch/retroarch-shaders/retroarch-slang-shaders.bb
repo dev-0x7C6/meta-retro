@@ -8,8 +8,6 @@ ruins GLES2 compatibility."
 HOMEPAGE = "https://www.retroarch.com/"
 BUGTRACKER = "https://github.com/libretro/slang-shaders/issues"
 
-require include/retroarch-shaders.inc
-
 LICENSE = "CLOSED"
 
 SRC_URI = "gitsm://github.com/libretro/slang-shaders.git;protocol=https"

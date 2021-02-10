@@ -8,14 +8,9 @@ BUGTRACKER = "https://github.com/libretro/common-overlays/issues"
 LICENSE = "CC-BY-SA-4.0"
 LIC_FILES_CHKSUM = "file://COPYING;md5=7fe77ae47c47ef37c255035f30509770"
 
-S = "${WORKDIR}/git"
 SRC_URI = "gitsm://github.com/libretro/common-overlays.git;protocol=https"
-SRCREV = "${AUTOREV}"
 
-inherit allarch libretro-version retroarch-paths
-
-do_configure[noexec] = "1"
-do_compile[noexec] = "1"
+inherit retroarch-allarch
 
 # retroarch-overlays provides some sh template scripts inside
 RDEPENDS_${PN} += "bash"

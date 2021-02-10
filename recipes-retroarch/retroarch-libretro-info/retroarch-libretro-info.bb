@@ -7,13 +7,8 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5400ab930bc7a77040ea8e75206294c4"
 
 SRC_URI = "git://github.com/libretro/libretro-super.git;protocol=https"
-SRCREV = "${AUTOREV}"
-S = "${WORKDIR}/git"
 
-inherit allarch artifact-preview libretro-version retroarch-paths
-
-do_configure[noexec] = "1"
-do_compile[noexec] = "1"
+inherit artifact-preview retroarch-allarch
 
 FILES_${PN} += "${RETROARCH_LIBRETRO_CORES_INFO_DIR}"
 
