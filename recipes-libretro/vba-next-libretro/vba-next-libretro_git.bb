@@ -1,5 +1,7 @@
-LICENSE = "GPLv2"
-LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
+SUMMARY = "Optimized port of VBA-M to Libretro."
+
+LICENSE = "GPL-2.0"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=63ecf6d881e3ca7dab50e686948a6286"
 
 inherit libretro
 
