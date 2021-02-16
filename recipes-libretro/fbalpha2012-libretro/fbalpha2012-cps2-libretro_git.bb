@@ -1,4 +1,5 @@
-DESCRIPTION = "Arcade emu - Final Burn Alpha (0.2.97.30) port for libretro"
+SUMMARY = "Capcom CPS2 emulator"
+DESCRIPTION = "Capcom CPS2 emulator - Final Burn Alpha libretro port"
 
 LICENSE = "FB-ALPHA"
 LIC_FILES_CHKSUM = "file://src/license.txt;md5=fb136c22aaaf9c6b9e72228ee036eac6"

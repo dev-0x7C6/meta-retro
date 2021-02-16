@@ -1,4 +1,5 @@
-SUMMARY = "FCEUmm libretro port"
+SUMMARY = "Nintendo Entertainment System emulator"
+DESCRIPTION = "Nintendo Entertainment System emulator - FCEUmm libretro port"
 
 LICENSE = "GPL-2.0"
 LIC_FILES_CHKSUM = "file://Copying;md5=6e233eda45c807aa29aeaa6d94bc48a2"

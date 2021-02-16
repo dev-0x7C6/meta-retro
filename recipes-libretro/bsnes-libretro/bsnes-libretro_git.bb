@@ -1,6 +1,7 @@
-DESCRIPTION = "Super Nintendo emu - bsnes port for libretro"
+SUMMARY = "Super Nintendo emulator"
+DESCRIPTION = "Super Nintendo emulator - bsnes port for libretro"
 
-LICENSE = "GPLv3"
+LICENSE = "GPL-3.0"
 LIC_FILES_CHKSUM = "file://COPYING;md5=84a5ab0137615a43b50948e40c5881ae"
 
 inherit libretro

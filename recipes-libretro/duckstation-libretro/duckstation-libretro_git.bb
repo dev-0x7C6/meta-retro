@@ -1,3 +1,4 @@
+SUMMARY = "Sony PlayStation emulator"
 DESCRIPTION = "Fast-ish PlayStation 1 emulator for PC and Android"
 
 LICENSE = "GPL-3.0"

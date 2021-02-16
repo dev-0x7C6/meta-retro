@@ -1,3 +1,4 @@
+SUMMARY = "BK-0010/0011/Terak 8510a emulator"
 DESCRIPTION = "BK-0010/0011/Terak 8510a emulator"
 
 LICENSE = "BK"

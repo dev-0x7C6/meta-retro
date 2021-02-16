@@ -1,7 +1,8 @@
+SUMMARY = "Nintendo GameCube / Wii emulator"
 DESCRIPTION = "Dolphin is a GameCube / Wii emulator, allowing you to play \
 games for these two platforms on PC with improvements."
 
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0"
 LIC_FILES_CHKSUM = "file://license.txt;md5=751419260aa954499f7abaabaa882bbe"
 
 inherit libretro-cmake

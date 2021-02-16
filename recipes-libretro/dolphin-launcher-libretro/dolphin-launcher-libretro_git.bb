@@ -1,3 +1,4 @@
+SUMMARY = "Native Dolphin emulator launcher"
 DESCRIPTION = "Launch native Dolphin from RetroArch/libretro"
 
 LICENSE = "MIT"

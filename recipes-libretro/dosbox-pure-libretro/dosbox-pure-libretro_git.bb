@@ -1,4 +1,4 @@
-SUMMARY = "MS-DOS emulator libretro core"
+SUMMARY = "MS-DOS emulator"
 DESCRIPTION = "DOSBox Pure is a new fork of DOSBox built for RetroArch/Libretro \ 
 aiming for simplicity and ease of use."
 

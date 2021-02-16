@@ -1,3 +1,4 @@
+SUMMARY = "Atari 8-bit/800/5200 emulator"
 DESCRIPTION = "Atari 8-bit/800/5200 emulator - Atari800 port for libretro"
 
 LICENSE = "GPLv2"

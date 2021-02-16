@@ -1,3 +1,4 @@
+SUMMARY = "Bash launcher"
 DESCRIPTION = "Use bash scripts to run apps/games from RetroArch/libretro"
 
 LICENSE = "MIT"

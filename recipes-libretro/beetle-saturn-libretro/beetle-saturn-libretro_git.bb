@@ -1,6 +1,7 @@
-DESCRIPTION = "Saturn emulator - Mednafen Saturn port for libretro"
+SUMMARY = "Sega Saturn emulator"
+DESCRIPTION = "Sega Saturn emulator - Mednafen Saturn port for libretro"
 
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0"
 LIC_FILES_CHKSUM = "file://COPYING;md5=6e233eda45c807aa29aeaa6d94bc48a2"
 
 inherit libretro
