@@ -7,6 +7,8 @@ inherit retroarch-paths
 require files/libretro-git-fetcher.inc
 require files/libretro-tested-revs.inc
 
+SECTION = "emulators"
+
 # Core
 
 LIBRETRO_CORE ?= "${@d.getVar("PN").split('-libretro')[0].replace('-', '_')}"

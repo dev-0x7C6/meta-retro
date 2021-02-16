@@ -9,6 +9,8 @@ require files/libretro-tested-revs.inc
 
 inherit cmake
 
+SECTION = "emulators"
+
 # Variables
 
 LIBRETRO_CORE ?= "${@d.getVar("PN").split('-libretro')[0].replace('-', '_')}"
