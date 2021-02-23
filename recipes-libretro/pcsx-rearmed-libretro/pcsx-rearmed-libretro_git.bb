@@ -1,5 +1,8 @@
-LICENSE = "GPLv2"
-LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
+SUMMARY = "Sony PlayStation emulator"
+DESCRIPTION = "Sony PlayStation emulator - pcsx-rearmed"
+
+LICENSE = "GPL-2.0-or-later"
+LIC_FILES_CHKSUM = "file://COPYING;md5=5dd99a4a14d516c44d0779c1e819f963"
 
 inherit libretro
 
