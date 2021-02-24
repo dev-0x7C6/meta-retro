@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.TXT;md5=e336f8162cddec7981e240f46825d8a2"
 
 inherit cmake retro-overrides retroarch-paths retroarch-checks
 
-SRC_URI = "git://github.com/hrydgard/ppsspp.git;nobranch=1;protocol=https"
+SRC_URI = "gitsm://github.com/hrydgard/ppsspp.git;nobranch=1;protocol=https"
 SRCREV = "v1.11"
 
 S = "${WORKDIR}/git"
@@ -26,10 +26,10 @@ PACKAGECONFIG ?=  " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'vulkan', '', d)} \
   libretro \
   libzip \
+  system-ffmpeg \
 "
 
-# Workaround for aarch64
-PACKAGECONFIG_append_arm64 = " system-ffmpeg"
+CCACHE_DISABLE = "1"
 
 PACKAGECONFIG_append_armarch = " ${@bb.utils.contains('TUNE_FEATURES', 'neon', 'armv7 arm', 'arm', d)}"
 PACKAGECONFIG_append_mipsarch = " mips"
