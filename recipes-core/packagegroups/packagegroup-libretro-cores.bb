@@ -53,6 +53,7 @@ LIBRETRO_CORE_PACKAGES ?= " \
   freeintv-libretro \
   fuse-libretro \
   genesis-plus-gx-libretro \
+  genesis-plus-gx-wide-libretro \
   gw-libretro \
   neocd-libretro \
   nxengine-libretro \
