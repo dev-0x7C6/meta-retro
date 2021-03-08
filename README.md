@@ -18,26 +18,27 @@ You can test this layer and distro (retro) with reference build environment on y
 
 ## Images
 
-There are:
-* **[retro-image-full](recipes-core/images/retro-image-full.bb)** - retroarch, all libretro cores, cheats, titles, themes and more
-* **[retro-image-standard](recipes-core/images/retro-image-standard.bb)** - retroarch, all libretro cores, titles
-* **[retro-image-minimal](recipes-core/images/retro-image-minimal.bb)** - retroarch, all libretro cores, minimal build 
+| Image (recipe name)                                                 | Retroarch          | Libretro cores     | Shaders            | Titles             | Cheats             | Themes             | Overlays             |
+|:--------------------------------------------------------------------|:------------------:|:------------------:|:------------------:|:------------------:|:------------------:|:------------------:|:--------------------:|
+| [retro-image-full](recipes-core/images/retro-image-full.bb)         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:   |
+| [retro-image-standard](recipes-core/images/retro-image-standard.bb) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |                    |                    |                      |
+| [retro-image-minimal](recipes-core/images/retro-image-minimal.bb)   | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |                    |                    |                    |                      |
 
-It's recommended to use **[retro-image-full](recipes-core/images/retro-image-full.bb)**.
+Recomendation: [retro-image-full](recipes-core/images/retro-image-full.bb)
 
 ## Tested platforms
 
-| Machine         | Layer                                                                             | Build against | Runtime testing | Notice |
-|:--------------|:---------------------------------------------------------------------------------:|:----------------------:|:---------------:|:-------| 
-| `cubietruck`      | [meta-sunxi](https://github.com/linux-sunxi/meta-sunxi)                           |  Often   | Rarely | Unable to run kms with lima(mesa) | driver
-| `intel-core2-32`  | [meta-intel](https://git.yoctoproject.org/cgit/cgit.cgi/meta-intel/)              |  Often   | Sometimes | As pendrive dongle |
-| `intel-corei7-64` | [meta-intel](https://git.yoctoproject.org/cgit/cgit.cgi/meta-intel/)              |  Often   | Sometimes | As pendrive dongle |
-| `orange-pi-pc`    | [meta-sunxi](https://github.com/linux-sunxi/meta-sunxi)                           |  Often   | Rarely | --- |
-| `raspberrypi3-64` | [meta-raspberrypi](https://git.yoctoproject.org/cgit/cgit.cgi/meta-raspberrypi/)  |  Often   | Sometimes | --- |
-| `raspberrypi3`    | [meta-raspberrypi](https://git.yoctoproject.org/cgit/cgit.cgi/meta-raspberrypi/)  |  Often   | Sometimes | --- |
-| `raspberrypi4-64` | [meta-raspberrypi](https://git.yoctoproject.org/cgit/cgit.cgi/meta-raspberrypi/)  |  Always   | Often | --- |
-| `raspberrypi4`    | [meta-raspberrypi](https://git.yoctoproject.org/cgit/cgit.cgi/meta-raspberrypi/)  |  Always   | Often | --- |
-| `rock-pi-4a`      | [meta-rockchip](https://git.yoctoproject.org/cgit/cgit.cgi/meta-rockchip/)        |  Often   | None  | Thanks to [@MarkusVolk](https://github.com/MarkusVolk) for sending patches |
+| Machine           | Layer                                                                            | Build against | Runtime testing | Notice                                                                     |
+|:------------------|:--------------------------------------------------------------------------------:|:-------------:|:---------------:|:---------------------------------------------------------------------------| 
+| `cubietruck`      | [meta-sunxi](https://github.com/linux-sunxi/meta-sunxi)                          |  Often        | Rarely          | Unable to run kms with lima(mesa)                                          |
+| `intel-core2-32`  | [meta-intel](https://git.yoctoproject.org/cgit/cgit.cgi/meta-intel/)             |  Often        | Sometimes       | As pendrive dongle                                                         |
+| `intel-corei7-64` | [meta-intel](https://git.yoctoproject.org/cgit/cgit.cgi/meta-intel/)             |  Often        | Sometimes       | As pendrive dongle                                                         |
+| `orange-pi-pc`    | [meta-sunxi](https://github.com/linux-sunxi/meta-sunxi)                          |  Often        | Rarely          | ---                                                                        |
+| `raspberrypi3-64` | [meta-raspberrypi](https://git.yoctoproject.org/cgit/cgit.cgi/meta-raspberrypi/) |  Often        | Sometimes       | ---                                                                        |
+| `raspberrypi3`    | [meta-raspberrypi](https://git.yoctoproject.org/cgit/cgit.cgi/meta-raspberrypi/) |  Often        | Sometimes       | ---                                                                        |
+| `raspberrypi4-64` | [meta-raspberrypi](https://git.yoctoproject.org/cgit/cgit.cgi/meta-raspberrypi/) |  Always       | Often           | ---                                                                        |
+| `raspberrypi4`    | [meta-raspberrypi](https://git.yoctoproject.org/cgit/cgit.cgi/meta-raspberrypi/) |  Always       | Often           | ---                                                                        |
+| `rock-pi-4a`      | [meta-rockchip](https://git.yoctoproject.org/cgit/cgit.cgi/meta-rockchip/)       |  Often        | None            | Thanks to [@MarkusVolk](https://github.com/MarkusVolk) for sending patches |
 
 ## Distro features
 
