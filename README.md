@@ -9,11 +9,11 @@ recipes for use with OpenEmbedded and/or Yocto.
 
 You can test this layer and distro (retro) with reference build environment on your host computer
 
-```sh
-#~ git clone --recursive https://github.com/dev-0x7C6/retro-build-environment.git
-#~ cd retro-build-environment
-#~ source source.me
-#~ MACHINE="raspberrypi4" bitbake retro-image-full
+```console
+user@localhost:~$ git clone --recursive https://github.com/dev-0x7C6/retro-build-environment.git
+user@localhost:~$ cd retro-build-environment
+user@localhost:~$ source source.me
+user@localhost:~$ MACHINE="raspberrypi4" bitbake retro-image-full
 ```
 
 ## Images
