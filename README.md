@@ -97,7 +97,7 @@ This layer depends on:
 
 ## Patches
 
-Please submit any patches against the meta-retro layer by pull requests.
+Please submit patches against the [dev-0x7C6/meta-retro](https://github.com/dev-0x7C6/meta-retro) layer by pull requests.
 
 ## Adding the meta-retro layer to your build
 
