@@ -85,15 +85,23 @@ There is a collection of variables that can be set in *local.conf* or *distro.co
 
 For more information see file: [retroarch.inc](recipes-retroarch/retroarch/retroarch.inc)
 
-## Dependencies
-This layer depends on:
-```
-  URI: git://git.openembedded.org/openembedded-core
-  layers: meta
-  
-  URI: git://git.openembedded.org/meta-openembedded
-  layers: meta-oe, meta-multimedia, meta-networking, meta-python
-```
+## Layer dependencies
+
+| Layer                                                                            | Sublayer           | Required           | Software           | Recommended BSPs   |
+|:---------------------------------------------------------------------------------|:-------------------|:------------------:|:------------------:|:------------------:|
+| [openembedded-core](https://github.com/openembedded/openembedded-core)           | meta               | :heavy_check_mark: | :heavy_check_mark: |                    |
+| [meta-openembedded](https://github.com/openembedded/meta-openembedded)           | meta-oe            | :heavy_check_mark: | :heavy_check_mark: |                    |
+| :arrow_right_hook:                                                               | meta-multimedia    | :heavy_check_mark: | :heavy_check_mark: |                    |
+| :arrow_right_hook:                                                               | meta-python        | :heavy_check_mark: | :heavy_check_mark: |                    |
+| :arrow_right_hook:                                                               | meta-networking    | :heavy_check_mark: | :heavy_check_mark: |                    |
+| [meta-python2](https://git.openembedded.org/meta-python2)                        | .                  | :heavy_check_mark: | :heavy_check_mark: |                    |
+| [meta-qt5](https://code.qt.io/cgit/yocto/meta-qt5.git)                           | .                  | :heavy_check_mark: | :heavy_check_mark: |                    |
+| [meta-kodi](https://github.com/dev-0x7C6/meta-kodi)                              | .                  |                    | :heavy_check_mark: |                    |
+| [meta-raspberrypi](https://github.com/agherzan/meta-raspberrypi)                 | .                  |                    | :heavy_check_mark: | :heavy_check_mark: |
+| [meta-raspberrypi-extras](https://github.com/dev-0x7C6/meta-raspberrypi-extras)  | .                  |                    | :heavy_check_mark: | :heavy_check_mark: |
+| [meta-intel](http://git.yoctoproject.org/cgit/cgit.cgi/meta-intel/tree)          | .                  |                    | :heavy_check_mark: | :heavy_check_mark: |
+| [meta-rockchip](http://git.yoctoproject.org/cgit/cgit.cgi/meta-rockchip)         | .                  |                    | :heavy_check_mark: | :heavy_check_mark: |
+
 
 ## Patches
 
