@@ -3,17 +3,15 @@ DESCRIPTION = "PlayStation Portable emu - PPSSPP port for libretro"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://LICENSE.TXT;md5=e336f8162cddec7981e240f46825d8a2"
 
-inherit cmake retro-overrides retroarch-paths retroarch-checks
+inherit libretro-cmake
+inherit libretro-vulkan-deps
 
-SRC_URI = "gitsm://github.com/hrydgard/ppsspp.git;nobranch=1;protocol=https"
-SRCREV = "v1.11"
-
-S = "${WORKDIR}/git"
+LIBRETRO_GIT_REPO = "github.com/hrydgard/ppsspp.git"
 
 #Need to be reworked, switched to included ffmpeg
 #LIBRETRO_CORE_PATCHES += "file://0001-Revert-Mpeg-Parse-video-streams-from-PSMF-header.patch"
 
-#LIBRETRO_CORE_SOURCE_PATH = "lib"
+LIBRETRO_CORE_SOURCE_PATH = "lib"
 
 DEPENDS = " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'virtual/libgl ', '', d)} \
@@ -23,13 +21,12 @@ DEPENDS = " \
 PACKAGECONFIG ?=  " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'egl gles', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'egl gles', '', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'vulkan', '', d)} \
   libretro \
   libzip \
-  system-ffmpeg \
 "
 
-CCACHE_DISABLE = "1"
+# Workaround for aarch64
+PACKAGECONFIG_append_arm64 = " system-ffmpeg"
 
 PACKAGECONFIG_append_armarch = " ${@bb.utils.contains('TUNE_FEATURES', 'neon', 'armv7 arm', 'arm', d)}"
 PACKAGECONFIG_append_mipsarch = " mips"
@@ -55,15 +52,14 @@ PACKAGECONFIG[simulator] = "-DSIMULATOR=ON,-DSIMULATOR=OFF"
 PACKAGECONFIG[system-ffmpeg] = "-DUSE_FFMPEG=ON -DUSE_SYSTEM_FFMPEG=ON,-DUSE_FFMPEG=ON -USE_SYSTEM_FFMPEG=OFF,ffmpeg"
 PACKAGECONFIG[tests] = "-DUNITTEST=ON,-DUNITTEST=OFF"
 PACKAGECONFIG[vulkan-x11] = "-DUSING_X11_VULKAN=ON,-DUSING_X11_VULKAN=OFF"
-PACKAGECONFIG[vulkan] = ",,vulkan-loader,vulkan-loader"
 PACKAGECONFIG[wsi] = "-DUSE_WAYLAND_WSI=ON,-DUSE_WAYLAND_WSI=OFF"
 
-FILES_${PN} += "${RETROARCH_LIBRETRO_CORES_DIR} ${RETROARCH_SYSTEM_DIR}"
+# Now libretro-vulkan-deps will take care
+# PACKAGECONFIG[vulkan] = ",,${VULKAN_DEPENDS},${VULKAN_DEPENDS}"
 
-do_install() {
-  install -d ${D}${RETROARCH_LIBRETRO_CORES_DIR}
-  install -m 644 ${B}/lib/ppsspp_libretro.so ${D}${RETROARCH_LIBRETRO_CORES_DIR}/ppsspp_libretro.so
+FILES_${PN} += "${RETROARCH_SYSTEM_DIR}"
 
+do_install_append() {
   install -d ${D}${RETROARCH_SYSTEM_DIR}/PPSSPP/
   cp -rf ${B}/assets/* ${D}${RETROARCH_SYSTEM_DIR}/PPSSPP/
 }

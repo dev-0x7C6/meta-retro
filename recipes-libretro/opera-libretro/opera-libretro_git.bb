@@ -1,11 +1,13 @@
 DESCRIPTION = "3DO emu - 4DO/libfreedo port for libretro"
 
-LICENSE = "LGPLv2"
-LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/LGPL-2.0;md5=9427b8ccf5cf3df47c29110424c9641a"
+LICENSE = "GPL-2.0-or-later & LGPL-2.0-or-later"
+LIC_FILES_CHKSUM = " \
+	file://${RETRO_LICENSE_DIR}/GPL-2.0-or-later;md5=fed54355545ffd980b814dab4a3b312c \
+	file://${RETRO_LICENSE_DIR}/LGPL-2.0-or-later;md5=6d2d9952d88b50a51a5c73dc431d06c7 \
+"
 
-inherit libretro-core-git
+inherit libretro
 
-LIBRETRO_CORE = "opera"
 LIBRETRO_GIT_REPO = "github.com/libretro/opera-libretro.git"
 
 #FIXME: upstream: CC and AR is overriden and --sysroot flag is lost

@@ -1,16 +1,24 @@
 inherit core-image
 
-IMAGE_INSTALL_append = " \
+require classes/include/retro-core-image-debug.inc
+require classes/include/retro-core-image-development.inc
+require classes/include/retro-core-image-raspberrypi.inc
+require classes/include/retro-core-image-rauc.inc
+
+IMAGE_INSTALL += " \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'polkit systemd', 'rtkit', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', 'pulseaudio-server', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-automount', 'udev-extraconf', '', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'retroarch-service', '', d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'weston', '', d)} \
-    ${RETRO_ADDITIONAL_MULTIMEDIA_PACKAGES} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-autostart systemd', 'retroarch-service', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-firmware', 'firmware-libretro', '', d)} \
+    ${@bb.utils.filter('DISTRO_FEATURES', 'kodi rauc resize-helper polkit', d)} \
     kernel-modules \
-    packagegroup-core-boot \
     packagegroup-libretro-cores \
     retro-user \
     retroarch \
+    retroarch-cg-shaders \
+    retroarch-glsl-shaders \
+    retroarch-slang-shaders \
 "
 
-IMAGE_ROOTFS_EXTRA_SPACE_append = "${@bb.utils.contains("DISTRO_FEATURES", "systemd", " + 4096", "" ,d)}"
+IMAGE_ROOTFS_EXTRA_SPACE_append = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', ' + 4096', '' ,d)}"

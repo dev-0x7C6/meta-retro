@@ -1,22 +1,79 @@
-SUMMARY = "Systemd service for RetroArch"
+SUMMARY = "RetroArch systemd service"
 
-PR = "r110"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-SRC_URI = "file://retroarch.service"
+inherit artifact-preview retro-user service-creator systemd
 
-inherit retro-user
+PV = "2.2"
 
-FILES_${PN} = "${systemd_user_unitdir} ${RETRO_USER_HOMEDIR}"
+# https://www.freedesktop.org/software/systemd/man/systemd.unit.html
+#
+# FailureAction=, SuccessAction=
+# Configure the action to take when the unit stops and enters a failed state or inactive state.
+# Takes one of none, reboot, reboot-force, reboot-immediate, poweroff, poweroff-force,
+# poweroff-immediate, exit, and exit-force. In system mode, all options are allowed.
+# In user mode, only none, exit, and exit-force are allowed. Both options default to none.
+
+RETROARCH_SERVICE_FAILURE_ACTION ?= "none"
+RETROARCH_SERVICE_SUCCESS_ACTION ?= "none"
+
+RETROARCH_SERVICE_USER ?= "${RETRO_USER_NAME}"
+RETROARCH_SERVICE_BINARY ?= "${bindir}/retroarch"
+RETROARCH_SERVICE_FILE ?= "retroarch.service"
+
+# Verbose mode by default
+RETROARCH_SERVICE_PARAMETERS ?= "-v"
+RETROARCH_SERVICE_EXTRA_PARAMETERS ?= ""
+
+# Expand command line, remove unneeded spaces
+RETROARCH_SERVICE_START_COMMAND = "${@' '.join('${RETROARCH_SERVICE_BINARY} ${RETROARCH_SERVICE_PARAMETERS} ${RETROARCH_SERVICE_EXTRA_PARAMETERS}'.split())}"
+
+# FIXME: psplash is holding kms context and retroarch is unable to start
+# this do not mix well with RETROARCH_SERVICE_FAILURE_ACTION that is
+# set to reboot or poweroff
+RCONFLICTS_${PN} += "psplash"
+
+RDEPENDS_${PN} += "retroarch"
+SYSTEMD_SERVICE_${PN} = "${RETROARCH_SERVICE_FILE}"
+ARTIFACT_PREVIEW_FILES += "${B}/${RETROARCH_SERVICE_FILE}"
+
+do_compile() {
+    service_emit_section "Unit"
+    service_emit_variable "Description" "${SUMMARY}"
+
+    if [ "${RETROARCH_SERVICE_FAILURE_ACTION}" != "none" ]; then
+        service_emit_variable "FailureAction" "${RETROARCH_SERVICE_FAILURE_ACTION}"
+    fi
+
+    if [ "${RETROARCH_SERVICE_SUCCESS_ACTION}" != "none" ]; then
+        service_emit_variable "SuccessAction" "${RETROARCH_SERVICE_SUCCESS_ACTION}"
+    fi
+
+    service_emit_variable "Conflicts" "getty@tty1.service"
+    service_emit_variable "After" "getty@tty1.service"
+
+    service_emit_separator
+
+    service_emit_section "Service"
+    service_emit_variable "Type" "exec"
+    service_emit_variable "ExecStart" "${RETROARCH_SERVICE_START_COMMAND}"
+
+    if [ "${RETROARCH_SERVICE_FAILURE_ACTION}" = "none" ]; then
+        service_emit_variable "RestartSec" "1"
+        service_emit_variable "Restart" "on-failure"
+    fi
+
+    service_emit_variable "User" "${RETROARCH_SERVICE_USER}"
+    service_emit_separator
+
+    service_emit_section "Install"
+    service_emit_variable "WantedBy" "multi-user.target"
+
+    service_commit ${B}/${RETROARCH_SERVICE_FILE}
+}
 
 do_install() {
-    install -d ${D}${systemd_user_unitdir}
-    install -m 0644 ${WORKDIR}/retroarch.service ${D}${systemd_user_unitdir}
-
-    if ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-autostart', 'true', 'false', d)}; then
-        install -d ${D}${RETRO_USER_DEFAULT_TARGET_WANTS}
-        ln -fs ${systemd_user_unitdir}/retroarch.service ${D}${RETRO_USER_DEFAULT_TARGET_WANTS}/retroarch.service
-        chown ${RETRO_USER_NAME}:${RETRO_USER_NAME} -R ${D}${RETRO_USER_HOMEDIR}
-    fi
+    install -d ${D}${systemd_unitdir}/system
+    install -m 0644 ${B}/${RETROARCH_SERVICE_FILE} ${D}${systemd_unitdir}/system
 }

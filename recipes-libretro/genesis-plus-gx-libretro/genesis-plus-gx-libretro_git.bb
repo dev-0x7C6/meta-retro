@@ -1,9 +1,13 @@
-LICENSE = "GPLv2"
-LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
+SUMMARY = "Sega Mega Drive / Genesis emulator"
+DESCRIPTION = "Sega Mega Drive / Genesis emulator - Genesis-Plus-GX"
 
-inherit libretro-core-git
+LICENSE = "LGPL-2.1-only"
+LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=b1a7fd51d37f7b7ac0052c1eb94ac3f1"
 
-LIBRETRO_CORE = "genesis_plus_gx"
+inherit libretro
+inherit tune-blacklist
+
 LIBRETRO_GIT_REPO = "github.com/libretro/Genesis-Plus-GX.git"
 
-LIBRETRO_PLATFORM_AUTODETECT_RPI4 = "${LIBRETRO_PLATFORM_AUTODETECT_RPI3}"
+# Thumb instruction set is causing huge performance regression
+TUNE_FEATURES_BLACKLIST = "thumb"

@@ -8,68 +8,30 @@ We refer to these as <libretro cores>."
 HOMEPAGE = "https://www.retroarch.com/"
 BUGTRACKER = "https://github.com/libretro/RetroArch/issues"
 
-LICENSE = "GPLv3"
-LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-3.0;md5=c79ff39f19dfec6d293b95dea7b07891"
-
-PR = "r108"
-S = "${WORKDIR}/git"
-
-# Any version >= 572611f1ca63f3b4d60c117432ef8ff1419d38f7 (>= v.1.8.3) should
-# compile due upstream fixes
-#   https://github.com/libretro/RetroArch/pull/9959
-#   https://github.com/libretro/RetroArch/pull/9944
+LICENSE = "GPL-3.0"
+LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
 SRC_URI = "gitsm://github.com/libretro/RetroArch.git ${RETROARCH_PATCHES}"
-SRCREV = "v${PV}"
+S = "${WORKDIR}/git"
 
-RETROARCH_WIFI_PATCHES ?= " \
-  file://enable-wifi-custom.patch \
-  file://enable-wifi-driver.patch \
-  file://enable-wifi-menu.patch \
-  file://enable-wifi-messages.patch \
-  file://enable-wifi-register.patch \
-"
+RETROARCH_PATCHES ?= ""
 
-RETROARCH_PATCHES ?= " \
-  ${@bb.utils.contains('PACKAGECONFIG', 'wifi', '${RETROARCH_WIFI_PATCHES}', '', d)} \
-"
+inherit autotools-brokensep pkgconfig retro-overrides retroarch-paths retroarch-checks deploy
 
-inherit autotools-brokensep pkgconfig retro-overrides retroarch-paths retroarch-checks
+require include/retroarch-deploy.inc
+require include/retroarch-directories.inc
+require include/retroarch-drivers.inc
+require include/retroarch-joystick.inc
+require include/retroarch-latency.inc
+require include/retroarch-save-strategy.inc
+require include/retroarch-theme.inc
+require include/retroarch-video.inc
 
 DEPENDS = " \
   git-native \
   libxml2 \
   mbedtls \
-  zlib \
 "
-
-# Default retroarch drivers
-
-# Input driver. Depending on video driver, it might force a different input driver.
-RETROARCH_DEFAULT_INPUT_DRIVER ??= "udev"
-
-# Joypad driver. ("udev", "linuxraw", "paraport", "sdl2", "hid", "dinput")
-RETROARCH_DEFAULT_JOYPAD_DRIVER ??= "udev"
-
-# Video driver to use. "gl", "xvideo", "sdl", "d3d"
-RETROARCH_DEFAULT_VIDEO_DRIVER ??= "gl"
-
-# Which context implementation to use.
-# Possible ones for desktop are: glx, x-egl, kms-egl, sdl-gl, wgl.
-# By default, tries to use first suitable driver.
-RETROARCH_DEFAULT_VIDEO_CONTEXT ??= "kms-egl"
-
-# Audio driver backend. Depending on configuration possible candidates are: alsa, alsathread, pulse, oss, jack, rsound, roar, openal, sdl, xaudio.
-RETROARCH_DEFAULT_AUDIO_DRIVER ??= "${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', 'pulse', 'alsathread', d)}"
-
-# Audio resampler driver backend. Which audio resampler to use.
-# Default will use "sinc".
-RETROARCH_DEFAULT_RESAMPLER_DRIVER ??= "sinc"
-
-# Menu driver to use. ("rgui", "xmb", "glui")
-RETROARCH_DEFAULT_MENU_DRIVER ??= "xmb"
-
-
 # Package config
 
 RASPBERRYPI_DEFAULT_PACKAGECONFIG ??= ""
@@ -152,9 +114,8 @@ PACKAGECONFIG ??= " \
 
 RETROARCH_LTO_FLAGS ?= "-flto=${@oe.utils.cpu_count()}"
 
-TARGET_CXXFLAGS += "${@bb.utils.contains('PACKAGECONFIG', 'lto', '${RETROARCH_LTO_FLAGS}', '', d)}"
 TARGET_CFLAGS += "${@bb.utils.contains('PACKAGECONFIG', 'lto', '${RETROARCH_LTO_FLAGS}', '', d)}"
-
+TARGET_LDFLAGS += "${@bb.utils.contains('PACKAGECONFIG', 'lto', '${TARGET_CFLAGS}', '', d)}"
 
 # Switches updated from v1.8.5
 # Mon Mar 30 01:56:31 CEST 2020
@@ -263,7 +224,10 @@ PACKAGECONFIG[valgrind] = "--enable-preserve_dylib"
 PACKAGECONFIG[videocore] = "--enable-videocore,--disable-videocore,userland"
 PACKAGECONFIG[videoprocessor] = "--enable-videoprocessor,--disable-videoprocessor"
 PACKAGECONFIG[vivante-fbdev] = "--enable-vivante_fbdev"
-PACKAGECONFIG[vulkan] = "--enable-vulkan,--disable-vulkan,vulkan-loader virtual/mesa"
+
+inherit libretro-vulkan-deps
+PACKAGECONFIG[vulkan] = "--enable-vulkan,--disable-vulkan"
+
 PACKAGECONFIG[wayland] = "--enable-wayland,--disable-wayland,wayland-native wayland wayland-protocols"
 PACKAGECONFIG[wifi] = ",,connman,connman-client"
 PACKAGECONFIG[x11] = "--enable-x11,--disable-x11,libx11"
@@ -275,6 +239,7 @@ PACKAGECONFIG[xvideo] = "--enable-xvideo,--disable-xvideo"
 PACKAGECONFIG[zlib] = "--enable-zlib,--disable-zlib,zlib"
 
 EXTRA_OECONF = "${PACKAGECONFIG_CONFARGS}"
+EXTRA_OEMAKE += "NEED_CXX_LINKER=1"
 
 CONFIGUREOPTS = " \
   --build=${BUILD_SYS} \
@@ -284,54 +249,27 @@ CONFIGUREOPTS = " \
   --sysconfdir=${sysconfdir} \
 "
 
-RETROARCH_CONFIG_FONT_SIZE ?= "10"
+FILES_${PN} += "/usr/share/metainfo"
 
-RETROARCH_CONFIG_XMB_SHADOWS ?= "true"
-RETROARCH_CONFIG_XMB_THEME_COLOR ?= "5"
-RETROARCH_CONFIG_XMB_THEME_INDEX ?= "0"
+RETROARCH_CONFIG_FILE = "${S}/retroarch.cfg"
 
-do_retroarch_config() {
-  RETROARCH_CONFIG_FILE="${S}/retroarch.cfg"
-
-  cd ${S}
-  git checkout -- "retroarch.cfg"
-
-  sed -i \
-    -e "s:# \(assets_directory =\).*:\1 \"${RETROARCH_ASSETS_DIR}\":g" \
-    -e "s:# \(audio_driver =\).*:\1 \"${RETROARCH_DEFAULT_AUDIO_DRIVER}\":g" \
-    -e "s:# \(audio_resampler =\).*:\1 \"${RETROARCH_DEFAULT_RESAMPLER_DRIVER}\":g" \
-    -e "s:# \(cheat_database_path =\).*:\1 \"${RETROARCH_DATABASE_CHEATS_DIR}\":g" \
-    -e "s:# \(content_database_path =\).*:\1 \"${RETROARCH_DATABASE_TITLES_DIR}\":g" \
-    -e "s:# \(cursor_directory =\).*:\1 \"${RETROARCH_DATABASE_CURSORS_DIR}\":g" \
-    -e "s:# \(input_driver =\).*:\1 \"${RETROARCH_DEFAULT_INPUT_DRIVER}\":g" \
-    -e "s:# \(input_joypad_driver =\).*:\1 \"${RETROARCH_DEFAULT_JOYPAD_DRIVER}\":g" \
-    -e "s:# \(joypad_autoconfig_dir =\).*:\1 \"${RETROARCH_AUTOCONFIG_DIR}\":g" \
-    -e "s:# \(libretro_directory =\).*:\1 \"${RETROARCH_LIBRETRO_CORES_DIR}\":g" \
-    -e "s:# \(libretro_info_path =\).*:\1 \"${RETROARCH_LIBRETRO_CORES_INFO_DIR}\":g" \
-    -e "s:# \(menu_driver =\).*:\1 \"${RETROARCH_DEFAULT_MENU_DRIVER}\":g" \
-    -e "s:# \(overlay_directory =\).*:\1 \"${RETROARCH_OVERLAY_DIR}\":g" \
-    -e "s:# \(rgui_browser_directory =\).*:\1 \"${RETROARCH_MEDIA_DIR}\":g" \
-    -e "s:# \(system_directory =\).*:\1 \"${RETROARCH_SYSTEM_DIR}\":g" \
-    -e "s:# \(video_context_driver =\).*:\1 \"${RETROARCH_DEFAULT_VIDEO_CONTEXT}\":g" \
-    -e "s:# \(video_driver =\).*:\1 \"${RETROARCH_DEFAULT_VIDEO_DRIVER}\":g" \
-    -e "s:# \(video_shader_dir =\).*:\1 \"${RETROARCH_SHADERS_DIR}\":g" \
-    ${RETROARCH_CONFIG_FILE} || exit 1
-
-  echo -e "\n# Video" >> ${RETROARCH_CONFIG_FILE}
-  echo "video_font_size = \"${RETROARCH_CONFIG_FONT_SIZE}\"" >> ${RETROARCH_CONFIG_FILE}
-
-  echo -e "\n# Themes" >> ${RETROARCH_CONFIG_FILE}
-  echo "xmb_menu_color_theme = \"${RETROARCH_CONFIG_XMB_THEME_COLOR}\"" >> ${RETROARCH_CONFIG_FILE}
-  echo "xmb_shadows_enable = \"${RETROARCH_CONFIG_XMB_SHADOWS}\"" >> ${RETROARCH_CONFIG_FILE}
-  echo "xmb_theme = \"${RETROARCH_CONFIG_XMB_THEME_INDEX}\"" >> ${RETROARCH_CONFIG_FILE}
-
-  echo -e "\n# Input" >> ${RETROARCH_CONFIG_FILE}
-  for index in {1..16}; do
-    echo "input_player${index}_left = \"left\"" >> ${RETROARCH_CONFIG_FILE}
-  done
+write_comment() {
+  echo -e "\n# ${1}" >> ${RETROARCH_CONFIG_FILE}
 }
 
-addtask retroarch_config after do_unpack before do_patch
+write_cfg() {
+  echo -e "${1} = \"${2}\""  >> ${RETROARCH_CONFIG_FILE}
+}
+
+write_cfg_replace() {
+  sed -i -e "s:# \(${1} =\).*:\1 \"${2}\":g" ${RETROARCH_CONFIG_FILE} || exit 1
+}
+
+do_retroarch_config() {
+  cd ${S}
+  git checkout -- "retroarch.cfg"
+  cp "retroarch.cfg" "retroarch.cfg.stock"
+}
 
 do_configure() {
   export PKG_CONF_PATH="pkg-config"

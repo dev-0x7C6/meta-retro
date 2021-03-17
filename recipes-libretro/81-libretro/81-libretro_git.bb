@@ -1,9 +1,9 @@
+SUMMARY = "ZX81 emulator"
 DESCRIPTION = "Sinclair ZX81 emulator - EightyOne port for libretro"
 
-LICENSE = "GPLv3"
+LICENSE = "GPL-3.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=784d7dc7357bd924e8d5642892bf1b6b"
 
-inherit libretro-core-git
+inherit libretro
 
-LIBRETRO_CORE = "81"
 LIBRETRO_GIT_REPO = "github.com/libretro/81-libretro.git"

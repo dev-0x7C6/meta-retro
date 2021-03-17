@@ -1,20 +1,23 @@
-DESCRIPTION = "NDS emu - DESMUME"
+SUMMARY = "Nintendo DS emulator"
+DESCRIPTION = "Nintendo DS emulator - DESMUME"
 
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0"
 LIC_FILES_CHKSUM = "file://desmume/COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
-inherit libretro-core-git
+inherit libretro
 
 DEPENDS += "libpcap libglu"
 
 LIBRETRO_MAKEFILE_PREFIX = "desmume/src/frontend/libretro"
 
-LIBRETRO_PLATFORM_append_arm32 = " armv"
-LIBRETRO_PLATFORM_append_opengles = " gles"
+LIBRETRO_PLATFORM_append_arm32 = "-armv"
+LIBRETRO_PLATFORM_append_opengles = "-gles"
 
 LIBRETRO_GIT_REPO = "github.com/libretro/desmume.git"
 LIBRETRO_CORE = "desmume/src/frontend/libretro/desmume"
 
-COMPATIBLE_MACHINE = "(-)"
-COMPATIBLE_MACHINE_x86arch = "(.*)"
-COMPATIBLE_MACHINE_arm32 = "(.*)"
+# Unable to compile on 64-bit platforms
+COMPATIBLE_MACHINE = "(32bit)"
+
+# Maybe glvnd support that's comming in future will help
+REQUIRED_DISTRO_FEATURES = "x11"
