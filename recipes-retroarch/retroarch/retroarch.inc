@@ -16,7 +16,13 @@ S = "${WORKDIR}/git"
 
 RETROARCH_PATCHES ?= ""
 
-inherit autotools-brokensep pkgconfig retro-overrides retroarch-paths retroarch-checks deploy
+inherit autotools-brokensep
+inherit deploy
+inherit libretro-vulkan-deps
+inherit pkgconfig
+inherit retro-overrides
+inherit retroarch-checks
+inherit retroarch-paths
 
 require include/retroarch-deploy.inc
 require include/retroarch-directories.inc
@@ -27,10 +33,10 @@ require include/retroarch-save-strategy.inc
 require include/retroarch-theme.inc
 require include/retroarch-video.inc
 
+
 DEPENDS = " \
-  git-native \
+  ${@bb.utils.contains('PACKAGECONFIG', 'disable-git-version', '', 'git-native', d)} \
   libxml2 \
-  mbedtls \
 "
 # Package config
 
@@ -48,7 +54,7 @@ RETROARCH_GRAPHICS_PACKAGECONFIG_DEFAULTS ??= " \
   ${@bb.utils.filter('DISTRO_FEATURES', 'vulkan wayland wifi', d)} \
   glslang \
   kms \
-  no-opengl1 \
+  disable-opengl1 \
   slang \
   spirv-cross \
 "
@@ -58,10 +64,10 @@ RETROARCH_AUDIO_PACKAGECONFIG_DEFAULTS ??= " \
 "
 
 RETROARCH_ONLINE_PACKAGECONFIG_DEFAULTS ??= " \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-online', '', 'no-discord', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-updater', '', 'no-online-updater', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-updater', '', 'no-update-assets', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-updater', '', 'no-update-cores', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-online', '', 'disable-discord', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-updater', '', 'disable-online-updater', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-updater', '', 'disable-update-assets', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-updater', '', 'disable-update-cores', d)} \
 "
 
 RETROARCH_CPU_PACKAGECONFIG_ARM_DEFAULTS ??= ""
@@ -93,6 +99,7 @@ PACKAGECONFIG ??= " \
   ${RETROARCH_MENU_PACKAGECONFIG_DEFAULTS} \
   ${RETROARCH_ONLINE_PACKAGECONFIG_DEFAULTS} \
   dbus \
+  disable-git-version \
   dynlib \
   ffmpeg \
   freetype \
@@ -109,6 +116,7 @@ PACKAGECONFIG ??= " \
   threads-storage \
   udev \
   v4l2 \
+  libshake \
   zlib \
 "
 
@@ -117,8 +125,8 @@ RETROARCH_LTO_FLAGS ?= "-flto=${@oe.utils.cpu_count()}"
 TARGET_CFLAGS += "${@bb.utils.contains('PACKAGECONFIG', 'lto', '${RETROARCH_LTO_FLAGS}', '', d)}"
 TARGET_LDFLAGS += "${@bb.utils.contains('PACKAGECONFIG', 'lto', '${TARGET_CFLAGS}', '', d)}"
 
-# Switches updated from v1.8.5
-# Mon Mar 30 01:56:31 CEST 2020
+# Switches updated from v1.9.1
+# Mon Mar 29 21:33:32 CEST 2021
 PACKAGECONFIG[alsa] = "--enable-alsa,--disable-alsa,alsa-lib"
 PACKAGECONFIG[audioio] = "--enable-audioio,--disable-audioio"
 PACKAGECONFIG[blissbox] = "--enable-blissbox,--disable-blissbox"
@@ -139,15 +147,19 @@ PACKAGECONFIG[flac] = "--enable-flac,--disable-flac,flac"
 PACKAGECONFIG[floathard] = "--enable-floathard"
 PACKAGECONFIG[floatsoftfp] = "--enable-floatsoftfp"
 PACKAGECONFIG[freetype] = "--enable-freetype,--disable-freetype,freetype"
+PACKAGECONFIG[gl] = "--enable-opengl,--disable-opengl,virtual/libgl"
 PACKAGECONFIG[gles3] = "--enable-opengles3,,virtual/libgles2"
+PACKAGECONFIG[gles3_1] = "--enable-opengles3_1,,virtual/libgles2"
+PACKAGECONFIG[gles3_2] = "--enable-opengles3_2,,virtual/libgles2"
 PACKAGECONFIG[gles] = "--enable-opengles,,virtual/libgles2"
 PACKAGECONFIG[glslang] = "--enable-glslang --disable-builtinglslang,--disable-glslang --enable-builtinglslang,glslang"
 PACKAGECONFIG[gong] = "--enable-gong"
 PACKAGECONFIG[jack] = "--enable-jack,--disable-jack,jack"
 PACKAGECONFIG[kms] = "--enable-kms,--disable-kms,libdrm virtual/libgbm"
 PACKAGECONFIG[libusb] = "--enable-libusb,--disable-libusb,libusb"
-PACKAGECONFIG[lto] = ",,"
+PACKAGECONFIG[libshake] = "--enable-libshake,--disable-libshake,libshake"
 PACKAGECONFIG[lua] = "--enable-lua"
+PACKAGECONFIG[lto] = ",,"
 PACKAGECONFIG[mali-fbdev] = "--enable-mali_fbdev"
 PACKAGECONFIG[menu-materialui] = "--enable-materialui,--disable-materialui"
 PACKAGECONFIG[menu-ozone] = "--enable-ozone,--disable-ozone"
@@ -158,43 +170,15 @@ PACKAGECONFIG[miniupnpc] = "--enable-miniupnpc,--disable-miniupnpc"
 PACKAGECONFIG[mmap] = "--enable-mmap,--disable-mmap,nmap"
 PACKAGECONFIG[mpv] = "--enable-mpv,,mpv"
 PACKAGECONFIG[neon] = "--enable-neon"
+PACKAGECONFIG[system-mbedtls] = "--enable-systemmbedtls ,--disable-systemmbedtls,mbedtls"
 PACKAGECONFIG[network-video] = "--enable-network_video"
 PACKAGECONFIG[network] = "--enable-networking,--disable-networking"
 PACKAGECONFIG[networkgamepad] = "--enable-networkgamepad,--disable-networkgamepad"
-PACKAGECONFIG[no-7zip] = "--disable-7zip,,,7z"
-PACKAGECONFIG[no-accessibility] = "--disable-accessibility"
-PACKAGECONFIG[no-audiomixer] = "--disable-audiomixer"
-PACKAGECONFIG[no-chd] = "--disable-chd"
-PACKAGECONFIG[no-cheevos] = "--disable-cheevos"
-PACKAGECONFIG[no-configfile] = "--disable-configfile"
-PACKAGECONFIG[no-discord] = "--disable-discord"
-PACKAGECONFIG[no-dr_mp3] = "--disable-dr_mp3"
-PACKAGECONFIG[no-glsl] = "--disable-glsl"
-PACKAGECONFIG[no-hid] = "--disable-hid"
-PACKAGECONFIG[no-image-viewer] = "--disable-imageviewer"
-PACKAGECONFIG[no-langextra] = "--disable-langextra"
-PACKAGECONFIG[no-libretrodb] = "--disable-libretrodb"
-PACKAGECONFIG[no-menu-widgets] = "--disable-gfx_widgets"
-PACKAGECONFIG[no-menu] = "--disable-menu"
-PACKAGECONFIG[no-online-updater] = "--disable-online_updater"
-PACKAGECONFIG[no-opengl-core] = "--disable-opengl_core"
-PACKAGECONFIG[no-opengl1] = "--disable-opengl1"
-PACKAGECONFIG[no-rbmp] = "--disable-rbmp"
-PACKAGECONFIG[no-rjpeg] = "--disable-rjpeg"
-PACKAGECONFIG[no-rpng] = "--disable-rpng"
-PACKAGECONFIG[no-rtga] = "--disable-rtga"
-PACKAGECONFIG[no-runahead] = "--disable-runahead"
-PACKAGECONFIG[no-shaderpipeline] = "--disable-shaderpipeline"
-PACKAGECONFIG[no-translate] = "--disable-translate"
-PACKAGECONFIG[no-update-assets] = "--disable-update_assets"
-PACKAGECONFIG[no-update-cores] = "--disable-update_cores"
-PACKAGECONFIG[no-vulkan-display] = "--disable-vulkan_display"
 PACKAGECONFIG[odroidgo2] = "--enable-odroidgo2"
 PACKAGECONFIG[offscreen] = "--enable-osmesa"
 PACKAGECONFIG[omap] = "--enable-omap"
 PACKAGECONFIG[openal] = "--enable-al,--disable-al"
 PACKAGECONFIG[opendingux-fbdev] = "--enable-opendingux_fbdev"
-PACKAGECONFIG[opengl] = "--enable-opengl,--disable-opengl,virtual/libgl"
 PACKAGECONFIG[openvg] = "--enable-vg,--disable-vg,openvg"
 PACKAGECONFIG[oss] = "--enable-oss,--disable-oss"
 PACKAGECONFIG[parport] = "--enable-parport,--disable-parport"
@@ -224,19 +208,50 @@ PACKAGECONFIG[valgrind] = "--enable-preserve_dylib"
 PACKAGECONFIG[videocore] = "--enable-videocore,--disable-videocore,userland"
 PACKAGECONFIG[videoprocessor] = "--enable-videoprocessor,--disable-videoprocessor"
 PACKAGECONFIG[vivante-fbdev] = "--enable-vivante_fbdev"
-
-inherit libretro-vulkan-deps
 PACKAGECONFIG[vulkan] = "--enable-vulkan,--disable-vulkan"
-
 PACKAGECONFIG[wayland] = "--enable-wayland,--disable-wayland,wayland-native wayland wayland-protocols"
 PACKAGECONFIG[wifi] = ",,connman,connman-client"
 PACKAGECONFIG[x11] = "--enable-x11,--disable-x11,libx11"
 PACKAGECONFIG[xaudio] = "--enable-xaudio,--disable-xaudio"
 PACKAGECONFIG[xinerama] = "--enable-xinerama,--disable-xinerama,libxinerama"
 PACKAGECONFIG[xrandr] = "--enable-xrandr,--disable-xrandr,libxrandr"
-PACKAGECONFIG[xshm] = "--enable-xshm,,libxext"
+PACKAGECONFIG[xshm] = "--enable-xshm,--disable-xshm,libxext"
 PACKAGECONFIG[xvideo] = "--enable-xvideo,--disable-xvideo"
 PACKAGECONFIG[zlib] = "--enable-zlib,--disable-zlib,zlib"
+
+PACKAGECONFIG[disable-7zip] = "--disable-7zip,,,7z"
+PACKAGECONFIG[disable-accessibility] = "--disable-accessibility"
+PACKAGECONFIG[disable-audiomixer] = "--disable-audiomixer"
+PACKAGECONFIG[disable-chd] = "--disable-chd"
+PACKAGECONFIG[disable-cheats] = "--disable-cheats"
+PACKAGECONFIG[disable-cheevos] = "--disable-cheevos"
+PACKAGECONFIG[disable-configfile] = "--disable-configfile"
+PACKAGECONFIG[disable-discord] = "--disable-discord"
+PACKAGECONFIG[disable-dr_mp3] = "--disable-dr_mp3"
+PACKAGECONFIG[disable-dsp-filter] = "--disable-dsp_filter"
+PACKAGECONFIG[disable-git-version] = "--disable-git_version,,"
+PACKAGECONFIG[disable-glsl] = "--disable-glsl"
+PACKAGECONFIG[disable-hid] = "--disable-hid"
+PACKAGECONFIG[disable-image-viewer] = "--disable-imageviewer"
+PACKAGECONFIG[disable-langextra] = "--disable-langextra"
+PACKAGECONFIG[disable-libretrodb] = "--disable-libretrodb"
+PACKAGECONFIG[disable-menu-widgets] = "--disable-gfx_widgets"
+PACKAGECONFIG[disable-menu] = "--disable-menu"
+PACKAGECONFIG[disable-online-updater] = "--disable-online_updater"
+PACKAGECONFIG[disable-opengl-core] = "--disable-opengl_core"
+PACKAGECONFIG[disable-opengl1] = "--disable-opengl1"
+PACKAGECONFIG[disable-rbmp] = "--disable-rbmp"
+PACKAGECONFIG[disable-rewind] = "--disable-rewind"
+PACKAGECONFIG[disable-rjpeg] = "--disable-rjpeg"
+PACKAGECONFIG[disable-rpng] = "--disable-rpng"
+PACKAGECONFIG[disable-rtga] = "--disable-rtga"
+PACKAGECONFIG[disable-runahead] = "--disable-runahead"
+PACKAGECONFIG[disable-screenshots] = "--disable-screenshots"
+PACKAGECONFIG[disable-shaderpipeline] = "--disable-shaderpipeline"
+PACKAGECONFIG[disable-translate] = "--disable-translate"
+PACKAGECONFIG[disable-update-assets] = "--disable-update_assets"
+PACKAGECONFIG[disable-update-cores] = "--disable-update_cores"
+PACKAGECONFIG[disable-vulkan-display] = "--disable-vulkan_display"
 
 EXTRA_OECONF = "${PACKAGECONFIG_CONFARGS}"
 EXTRA_OEMAKE += "NEED_CXX_LINKER=1"
