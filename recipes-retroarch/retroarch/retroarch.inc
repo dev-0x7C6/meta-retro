@@ -103,12 +103,14 @@ PACKAGECONFIG ??= " \
   dynlib \
   ffmpeg \
   freetype \
+  libshake \
   libusb \
   lto \
   menu-materialui \
   menu-ozone \
   menu-rgui \
   menu-xmb \
+  mmap \
   network \
   networkgamepad \
   ssl \
@@ -116,7 +118,6 @@ PACKAGECONFIG ??= " \
   threads-storage \
   udev \
   v4l2 \
-  libshake \
   zlib \
 "
 
@@ -167,7 +168,7 @@ PACKAGECONFIG[menu-rgui] = "--enable-rgui,--disable-rgui"
 PACKAGECONFIG[menu-stripes] = "--enable-stripes,--disable-stripes"
 PACKAGECONFIG[menu-xmb] = "--enable-xmb,--disable-xmb"
 PACKAGECONFIG[miniupnpc] = "--enable-miniupnpc,--disable-miniupnpc"
-PACKAGECONFIG[mmap] = "--enable-mmap,--disable-mmap,nmap"
+PACKAGECONFIG[mmap] = "--enable-mmap,--disable-mmap"
 PACKAGECONFIG[mpv] = "--enable-mpv,,mpv"
 PACKAGECONFIG[neon] = "--enable-neon"
 PACKAGECONFIG[system-mbedtls] = "--enable-systemmbedtls ,--disable-systemmbedtls,mbedtls"
