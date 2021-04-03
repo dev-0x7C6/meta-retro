@@ -18,6 +18,7 @@ LIBRETRO_GIT_REV_pn-bluemsx-libretro ?= "2dd0d7944aa82cf738759a8e1427f8dff6b5a4b
 LIBRETRO_GIT_REV_pn-bsnes-libretro ?= "a7343fc4a7a40e824e8124fdcfa01fac647e9e63"
 LIBRETRO_GIT_REV_pn-caprice32-libretro ?= "408da091504dabe9678b25b7a6c3bbef0bc4c140"
 LIBRETRO_GIT_REV_pn-desmume-libretro ?= "7300ed815b6b01086d465f57d98da0c311bd5e05"
+LIBRETRO_GIT_REV_pn-desmume2015-libretro ?= "b6de1b650d047a43f78b1ae561d379100e22814f"
 LIBRETRO_GIT_REV_pn-dinothawr-libretro ?= "84a98d76f7b1cf90001742f39f2ae7539e43d027"
 LIBRETRO_GIT_REV_pn-dolphin-launcher-libretro ?= "6d72f3093d33461821e4f7fde6d3308187e644b9"
 LIBRETRO_GIT_REV_pn-dolphin-libretro ?= "089e3f4c4ce3910b41793c85371dcedf6c17d874"
