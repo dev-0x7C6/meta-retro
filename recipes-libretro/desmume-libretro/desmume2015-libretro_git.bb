@@ -8,13 +8,13 @@ inherit libretro
 
 DEPENDS += "libpcap libglu"
 
-LIBRETRO_MAKEFILE_PREFIX = "desmume/src/frontend/libretro"
+LIBRETRO_MAKEFILE_PREFIX = "desmume"
 
 LIBRETRO_PLATFORM_append_arm32 = "-armv"
 LIBRETRO_PLATFORM_append_opengles = "-gles"
 
-LIBRETRO_GIT_REPO = "github.com/libretro/desmume.git"
-LIBRETRO_CORE = "desmume/src/frontend/libretro/desmume"
+LIBRETRO_GIT_REPO = "github.com/libretro/desmume2015.git"
+LIBRETRO_CORE = "desmume/desmume2015"
 
 EXTRA_OEMAKE_append_64bit = " DESMUME_JIT=0"
 
