@@ -16,8 +16,8 @@ LIBRETRO_PLATFORM_append_opengles = "-gles"
 LIBRETRO_GIT_REPO = "github.com/libretro/desmume.git"
 LIBRETRO_CORE = "desmume/src/frontend/libretro/desmume"
 
-# Unable to compile on 64-bit platforms
-COMPATIBLE_MACHINE = "(32bit)"
+EXTRA_OEMAKE_aarch64 += "DESMUME_JIT=0"
+EXTRA_OEMAKE_X86_64 += "DESMUME_JIT=0"
 
 # Maybe glvnd support that's comming in future will help
 REQUIRED_DISTRO_FEATURES = "x11"
