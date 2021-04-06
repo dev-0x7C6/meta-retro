@@ -8,3 +8,5 @@ inherit libretro
 
 LIBRETRO_CORE = "mednafen_pcfx"
 LIBRETRO_GIT_REPO = "github.com/libretro/beetle-pcfx-libretro"
+
+LIBRETRO_EXTRA_MAKEFLAGS_append_armarch = " IS_X86=0"
