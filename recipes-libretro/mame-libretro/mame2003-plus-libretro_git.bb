@@ -1,5 +1,5 @@
 LICENSE = "MAME"
-LIC_FILES_CHKSUM = "file://LICENSE.md;md5=fe039f42ebf8b0b7bc62b8260961295f"
+LIC_FILES_CHKSUM = "file://LICENSE.md;md5=60e1e140c3210d8a8741631c9e77f091"
 
 require mame.inc
 
