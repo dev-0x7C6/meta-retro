@@ -6,7 +6,7 @@
 RETROARCH_LAKKA_BLUETOOTH_PATH ??= "${sysconfdir}/bluetooth/bluez.conf"
 
 # empty will fallback to "/storage/.cache/connman/"
-RETROARCH_LAKKA_CONNMAN_DIR ??= "${RETROARCH_HOMEDIR}/.config/connman/"
+RETROARCH_LAKKA_CONNMAN_DIR ??= "${RETROARCH_HOME_DIR}/.config/connman/"
 
 # empty will fallback to "/storage/.cache/services/localap.conf"
 RETROARCH_LAKKA_LOCALAP_PATH ??= ""
@@ -21,7 +21,7 @@ RETROARCH_LAKKA_SSH_PATH ??= "${sysconfdir}/ssh/sshd.conf"
 RETROARCH_LAKKA_TIMEZONE_PATH ??= ""
 
 # empty will fallback to "/storage/.update/"
-RETROARCH_LAKKA_UPDATE_DIR ??= "${RETROARCH_HOMEDIR}/.update/"
+RETROARCH_LAKKA_UPDATE_DIR ??= "${RETROARCH_HOME_DIR}/.update/"
 
 RETROARCH_LAKKA_HEADER_NAME ?= "lakka.h"
 RETROARCH_LAKKA_HEADER_PATH ?= "${S}/${RETROARCH_LAKKA_HEADER_NAME}"

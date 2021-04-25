@@ -1,3 +1,8 @@
+inherit retro-user
+
+# Retroarch home directory
+RETROARCH_HOME_DIR ?= "${RETRO_USER_HOMEDIR}"
+
 # Root directory for stuff
 RETROARCH_ROOT_DIR ?= "${datadir}/retroarch"
 

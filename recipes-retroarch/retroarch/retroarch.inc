@@ -21,7 +21,6 @@ inherit deploy
 inherit libretro-vulkan-deps
 inherit pkgconfig
 inherit retro-overrides
-inherit retro-user
 inherit retroarch-checks
 inherit retroarch-paths
 
@@ -34,8 +33,6 @@ require include/retroarch-latency.inc
 require include/retroarch-save-strategy.inc
 require include/retroarch-theme.inc
 require include/retroarch-video.inc
-
-RETROARCH_HOMEDIR ?= "${RETRO_USER_HOMEDIR}"
 
 DEPENDS = " \
   ${@bb.utils.contains('PACKAGECONFIG', 'disable-git-version', '', 'git-native', d)} \
