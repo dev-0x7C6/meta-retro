@@ -157,6 +157,7 @@ PACKAGECONFIG[glslang] = "--enable-glslang --disable-builtinglslang,--disable-gl
 PACKAGECONFIG[gong] = "--enable-gong"
 PACKAGECONFIG[jack] = "--enable-jack,--disable-jack,jack"
 PACKAGECONFIG[kms] = "--enable-kms,--disable-kms,libdrm virtual/libgbm"
+PACKAGECONFIG[lakka] = ",,fontconfig"
 PACKAGECONFIG[libusb] = "--enable-libusb,--disable-libusb,libusb"
 PACKAGECONFIG[libshake] = "--enable-libshake,--disable-libshake,libshake"
 PACKAGECONFIG[lua] = "--enable-lua"
@@ -255,7 +256,7 @@ PACKAGECONFIG[disable-update-cores] = "--disable-update_cores"
 PACKAGECONFIG[disable-vulkan-display] = "--disable-vulkan_display"
 
 EXTRA_OECONF = "${PACKAGECONFIG_CONFARGS}"
-EXTRA_OEMAKE += "NEED_CXX_LINKER=1"
+EXTRA_OEMAKE += "NEED_CXX_LINKER=1 HAVE_LAKKA=${@bb.utils.contains('PACKAGECONFIG', 'lakka', '1', '0', d)}"
 
 CONFIGUREOPTS = " \
   --build=${BUILD_SYS} \
