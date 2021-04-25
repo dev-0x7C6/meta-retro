@@ -21,6 +21,7 @@ inherit deploy
 inherit libretro-vulkan-deps
 inherit pkgconfig
 inherit retro-overrides
+inherit retro-user
 inherit retroarch-checks
 inherit retroarch-paths
 
@@ -28,11 +29,13 @@ require include/retroarch-deploy.inc
 require include/retroarch-directories.inc
 require include/retroarch-drivers.inc
 require include/retroarch-joystick.inc
+require include/retroarch-lakka.inc
 require include/retroarch-latency.inc
 require include/retroarch-save-strategy.inc
 require include/retroarch-theme.inc
 require include/retroarch-video.inc
 
+RETROARCH_HOMEDIR ?= "${RETRO_USER_HOMEDIR}"
 
 DEPENDS = " \
   ${@bb.utils.contains('PACKAGECONFIG', 'disable-git-version', '', 'git-native', d)} \
@@ -276,6 +279,10 @@ write_comment() {
 
 write_cfg() {
   echo -e "${1} = \"${2}\""  >> ${RETROARCH_CONFIG_FILE}
+}
+
+define_replace() {
+  [ -z "${2}" ] || sed -i -e "s:^#define.*${1}.*$:#define ${1} \"${2}\":g" ${3} || exit 1
 }
 
 write_cfg_replace() {
