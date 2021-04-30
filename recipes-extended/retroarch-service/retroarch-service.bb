@@ -3,9 +3,11 @@ SUMMARY = "RetroArch systemd service"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-inherit artifact-preview retro-user service-creator systemd
+inherit artifact-preview features_check retro-user service-creator systemd
 
-PV = "2.2"
+PV = "2.3"
+
+REQUIRED_DISTRO_FEATURES = "systemd"
 
 # https://www.freedesktop.org/software/systemd/man/systemd.unit.html
 #
