@@ -34,10 +34,8 @@ require include/retroarch-save-strategy.inc
 require include/retroarch-theme.inc
 require include/retroarch-video.inc
 
-DEPENDS = " \
-  ${@bb.utils.contains('PACKAGECONFIG', 'disable-git-version', '', 'git-native', d)} \
-  libxml2 \
-"
+DEPENDS = "libxml2"
+
 # Package config
 
 RASPBERRYPI_DEFAULT_PACKAGECONFIG ??= ""
@@ -99,7 +97,6 @@ PACKAGECONFIG ??= " \
   ${RETROARCH_MENU_PACKAGECONFIG_DEFAULTS} \
   ${RETROARCH_ONLINE_PACKAGECONFIG_DEFAULTS} \
   dbus \
-  disable-git-version \
   dynlib \
   ffmpeg \
   freetype \
@@ -231,7 +228,6 @@ PACKAGECONFIG[disable-configfile] = "--disable-configfile"
 PACKAGECONFIG[disable-discord] = "--disable-discord"
 PACKAGECONFIG[disable-dr_mp3] = "--disable-dr_mp3"
 PACKAGECONFIG[disable-dsp-filter] = "--disable-dsp_filter"
-PACKAGECONFIG[disable-git-version] = "--disable-git_version,,"
 PACKAGECONFIG[disable-glsl] = "--disable-glsl"
 PACKAGECONFIG[disable-hid] = "--disable-hid"
 PACKAGECONFIG[disable-image-viewer] = "--disable-imageviewer"
@@ -254,6 +250,10 @@ PACKAGECONFIG[disable-translate] = "--disable-translate"
 PACKAGECONFIG[disable-update-assets] = "--disable-update_assets"
 PACKAGECONFIG[disable-update-cores] = "--disable-update_cores"
 PACKAGECONFIG[disable-vulkan-display] = "--disable-vulkan_display"
+
+
+# Dropped by 1.9.2
+# PACKAGECONFIG[disable-git-version] = "--disable-git_version,,"
 
 EXTRA_OECONF = "${PACKAGECONFIG_CONFARGS}"
 EXTRA_OEMAKE += "NEED_CXX_LINKER=1 HAVE_LAKKA=${@bb.utils.contains('PACKAGECONFIG', 'lakka', '1', '0', d)}"
