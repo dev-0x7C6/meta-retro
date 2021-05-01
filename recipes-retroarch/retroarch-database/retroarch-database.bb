@@ -31,8 +31,8 @@ do_patch() {
 # FIXME: files with character [ or ] failing at rpm package stage
 # BUG-REPORT: https://bugzilla.yoctoproject.org/show_bug.cgi?id=13746
 # WORKAROUND: Replace all [] with ()
-  find "${S}" -type f -name "*[*" -exec rename "[" "(" "{}" \;
-  find "${S}" -type f -name "*]*" -exec rename "]" ")" "{}" \;
+  find "${S}" -type f -name "*" -exec rename "[" "(" "{}" \;
+  find "${S}" -type f -name "*" -exec rename "]" ")" "{}" \;
 }
 
 do_install() {
