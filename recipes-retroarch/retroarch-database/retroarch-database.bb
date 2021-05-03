@@ -11,7 +11,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=459277d80461c2908b4cf14949f8dcd5"
 
 SRC_URI = "gitsm://github.com/libretro/libretro-database.git;protocol=https"
 
-PR = "r2"
+PR = "r3"
 
 inherit retroarch-allarch
 
@@ -30,15 +30,8 @@ FILES_${PN} += "${RETROARCH_DATABASE_DIR}"
 do_patch() {
 # FIXME: files with character [ or ] failing at rpm package stage
 # BUG-REPORT: https://bugzilla.yoctoproject.org/show_bug.cgi?id=13746
-# WORKAROUND: Replace all [] with ()
-  IFS=$'\n'
-  for f in $(find ${S} -type f \( -name "*[*" -o -name "*]*" \)); do
-    oldpath="$f"
-    newpath=`echo "$f" | sed "s#\[#\(#g;s#\]#\)#g"`
-    if [ "${oldpath}" != "${newpath}" ]; then
-      mv "${oldpath}" "${newpath}"
-    fi
-  done
+# WORKAROUND: drop problematic files
+    find ${S} -type f \( -name "*[*" -o -name "*]*" \) -delete
 }
 
 do_install() {
