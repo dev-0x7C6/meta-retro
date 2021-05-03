@@ -63,6 +63,9 @@ FILES_${PN}-psp = "${RETROARCH_SYSTEM_DIR}/PPSSPP"
 FILES_${PN}-scummvm = "${RETROARCH_SYSTEM_DIR}/scummvm"
 FILES_${PN}-vice = "${RETROARCH_SYSTEM_DIR}/vice"
 
+# Skip file dependencies for prebuilt binaries
+SKIP_FILEDEPS = "1"
+
 do_patch() {
 # drop *.so and *.dynlib
     find ${S} -type f -name "*.so" -delete
