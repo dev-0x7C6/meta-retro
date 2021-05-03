@@ -14,10 +14,28 @@ SRC_URI[sha256sum] = "9434c62625e3a26b439d7d1fa55e33309265117c0bb52798f5790555e2
 FILES_${PN} += "${RETROARCH_SYSTEM_DIR}"
 S = "${WORKDIR}/system"
 
-do_configure[noexec] = "1"
-do_compile[noexec] = "1"
+PACKAGES =+ " \
+    ${PN}-dreamcast \
+    ${PN}-mame \
+    ${PN}-psone \
+    ${PN}-psp \
+    ${PN}-scummvm \
+"
 
-FILES_${PN} += "${RETROARCH_ASSETS_DIR}"
+# ${PN}-psp conflicts with ppsspp-libretro
+RDEPENDS_${PN} += " \
+    ${PN}-dreamcast \
+    ${PN}-mame \
+    ${PN}-psone \
+    ${PN}-scummvm \
+"
+
+FILES_${PN} += "${RETROARCH_SYSTEM_DIR}"
+FILES_${PN}-dreamcast += "${RETROARCH_SYSTEM_DIR}/dc"
+FILES_${PN}-mame = "${RETROARCH_SYSTEM_DIR}/mame"
+FILES_${PN}-psone = "${RETROARCH_SYSTEM_DIR}/scph* ${RETROARCH_SYSTEM_DIR}/ps*"
+FILES_${PN}-psp = "${RETROARCH_SYSTEM_DIR}/ppsspp"
+FILES_${PN}-scummvm = "${RETROARCH_SYSTEM_DIR}/scummvm"
 
 do_patch() {
 # Remove architecture specific stuff
@@ -28,10 +46,20 @@ do_patch() {
     rm -fv ${S}/libbass.so
     rm -fv ${S}/libbassmidi.dynlib
     rm -fv ${S}/libbassmidi.so
-# ppsspp provide own firmware and assets
-    rm -rfv ${S}/PPSSPP
 # dreamcast emulators expect DC directory with lowercase encoding
-    mv ${S}/DC ${S}/dc
+    [ -d "${S}/DC" ] && mv ${S}/DC ${S}/dc
+
+# FIXME: files with character [ or ] failing at rpm package stage
+# BUG-REPORT: https://bugzilla.yoctoproject.org/show_bug.cgi?id=13746
+# WORKAROUND: Replace all [] with ()
+    IFS=$'\n'
+    for f in $(find ${S} -type f \( -name "*[*" -o -name "*]*" \)); do
+        oldpath="$f"
+        newpath=`echo "$f" | sed "s#\[#\(#g;s#\]#\)#g"`
+        if [ "${oldpath}" != "${newpath}" ]; then
+        mv "${oldpath}" "${newpath}"
+        fi
+    done
 }
 
 do_install() {
