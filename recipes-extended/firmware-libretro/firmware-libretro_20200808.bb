@@ -67,6 +67,14 @@ FILES_${PN}-vice = "${RETROARCH_SYSTEM_DIR}/vice"
 SKIP_FILEDEPS = "1"
 
 do_patch() {
+# remove precompiled shaders
+    [ -d "${S}/Mupen64plus/shaders" ] && rm -rf "${S}/Mupen64plus/shaders"
+    [ -d "${S}/GLupeN64/shaders" ] && rm -rf "${S}/GLupeN64/shaders"
+    find "${S}/openlara" -type f -name "*.xsh" -delete
+
+# remove logs
+    find ${S} -type f -name "*.log" -delete
+
 # drop *.so and *.dynlib
     find ${S} -type f -name "*.so" -delete
     find ${S} -type f -name "*.dynlib" -delete
