@@ -58,6 +58,7 @@ PACKAGECONFIG[wsi] = "-DUSE_WAYLAND_WSI=ON,-DUSE_WAYLAND_WSI=OFF"
 # PACKAGECONFIG[vulkan] = ",,${VULKAN_DEPENDS},${VULKAN_DEPENDS}"
 
 FILES_${PN} += "${RETROARCH_SYSTEM_DIR}"
+RCONFLICTS_${PN} += "firmware-libretro-psp"
 
 do_install_append() {
   install -d ${D}${RETROARCH_SYSTEM_DIR}/PPSSPP/
