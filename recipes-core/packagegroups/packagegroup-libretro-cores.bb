@@ -36,7 +36,7 @@ PACKAGECONFIG[pc98] = ",,,,packagegroup-libretro-pc98"
 PACKAGECONFIG[pc] = ",,,,packagegroup-libretro-pc"
 PACKAGECONFIG[psx] = ",,,,packagegroup-libretro-psx"
 PACKAGECONFIG[saturn] = ",,,,packagegroup-libretro-saturn"
-PACKAGECONFIG[snes] = ",,,,packagegroup-libretro-sms"
+PACKAGECONFIG[sms] = ",,,,packagegroup-libretro-sms"
 PACKAGECONFIG[snes] = ",,,,packagegroup-libretro-snes"
 PACKAGECONFIG[wii] = ",,,,packagegroup-libretro-wii"
 
