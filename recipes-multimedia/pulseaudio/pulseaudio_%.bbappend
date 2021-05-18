@@ -1,7 +1,5 @@
 inherit retro-user
 
-DEPENDS += "retro-user"
-
 FILES_${PN}-server += "${RETRO_USER_DEFAULT_TARGET_WANTS} ${RETRO_USER_SOCKETS_TARGET_WANTS}"
 
 do_install_append() {
@@ -16,4 +14,3 @@ do_install_append() {
     fi
 }
 
-INSANE_SKIP_${PN}-server += "host-user-contaminated"

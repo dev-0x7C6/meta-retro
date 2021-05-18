@@ -14,7 +14,6 @@ IMAGE_INSTALL += " \
     ${@bb.utils.filter('DISTRO_FEATURES', 'kodi rauc resize-helper polkit', d)} \
     kernel-modules \
     packagegroup-libretro-cores \
-    retro-user \
     retroarch \
     retroarch-cg-shaders \
     retroarch-glsl-shaders \
