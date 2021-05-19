@@ -16,7 +16,7 @@ SRC_URI = "git://github.com/KhronosGroup/SPIRV-Tools.git;name=spirv-tools \
            file://0001-Respect-CMAKE_INSTALL_LIBDIR-in-installed-CMake-file.patch;destsuffix=${DEST_DIR}/effcee \
 "
 
-PV = "2020.6"
+PV = "2021.1"
 
 SRCREV_spirv-tools = "b27b1afd12d05bf238ac7368bb49de73cd620a8e"
 SRCREV_spirv-headers = "f027d53ded7e230e008d37c8b47ede7cd308e19d"
