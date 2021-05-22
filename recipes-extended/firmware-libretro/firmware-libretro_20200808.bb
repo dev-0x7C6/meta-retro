@@ -66,6 +66,14 @@ FILES_${PN}-vice = "${RETROARCH_SYSTEM_DIR}/vice"
 # Skip file dependencies for prebuilt binaries
 SKIP_FILEDEPS = "1"
 
+# Firmware files are generally not ran on the CPU, so they can be
+# allarch despite being architecture specific
+INSANE_SKIP = "arch"
+
+do_compile() {
+	:
+}
+
 do_patch() {
 # remove precompiled shaders
     [ -d "${S}/Mupen64plus/shaders" ] && rm -rf "${S}/Mupen64plus/shaders"
