@@ -10,7 +10,8 @@ do_install_append() {
         ln -fs ${systemd_user_unitdir}/pulseaudio.service ${D}${RETRO_USER_DEFAULT_TARGET_WANTS}/pulseaudio.service
         ln -fs ${systemd_user_unitdir}/pulseaudio.socket ${D}${RETRO_USER_SOCKETS_TARGET_WANTS}/pulseaudio.socket
 
-        chown ${RETRO_USER_NAME}:${RETRO_USER_NAME} -R ${D}${RETRO_USER_HOMEDIR}
+        chown ${RETRO_USER_NAME}:${RETRO_USER_NAME} -R ${D}${RETRO_USER_HOMEDIR}/
     fi
 }
 
+INSANE_SKIP_${PN}-server += "host-user-contaminated"
