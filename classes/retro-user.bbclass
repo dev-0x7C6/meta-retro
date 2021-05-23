@@ -1,7 +1,7 @@
 inherit useradd
 
 RETRO_USER_ID ?= "1000"
-RETRO_USER_GROUPS ?= "video,audio,users,tty,root,dialout,input,disk"
+RETRO_USER_GROUPS ?= "video,audio,users,tty,root,dialout,input,disk,sudo,shutdown,plugdev"
 RETRO_USER_NAME ?= "retro"
 
 RETRO_USER_PASSWORD ?= "${RETRO_USER_NAME}"
