@@ -1,7 +1,7 @@
 inherit useradd
 
 RETRO_USER_ID ?= "1000"
-RETRO_USER_GROUPS ?= "video,audio,users,tty,root,dialout,input,disk,sudo,shutdown,plugdev"
+RETRO_USER_GROUPS ?= "audio dialout disk input plugdev root shutdown sudo tty users video"
 RETRO_USER_NAME ?= "retro"
 
 RETRO_USER_PASSWORD ?= "${RETRO_USER_NAME}"
@@ -16,7 +16,7 @@ USERADD_PACKAGES = "${PN}"
 USERADD_PARAM_${PN} = " \
   --create-home \
   --user-group \
-  --groups ${RETRO_USER_GROUPS} \
+  --groups ${@','.join('${RETRO_USER_GROUPS}'.split())} \
   --uid ${RETRO_USER_ID} \
   --home ${RETRO_USER_HOMEDIR} \
   --shell /bin/bash \
