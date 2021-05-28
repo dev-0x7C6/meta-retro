@@ -15,7 +15,7 @@ RETROARCH_DEFAULT_VIDEO_DRIVER ??= "gl"
 RETROARCH_DEFAULT_VIDEO_CONTEXT ??= "kms-egl"
 
 # Audio driver backend. Depending on configuration possible candidates are: alsa, alsathread, pulse, oss, jack, rsound, roar, openal, sdl, xaudio.
-RETROARCH_DEFAULT_AUDIO_DRIVER ??= "alsa"
+RETROARCH_DEFAULT_AUDIO_DRIVER ??= "${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', 'pulseaudio', 'alsa', d)}"
 
 # Audio resampler driver backend. Which audio resampler to use.
 # Default will use "sinc".
