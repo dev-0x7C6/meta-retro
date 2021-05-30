@@ -3,7 +3,7 @@ DESCRIPTION = "Libretro PlayStation (One) cores"
 inherit retro-packagegroup
 
 LIBRETRO_PSX_CORES ?= " \
-    duckstation-libretro \
+    swanstation-libretro \
     pcsx-rearmed-libretro \
 "
 #LIBRETRO_PSX_CORES_remove_arm64 = "beetle-psx-libretro"

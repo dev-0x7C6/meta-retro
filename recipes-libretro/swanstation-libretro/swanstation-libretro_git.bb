@@ -13,6 +13,8 @@ LIBRETRO_COMMON_FLAGS = "-fPIC -shared"
 
 EXTRA_OECMAKE_append = " -DBUILD_LIBRETRO_CORE=ON"
 
+PROVIDES += "duckstation-libretro"
+
 DEPENDS += " \
   alsa-lib \
   libao \
