@@ -6,10 +6,8 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/Proprietary;md5=0557f9d92cf58f2
 
 inherit retroarch-paths allarch
 
-PR = "r3"
-
 SRC_URI = "https://archive.org/download/system_20190220/system.zip"
-SRC_URI[sha256sum] = "9434c62625e3a26b439d7d1fa55e33309265117c0bb52798f5790555e26e170c"
+SRC_URI[sha256sum] = "a7eedf2c0576a61b8ecd7a6ae09b367c13c4349d5cbd7f8e86c0aa4cb343ddda"
 S = "${WORKDIR}/system"
 
 PACKAGES =+ " \
@@ -23,6 +21,7 @@ PACKAGES =+ " \
     ${PN}-np2 \
     ${PN}-np2kai \
     ${PN}-palm \
+    ${PN}-pcsx2 \
     ${PN}-psone \
     ${PN}-psp \
     ${PN}-scummvm \
@@ -41,6 +40,7 @@ RDEPENDS_${PN} += " \
     ${PN}-np2 \
     ${PN}-np2kai \
     ${PN}-palm \
+    ${PN}-pcsx2 \
     ${PN}-psone \
     ${PN}-scummvm \
     ${PN}-vice \
@@ -58,6 +58,7 @@ FILES_${PN}-msx = "${RETROARCH_SYSTEM_DIR}/MSX*"
 FILES_${PN}-np2 += "${RETROARCH_SYSTEM_DIR}/np2"
 FILES_${PN}-np2kai += "${RETROARCH_SYSTEM_DIR}/np2kai"
 FILES_${PN}-palm = "${RETROARCH_SYSTEM_DIR}/Palm*"
+FILES_${PN}-pcsx2 = "${RETROARCH_SYSTEM_DIR}/pcsx2"
 FILES_${PN}-psone = "${RETROARCH_SYSTEM_DIR}/scph* ${RETROARCH_SYSTEM_DIR}/ps*"
 FILES_${PN}-psp = "${RETROARCH_SYSTEM_DIR}/PPSSPP"
 FILES_${PN}-scummvm = "${RETROARCH_SYSTEM_DIR}/scummvm"
