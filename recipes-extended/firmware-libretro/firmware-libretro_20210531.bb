@@ -20,7 +20,6 @@ PACKAGES =+ " \
     ${PN}-msx \
     ${PN}-np2 \
     ${PN}-np2kai \
-    ${PN}-palm \
     ${PN}-pcsx2 \
     ${PN}-psone \
     ${PN}-psp \
@@ -39,7 +38,6 @@ RDEPENDS_${PN} += " \
     ${PN}-msx \
     ${PN}-np2 \
     ${PN}-np2kai \
-    ${PN}-palm \
     ${PN}-pcsx2 \
     ${PN}-psone \
     ${PN}-scummvm \
@@ -57,7 +55,6 @@ FILES_${PN}-mame = "${RETROARCH_SYSTEM_DIR}/mame"
 FILES_${PN}-msx = "${RETROARCH_SYSTEM_DIR}/MSX*"
 FILES_${PN}-np2 += "${RETROARCH_SYSTEM_DIR}/np2"
 FILES_${PN}-np2kai += "${RETROARCH_SYSTEM_DIR}/np2kai"
-FILES_${PN}-palm = "${RETROARCH_SYSTEM_DIR}/Palm*"
 FILES_${PN}-pcsx2 = "${RETROARCH_SYSTEM_DIR}/pcsx2"
 FILES_${PN}-psone = "${RETROARCH_SYSTEM_DIR}/scph* ${RETROARCH_SYSTEM_DIR}/ps*"
 FILES_${PN}-psp = "${RETROARCH_SYSTEM_DIR}/PPSSPP"
