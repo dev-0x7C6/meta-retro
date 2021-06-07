@@ -9,8 +9,9 @@ LIBRETRO_GIT_REPO = "github.com/libretro/pcsx2.git"
 LIBRETRO_GIT_BRANCH = "main"
 
 DEPENDS += "glib-2.0 alsa-lib libpng"
+RDEPENDS_${PN} += "${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-firmware', 'firmware-libretro-pcsx2', '', d)}"
 
-PACKAGECONFIG ?=  "libretro"
+PACKAGECONFIG ?= "libretro"
 
 PACKAGECONFIG[libretro] = "-DLIBRETRO=ON,-DLIBRETRO=OFF"
 
