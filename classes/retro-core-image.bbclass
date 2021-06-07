@@ -15,6 +15,7 @@ IMAGE_INSTALL_append = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-firmware', 'firmware-libretro', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'samba', 'samba samba-base', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', '${RETRO_WAYLAND_COMPOSITOR}', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'zeroconf', 'avahi-daemon avahi-dnsconfd', '', d)} \
     ${@bb.utils.filter('DISTRO_FEATURES', 'kodi rauc resize-helper polkit', d)} \
     cpupower \
     kernel-modules \
