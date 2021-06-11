@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/Proprietary;md5=0557f9d92cf58f2
 
 inherit retroarch-paths allarch
 
-SRC_URI = "https://archive.org/download/system_20190220/system.zip"
+SRC_URI = "https://devwork.space/mirrors/internet-archive/system_20190220/2021-05-31/system.zip"
 SRC_URI[sha256sum] = "a7eedf2c0576a61b8ecd7a6ae09b367c13c4349d5cbd7f8e86c0aa4cb343ddda"
 S = "${WORKDIR}/system"
 
