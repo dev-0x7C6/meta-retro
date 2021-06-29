@@ -7,4 +7,4 @@ DISTROOVERRIDES_append_armeb = ":arm-common"
 
 PACKAGECONFIG_append_pn-mesa_arm-common = " ${MESA_ARM_PREFERRED_DRIVERS}"
 
-PACKAGECONFIG_remove_pn-mesa_arm-common = "va"
+PACKAGECONFIG_remove_pn-mesa_arm-common = "va vdpau"
