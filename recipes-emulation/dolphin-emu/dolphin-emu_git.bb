@@ -1,10 +1,10 @@
 DESCRIPTION = "Dolphin is a GameCube / Wii emulator"
 
-LICENSE = "GPLv2"
-LIC_FILES_CHKSUM = "file://license.txt;md5=751419260aa954499f7abaabaa882bbe"
+LICENSE = "GPL-3.0-or-later"
+LIC_FILES_CHKSUM = "file://COPYING;md5=42dac715b05c09ace95c14324cdfd147"
 
 SRC_URI = "gitsm://github.com/dolphin-emu/dolphin.git;protocol=https"
-SRCREV = "${AUTOREV}"
+SRCREV = "954f27c5d7289b2b806d0fb94dd105edaa1bb4be"
 S = "${WORKDIR}/git"
 
 inherit cmake_qt5 retro-overrides gettext logging libretro-version
