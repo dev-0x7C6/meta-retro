@@ -1,7 +1,6 @@
 require ${BPN}.inc
 
-RETROARCH_VERSION ?= "1.9.6"
-PR = "r1"
+RETROARCH_VERSION ?= "1.9.7"
 
 PV = "${RETROARCH_VERSION}-git${SRCPV}"
 SRCREV ?= "v${RETROARCH_VERSION}"
