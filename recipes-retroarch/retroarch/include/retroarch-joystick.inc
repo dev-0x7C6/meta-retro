@@ -100,7 +100,7 @@ RETROARCH_CONFIG_INPUT_TYPE_PLAYER_16 ?= "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_D
 
 do_retroarch_config_append() {
   write_comment "Input"
-  for index in {1..16}; do
+  for index in `seq 16`; do
     write_cfg "input_player${index}_left" "left"
   done
 
