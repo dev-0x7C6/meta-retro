@@ -271,11 +271,12 @@ FILES_${PN} += "/usr/share/metainfo"
 RETROARCH_CONFIG_FILE = "${S}/retroarch.cfg"
 
 write_comment() {
-  echo -e "\n# ${1}" >> ${RETROARCH_CONFIG_FILE}
+  echo >> ${RETROARCH_CONFIG_FILE}
+  echo "# ${1}" >> ${RETROARCH_CONFIG_FILE}
 }
 
 write_cfg() {
-  echo -e "${1} = \"${2}\""  >> ${RETROARCH_CONFIG_FILE}
+  echo "${1} = \"${2}\""  >> ${RETROARCH_CONFIG_FILE}
 }
 
 define_replace() {
