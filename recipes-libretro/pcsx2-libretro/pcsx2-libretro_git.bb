@@ -5,6 +5,8 @@ LIC_FILES_CHKSUM = "file://COPYING.GPLv3;md5=d32239bcb673463ab874e80d47fae504"
 
 inherit libretro-cmake python3native
 
+LIBRETRO_CORE = "pcsx2/pcsx2"
+
 LIBRETRO_GIT_REPO = "github.com/libretro/pcsx2.git"
 LIBRETRO_GIT_BRANCH = "main"
 
