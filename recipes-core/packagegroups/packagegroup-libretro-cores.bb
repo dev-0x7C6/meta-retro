@@ -14,6 +14,7 @@ LIBRETRO_TARGET_PLATFORMS ?= " \
     nes \
     pc \
     pc98 \
+    ps2 \
     psx \
     saturn \
     sms \
