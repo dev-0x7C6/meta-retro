@@ -48,7 +48,7 @@ RASPBERRYPI_DEFAULT_PACKAGECONFIG_rpi = " \
 RETROARCH_GRAPHICS_PACKAGECONFIG_DEFAULTS ??= " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'egl gles', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'egl gles gles3', '', d)} \
-  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'opengl', '', d)} \
+  ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'gl', '', d)} \
   ${@bb.utils.filter('DISTRO_FEATURES', 'vulkan wayland wifi', d)} \
   glslang \
   kms \
