@@ -123,8 +123,8 @@ RETROARCH_LTO_FLAGS ?= "-flto=${@oe.utils.cpu_count()}"
 TARGET_CFLAGS += "${@bb.utils.contains('PACKAGECONFIG', 'lto', '${RETROARCH_LTO_FLAGS}', '', d)}"
 TARGET_LDFLAGS += "${@bb.utils.contains('PACKAGECONFIG', 'lto', '${TARGET_CFLAGS}', '', d)}"
 
-# Switches updated from v1.9.1
-# Mon Mar 29 21:33:32 CEST 2021
+# Switches updated from v1.9.7
+# Wed Aug 4 17:58:08 CEST 2021
 PACKAGECONFIG[alsa] = "--enable-alsa,--disable-alsa,alsa-lib"
 PACKAGECONFIG[audioio] = "--enable-audioio,--disable-audioio"
 PACKAGECONFIG[blissbox] = "--enable-blissbox,--disable-blissbox"
@@ -251,10 +251,6 @@ PACKAGECONFIG[disable-translate] = "--disable-translate"
 PACKAGECONFIG[disable-update-assets] = "--disable-update_assets"
 PACKAGECONFIG[disable-update-cores] = "--disable-update_cores"
 PACKAGECONFIG[disable-vulkan-display] = "--disable-vulkan_display"
-
-
-# Dropped by 1.9.2
-# PACKAGECONFIG[disable-git-version] = "--disable-git_version,,"
 
 EXTRA_OECONF = "${PACKAGECONFIG_CONFARGS}"
 EXTRA_OEMAKE += "NEED_CXX_LINKER=1 HAVE_LAKKA=${@bb.utils.contains('PACKAGECONFIG', 'lakka', '1', '0', d)}"
