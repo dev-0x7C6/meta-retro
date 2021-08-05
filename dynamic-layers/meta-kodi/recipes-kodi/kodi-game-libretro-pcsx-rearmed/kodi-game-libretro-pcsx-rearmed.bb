@@ -8,7 +8,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425
 inherit kodi-addon
 
 DEPENDS += "pcsx-rearmed-libretro"
-RDEPENDS_${PN} += "kodi"
+RDEPENDS:${PN} += "kodi"
 
 PV = "22.0.0.19-Matrix"
 

@@ -16,7 +16,7 @@ PROVIDES += "retroarch-shaders"
 
 require include/retroarch-shaders.inc
 
-FILES_${PN} += "${RETROARCH_SHADERS_DIR}"
+FILES:${PN} += "${RETROARCH_SHADERS_DIR}"
 
 do_install() {
   install -m 755 -d ${D}${RETROARCH_SHADERS_DIR}/slang

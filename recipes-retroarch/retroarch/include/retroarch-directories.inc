@@ -2,7 +2,7 @@
 
 inherit retroarch-paths
 
-do_retroarch_config_append() {
+do_retroarch_config:append() {
   write_cfg_replace "assets_directory" "${RETROARCH_ASSETS_DIR}"
   write_cfg_replace "cheat_database_path" "${RETROARCH_DATABASE_CHEATS_DIR}"
   write_cfg_replace "content_database_path" "${RETROARCH_DATABASE_TITLES_DIR}"

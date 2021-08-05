@@ -7,7 +7,7 @@ require classes/include/retro-core-image-rauc.inc
 
 RETRO_WAYLAND_COMPOSITOR ??= "weston"
 
-IMAGE_INSTALL_append = " \
+IMAGE_INSTALL:append = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'polkit systemd', 'rtkit', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', 'pulseaudio-server', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-automount', 'udev-extraconf', '', d)} \
@@ -26,4 +26,4 @@ IMAGE_INSTALL_append = " \
     retroarch-slang-shaders \
 "
 
-IMAGE_ROOTFS_EXTRA_SPACE_append = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', ' + 4096', '' ,d)}"
+IMAGE_ROOTFS_EXTRA_SPACE:append = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', ' + 4096', '' ,d)}"

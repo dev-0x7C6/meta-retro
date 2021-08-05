@@ -1,8 +1,8 @@
 inherit retro-user
 
-FILES_${PN}-server += "${RETRO_USER_DEFAULT_TARGET_WANTS} ${RETRO_USER_SOCKETS_TARGET_WANTS}"
+FILES:${PN}-server += "${RETRO_USER_DEFAULT_TARGET_WANTS} ${RETRO_USER_SOCKETS_TARGET_WANTS}"
 
-do_install_append() {
+do_install:append() {
     if ${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', 'true', 'false', d)}; then
         install -d ${D}${RETRO_USER_DEFAULT_TARGET_WANTS}
         install -d ${D}${RETRO_USER_SOCKETS_TARGET_WANTS}
@@ -14,4 +14,4 @@ do_install_append() {
     fi
 }
 
-INSANE_SKIP_${PN}-server += "host-user-contaminated"
+INSANE_SKIP:${PN}-server += "host-user-contaminated"

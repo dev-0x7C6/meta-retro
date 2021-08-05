@@ -9,4 +9,4 @@ LIBRETRO_GBA_CORES ?= " \
   vbam-libretro \
 "
 
-RRECOMMENDS_${PN} = "${LIBRETRO_GBA_CORES}"
+RRECOMMENDS:${PN} = "${LIBRETRO_GBA_CORES}"

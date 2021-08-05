@@ -9,7 +9,7 @@ insert_sudo_cfg() {
 
 # Allow to use shutdown commands without password
 
-do_install_append() {
+do_install:append() {
     insert_sudo_cfg "%users ALL=(ALL) NOPASSWD: /sbin/poweroff, /sbin/reboot, /sbin/shutdown, /sbin/halt"
     insert_sudo_cfg "%users ALL=(ALL) NOPASSWD: /bin/systemctl poweroff, /bin/systemctl halt, /bin/systemctl reboot"
 }

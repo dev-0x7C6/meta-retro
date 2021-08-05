@@ -13,9 +13,9 @@ SRC_URI = "gitsm://github.com/libretro/common-overlays.git;protocol=https"
 inherit retroarch-allarch
 
 # retroarch-overlays provides some sh template scripts inside
-RDEPENDS_${PN} += "bash"
+RDEPENDS:${PN} += "bash"
 
-FILES_${PN} += "${RETROARCH_OVERLAY_DIR}"
+FILES:${PN} += "${RETROARCH_OVERLAY_DIR}"
 
 do_install() {
   install -d ${D}${RETROARCH_OVERLAY_DIR}

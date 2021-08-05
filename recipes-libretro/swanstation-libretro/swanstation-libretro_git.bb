@@ -11,6 +11,6 @@ LIBRETRO_CORE_PATCHES = "${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'fil
 
 LIBRETRO_COMMON_FLAGS = "-fPIC -shared"
 
-EXTRA_OECMAKE_append = " -DBUILD_LIBRETRO_CORE=ON"
+EXTRA_OECMAKE:append = " -DBUILD_LIBRETRO_CORE=ON"
 
 PROVIDES += "duckstation-libretro"

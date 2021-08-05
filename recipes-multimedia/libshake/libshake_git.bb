@@ -19,7 +19,7 @@ do_patch() {
 	sed -i -E '/.*LDFLAGS.*:=.*/d' ${S}/Makefile
 }
 
-do_install_prepend() {
+do_install:prepend() {
 # script expects already existing directories
 	install -d ${D}${includedir}
 	install -d ${D}${libdir}

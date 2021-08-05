@@ -9,8 +9,8 @@ DEPENDS += "bc-native"
 
 LIBRETRO_GIT_REPO = "github.com/libretro/parallel-n64.git"
 
-LIBRETRO_PLATFORM_append_arm32 = "-classic_armv7_a7"
-LIBRETRO_PLATFORM_append_arm64 = "-armv8"
-LIBRETRO_PLATFORM_append_opengles = "-gles"
+LIBRETRO_PLATFORM:append:arm32 = "-classic_armv7_a7"
+LIBRETRO_PLATFORM:append:arm64 = "-armv8"
+LIBRETRO_PLATFORM:append:opengles = "-gles"
 
-LIBRETRO_EXTRA_MAKEFLAGS_armarch = "USE_SSE2NEON=1"
+LIBRETRO_EXTRA_MAKEFLAGS:armarch = "USE_SSE2NEON=1"

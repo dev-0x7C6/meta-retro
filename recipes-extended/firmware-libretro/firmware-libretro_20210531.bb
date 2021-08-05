@@ -28,7 +28,7 @@ PACKAGES =+ " \
 "
 
 # ${PN}-psp conflicts with ppsspp-libretro
-RDEPENDS_${PN} += " \
+RDEPENDS:${PN} += " \
     ${PN}-3do \
     ${PN}-bk \
     ${PN}-dreamcast \
@@ -44,22 +44,22 @@ RDEPENDS_${PN} += " \
     ${PN}-vice \
 "
 
-FILES_${PN} += "${RETROARCH_SYSTEM_DIR}"
+FILES:${PN} += "${RETROARCH_SYSTEM_DIR}"
 
-FILES_${PN}-3do = "${RETROARCH_SYSTEM_DIR}/panafz*"
-FILES_${PN}-bk = "${RETROARCH_SYSTEM_DIR}/bk"
-FILES_${PN}-dreamcast += "${RETROARCH_SYSTEM_DIR}/dc"
-FILES_${PN}-fba = "${RETROARCH_SYSTEM_DIR}/fba"
-FILES_${PN}-fbneo += "${RETROARCH_SYSTEM_DIR}/fbneo"
-FILES_${PN}-mame = "${RETROARCH_SYSTEM_DIR}/mame"
-FILES_${PN}-msx = "${RETROARCH_SYSTEM_DIR}/MSX*"
-FILES_${PN}-np2 += "${RETROARCH_SYSTEM_DIR}/np2"
-FILES_${PN}-np2kai += "${RETROARCH_SYSTEM_DIR}/np2kai"
-FILES_${PN}-pcsx2 = "${RETROARCH_SYSTEM_DIR}/pcsx2"
-FILES_${PN}-psone = "${RETROARCH_SYSTEM_DIR}/scph* ${RETROARCH_SYSTEM_DIR}/ps*"
-FILES_${PN}-psp = "${RETROARCH_SYSTEM_DIR}/PPSSPP"
-FILES_${PN}-scummvm = "${RETROARCH_SYSTEM_DIR}/scummvm"
-FILES_${PN}-vice = "${RETROARCH_SYSTEM_DIR}/vice"
+FILES:${PN}-3do = "${RETROARCH_SYSTEM_DIR}/panafz*"
+FILES:${PN}-bk = "${RETROARCH_SYSTEM_DIR}/bk"
+FILES:${PN}-dreamcast += "${RETROARCH_SYSTEM_DIR}/dc"
+FILES:${PN}-fba = "${RETROARCH_SYSTEM_DIR}/fba"
+FILES:${PN}-fbneo += "${RETROARCH_SYSTEM_DIR}/fbneo"
+FILES:${PN}-mame = "${RETROARCH_SYSTEM_DIR}/mame"
+FILES:${PN}-msx = "${RETROARCH_SYSTEM_DIR}/MSX*"
+FILES:${PN}-np2 += "${RETROARCH_SYSTEM_DIR}/np2"
+FILES:${PN}-np2kai += "${RETROARCH_SYSTEM_DIR}/np2kai"
+FILES:${PN}-pcsx2 = "${RETROARCH_SYSTEM_DIR}/pcsx2"
+FILES:${PN}-psone = "${RETROARCH_SYSTEM_DIR}/scph* ${RETROARCH_SYSTEM_DIR}/ps*"
+FILES:${PN}-psp = "${RETROARCH_SYSTEM_DIR}/PPSSPP"
+FILES:${PN}-scummvm = "${RETROARCH_SYSTEM_DIR}/scummvm"
+FILES:${PN}-vice = "${RETROARCH_SYSTEM_DIR}/vice"
 
 # Skip file dependencies for prebuilt binaries
 SKIP_FILEDEPS = "1"

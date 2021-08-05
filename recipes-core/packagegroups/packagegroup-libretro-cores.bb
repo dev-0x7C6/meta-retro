@@ -72,4 +72,4 @@ LIBRETRO_CORE_PACKAGES ?= " \
   xmil-libretro \
 "
 
-RRECOMMENDS_${PN}_append = " ${LIBRETRO_CORE_PACKAGES}"
+RRECOMMENDS:${PN}:append = " ${LIBRETRO_CORE_PACKAGES}"

@@ -26,12 +26,12 @@ PACKAGECONFIG ?=  " \
 "
 
 # Workaround for aarch64
-PACKAGECONFIG_append_arm64 = " system-ffmpeg"
+PACKAGECONFIG:append:arm64 = " system-ffmpeg"
 
-PACKAGECONFIG_append_armarch = " ${@bb.utils.contains('TUNE_FEATURES', 'neon', 'armv7 arm', 'arm', d)}"
-PACKAGECONFIG_append_mipsarch = " mips"
-PACKAGECONFIG_append_x86 = " x86"
-PACKAGECONFIG_append_x86-64 = " x86-64"
+PACKAGECONFIG:append:armarch = " ${@bb.utils.contains('TUNE_FEATURES', 'neon', 'armv7 arm', 'arm', d)}"
+PACKAGECONFIG:append:mipsarch = " mips"
+PACKAGECONFIG:append:x86 = " x86"
+PACKAGECONFIG:append:x86-64 = " x86-64"
 
 PACKAGECONFIG[armv7] = "-DARMV7=ON,-DARMV7=OFF"
 PACKAGECONFIG[arm] = "-DARM=ON,-DARM=OFF"
@@ -57,10 +57,10 @@ PACKAGECONFIG[wsi] = "-DUSE_WAYLAND_WSI=ON,-DUSE_WAYLAND_WSI=OFF"
 # Now libretro-vulkan-deps will take care
 # PACKAGECONFIG[vulkan] = ",,${VULKAN_DEPENDS},${VULKAN_DEPENDS}"
 
-FILES_${PN} += "${RETROARCH_SYSTEM_DIR}"
-RCONFLICTS_${PN} += "firmware-libretro-psp"
+FILES:${PN} += "${RETROARCH_SYSTEM_DIR}"
+RCONFLICTS:${PN} += "firmware-libretro-psp"
 
-do_install_append() {
+do_install:append() {
   install -d ${D}${RETROARCH_SYSTEM_DIR}/PPSSPP/
   cp -rf ${B}/assets/* ${D}${RETROARCH_SYSTEM_DIR}/PPSSPP/
 }

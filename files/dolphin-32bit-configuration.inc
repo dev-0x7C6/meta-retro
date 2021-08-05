@@ -4,9 +4,9 @@
 
 inherit logging retro-overrides
 
-PACKAGECONFIG_append_32bit = " generic"
+PACKAGECONFIG:append:32bit = " generic"
 
-do_configure_prepend_32bit() {
+do_configure:prepend:32bit() {
     bbwarn "compiling 32-bit version of this software will result with poor performance (disabled JIT)"
 }
 

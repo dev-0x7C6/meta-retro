@@ -22,7 +22,7 @@ DEPENDS = " \
   rapidjson \
 "
 
-PACKAGECONFIG_rpi ??= " \
+PACKAGECONFIG:rpi ??= " \
   gles \
   rpi \
 "

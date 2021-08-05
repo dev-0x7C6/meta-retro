@@ -1,21 +1,21 @@
-EXTRA_OEMESON_append_glvnd = " -Dglvnd=true"
-DEPENDS_append_glvnd = " libglvnd"
-PROVIDES_glvnd = "virtual/mesa virtual/libgbm"
+EXTRA_OEMESON:append:glvnd = " -Dglvnd=true"
+DEPENDS:append:glvnd = " libglvnd"
+PROVIDES:glvnd = "virtual/mesa virtual/libgbm"
 
-# Workaround for the do_install_append() present in the OE-Core recipe
-do_install_prepend_glvnd() {
+# Workaround for the do_install:append() present in the OE-Core recipe
+do_install:prepend:glvnd() {
     install -d ${D}${includedir}/EGL
     touch ${D}${includedir}/EGL/eglplatform.h
 }
 
-do_install_append_glvnd() {
+do_install:append:glvnd() {
     rm -rf ${D}${includedir}/EGL
 }
 
-FILES_libegl-mesa_append_glvnd = " ${libdir}/libEGL_mesa.so.* ${datadir}/glvnd"
-FILES_libegl-mesa-dev_append_glvnd = " ${libdir}/libEGL_mesa.so"
-FILES_libgl-mesa_append_glvnd = " ${libdir}/libGLX_mesa.so.*"
-FILES_libgl-mesa-dev_append_glvnd = " ${libdir}/libGLX_mesa.so"
+FILES:libegl-mesa:append:glvnd = " ${libdir}/libEGL_mesa.so.* ${datadir}/glvnd"
+FILES:libegl-mesa-dev:append:glvnd = " ${libdir}/libEGL_mesa.so"
+FILES:libgl-mesa:append:glvnd = " ${libdir}/libGLX_mesa.so.*"
+FILES:libgl-mesa-dev:append:glvnd = " ${libdir}/libGLX_mesa.so"
 
 python __anonymous() {
     if "tegra" not in d.getVar('OVERRIDES').split(':'):

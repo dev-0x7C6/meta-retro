@@ -5,4 +5,4 @@ require mame.inc
 
 LIBRETRO_GIT_REPO = "github.com/libretro/${BPN}.git"
 
-LIBRETRO_EXTRA_MAKEFLAGS_append_armarch = " USE_CYCLONE=1 USE_DRZ80=1"
+LIBRETRO_EXTRA_MAKEFLAGS:append:armarch = " USE_CYCLONE=1 USE_DRZ80=1"

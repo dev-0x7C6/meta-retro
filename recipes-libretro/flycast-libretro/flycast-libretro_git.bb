@@ -13,8 +13,8 @@ LIBRETRO_GIT_REPO = "github.com/libretro/flycast.git"
 
 LIBRETRO_REPRESENT_ARM64 = "arm64"
 
-LIBRETRO_PLATFORM_arm32 = "armv"
-LIBRETRO_PLATFORM_arm64 = "arm64"
+LIBRETRO_PLATFORM:arm32 = "armv"
+LIBRETRO_PLATFORM:arm64 = "arm64"
 
 # Use AS as default for x86 and x86_64, CC for others
 CC_AS = "${CC}"

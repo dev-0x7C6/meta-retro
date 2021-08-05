@@ -1,3 +1,3 @@
-SPLASH_rpi = "psplash-raspberrypi"
+SPLASH:rpi = "psplash-raspberrypi"
 
-DEBUG_TOOLS_COLLECTION_append_rpi = " userland"
+DEBUG_TOOLS_COLLECTION:append:rpi = " userland"

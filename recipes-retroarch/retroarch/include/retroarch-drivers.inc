@@ -24,7 +24,7 @@ RETROARCH_DEFAULT_RESAMPLER_DRIVER ??= "sinc"
 # Menu driver to use. ("rgui", "xmb", "glui")
 RETROARCH_DEFAULT_MENU_DRIVER ??= "xmb"
 
-do_retroarch_config_append() {
+do_retroarch_config:append() {
   write_cfg_replace "audio_driver" "${RETROARCH_DEFAULT_AUDIO_DRIVER}"
   write_cfg_replace "audio_resampler" "${RETROARCH_DEFAULT_RESAMPLER_DRIVER}"
   write_cfg_replace "input_driver" "${RETROARCH_DEFAULT_INPUT_DRIVER}"

@@ -1,4 +1,4 @@
-PACKAGECONFIG_append = " \
+PACKAGECONFIG:append = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'gl', 'gles2', d)} \
     eglfs \
     fontconfig \
@@ -9,7 +9,7 @@ PACKAGECONFIG_append = " \
     widgets \
 "
 
-RDEPENDS_${PN} = " \
+RDEPENDS:${PN} = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland', '', d)} \
     ttf-dejavu-common \
     ttf-dejavu-sans \

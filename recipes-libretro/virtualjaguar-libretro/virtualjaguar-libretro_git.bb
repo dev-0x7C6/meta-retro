@@ -8,4 +8,4 @@ inherit libretro
 LIBRETRO_GIT_REPO = "github.com/libretro/virtualjaguar-libretro.git"
 
 # Prefer armv platform for 32-bit ARMs
-LIBRETRO_PLATFORM_arm32 = "armv"
+LIBRETRO_PLATFORM:arm32 = "armv"

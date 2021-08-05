@@ -11,4 +11,4 @@ inherit libretro
 LIBRETRO_GIT_REPO = "github.com/libretro/opera-libretro.git"
 
 #FIXME: upstream: CC and AR is overriden and --sysroot flag is lost
-LIBRETRO_EXTRA_MAKEFLAGS_append = " "CC=${CC}" "AR=${AR}""
+LIBRETRO_EXTRA_MAKEFLAGS:append = " "CC=${CC}" "AR=${AR}""

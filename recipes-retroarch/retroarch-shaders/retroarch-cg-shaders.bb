@@ -12,7 +12,7 @@ SRC_URI = "gitsm://github.com/libretro/common-shaders.git;protocol=https"
 
 require include/retroarch-shaders.inc
 
-FILES_${PN} += "${RETROARCH_SHADERS_DIR}"
+FILES:${PN} += "${RETROARCH_SHADERS_DIR}"
 
 do_install() {
   install -m 755 -d ${D}${RETROARCH_SHADERS_DIR}/cg

@@ -8,6 +8,6 @@ LIBRETRO_SATURN_CORES ?= " \
     yabause-libretro \
 "
 
-LIBRETRO_SATURN_CORES_remove_arm64 = "kronos-libretro yabause-libretro"
+LIBRETRO_SATURN_CORES:remove:arm64 = "kronos-libretro yabause-libretro"
 
-RRECOMMENDS_${PN} = "${LIBRETRO_SATURN_CORES}"
+RRECOMMENDS:${PN} = "${LIBRETRO_SATURN_CORES}"

@@ -14,6 +14,6 @@ LIBRETRO_ATARI_CORES ?= " \
   virtualjaguar-libretro \
 "
 
-LIBRETRO_ATARI_CORES_remove_armarch = "puae-libretro"
+LIBRETRO_ATARI_CORES:remove:armarch = "puae-libretro"
 
-RRECOMMENDS_${PN} = "${LIBRETRO_ATARI_CORES}"
+RRECOMMENDS:${PN} = "${LIBRETRO_ATARI_CORES}"

@@ -20,4 +20,4 @@ do_patch() {
 # Unable to compile with -Werror=format-security
 SECURITY_STRINGFORMAT = "-Wformat -Wformat-security"
 
-INSANE_SKIP_${PN} = "already-stripped"
+INSANE_SKIP:${PN} = "already-stripped"

@@ -14,7 +14,7 @@ SRCREV = "${PV}"
 
 S = "${WORKDIR}/git"
 
-FILES_${PN} += " \
+FILES:${PN} += " \
   ${bindir}/cool-retro-term \
   ${datadir}/applications \
   ${datadir}/icons \
@@ -22,4 +22,4 @@ FILES_${PN} += " \
 "
 
 DEPENDS = "qtdeclarative qtquickcontrols qtquickcontrols2 qtgraphicaleffects"
-RDEPENDS_${PN} = "liberation-fonts qtquickcontrols qtquickcontrols2 qtdeclarative-qmlplugins qtgraphicaleffects-qmlplugins"
+RDEPENDS:${PN} = "liberation-fonts qtquickcontrols qtquickcontrols2 qtdeclarative-qmlplugins qtgraphicaleffects-qmlplugins"

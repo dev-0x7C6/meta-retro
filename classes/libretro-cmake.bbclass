@@ -29,7 +29,7 @@ inherit libretro-cflags
 
 inherit libretro-vulkan-deps
 
-DEPENDS_append = " \
+DEPENDS:append = " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'virtual/libgles2 virtual/egl', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'virtual/libgles2 virtual/egl', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'virtual/libgl', '', d)} \
@@ -38,7 +38,7 @@ DEPENDS_append = " \
 
 # Installation
 
-FILES_${PN} += "${RETROARCH_LIBRETRO_CORES_DIR}"
+FILES:${PN} += "${RETROARCH_LIBRETRO_CORES_DIR}"
 
 do_install() {
   install -d ${D}${RETROARCH_LIBRETRO_CORES_DIR}

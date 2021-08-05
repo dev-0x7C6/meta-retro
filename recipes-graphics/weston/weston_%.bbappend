@@ -1,1 +1,1 @@
-RRECOMMENDS_${PN}_remove = "weston-init"
+RRECOMMENDS:${PN}:remove = "weston-init"

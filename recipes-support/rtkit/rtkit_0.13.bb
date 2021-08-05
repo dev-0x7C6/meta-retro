@@ -22,7 +22,7 @@ DEPENDS += "dbus polkit systemd vim-native"
 REQUIRED_DISTRO_FEATURES = "polkit systemd"
 
 USERADD_PACKAGES = "${PN}"
-USERADD_PARAM_${PN} = "--system --no-create-home --home /dev/null --shell /bin/nologin --user-group rtkit"
+USERADD_PARAM:${PN} = "--system --no-create-home --home /dev/null --shell /bin/nologin --user-group rtkit"
 
 PACKAGECONFIG ??= "${@bb.utils.filter('DISTRO_FEATURES', 'systemd', d)}"
 
@@ -32,8 +32,8 @@ PACKAGECONFIG[tests] = "-Dinstalled_tests=true,-Dinstalled_tests=false"
 EXTRA_OEMESON += "-Dsystemd_systemunitdir=${systemd_unitdir}/system"
 
 PACKAGES += "${PN}-systemd ${PN}-polkit ${PN}-dbus"
-RDEPENDS_${PN} += "${PN}-systemd ${PN}-polkit ${PN}-dbus"
+RDEPENDS:${PN} += "${PN}-systemd ${PN}-polkit ${PN}-dbus"
 
-FILES_${PN}-dbus += "${datadir}/dbus-1"
-FILES_${PN}-polkit += "${datadir}/polkit-1"
-FILES_${PN}-systemd += "${systemd_unitdir}/system"
+FILES:${PN}-dbus += "${datadir}/dbus-1"
+FILES:${PN}-polkit += "${datadir}/polkit-1"
+FILES:${PN}-systemd += "${systemd_unitdir}/system"

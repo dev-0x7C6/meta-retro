@@ -7,4 +7,4 @@ LIBRETRO_SMS_CORES ?= " \
   smsplus-gx-libretro \
 "
 
-RRECOMMENDS_${PN} = "${LIBRETRO_SMS_CORES}"
+RRECOMMENDS:${PN} = "${LIBRETRO_SMS_CORES}"

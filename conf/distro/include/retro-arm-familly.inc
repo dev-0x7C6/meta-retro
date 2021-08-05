@@ -1,13 +1,12 @@
 MESA_ARM_PREFERRED_DRIVERS ?= "etnaviv freedreno lima panfrost"
 
-DISTROOVERRIDES_append_aarch64 = ":arm-common"
-DISTROOVERRIDES_append_aarch64_be = ":arm-common"
-DISTROOVERRIDES_append_arm = ":arm-common"
-DISTROOVERRIDES_append_armeb = ":arm-common"
+DISTROOVERRIDES:append:aarch64 = ":arm-common"
+DISTROOVERRIDES:append:aarch64_be = ":arm-common"
+DISTROOVERRIDES:append:arm = ":arm-common"
+DISTROOVERRIDES:append:armeb = ":arm-common"
 
-PACKAGECONFIG_append_pn-mesa_arm-common = " ${MESA_ARM_PREFERRED_DRIVERS}"
+PACKAGECONFIG:append:pn-mesa:arm-common = " ${MESA_ARM_PREFERRED_DRIVERS}"
+PACKAGECONFIG:remove:pn-mesa:arm-common = "va vdpau"
 
-PACKAGECONFIG_remove_pn-mesa_arm-common = "va vdpau"
-
-VAAPISUPPORT_arm-common = "0"
-VDPAUSUPPORT_arm-common = "0"
+VAAPISUPPORT:arm-common = "0"
+VDPAUSUPPORT:arm-common = "0"

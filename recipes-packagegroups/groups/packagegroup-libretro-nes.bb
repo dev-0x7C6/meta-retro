@@ -9,4 +9,4 @@ LIBRETRO_NES_CORES ?= " \
   quicknes-libretro \
 "
 
-RRECOMMENDS_${PN} = "${LIBRETRO_NES_CORES}"
+RRECOMMENDS:${PN} = "${LIBRETRO_NES_CORES}"

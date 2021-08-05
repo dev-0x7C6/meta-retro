@@ -10,7 +10,7 @@ SRC_URI = "git://github.com/libretro/libretro-super.git;protocol=https"
 
 inherit artifact-preview retroarch-allarch
 
-FILES_${PN} += "${RETROARCH_LIBRETRO_CORES_INFO_DIR}"
+FILES:${PN} += "${RETROARCH_LIBRETRO_CORES_INFO_DIR}"
 
 ARTIFACT_PREVIEW_FILES = "${S}/dist/info/*"
 

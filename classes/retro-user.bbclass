@@ -10,10 +10,10 @@ RETRO_USER_HOMEDIR ?= "/home/${RETRO_USER_NAME}"
 RETRO_USER_DEFAULT_TARGET_WANTS ?= "${RETRO_USER_HOMEDIR}/.config/systemd/user/default.target.wants" 
 RETRO_USER_SOCKETS_TARGET_WANTS ?= "${RETRO_USER_HOMEDIR}/.config/systemd/user/sockets.target.wants" 
 
-RDEPENDS_${PN}_prepend = "bash "
+RDEPENDS:${PN}:prepend = "bash "
 
 USERADD_PACKAGES = "${PN}"
-USERADD_PARAM_${PN} = " \
+USERADD_PARAM:${PN} = " \
   --create-home \
   --user-group \
   --groups ${@','.join('${RETRO_USER_GROUPS}'.split())} \

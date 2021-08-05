@@ -21,11 +21,11 @@ PACKAGES =+ " \
   ${PN}-titles \
 "
 
-FILES_${PN}-cheats = "${RETROARCH_DATABASE_CHEATS_DIR}"
-FILES_${PN}-cursors = "${RETROARCH_DATABASE_CURSORS_DIR}"
-FILES_${PN}-titles = "${RETROARCH_DATABASE_TITLES_DIR}"
+FILES:${PN}-cheats = "${RETROARCH_DATABASE_CHEATS_DIR}"
+FILES:${PN}-cursors = "${RETROARCH_DATABASE_CURSORS_DIR}"
+FILES:${PN}-titles = "${RETROARCH_DATABASE_TITLES_DIR}"
 
-FILES_${PN} += "${RETROARCH_DATABASE_DIR}"
+FILES:${PN} += "${RETROARCH_DATABASE_DIR}"
 
 do_patch() {
 # FIXME: files with character [ or ] failing at rpm package stage

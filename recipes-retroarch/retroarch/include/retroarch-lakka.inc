@@ -30,7 +30,7 @@ lakka_define_replace() {
   define_replace "${1}" "${2}" "${RETROARCH_LAKKA_HEADER_PATH}"
 }
 
-do_retroarch_config_append() {
+do_retroarch_config:append() {
   cd ${S}
   git checkout -- "${RETROARCH_LAKKA_HEADER_PATH}"
   cp "${RETROARCH_LAKKA_HEADER_NAME}" "${RETROARCH_LAKKA_HEADER_NAME}.stock"

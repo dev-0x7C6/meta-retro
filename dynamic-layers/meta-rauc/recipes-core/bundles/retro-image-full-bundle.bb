@@ -20,8 +20,8 @@ RETRO_RAUC_CERT_FILE ?= "${THISDIR}/test.cert.pem"
 RAUC_KEY_FILE ?= "${RETRO_RAUC_KEY_FILE}"
 RAUC_CERT_FILE ?= "${RETRO_RAUC_CERT_FILE}"
 
-RAUC_SLOT_rootfs = "retro-image-full"
-RAUC_SLOT_rootfs[fstype] = "ext4"
-RAUC_SLOT_rootfs[hooks] ?= "post-install"
+RAUC_SLOT:rootfs = "retro-image-full"
+RAUC_SLOT:rootfs[fstype] = "ext4"
+RAUC_SLOT:rootfs[hooks] ?= "post-install"
 
 BUNDLE_ARGS += "--mksquashfs-args="-comp lzo""

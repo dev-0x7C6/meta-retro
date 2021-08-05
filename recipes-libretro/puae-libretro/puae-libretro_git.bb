@@ -8,5 +8,5 @@ inherit libretro
 LIBRETRO_GIT_REPO = "github.com/libretro/libretro-uae.git"
 
 SECURITY_STRINGFORMAT = ""
-INSANE_SKIP_${PN} += "already-stripped"
+INSANE_SKIP:${PN} += "already-stripped"
 

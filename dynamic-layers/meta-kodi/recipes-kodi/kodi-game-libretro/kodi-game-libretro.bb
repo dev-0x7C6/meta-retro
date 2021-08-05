@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.md;md5=435d4178fd08b25f9cf911f1c3a0ce1d"
 
 inherit kodi-addon
 
-RDEPENDS_${PN} += "kodi"
+RDEPENDS:${PN} += "kodi"
 
 PV = "2.2.0-Matrix"
 

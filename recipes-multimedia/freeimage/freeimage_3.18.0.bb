@@ -39,7 +39,7 @@ do_install() {
     oe_runmake INSTALLDIR="${D}${libdir}" INCDIR="${D}${includedir}" install
 }
 
-INSANE_SKIP_${PN} = "already-stripped dev-so"
+INSANE_SKIP:${PN} = "already-stripped dev-so"
 
-FILES_${PN} += "${libdir}"
+FILES:${PN} += "${libdir}"
 FILES_SOLIBSDEV = "{libdir}/lib${BP}${SOLIBSDEV}"

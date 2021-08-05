@@ -9,7 +9,7 @@ S = "${WORKDIR}/git"
 SRC_URI = "gitsm://github.com/IgniparousTempest/libretro-superflappybirds.git"
 SRCREV = "${AUTOREV}"
 
-FILES_${PN} += "${RETROARCH_LIBRETRO_CORES_DIR} ${RETROARCH_SYSTEM_DIR}"
+FILES:${PN} += "${RETROARCH_LIBRETRO_CORES_DIR} ${RETROARCH_SYSTEM_DIR}"
 
 do_install() {
   install -d ${D}${RETROARCH_LIBRETRO_CORES_DIR}

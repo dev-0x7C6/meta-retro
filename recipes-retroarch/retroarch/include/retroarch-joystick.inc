@@ -98,7 +98,7 @@ RETROARCH_CONFIG_INPUT_TYPE_PLAYER_14 ?= "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_D
 RETROARCH_CONFIG_INPUT_TYPE_PLAYER_15 ?= "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_DEFAULT}"
 RETROARCH_CONFIG_INPUT_TYPE_PLAYER_16 ?= "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_DEFAULT}"
 
-do_retroarch_config_append() {
+do_retroarch_config:append() {
   write_comment "Input"
   for index in `seq 16`; do
     write_cfg "input_player${index}_left" "left"

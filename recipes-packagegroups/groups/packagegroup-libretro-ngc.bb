@@ -7,4 +7,4 @@ LIBRETRO_NGC_CORES ?= " \
     dolphin-launcher-libretro \
 "
 
-RRECOMMENDS_${PN} = "${LIBRETRO_NGC_CORES}"
+RRECOMMENDS:${PN} = "${LIBRETRO_NGC_CORES}"

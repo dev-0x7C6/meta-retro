@@ -7,4 +7,4 @@ LIBRETRO_GBC_CORES ?= " \
   tgbdual-libretro \
 "
 
-RRECOMMENDS_${PN} = "${LIBRETRO_GBC_CORES}"
+RRECOMMENDS:${PN} = "${LIBRETRO_GBC_CORES}"

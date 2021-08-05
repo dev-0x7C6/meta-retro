@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://license;md5=d32239bcb673463ab874e80d47fae504"
 
 inherit libretro
 
-LIBRETRO_PLATFORM_append_opengles = "-gles"
+LIBRETRO_PLATFORM:append:opengles = "-gles"
 
 LIBRETRO_EXTRA_MAKEFLAGS = "GL_LIB=-lGLESv2"
 TARGET_CFLAGS += "-DHAVE_OPENGLES2"

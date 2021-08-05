@@ -32,7 +32,7 @@ DEPENDS += " \
     zlib \
 "
 
-FILES_${PN} += "${datadir}/icons"
+FILES:${PN} += "${datadir}/icons"
 
 CCACHE_DISABLE = "1"
 

@@ -1,2 +1,2 @@
-FILESEXTRAPATHS_prepend_rpi_retro := "${THISDIR}/files:"
+FILESEXTRAPATHS:prepend:rpi:retro := "${THISDIR}/files:"
 PR = "10"

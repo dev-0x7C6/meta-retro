@@ -18,7 +18,7 @@ with bb.tinfoil.Tinfoil() as tinfoil:
             src_uri = src_uris.split()[0]
             ud = bb.fetch2.FetchData(src_uri, parsed)
             revision = ud.method.latest_revision(ud, parsed, 'default')
-            ret.append('LIBRETRO_GIT_REV_pn-{0} ?= "{1}"'.format(recipe.pn, revision))
+            ret.append('LIBRETRO_GIT_REV:pn-{0} ?= "{1}"'.format(recipe.pn, revision))
             print(ret[-1])
 
     print("\nresults:\n")

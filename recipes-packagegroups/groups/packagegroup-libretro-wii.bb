@@ -7,4 +7,4 @@ LIBRETRO_WII_CORES ?= " \
     dolphin-launcher-libretro \
 "
 
-RRECOMMENDS_${PN} = "${LIBRETRO_WII_CORES}"
+RRECOMMENDS:${PN} = "${LIBRETRO_WII_CORES}"

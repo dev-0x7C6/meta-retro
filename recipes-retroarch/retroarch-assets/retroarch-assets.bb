@@ -12,7 +12,7 @@ SRC_URI = "gitsm://github.com/libretro/retroarch-assets.git"
 
 inherit retroarch-allarch
 
-FILES_${PN} += "${RETROARCH_ASSETS_DIR}"
+FILES:${PN} += "${RETROARCH_ASSETS_DIR}"
 
 PACKAGES =+ " \
   ${PN}-glui \
@@ -29,18 +29,18 @@ PACKAGES =+ " \
   ${PN}-xmb-systematic \
 "
 
-FILES_${PN}-glui = "${RETROARCH_ASSETS_DIR}/glui"
-FILES_${PN}-ozone = "${RETROARCH_ASSETS_DIR}/ozone"
-FILES_${PN}-sounds = "${RETROARCH_ASSETS_DIR}/sounds"
-FILES_${PN}-xmb-automatic = "${RETROARCH_ASSETS_DIR}/xmb/automatic"
-FILES_${PN}-xmb-dot-art = "${RETROARCH_ASSETS_DIR}/xmb/dot-art"
-FILES_${PN}-xmb-flatui = "${RETROARCH_ASSETS_DIR}/xmb/flatui"
-FILES_${PN}-xmb-monochrome = "${RETROARCH_ASSETS_DIR}/xmb/monochrome"
-FILES_${PN}-xmb-neoactive = "${RETROARCH_ASSETS_DIR}/xmb/neoactive"
-FILES_${PN}-xmb-pixel = "${RETROARCH_ASSETS_DIR}/xmb/pixel"
-FILES_${PN}-xmb-retroactive = "${RETROARCH_ASSETS_DIR}/xmb/retroactive"
-FILES_${PN}-xmb-retrosystem = "${RETROARCH_ASSETS_DIR}/xmb/retrosystem"
-FILES_${PN}-xmb-systematic = "${RETROARCH_ASSETS_DIR}/xmb/systematic"
+FILES:${PN}-glui = "${RETROARCH_ASSETS_DIR}/glui"
+FILES:${PN}-ozone = "${RETROARCH_ASSETS_DIR}/ozone"
+FILES:${PN}-sounds = "${RETROARCH_ASSETS_DIR}/sounds"
+FILES:${PN}-xmb-automatic = "${RETROARCH_ASSETS_DIR}/xmb/automatic"
+FILES:${PN}-xmb-dot-art = "${RETROARCH_ASSETS_DIR}/xmb/dot-art"
+FILES:${PN}-xmb-flatui = "${RETROARCH_ASSETS_DIR}/xmb/flatui"
+FILES:${PN}-xmb-monochrome = "${RETROARCH_ASSETS_DIR}/xmb/monochrome"
+FILES:${PN}-xmb-neoactive = "${RETROARCH_ASSETS_DIR}/xmb/neoactive"
+FILES:${PN}-xmb-pixel = "${RETROARCH_ASSETS_DIR}/xmb/pixel"
+FILES:${PN}-xmb-retroactive = "${RETROARCH_ASSETS_DIR}/xmb/retroactive"
+FILES:${PN}-xmb-retrosystem = "${RETROARCH_ASSETS_DIR}/xmb/retrosystem"
+FILES:${PN}-xmb-systematic = "${RETROARCH_ASSETS_DIR}/xmb/systematic"
 
 do_patch() {
   rm -f ${S}/Makefile

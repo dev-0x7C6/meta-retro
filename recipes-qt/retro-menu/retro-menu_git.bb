@@ -14,7 +14,7 @@ PACKAGECONFIG ?= "analyse"
 
 PACKAGECONFIG[analyse] = "-DLIBRETRO_ANALYSE=ON,-DLIBRETRO_ANALYSE=OFF"
 
-EXTRA_OECMAKE_append = " \
+EXTRA_OECMAKE:append = " \
     -D LIBRETRO_CORE_INFO_PATH:PATH="${RETROARCH_LIBRETRO_CORES_INFO_DIR}" \
     -D LIBRETRO_CORE_PATH:PATH="${RETROARCH_LIBRETRO_CORES_DIR}" \
     -D LIBRETRO_FIRMWARE_PATH:PATH="${RETROARCH_SYSTEM_DIR}" \
@@ -25,4 +25,4 @@ PACKAGECONFIG ?= "quickcompiler"
 PACKAGECONFIG[quickcompiler] = "-DENABLE_QT_QUICK_COMPILER=ON,-DENABLE_QT_QUICK_COMPILER=OFF,qtdeclarative-native"
 
 DEPENDS = "qtbase qtgamepad qtquickcontrols2 qtsvg"
-RDEPENDS_${PN} += "qtgamepad qtquickcontrols2 qtsvg"
+RDEPENDS:${PN} += "qtgamepad qtquickcontrols2 qtsvg"

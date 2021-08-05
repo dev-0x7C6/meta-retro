@@ -39,7 +39,7 @@ DEPENDS = "libxml2"
 # Package config
 
 RASPBERRYPI_DEFAULT_PACKAGECONFIG ??= ""
-RASPBERRYPI_DEFAULT_PACKAGECONFIG_rpi = " \
+RASPBERRYPI_DEFAULT_PACKAGECONFIG:rpi = " \
   ${@bb.utils.contains('MACHINE_FEATURES', 'vc4graphics', '', 'dispmanx', d)} \
   ${@bb.utils.contains('MACHINE_FEATURES', 'vc4graphics', '', 'videocore', d)} \
   rpiled \
@@ -69,7 +69,7 @@ RETROARCH_ONLINE_PACKAGECONFIG_DEFAULTS ??= " \
 "
 
 RETROARCH_CPU_PACKAGECONFIG_ARM_DEFAULTS ??= ""
-RETROARCH_CPU_PACKAGECONFIG_ARM_DEFAULTS_arm32 = " \
+RETROARCH_CPU_PACKAGECONFIG_ARM_DEFAULTS:arm32 = " \
   ${@bb.utils.contains('TUNE_FEATURES', 'callconvention-hard', 'floathard', 'floatsoftfp', d)} \
 "
 
@@ -263,7 +263,7 @@ CONFIGUREOPTS = " \
   --sysconfdir=${sysconfdir} \
 "
 
-FILES_${PN} += "/usr/share/metainfo"
+FILES:${PN} += "/usr/share/metainfo"
 
 RETROARCH_CONFIG_FILE = "${S}/retroarch.cfg"
 

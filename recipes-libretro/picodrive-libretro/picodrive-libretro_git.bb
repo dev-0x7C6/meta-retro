@@ -8,4 +8,4 @@ inherit libretro
 LIBRETRO_GIT_REPO = "github.com/libretro/picodrive.git"
 
 # More details here: https://github.com/dev-0x7C6/meta-retro/pull/2#
-LIBRETRO_PLATFORM_arm32 = "armv"
+LIBRETRO_PLATFORM:arm32 = "armv"

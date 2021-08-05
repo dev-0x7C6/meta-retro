@@ -10,7 +10,7 @@ LIBRETRO_CORE = "fceumm"
 LIBRETRO_GIT_REPO = "github.com/libretro/libretro-fceumm.git"
 
 LIBRETRO_EXTRA_CFLAGS = "-std=gnu11"
-LIBRETRO_EXTRA_CFLAGS_append_armarch = " -DARM"
+LIBRETRO_EXTRA_CFLAGS:append:armarch = " -DARM"
 LIBRETRO_EXTRA_CXXFLAGS = "-std=gnu++11"
-LIBRETRO_EXTRA_CXXFLAGS_append_armarch = " -DARM"
+LIBRETRO_EXTRA_CXXFLAGS:append:armarch = " -DARM"
 

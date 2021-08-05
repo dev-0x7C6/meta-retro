@@ -34,10 +34,10 @@ RETROARCH_SERVICE_START_COMMAND = "${@' '.join('${RETROARCH_SERVICE_BINARY} ${RE
 # FIXME: psplash is holding kms context and retroarch is unable to start
 # this do not mix well with RETROARCH_SERVICE_FAILURE_ACTION that is
 # set to reboot or poweroff
-RCONFLICTS_${PN} += "psplash"
+RCONFLICTS:${PN} += "psplash"
 
-RDEPENDS_${PN} += "retroarch"
-SYSTEMD_SERVICE_${PN} = "${RETROARCH_SERVICE_FILE}"
+RDEPENDS:${PN} += "retroarch"
+SYSTEMD_SERVICE:${PN} = "${RETROARCH_SERVICE_FILE}"
 ARTIFACT_PREVIEW_FILES += "${B}/${RETROARCH_SERVICE_FILE}"
 
 do_compile() {

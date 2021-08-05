@@ -1,1 +1,1 @@
-IMAGE_FSTYPES_append_rauc-integration = " ext4"
+IMAGE_FSTYPES:append:rauc-integration = " ext4"

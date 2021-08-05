@@ -13,7 +13,7 @@ SRC_URI = "gitsm://github.com/libretro/retroarch-joypad-autoconfig.git;protocol=
 
 inherit retroarch-allarch
 
-FILES_${PN} += "${RETROARCH_AUTOCONFIG_DIR}"
+FILES:${PN} += "${RETROARCH_AUTOCONFIG_DIR}"
 
 do_patch() {
   rm -f ${S}/Makefile

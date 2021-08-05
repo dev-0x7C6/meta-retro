@@ -27,10 +27,10 @@ LIBRETRO_REPRESENT_X86_32 ?= "x86"
 LIBRETRO_REPRESENT_X86_64 ?= "x86_64"
 
 LIBRETRO_CPU_ARCH_DETECT = "${TUNE_ARCH}"
-LIBRETRO_CPU_ARCH_DETECT_arm64 = "${LIBRETRO_REPRESENT_ARM64}"
-LIBRETRO_CPU_ARCH_DETECT_arm32 = "${LIBRETRO_REPRESENT_ARM32}"
-LIBRETRO_CPU_ARCH_DETECT_x86 = "${LIBRETRO_REPRESENT_X86_32}"
-LIBRETRO_CPU_ARCH_DETECT_x86-64 = "${LIBRETRO_REPRESENT_X86_64}"
+LIBRETRO_CPU_ARCH_DETECT:arm64 = "${LIBRETRO_REPRESENT_ARM64}"
+LIBRETRO_CPU_ARCH_DETECT:arm32 = "${LIBRETRO_REPRESENT_ARM32}"
+LIBRETRO_CPU_ARCH_DETECT:x86 = "${LIBRETRO_REPRESENT_X86_32}"
+LIBRETRO_CPU_ARCH_DETECT:x86-64 = "${LIBRETRO_REPRESENT_X86_64}"
 LIBRETRO_CPU_ARCH ?= "${LIBRETRO_CPU_ARCH_DETECT}"
 
 # Flags
@@ -64,7 +64,7 @@ LIBRETRO_MAKEFILE_GRAPHICS_OVERRIDES ?= " \
 "
 
 IS_ARM_ARCH ?= "0"
-IS_ARM_ARCH_armarch = "1"
+IS_ARM_ARCH:armarch = "1"
 
 LIBRETRO_FINAL_MAKEFLAGS ?= " \
   "platform=${LIBRETRO_PLATFORM}" \
@@ -75,7 +75,7 @@ LIBRETRO_FINAL_MAKEFLAGS ?= " \
 
 inherit libretro-vulkan-deps
 
-DEPENDS_append = " \
+DEPENDS:append = " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'virtual/libgles2 virtual/egl', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'virtual/libgles2 virtual/egl', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'virtual/libgl', '', d)} \
@@ -101,7 +101,7 @@ do_compile() {
 # Some cores provide additional info file
 LIBRETRO_INFO_FILE ?= ""
 
-FILES_${PN} += "${RETROARCH_LIBRETRO_CORES_DIR} ${RETROARCH_LIBRETRO_CORES_INFO_DIR}"
+FILES:${PN} += "${RETROARCH_LIBRETRO_CORES_DIR} ${RETROARCH_LIBRETRO_CORES_INFO_DIR}"
 
 do_install() {
 # install core

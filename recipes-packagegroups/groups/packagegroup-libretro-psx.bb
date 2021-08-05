@@ -6,6 +6,6 @@ LIBRETRO_PSX_CORES ?= " \
     swanstation-libretro \
     pcsx-rearmed-libretro \
 "
-#LIBRETRO_PSX_CORES_remove_arm64 = "beetle-psx-libretro"
+#LIBRETRO_PSX_CORES:remove:arm64 = "beetle-psx-libretro"
 
-RRECOMMENDS_${PN} = "${LIBRETRO_PSX_CORES}"
+RRECOMMENDS:${PN} = "${LIBRETRO_PSX_CORES}"

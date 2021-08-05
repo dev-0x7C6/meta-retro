@@ -21,6 +21,6 @@ LIBRETRO_PC_CORES ?= " \
   vice-xvic-libretro \
 "
 
-LIBRETRO_PC_CORES_remove_arm64 = "dosbox-libretro"
+LIBRETRO_PC_CORES:remove:arm64 = "dosbox-libretro"
 
-RRECOMMENDS_${PN} = "${LIBRETRO_PC_CORES}"
+RRECOMMENDS:${PN} = "${LIBRETRO_PC_CORES}"

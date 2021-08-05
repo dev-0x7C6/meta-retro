@@ -9,6 +9,6 @@ inherit libretro
 LIBRETRO_CORE = "mednafen_saturn_hw"
 LIBRETRO_GIT_REPO = "github.com/libretro/beetle-saturn-libretro.git"
 
-LIBRETRO_PLATFORM_append_opengles = "-gles"
+LIBRETRO_PLATFORM:append:opengles = "-gles"
 LIBRETRO_EXTRA_MAKEFLAGS += "HAVE_CHD=1 HAVE_OPENGL=1"
-LIBRETRO_EXTRA_MAKEFLAGS_append_armarch = " IS_X86=0"
+LIBRETRO_EXTRA_MAKEFLAGS:append:armarch = " IS_X86=0"

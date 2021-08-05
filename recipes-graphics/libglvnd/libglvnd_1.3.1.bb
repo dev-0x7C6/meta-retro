@@ -22,7 +22,7 @@ PACKAGECONFIG ?= "${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'x11', '', d)} 
 PACKAGECONFIG[x11] = "--enable-x11 --enable-glx,--disable-x11 --disable-glx,libx11 libxext xorgproto"
 #PACKAGECONFIG[wayland] = "--enable-wayland,--disable-wayland,wayland"
 
-do_install_append() {
+do_install:append() {
 
     ## no-X11 hack included from mesa:
     #because we cannot rely on the fact that all apps will use pkgconfig,
@@ -36,11 +36,11 @@ do_install_append() {
 
 BBCLASSEXTEND = "native nativesdk"
 
-RPROVIDES_${PN} += "libegl libgl libgles1 libgles2"
-RPROVIDES_${PN}-dev += "libegl-dev libgl-dev libgles1-dev libgles2-dev"
-RCONFLICTS_${PN} = "libegl libgl ligbles1 libgles2"
-RCONFLICTS_${PN}-dev += "libegl-dev libgl-dev libgles1-dev libgles2-dev"
-RREPLACES_${PN} = "libegl libgl libgles1 ligbles2"
-RREPLACESS_${PN}-dev += "libegl-dev libgl-dev libgles1-dev libgles2-dev"
+RPROVIDES:${PN} += "libegl libgl libgles1 libgles2"
+RPROVIDES:${PN}-dev += "libegl-dev libgl-dev libgles1-dev libgles2-dev"
+RCONFLICTS:${PN} = "libegl libgl ligbles1 libgles2"
+RCONFLICTS:${PN}-dev += "libegl-dev libgl-dev libgles1-dev libgles2-dev"
+RREPLACES:${PN} = "libegl libgl libgles1 ligbles2"
+RREPLACES:${PN}-dev += "libegl-dev libgl-dev libgles1-dev libgles2-dev"
 
-RRECOMMENDS_${PN} += "${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'egl-wayland', '', d)}"
+RRECOMMENDS:${PN} += "${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'egl-wayland', '', d)}"

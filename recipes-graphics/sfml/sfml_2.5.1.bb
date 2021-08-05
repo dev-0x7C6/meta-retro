@@ -15,6 +15,6 @@ inherit cmake features_check
 
 DEPENDS = "openal-soft freetype virtual/mesa xcb-util-image libjpeg-turbo libxrandr"
 
-FILES_${PN} =+ "${datadir}/SFML"
+FILES:${PN} =+ "${datadir}/SFML"
 
 REQUIRED_DISTRO_FEATURES= "x11"

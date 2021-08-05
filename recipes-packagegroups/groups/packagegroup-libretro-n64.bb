@@ -7,6 +7,6 @@ LIBRETRO_N64_CORES ?= " \
   parallel-n64-libretro \
 "
 
-LIBRETRO_N64_CORES_remove_arm64 = "parallel-n64-libretro"
+LIBRETRO_N64_CORES:remove:arm64 = "parallel-n64-libretro"
 
-RRECOMMENDS_${PN} = "${LIBRETRO_N64_CORES}"
+RRECOMMENDS:${PN} = "${LIBRETRO_N64_CORES}"
