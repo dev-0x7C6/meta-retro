@@ -12,6 +12,8 @@ RETRO_USER_SOCKETS_TARGET_WANTS ?= "${RETRO_USER_HOMEDIR}/.config/systemd/user/s
 
 RDEPENDS:${PN}:prepend = "bash "
 
+RETRO_USERADD_SET_PASSWORD ?= "-P ${RETRO_USER_PASSWORD}"
+
 USERADD_PACKAGES = "${PN}"
 USERADD_PARAM:${PN} = " \
   --create-home \
@@ -20,6 +22,6 @@ USERADD_PARAM:${PN} = " \
   --uid ${RETRO_USER_ID} \
   --home ${RETRO_USER_HOMEDIR} \
   --shell /bin/bash \
-  -P ${RETRO_USER_PASSWORD} \
+  ${RETRO_USERADD_SET_PASSWORD} \
   ${RETRO_USER_NAME} \
 "
