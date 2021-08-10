@@ -12,16 +12,24 @@ RETRO_USER_SOCKETS_TARGET_WANTS ?= "${RETRO_USER_HOMEDIR}/.config/systemd/user/s
 
 RDEPENDS:${PN}:prepend = "bash "
 
+RETRO_USERADD_CREATE_HOME ?= "--create-home"
+RETRO_USERADD_SET_USER_GROUP ?= "--user-group"
+RETRO_USERADD_SET_GROUPS ?= "--groups ${@','.join('${RETRO_USER_GROUPS}'.split())}"
+RETRO_USERADD_SET_UID ?= "--uid ${RETRO_USER_ID}"
+RETRO_USERADD_SET_HOMEDIR ?= "--home ${RETRO_USER_HOMEDIR}"
+RETRO_USERADD_SET_SHELL ?= "--shell /bin/bash"
 RETRO_USERADD_SET_PASSWORD ?= "-P ${RETRO_USER_PASSWORD}"
 
-USERADD_PACKAGES = "${PN}"
-USERADD_PARAM:${PN} = " \
-  --create-home \
-  --user-group \
-  --groups ${@','.join('${RETRO_USER_GROUPS}'.split())} \
-  --uid ${RETRO_USER_ID} \
-  --home ${RETRO_USER_HOMEDIR} \
-  --shell /bin/bash \
+RETRO_USERADD_COMMAND ?= " \
+  ${RETRO_USERADD_CREATE_HOME} \
+  ${RETRO_USERADD_SET_USER_GROUP} \
+  ${RETRO_USERADD_SET_GROUPS} \
+  ${RETRO_USERADD_SET_UID} \
+  ${RETRO_USERADD_SET_HOMEDIR} \
+  ${RETRO_USERADD_SET_SHELL} \
   ${RETRO_USERADD_SET_PASSWORD} \
   ${RETRO_USER_NAME} \
 "
+
+USERADD_PACKAGES = "${PN}"
+USERADD_PARAM:${PN} = "${@' '.join('${RETRO_USERADD_COMMAND}'.split())}"
