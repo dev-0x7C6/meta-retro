@@ -2,7 +2,7 @@ RETROARCH_PREFERRED_KERNEL_FOR_X86 ?= "linux-yocto"
 
 DISTROOVERRIDES:append:x86 = ":x86-common"
 DISTROOVERRIDES:append:x86-64 = ":x86-common"
-RETRO_FEATURES:append:x86-common = " retroarch-opengl"
+#RETRO_FEATURES:append:x86-common = " retroarch-opengl"
 
 PREFERRED_PROVIDER:virtual/kernel:x86-common = "${RETROARCH_PREFERRED_KERNEL_FOR_X86}"
 
