@@ -79,6 +79,11 @@
 #  * are registered at this point. */
 # #define RETRO_DEVICE_POINTER      6
 
+
+# Customization may destroy default joystink bindings for some emulators
+# for example this was observed with flycast
+RETROARCH_CONFIG_INPUT_ENABLE_CUSTOMIZATION ?= "0"
+
 RETROARCH_CONFIG_INPUT_TYPE_PLAYER_DEFAULT ?= "5"
 
 RETROARCH_CONFIG_INPUT_TYPE_PLAYER_1 ?= "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_DEFAULT}"
@@ -99,26 +104,28 @@ RETROARCH_CONFIG_INPUT_TYPE_PLAYER_15 ?= "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_D
 RETROARCH_CONFIG_INPUT_TYPE_PLAYER_16 ?= "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_DEFAULT}"
 
 do_retroarch_config:append() {
-  write_comment "Input"
-  for index in `seq 16`; do
-    write_cfg "input_player${index}_left" "left"
-  done
+  if [ "${RETROARCH_CONFIG_INPUT_ENABLE_CUSTOMIZATION}" == "1" ]; then
+    write_comment "Input"
+    for index in `seq 16`; do
+      write_cfg "input_player${index}_left" "left"
+    done
 
-  write_comment "Controller types"
-  write_cfg "input_libretro_device_p1" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_1}"
-  write_cfg "input_libretro_device_p2" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_2}"
-  write_cfg "input_libretro_device_p3" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_3}"
-  write_cfg "input_libretro_device_p4" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_4}"
-  write_cfg "input_libretro_device_p5" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_5}"
-  write_cfg "input_libretro_device_p6" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_6}"
-  write_cfg "input_libretro_device_p7" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_7}"
-  write_cfg "input_libretro_device_p8" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_8}"
-  write_cfg "input_libretro_device_p9" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_9}"
-  write_cfg "input_libretro_device_p10" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_10}"
-  write_cfg "input_libretro_device_p11" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_11}"
-  write_cfg "input_libretro_device_p12" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_12}"
-  write_cfg "input_libretro_device_p13" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_13}"
-  write_cfg "input_libretro_device_p14" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_14}"
-  write_cfg "input_libretro_device_p15" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_15}"
-  write_cfg "input_libretro_device_p16" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_16}"
+    write_comment "Controller types"
+    write_cfg "input_libretro_device_p1" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_1}"
+    write_cfg "input_libretro_device_p2" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_2}"
+    write_cfg "input_libretro_device_p3" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_3}"
+    write_cfg "input_libretro_device_p4" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_4}"
+    write_cfg "input_libretro_device_p5" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_5}"
+    write_cfg "input_libretro_device_p6" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_6}"
+    write_cfg "input_libretro_device_p7" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_7}"
+    write_cfg "input_libretro_device_p8" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_8}"
+    write_cfg "input_libretro_device_p9" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_9}"
+    write_cfg "input_libretro_device_p10" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_10}"
+    write_cfg "input_libretro_device_p11" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_11}"
+    write_cfg "input_libretro_device_p12" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_12}"
+    write_cfg "input_libretro_device_p13" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_13}"
+    write_cfg "input_libretro_device_p14" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_14}"
+    write_cfg "input_libretro_device_p15" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_15}"
+    write_cfg "input_libretro_device_p16" "${RETROARCH_CONFIG_INPUT_TYPE_PLAYER_16}"
+  fi
 }
