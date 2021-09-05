@@ -164,7 +164,6 @@ PACKAGECONFIG[mali-fbdev] = "--enable-mali_fbdev"
 PACKAGECONFIG[menu-materialui] = "--enable-materialui,--disable-materialui"
 PACKAGECONFIG[menu-ozone] = "--enable-ozone,--disable-ozone"
 PACKAGECONFIG[menu-rgui] = "--enable-rgui,--disable-rgui"
-PACKAGECONFIG[menu-stripes] = "--enable-stripes,--disable-stripes"
 PACKAGECONFIG[menu-xmb] = "--enable-xmb,--disable-xmb"
 PACKAGECONFIG[miniupnpc] = "--enable-miniupnpc,--disable-miniupnpc"
 PACKAGECONFIG[mmap] = "--enable-mmap,--disable-mmap"
@@ -251,6 +250,9 @@ PACKAGECONFIG[disable-translate] = "--disable-translate"
 PACKAGECONFIG[disable-update-assets] = "--disable-update_assets"
 PACKAGECONFIG[disable-update-cores] = "--disable-update_cores"
 PACKAGECONFIG[disable-vulkan-display] = "--disable-vulkan_display"
+
+# Removed in 1.9.9
+# PACKAGECONFIG[menu-stripes] = "--enable-stripes,--disable-stripes"
 
 EXTRA_OECONF = "${PACKAGECONFIG_CONFARGS}"
 EXTRA_OEMAKE += "NEED_CXX_LINKER=1 HAVE_LAKKA=${@bb.utils.contains('PACKAGECONFIG', 'lakka', '1', '0', d)}"
