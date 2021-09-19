@@ -21,8 +21,8 @@ RETROARCH_DEFAULT_AUDIO_DRIVER ??= "${@bb.utils.contains('DISTRO_FEATURES', 'pul
 # Default will use "sinc".
 RETROARCH_DEFAULT_RESAMPLER_DRIVER ??= "sinc"
 
-# Menu driver to use. ("rgui", "xmb", "glui")
-RETROARCH_DEFAULT_MENU_DRIVER ??= "xmb"
+# Menu driver to use. ("ozone", "rgui", "xmb", "glui")
+RETROARCH_DEFAULT_MENU_DRIVER ??= "ozone"
 
 do_retroarch_config:append() {
   write_cfg_replace "audio_driver" "${RETROARCH_DEFAULT_AUDIO_DRIVER}"

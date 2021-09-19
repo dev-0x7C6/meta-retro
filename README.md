@@ -68,7 +68,7 @@ There is a collection of variables that can be set in *local.conf* or *distro.co
 * **RETROARCH_DEFAULT_VIDEO_CONTEXT** - default is kms-egl
 * **RETROARCH_DEFAULT_AUDIO_DRIVER** - default is pulseaudio or alsathread
 * **RETROARCH_DEFAULT_RESAMPLER_DRIVER** - default is sinc
-* **RETROARCH_DEFAULT_MENU_DRIVER** - default is xmb
+* **RETROARCH_DEFAULT_MENU_DRIVER** - default is ozone
 
 #### Configuration
 * **RETROARCH_CONFIG_FULLSCREEN** - default is true, go for fullscreen mode, this respects initial resolutions (tested with rpi4)
