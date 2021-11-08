@@ -7,7 +7,6 @@ inherit retro-core-image
 IMAGE_INSTALL += " \
   cool-retro-term \
   packagegroup-standalone-emulators \
-  retro-menu \
 "
 
 IMAGE_INSTALL += " \
