@@ -1,0 +1,21 @@
+From 97fd8b486f9a9046277a580b238b6673a98f7f72 Mon Sep 17 00:00:00 2001
+From: Yuri Konotopov <ykonotopov@gnome.org>
+Date: Sun, 31 Oct 2021 10:56:59 +0400
+Subject: [PATCH] Added missing GB_VERSION define
+
+---
+ Makefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile b/Makefile
+index 446d61850..bd9554b62 100644
+--- a/Makefile
++++ b/Makefile
+@@ -453,6 +453,7 @@ LDFLAGS += $(fpic) $(SHARED)
+ FLAGS += $(fpic) $(NEW_GCC_FLAGS) $(INCFLAGS)
+ 
+ FLAGS += $(ENDIANNESS_DEFINES) $(WARNINGS) $(CORE_DEFINE) -DSTDC_HEADERS -D__STDC_LIMIT_MACROS -D__LIBRETRO__ -DSFC_LAGFIX -DGB_INTERNAL -DGB_DISABLE_DEBUGGER -DGB_DISABLE_CHEATS $(EXTRA_INCLUDES) $(SOUND_DEFINE)
++FLAGS += -DGB_VERSION=\"0.14.4\"
+ 
+ CXXFLAGS += -std=c++17 $(FLAGS)
+ CFLAGS   += $(FLAGS)
