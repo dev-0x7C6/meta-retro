@@ -11,12 +11,12 @@ BUGTRACKER = "https://github.com/heftig/rtkit/issues"
 LICENSE = "GPL-3.0 & BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=a8e768468b658b3ed44971b53d4a6716"
 
-SRC_URI += "git://github.com/heftig/rtkit.git;protocol=https"
+SRC_URI += "git://github.com/heftig/rtkit.git;protocol=https;branch=master"
 SRCREV = "v${PV}"
 
 S = "${WORKDIR}/git"
 
-inherit meson systemd useradd features_check
+inherit meson systemd useradd features_check pkgconfig
 
 DEPENDS += "dbus polkit systemd vim-native"
 REQUIRED_DISTRO_FEATURES = "polkit systemd"

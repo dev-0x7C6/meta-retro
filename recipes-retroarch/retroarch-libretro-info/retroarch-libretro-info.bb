@@ -6,7 +6,7 @@ BUGTRACKER = "https://github.com/libretro/libretro-super/issues"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5400ab930bc7a77040ea8e75206294c4"
 
-SRC_URI = "git://github.com/libretro/libretro-super.git;protocol=https"
+SRC_URI = "git://github.com/libretro/libretro-super.git;protocol=https;branch=master"
 
 inherit artifact-preview retroarch-allarch
 

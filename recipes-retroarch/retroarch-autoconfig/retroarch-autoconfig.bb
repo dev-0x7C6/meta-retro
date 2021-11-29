@@ -9,7 +9,7 @@ BUGTRACKER = "https://github.com/libretro/retroarch-joypad-autoconfig/issues"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://COPYING;md5=459277d80461c2908b4cf14949f8dcd5"
 
-SRC_URI = "gitsm://github.com/libretro/retroarch-joypad-autoconfig.git;protocol=https"
+SRC_URI = "gitsm://github.com/libretro/retroarch-joypad-autoconfig.git;protocol=https;branch=master"
 
 inherit retroarch-allarch
 

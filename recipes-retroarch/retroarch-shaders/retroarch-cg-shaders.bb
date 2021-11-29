@@ -8,7 +8,7 @@ BUGTRACKER = "https://github.com/libretro/common-shaders/issues"
 
 LICENSE = "CLOSED"
 
-SRC_URI = "gitsm://github.com/libretro/common-shaders.git;protocol=https"
+SRC_URI = "gitsm://github.com/libretro/common-shaders.git;protocol=https;branch=master"
 
 require include/retroarch-shaders.inc
 

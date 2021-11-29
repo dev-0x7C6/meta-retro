@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=d0a46c0360eccca3e48801dc2333a3c2"
 inherit cmake retroarch-paths
 
 S = "${WORKDIR}/git"
-SRC_URI = "gitsm://github.com/IgniparousTempest/libretro-superflappybirds.git"
+SRC_URI = "gitsm://github.com/IgniparousTempest/libretro-superflappybirds.git;protocol=https;branch=master"
 SRCREV = "${AUTOREV}"
 
 FILES:${PN} += "${RETROARCH_LIBRETRO_CORES_DIR} ${RETROARCH_SYSTEM_DIR}"
