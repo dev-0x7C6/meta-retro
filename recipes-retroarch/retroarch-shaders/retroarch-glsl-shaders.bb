@@ -7,7 +7,7 @@ BUGTRACKER = "https://github.com/libretro/glsl-shaders/issues"
 
 LICENSE = "CLOSED"
 
-SRC_URI = "gitsm://github.com/libretro/glsl-shaders.git"
+SRC_URI = "gitsm://github.com/libretro/glsl-shaders.git;protocol=https;branch=master"
 
 require include/retroarch-shaders.inc
 

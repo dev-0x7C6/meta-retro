@@ -10,7 +10,7 @@ BUGTRACKER = "https://github.com/libretro/slang-shaders/issues"
 
 LICENSE = "CLOSED"
 
-SRC_URI = "gitsm://github.com/libretro/slang-shaders.git;protocol=https"
+SRC_URI = "gitsm://github.com/libretro/slang-shaders.git;protocol=https;branch=master"
 
 PROVIDES += "retroarch-shaders"
 

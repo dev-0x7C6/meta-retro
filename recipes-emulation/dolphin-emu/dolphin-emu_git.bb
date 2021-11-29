@@ -3,7 +3,7 @@ DESCRIPTION = "Dolphin is a GameCube / Wii emulator"
 LICENSE = "GPL-3.0-or-later"
 LIC_FILES_CHKSUM = "file://COPYING;md5=42dac715b05c09ace95c14324cdfd147"
 
-SRC_URI = "gitsm://github.com/dolphin-emu/dolphin.git;protocol=https"
+SRC_URI = "gitsm://github.com/dolphin-emu/dolphin.git;protocol=https;branch=master"
 SRCREV = "954f27c5d7289b2b806d0fb94dd105edaa1bb4be"
 S = "${WORKDIR}/git"
 

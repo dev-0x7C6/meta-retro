@@ -9,7 +9,7 @@ BUGTRACKER = "https://github.com/libretro/libretro-database/issues"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://COPYING;md5=459277d80461c2908b4cf14949f8dcd5"
 
-SRC_URI = "gitsm://github.com/libretro/libretro-database.git;protocol=https"
+SRC_URI = "gitsm://github.com/libretro/libretro-database.git;protocol=https;branch=master"
 
 PR = "r3"
 

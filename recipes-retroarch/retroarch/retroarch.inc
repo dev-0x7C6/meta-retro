@@ -11,7 +11,7 @@ BUGTRACKER = "https://github.com/libretro/RetroArch/issues"
 LICENSE = "GPL-3.0"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
-SRC_URI = "gitsm://github.com/libretro/RetroArch.git ${RETROARCH_PATCHES}"
+SRC_URI = "gitsm://github.com/libretro/RetroArch.git;protocol=https;branch=master ${RETROARCH_PATCHES}"
 S = "${WORKDIR}/git"
 
 RETROARCH_PATCHES ?= ""

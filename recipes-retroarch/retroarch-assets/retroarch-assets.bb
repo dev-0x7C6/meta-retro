@@ -8,7 +8,7 @@ BUGTRACKER = "https://github.com/libretro/retroarch-assets/issues"
 LICENSE = "CC-BY-SA-4.0"
 LIC_FILES_CHKSUM = "file://COPYING;md5=7bd61880991ed797753fcc00acae2c51"
 
-SRC_URI = "gitsm://github.com/libretro/retroarch-assets.git"
+SRC_URI = "gitsm://github.com/libretro/retroarch-assets.git;protocol=https;branch=master"
 
 inherit retroarch-allarch
 
