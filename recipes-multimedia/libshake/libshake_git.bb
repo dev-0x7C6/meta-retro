@@ -6,7 +6,7 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=c49bb48e5987c0801be634da2ff4707e"
 
 PV = "0.3.2"
-SRC_URI = "git://github.com/zear/libShake.git;protocol=https"
+SRC_URI = "git://github.com/zear/libShake.git;protocol=https;branch=master"
 SRCREV = "v${PV}"
 S = "${WORKDIR}/git"
 
