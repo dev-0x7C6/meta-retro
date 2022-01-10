@@ -10,10 +10,7 @@ IMAGE_INSTALL += " \
 "
 
 IMAGE_INSTALL += " \
-  retroarch-assets-sounds \
-  retroarch-assets-xmb-monochrome \
-  retroarch-assets-xmb-pixel \
-  retroarch-assets-xmb-systematic \
+  retroarch-assets \
   retroarch-autoconfig \
   retroarch-database \
   retroarch-libretro-info \
