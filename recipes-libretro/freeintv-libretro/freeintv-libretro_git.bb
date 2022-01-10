@@ -1,7 +1,7 @@
 DESCRIPTION = "Intellivision emulator for libretro"
 
 LICENSE = "GPLv3"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=80cf7e863beef0254d0b1d87589d16cf"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=a8ef2e7868580064326544319a8cb408"
 
 inherit libretro
 
