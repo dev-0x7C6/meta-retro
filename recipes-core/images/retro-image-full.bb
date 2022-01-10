@@ -15,9 +15,7 @@ IMAGE_INSTALL += " \
   retroarch-assets-xmb-pixel \
   retroarch-assets-xmb-systematic \
   retroarch-autoconfig \
-  retroarch-database-cheats \
-  retroarch-database-cursors \
-  retroarch-database-titles \
+  retroarch-database \
   retroarch-libretro-info \
   retroarch-overlays \
 "

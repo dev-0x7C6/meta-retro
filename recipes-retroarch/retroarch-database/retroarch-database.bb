@@ -15,11 +15,14 @@ PR = "r3"
 
 inherit retroarch-allarch
 
-PACKAGES =+ " \
+COMPONENTS = " \
   ${PN}-cheats \
   ${PN}-cursors \
   ${PN}-titles \
 "
+
+PACKAGES += "${COMPONENTS}"
+RDEPENDS:${PN} += "${COMPONENTS}"
 
 FILES:${PN}-cheats = "${RETROARCH_DATABASE_CHEATS_DIR}"
 FILES:${PN}-cursors = "${RETROARCH_DATABASE_CURSORS_DIR}"
