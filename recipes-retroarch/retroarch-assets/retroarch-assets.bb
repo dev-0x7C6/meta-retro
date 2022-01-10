@@ -14,9 +14,11 @@ inherit retroarch-allarch
 
 FILES:${PN} += "${RETROARCH_ASSETS_DIR}"
 
-PACKAGES =+ " \
+COMPONENTS = " \
   ${PN}-glui \
+  ${PN}-menu-widgets \
   ${PN}-ozone \
+  ${PN}-rgui \
   ${PN}-sounds \
   ${PN}-xmb-automatic \
   ${PN}-xmb-dot-art \
@@ -29,8 +31,13 @@ PACKAGES =+ " \
   ${PN}-xmb-systematic \
 "
 
+PACKAGES =+ "${COMPONENTS}"
+RDEPENDS:${PN} += "${COMPONENTS}"
+
 FILES:${PN}-glui = "${RETROARCH_ASSETS_DIR}/glui"
+FILES:${PN}-menu-widgets = "${RETROARCH_ASSETS_DIR}/menu_widgets"
 FILES:${PN}-ozone = "${RETROARCH_ASSETS_DIR}/ozone"
+FILES:${PN}-rgui = "${RETROARCH_ASSETS_DIR}/rgui"
 FILES:${PN}-sounds = "${RETROARCH_ASSETS_DIR}/sounds"
 FILES:${PN}-xmb-automatic = "${RETROARCH_ASSETS_DIR}/xmb/automatic"
 FILES:${PN}-xmb-dot-art = "${RETROARCH_ASSETS_DIR}/xmb/dot-art"
@@ -43,9 +50,12 @@ FILES:${PN}-xmb-retrosystem = "${RETROARCH_ASSETS_DIR}/xmb/retrosystem"
 FILES:${PN}-xmb-systematic = "${RETROARCH_ASSETS_DIR}/xmb/systematic"
 
 do_patch() {
+  rm -rf ${S}/src
+
   rm -f ${S}/Makefile
   rm -f ${S}/configure
-  rm -rf ${S}/src
+  rm -f ${S}/xmb/convert.sh
+  rm -f ${S}/xmb/NPMApng2PMApng.py
 }
 
 do_install() {
