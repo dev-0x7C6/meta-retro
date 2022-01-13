@@ -10,8 +10,6 @@ require files/dolphin-32bit-configuration.inc
 
 LIBRETRO_GIT_REPO = "github.com/libretro/dolphin.git"
 
-SRC_URI:append = " file://0001-JitArm64-Fix-improper-uses-of-offsetof.patch"
-
 DEPENDS = " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'virtual/libgl ', '', d)} \
   curl \
