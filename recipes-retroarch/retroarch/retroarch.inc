@@ -165,7 +165,6 @@ PACKAGECONFIG[menu-materialui] = "--enable-materialui,--disable-materialui"
 PACKAGECONFIG[menu-ozone] = "--enable-ozone,--disable-ozone,,retroarch-assets-ozone"
 PACKAGECONFIG[menu-rgui] = "--enable-rgui,--disable-rgui,,retroarch-assets-rgui"
 PACKAGECONFIG[menu-xmb] = "--enable-xmb,--disable-xmb"
-PACKAGECONFIG[miniupnpc] = "--enable-miniupnpc,--disable-miniupnpc"
 PACKAGECONFIG[mmap] = "--enable-mmap,--disable-mmap"
 PACKAGECONFIG[mpv] = "--enable-mpv,,mpv"
 PACKAGECONFIG[neon] = "--enable-neon"
@@ -253,6 +252,9 @@ PACKAGECONFIG[disable-vulkan-display] = "--disable-vulkan_display"
 
 # Removed in 1.9.9
 # PACKAGECONFIG[menu-stripes] = "--enable-stripes,--disable-stripes"
+
+# Removed in 1.10.0
+# PACKAGECONFIG[miniupnpc] = "--enable-miniupnpc,--disable-miniupnpc"
 
 EXTRA_OECONF = "${PACKAGECONFIG_CONFARGS}"
 EXTRA_OEMAKE += "NEED_CXX_LINKER=1 HAVE_LAKKA=${@bb.utils.contains('PACKAGECONFIG', 'lakka', '1', '0', d)}"
