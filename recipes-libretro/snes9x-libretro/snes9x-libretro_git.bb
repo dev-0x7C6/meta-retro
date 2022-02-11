@@ -1,7 +1,7 @@
 DESCRIPTION = "Snes9x - Portable Super Nintendo Entertainment System (TM) emulator."
 
 LICENSE = "SNES9X"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=67f2d33d40332031b2f10beb78eac382"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=1b05960bb22bba725eff645eabda6458"
 
 inherit libretro
 
