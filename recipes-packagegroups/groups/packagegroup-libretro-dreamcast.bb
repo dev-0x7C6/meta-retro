@@ -4,7 +4,6 @@ inherit retro-packagegroup
 
 LIBRETRO_DREAMCAST_CORES ?= " \
   flycast-libretro \
-  redream-libretro \
   vemulator-libretro \
 "
 
