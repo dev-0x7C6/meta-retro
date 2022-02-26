@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=c49bb48e5987c0801be634da2ff4707e"
 
 PV = "0.3.2"
 SRC_URI = "git://github.com/zear/libShake.git;protocol=https;branch=master"
-SRCREV = "v${PV}"
+SRCREV = "7f643c813f1ffea659fb85a47b14d8fbda18cce1"
 S = "${WORKDIR}/git"
 
 inherit autotools-brokensep
