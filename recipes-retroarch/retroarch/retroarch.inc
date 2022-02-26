@@ -122,6 +122,7 @@ RETROARCH_LTO_FLAGS ?= "-flto=${@oe.utils.cpu_count()}"
 
 TARGET_CFLAGS += "${@bb.utils.contains('PACKAGECONFIG', 'lto', '${RETROARCH_LTO_FLAGS}', '', d)}"
 TARGET_LDFLAGS += "${@bb.utils.contains('PACKAGECONFIG', 'lto', '${TARGET_CFLAGS}', '', d)}"
+LDFLAGS += "-lssl -lcrypto -lz"
 
 # Switches updated from v1.9.7
 # Wed Aug 4 17:58:08 CEST 2021
