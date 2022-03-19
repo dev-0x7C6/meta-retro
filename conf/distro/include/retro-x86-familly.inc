@@ -6,6 +6,6 @@ DISTROOVERRIDES:append:x86-64 = ":x86-common"
 
 PREFERRED_PROVIDER:virtual/kernel:x86-common = "${RETROARCH_PREFERRED_KERNEL_FOR_X86}"
 
-MESA_X86_PREFERRED_DRIVERS ?= "gallium gallium-llvm nouveau i915 iris r300 r600 radeonsi"
+MESA_X86_PREFERRED_DRIVERS ?= "gallium gallium-llvm r600"
 
 PACKAGECONFIG:append:pn-mesa:x86-common = " ${MESA_X86_PREFERRED_DRIVERS}"
