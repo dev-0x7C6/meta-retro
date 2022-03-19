@@ -8,7 +8,7 @@ We refer to these as <libretro cores>."
 HOMEPAGE = "https://www.retroarch.com/"
 BUGTRACKER = "https://github.com/libretro/RetroArch/issues"
 
-LICENSE = "GPL-3.0"
+LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
 SRC_URI = "gitsm://github.com/libretro/RetroArch.git;protocol=https;branch=master ${RETROARCH_PATCHES}"

@@ -8,7 +8,7 @@ be used by normal user processes."
 HOMEPAGE = "https://github.com/heftig/rtkit"
 BUGTRACKER = "https://github.com/heftig/rtkit/issues"
 
-LICENSE = "GPL-3.0 & BSD-3-Clause"
+LICENSE = "GPL-3.0-only & BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=a8e768468b658b3ed44971b53d4a6716"
 
 SRC_URI += "git://github.com/heftig/rtkit.git;protocol=https;branch=master"

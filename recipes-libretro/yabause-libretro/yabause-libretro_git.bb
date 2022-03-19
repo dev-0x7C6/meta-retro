@@ -1,6 +1,6 @@
 DESCRIPTION = "Sega Saturn emu - Yabause (optimised) port for libretro"
 
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://yabause/COPYING;md5=4b446a5a0b773c458f6a5b3288522b62"
 
 inherit libretro

@@ -1,6 +1,6 @@
 DESCRIPTION = "N64 emu - Highly modified Mupen64Plus port for libretro"
 
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://mupen64plus-core/LICENSES;md5=6bf42b6befd3315498f337409d7f83c2"
 
 inherit libretro

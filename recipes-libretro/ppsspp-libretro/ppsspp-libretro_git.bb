@@ -1,6 +1,6 @@
 DESCRIPTION = "PlayStation Portable emu - PPSSPP port for libretro"
 
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://LICENSE.TXT;md5=e336f8162cddec7981e240f46825d8a2"
 
 inherit libretro-cmake

@@ -1,6 +1,6 @@
 DESCRIPTION = "Doom/Doom II engine - PrBoom port for libretro"
 
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=14aa9744482b9e7ee47eef837e04c26e"
 
 inherit libretro

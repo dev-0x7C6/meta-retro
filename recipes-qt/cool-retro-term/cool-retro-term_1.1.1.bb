@@ -1,7 +1,7 @@
 DESCRIPTION = "Terminal emulator which mimics the look and feel of the old cathode tube screens"
 HOMEPAGE = "https://github.com/Swordfish90/cool-retro-term"
 
-LICENSE = "GPLv3"
+LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://gpl-3.0.txt;md5=d32239bcb673463ab874e80d47fae504"
 
 inherit qmake5
