@@ -2,7 +2,7 @@ SUMMARY = "MS-DOS emulator"
 DESCRIPTION = "DOSBox Pure is a new fork of DOSBox built for RetroArch/Libretro \ 
 aiming for simplicity and ease of use."
 
-LICENSE = "GPL-2.0"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=7c050190136f70e95bb9873bf63cf427"
 
 inherit libretro

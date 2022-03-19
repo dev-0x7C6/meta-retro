@@ -1,6 +1,6 @@
 DESCRIPTION = "3D Engine for libretro GL with additional features (camera/location/etc). Should be compatible from libretro 3D/GLES 2.0 and up."
 
-LICENSE = "GPL-3.0"
+LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://license;md5=d32239bcb673463ab874e80d47fae504"
 
 inherit libretro

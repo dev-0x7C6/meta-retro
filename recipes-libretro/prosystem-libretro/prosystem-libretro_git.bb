@@ -1,6 +1,6 @@
 DESCRIPTION = "Atari 7800 ProSystem emu - ProSystem port for libretro"
 
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://License.txt;md5=ec2ee434a4ad8ef5c1eae190fff988a9"
 
 inherit libretro

@@ -1,6 +1,6 @@
 DESCRIPTION = "Sega Master System & Game Gear emu - SMSPlus (enhanced) port for libretro"
 
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://docs/license;md5=0636e73ff0215e8d672dc4c32c317bb3"
 
 inherit libretro

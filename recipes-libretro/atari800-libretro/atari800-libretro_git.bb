@@ -1,7 +1,7 @@
 SUMMARY = "Atari 8-bit/800/5200 emulator"
 DESCRIPTION = "Atari 8-bit/800/5200 emulator - Atari800 port for libretro"
 
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://atari800/COPYING;md5=eb723b61539feef013de476e68b5c50a"
 
 inherit libretro

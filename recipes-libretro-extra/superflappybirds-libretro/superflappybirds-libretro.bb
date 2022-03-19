@@ -1,6 +1,6 @@
 DESCRIPTION = "Super Flappy Birds - Multiplayer Flappy Bird Clone"
 
-LICENSE = "GPLv3"
+LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=d0a46c0360eccca3e48801dc2333a3c2"
 
 inherit cmake retroarch-paths

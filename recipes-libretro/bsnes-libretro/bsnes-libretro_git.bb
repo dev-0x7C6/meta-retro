@@ -1,7 +1,7 @@
 SUMMARY = "Super Nintendo emulator"
 DESCRIPTION = "Super Nintendo emulator - bsnes port for libretro"
 
-LICENSE = "GPL-3.0 & ISC"
+LICENSE = "GPL-3.0-only & ISC"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=fe114267df72c30b064ae55ca5242069"
 
 inherit libretro

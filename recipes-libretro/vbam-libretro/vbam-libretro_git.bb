@@ -1,6 +1,6 @@
 DESCRIPTION = "Visual Boy Advance - A fork of VBA-M with libretro integration"
 
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://doc/License.txt;md5=ad8ac3e11cc39f83fcaa6cd492075985"
 
 inherit libretro
