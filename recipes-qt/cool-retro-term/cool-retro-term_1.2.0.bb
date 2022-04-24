@@ -10,7 +10,7 @@ SRC_URI = " \
   gitsm://github.com/Swordfish90/cool-retro-term.git;protocol=https;branch=master \
   file://qmltermwidget-0.2.0-gcc-10.patch \
 "
-SRCREV = "${PV}"
+SRCREV = "74ae511f923a7c42274086f9b9959e2292d74ddc"
 
 S = "${WORKDIR}/git"
 
