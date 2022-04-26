@@ -5,14 +5,10 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 inherit retro-core-image
 
 IMAGE_INSTALL += " \
-  cool-retro-term \
-  packagegroup-standalone-emulators \
-"
-
-IMAGE_INSTALL += " \
   retroarch-assets \
   retroarch-autoconfig \
   retroarch-database \
   retroarch-libretro-info \
   retroarch-overlays \
+  packagegroup-standalone-emulators \
 "
