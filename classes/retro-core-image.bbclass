@@ -1,4 +1,4 @@
-inherit core-image
+inherit core-image retro-user
 
 require classes/include/retro-core-image-debug.inc
 require classes/include/retro-core-image-development.inc
