@@ -7,10 +7,12 @@ inherit libretro-cmake python3native
 
 LIBRETRO_CORE = "pcsx2/pcsx2"
 
+PR = "r1"
+
 LIBRETRO_GIT_REPO = "github.com/libretro/pcsx2.git"
 LIBRETRO_GIT_BRANCH = "main"
 
-DEPENDS = "alsa-lib fmt glib-2.0 glib-2.0-native libaio libpcap libpng libx11 wxwidgets"
+DEPENDS = "alsa-lib glib-2.0 glib-2.0-native libaio libpcap libpng"
 RDEPENDS:${PN} += "${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-firmware', 'firmware-libretro-pcsx2', '', d)}"
 
 EXTRA_OECMAKE:append = " -DLIBRETRO=ON -DCMAKE_BUILD_TYPE=Release"
