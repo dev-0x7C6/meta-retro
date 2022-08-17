@@ -10,7 +10,10 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=7bd61880991ed797753fcc00acae2c51"
 
 SRC_URI = "gitsm://github.com/libretro/retroarch-assets.git;protocol=https;branch=master"
 
-inherit retroarch-allarch
+inherit allarch libretro-version retroarch-paths
+
+SRCREV = "9d77c501b88586cb0ed036e7d13908372ef6f9d6"
+S = "${WORKDIR}/git"
 
 FILES:${PN} += "${RETROARCH_ASSETS_DIR}"
 
