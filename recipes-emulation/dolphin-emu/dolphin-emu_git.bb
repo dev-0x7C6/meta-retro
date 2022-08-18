@@ -7,7 +7,7 @@ SRC_URI = "gitsm://github.com/dolphin-emu/dolphin.git;protocol=https;branch=mast
 SRCREV = "954f27c5d7289b2b806d0fb94dd105edaa1bb4be"
 S = "${WORKDIR}/git"
 
-inherit cmake_qt5 retro-overrides gettext logging libretro-version
+inherit cmake_qt5 retro-overrides gettext libretro-version
 require files/dolphin-32bit-configuration.inc
 
 OECMAKE_FIND_ROOT_PATH_MODE_PROGRAM = "BOTH"
