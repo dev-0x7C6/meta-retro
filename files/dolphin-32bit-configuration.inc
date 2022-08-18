@@ -2,7 +2,7 @@
 # it's possible to compile 32bit version with "generic" PACKAGECONFIG
 # but it's resulting in very poor runtime performance
 
-inherit logging retro-overrides
+inherit retro-overrides
 
 PACKAGECONFIG:append:32bit = " generic"
 
