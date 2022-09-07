@@ -10,10 +10,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=7bd61880991ed797753fcc00acae2c51"
 
 SRC_URI = "gitsm://github.com/libretro/retroarch-assets.git;protocol=https;branch=master"
 
-inherit allarch libretro-version retroarch-paths
-
-SRCREV = "9d77c501b88586cb0ed036e7d13908372ef6f9d6"
-S = "${WORKDIR}/git"
+inherit retroarch-allarch
 
 FILES:${PN} += "${RETROARCH_ASSETS_DIR}"
 
@@ -59,6 +56,11 @@ do_patch() {
   rm -f ${S}/configure
   rm -f ${S}/xmb/convert.sh
   rm -f ${S}/xmb/NPMApng2PMApng.py
+
+# FIXME: files with character [ or ] failing at rpm package stage
+# BUG-REPORT: https://bugzilla.yoctoproject.org/show_bug.cgi?id=13746
+# WORKAROUND: drop problematic files
+  find ${S} -type f \( -name "*[*" -o -name "*]*" \) -delete
 }
 
 do_install() {
