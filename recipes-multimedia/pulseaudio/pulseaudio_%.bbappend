@@ -2,6 +2,7 @@ inherit retro-user
 
 PACKAGES += "pulseaudio-user-service"
 FILES:${PN}-user-service = "${RETRO_USER_DEFAULT_TARGET_WANTS} ${RETRO_USER_SOCKETS_TARGET_WANTS}"
+RECOMMENDS:${PN}-server = "pulseaudio-user-service"
 
 do_install:append() {
     if ${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', 'true', 'false', d)}; then
@@ -12,7 +13,11 @@ do_install:append() {
             ln -fs ${systemd_user_unitdir}/pipewire-pulse.socket ${D}${RETRO_USER_SOCKETS_TARGET_WANTS}/pipewire-pulse.socket
             ln -fs ${systemd_user_unitdir}/pipewire.service ${D}${RETRO_USER_DEFAULT_TARGET_WANTS}/pipewire.service
             ln -fs ${systemd_user_unitdir}/pipewire.socket ${D}${RETRO_USER_SOCKETS_TARGET_WANTS}/pipewire.socket
-            ln -fs ${systemd_user_unitdir}/pipewire-media-session.service ${D}${RETRO_USER_DEFAULT_TARGET_WANTS}/pipewire-media-session.service
+            if ${@bb.utils.contains('PIPEWIRE_SESSION_MANAGER', 'wireplumber', 'true', 'false', d)}; then
+                ln -fs ${systemd_user_unitdir}/wireplumber.service ${D}${RETRO_USER_DEFAULT_TARGET_WANTS}/wireplumber.service
+            else
+                ln -fs ${systemd_user_unitdir}/pipewire-media-session.service ${D}${RETRO_USER_DEFAULT_TARGET_WANTS}/pipewire-media-session.service
+            fi
         else
             ln -fs ${systemd_user_unitdir}/pulseaudio.service ${D}${RETRO_USER_DEFAULT_TARGET_WANTS}/pulseaudio.service
             ln -fs ${systemd_user_unitdir}/pulseaudio.socket ${D}${RETRO_USER_SOCKETS_TARGET_WANTS}/pulseaudio.socket
