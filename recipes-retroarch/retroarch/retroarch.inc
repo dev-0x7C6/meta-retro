@@ -1,3 +1,4 @@
+
 SUMMARY = "Cross-platform, sophisticated frontend for the libretro API"
 DESCRIPTION = "RetroArch is the reference frontend for the libretro API. \
 Popular examples of implementations for this API includes video game system \
@@ -158,7 +159,7 @@ PACKAGECONFIG[jack] = "--enable-jack,--disable-jack,jack"
 PACKAGECONFIG[kms] = "--enable-kms,--disable-kms,libdrm virtual/libgbm"
 PACKAGECONFIG[lakka] = ",,connman fontconfig,connman-client"
 PACKAGECONFIG[libshake] = "--enable-libshake,--disable-libshake,libshake"
-PACKAGECONFIG[libusb] = "--enable-libusb,--disable-libusb,libusb"
+PACKAGECONFIG[libusb] = "--enable-libusb --enable-hid,--disable-libusb,libusb"
 PACKAGECONFIG[lto] = ",,"
 PACKAGECONFIG[lua] = "--enable-lua"
 PACKAGECONFIG[mali-fbdev] = "--enable-mali_fbdev"
