@@ -12,7 +12,7 @@ OVERRIDES:append:raspberrypi4-64 = ":rpi4"
 
 VULKAN_DRIVERS:append:pn-mesa:rpi4 = ",broadcom"
 
-RPI_KERNEL_DEVICETREE_OVERLAYS:append:rpi:full-kms = " overlays/cma.dtbo overlays/vc4-kms-v3d-pi4.dtbo overlays/rpivid-v4l2.dtbo"
+RPI_KERNEL_DEVICETREE_OVERLAYS:append:rpi:full-kms = " overlays/cma.dtbo overlays/vc4-kms-v3d-pi4.dtbo"
 
 VC4_DTBO_VARIANT = "vc4-kms-v3d"
 VC4_DTBO_VARIANT:rpi4 = "vc4-kms-v3d-pi4,cma-320"
