@@ -1,6 +1,0 @@
-require ${BPN}.inc
-
-RETROARCH_VERSION ?= "1.11.1"
-
-PV = "${RETROARCH_VERSION}-git${SRCPV}"
-SRCREV ?= "389ef31a8f4a505f255e9bfebe882750d22ab490"
