@@ -50,7 +50,7 @@ RETROARCH_GRAPHICS_PACKAGECONFIG_DEFAULTS ??= " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'egl gles', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'egl gles gles3', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-opengl', 'gl', '', d)} \
-  ${@bb.utils.filter('DISTRO_FEATURES', 'vulkan wayland wifi', d)} \
+  ${@bb.utils.filter('DISTRO_FEATURES', 'vulkan wayland wifi bluetooth', d)} \
   glslang \
   kms \
   disable-opengl1 \
@@ -101,6 +101,7 @@ PACKAGECONFIG ??= " \
   dynlib \
   ffmpeg \
   freetype \
+  hid \
   libshake \
   libusb \
   lto \
@@ -130,7 +131,8 @@ LDFLAGS += "-lssl -lcrypto -lz"
 PACKAGECONFIG[alsa] = "--enable-alsa,--disable-alsa,alsa-lib"
 PACKAGECONFIG[audioio] = "--enable-audioio,--disable-audioio"
 PACKAGECONFIG[blissbox] = "--enable-blissbox,--disable-blissbox"
-PACKAGECONFIG[builtinflac] = "--enable-builtinflac,--disable-builtinflac "
+PACKAGECONFIG[builtinflac] = "--enable-builtinflac,--disable-builtinflac"
+PACKAGECONFIG[bluetooth] = "--enable-bluetooth,,bluez5"
 PACKAGECONFIG[caca] = "--enable-caca,--disable-caca,libcaca"
 PACKAGECONFIG[cdrom] = "--enable-cdrom,--disable-cdrom"
 PACKAGECONFIG[cg] = "--enable-cg,--disable-cg"
@@ -155,11 +157,12 @@ PACKAGECONFIG[gles3_2] = "--enable-opengles3_2,,virtual/libgles2"
 PACKAGECONFIG[gles] = "--enable-opengles,,virtual/libgles2"
 PACKAGECONFIG[glslang] = "--enable-glslang --disable-builtinglslang,--disable-glslang --enable-builtinglslang,glslang"
 PACKAGECONFIG[gong] = "--enable-gong"
+PACKAGECONFIG[hid] = "--enable-hid"
 PACKAGECONFIG[jack] = "--enable-jack,--disable-jack,jack"
 PACKAGECONFIG[kms] = "--enable-kms,--disable-kms,libdrm virtual/libgbm"
 PACKAGECONFIG[lakka] = ",,connman fontconfig,connman-client"
 PACKAGECONFIG[libshake] = "--enable-libshake,--disable-libshake,libshake"
-PACKAGECONFIG[libusb] = "--enable-libusb --enable-hid,--disable-libusb,libusb"
+PACKAGECONFIG[libusb] = "--enable-libusb,--disable-libusb,libusb"
 PACKAGECONFIG[lto] = ",,"
 PACKAGECONFIG[lua] = "--enable-lua"
 PACKAGECONFIG[mali-fbdev] = "--enable-mali_fbdev"
@@ -230,7 +233,6 @@ PACKAGECONFIG[disable-discord] = "--disable-discord"
 PACKAGECONFIG[disable-dr_mp3] = "--disable-dr_mp3"
 PACKAGECONFIG[disable-dsp-filter] = "--disable-dsp_filter"
 PACKAGECONFIG[disable-glsl] = "--disable-glsl"
-PACKAGECONFIG[disable-hid] = "--disable-hid"
 PACKAGECONFIG[disable-image-viewer] = "--disable-imageviewer"
 PACKAGECONFIG[disable-langextra] = "--disable-langextra"
 PACKAGECONFIG[disable-libretrodb] = "--disable-libretrodb"
