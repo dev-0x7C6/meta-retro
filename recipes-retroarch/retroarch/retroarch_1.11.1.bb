@@ -12,12 +12,11 @@ BUGTRACKER = "https://github.com/libretro/RetroArch/issues"
 LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
-SRC_URI = "gitsm://github.com/libretro/RetroArch.git;protocol=https;branch=master ${RETROARCH_PATCHES}"
+SRC_URI = "gitsm://github.com/libretro/RetroArch.git;protocol=https;branch=master"
 SRCREV = "389ef31a8f4a505f255e9bfebe882750d22ab490"
-
 S = "${WORKDIR}/git"
 
-RETROARCH_PATCHES ?= ""
+PR = "r1"
 
 inherit autotools-brokensep
 inherit deploy
@@ -128,14 +127,14 @@ TARGET_CFLAGS += "${@bb.utils.contains('PACKAGECONFIG', 'lto', '${RETROARCH_LTO_
 TARGET_LDFLAGS += "${@bb.utils.contains('PACKAGECONFIG', 'lto', '${TARGET_CFLAGS}', '', d)}"
 LDFLAGS += "-lssl -lcrypto -lz"
 
-# Switches updated from v1.9.7
-# Wed Aug 4 17:58:08 CEST 2021
+# Switches updated from v1.11.1
+# Sat Oct 15 22:13:32 CEST 2022
 PACKAGECONFIG[alsa] = "--enable-alsa,--disable-alsa,alsa-lib"
 PACKAGECONFIG[audioio] = "--enable-audioio,--disable-audioio"
 PACKAGECONFIG[blissbox] = "--enable-blissbox,--disable-blissbox"
-PACKAGECONFIG[builtinflac] = "--enable-builtinflac,--disable-builtinflac"
 PACKAGECONFIG[bluetooth] = "--enable-bluetooth,,bluez5"
-PACKAGECONFIG[caca] = "--enable-caca,--disable-caca,libcaca"
+PACKAGECONFIG[builtinflac] = "--enable-builtinflac,--disable-builtinflac"
+PACKAGECONFIG[caca] = "--enable-caca,,libcaca"
 PACKAGECONFIG[cdrom] = "--enable-cdrom,--disable-cdrom"
 PACKAGECONFIG[cg] = "--enable-cg,--disable-cg"
 PACKAGECONFIG[command] = "--enable-command"
@@ -163,6 +162,7 @@ PACKAGECONFIG[hid] = "--enable-hid"
 PACKAGECONFIG[jack] = "--enable-jack,--disable-jack,jack"
 PACKAGECONFIG[kms] = "--enable-kms,--disable-kms,libdrm virtual/libgbm"
 PACKAGECONFIG[lakka] = ",,connman fontconfig,connman-client"
+PACKAGECONFIG[libdecor] = "--enable-libdecor,--disable-libdecor,libdecor"
 PACKAGECONFIG[libshake] = "--enable-libshake,--disable-libshake,libshake"
 PACKAGECONFIG[libusb] = "--enable-libusb,--disable-libusb,libusb"
 PACKAGECONFIG[lto] = ",,"
@@ -172,6 +172,7 @@ PACKAGECONFIG[menu-materialui] = "--enable-materialui,--disable-materialui"
 PACKAGECONFIG[menu-ozone] = "--enable-ozone,--disable-ozone,,retroarch-assets-ozone"
 PACKAGECONFIG[menu-rgui] = "--enable-rgui,--disable-rgui,,retroarch-assets-rgui"
 PACKAGECONFIG[menu-xmb] = "--enable-xmb,--disable-xmb"
+PACKAGECONFIG[mist] = "--enable-mist"
 PACKAGECONFIG[mmap] = "--enable-mmap,--disable-mmap"
 PACKAGECONFIG[mpv] = "--enable-mpv,,mpv"
 PACKAGECONFIG[neon] = "--enable-neon"
@@ -255,12 +256,6 @@ PACKAGECONFIG[disable-translate] = "--disable-translate"
 PACKAGECONFIG[disable-update-assets] = "--disable-update_assets"
 PACKAGECONFIG[disable-update-cores] = "--disable-update_cores"
 PACKAGECONFIG[disable-vulkan-display] = "--disable-vulkan_display"
-
-# Removed in 1.9.9
-# PACKAGECONFIG[menu-stripes] = "--enable-stripes,--disable-stripes"
-
-# Removed in 1.10.0
-# PACKAGECONFIG[miniupnpc] = "--enable-miniupnpc,--disable-miniupnpc"
 
 EXTRA_OECONF = "${PACKAGECONFIG_CONFARGS}"
 EXTRA_OEMAKE += "NEED_CXX_LINKER=1 HAVE_LAKKA=${@bb.utils.contains('PACKAGECONFIG', 'lakka', '1', '0', d)}"
