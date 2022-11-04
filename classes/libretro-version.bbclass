@@ -1,1 +1,1 @@
-PV = "2021+git${SRCPV}"
+PV = "2022+git${SRCPV}"
