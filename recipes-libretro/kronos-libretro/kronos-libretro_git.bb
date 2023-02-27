@@ -7,6 +7,9 @@ inherit libretro
 
 PR = "r1"
 
+# Workaround for missing GL_PIXEL_BUFFER_BARRIER_BIT define
+LIBRETRO_EXTRA_CFLAGS = "-DGL_PIXEL_BUFFER_BARRIER_BIT=0x00000080"
+
 LIBRETRO_PLATFORM:arm32 = "armv-unix"
 LIBRETRO_PLATFORM:arm64 = "arm64-unix"
 

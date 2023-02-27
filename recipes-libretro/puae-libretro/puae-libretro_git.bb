@@ -7,7 +7,5 @@ inherit libretro
 
 LIBRETRO_GIT_REPO = "github.com/libretro/libretro-uae.git"
 
-SRC_URI:append = " file://0001-puae-libretro-fix-math.h-include.patch"
-
 SECURITY_STRINGFORMAT = ""
 INSANE_SKIP:${PN} += "already-stripped"
