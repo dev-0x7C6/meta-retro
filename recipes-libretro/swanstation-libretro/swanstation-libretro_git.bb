@@ -11,6 +11,6 @@ LIBRETRO_GIT_BRANCH = "main"
 
 LIBRETRO_COMMON_FLAGS = "-fPIC -shared"
 
-EXTRA_OECMAKE:append = " -DBUILD_LIBRETRO_CORE=ON"
+EXTRA_OECMAKE:append = " -DBUILD_LIBRETRO_CORE=ON ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', '-DUSE_WAYLAND=ON', '', d)}"
 
 PROVIDES += "duckstation-libretro"
