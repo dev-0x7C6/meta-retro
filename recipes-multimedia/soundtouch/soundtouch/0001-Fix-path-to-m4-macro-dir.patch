@@ -1,0 +1,52 @@
+From e6a9d88cb4c1cd9b5ce09990acc4045acdfb00c9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20M=C3=BCller?= <schnitzeltony@gmail.com>
+Date: Thu, 15 Nov 2018 19:51:30 +0100
+Subject: [PATCH] Fix path to m4 macro dir
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Upstrem-Status: Pending
+
+Signed-off-by: Andreas Müller <schnitzeltony@gmail.com>
+---
+ Makefile.am  | 4 ++--
+ configure.ac | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 1394ce6..b3d148e 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -40,7 +40,7 @@ m4data_DATA=soundtouch.m4
+ # NOTE: wouldn't have to list the .TXT file if it were named without the .TXT
+ EXTRA_DIST=                  \
+        soundtouch.m4        \
+-       config/m4            \
++       config            \
+        bootstrap            \
+        make-win.bat         \
+        COPYING.TXT          \
+@@ -61,5 +61,5 @@ dist-hook:
+ 
+ 
+ # flag to aclocal where to find m4 macros for tests
+-ACLOCAL_AMFLAGS = -I config/m4
++ACLOCAL_AMFLAGS = -I config
+ AUTOMAKE_OPTIONS = foreign
+diff --git a/configure.ac b/configure.ac
+index bd8023c..c17de73 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -21,7 +21,7 @@ LIB_SONAME=1
+ AC_SUBST(LIB_SONAME)
+ 
+ AC_CONFIG_AUX_DIR(config)
+-AC_CONFIG_MACRO_DIR([config/m4])
++AC_CONFIG_MACRO_DIR([config])
+ AM_CONFIG_HEADER([config.h include/soundtouch_config.h])
+ AM_INIT_AUTOMAKE
+ AM_SILENT_RULES([yes])
+-- 
+2.14.5
+
