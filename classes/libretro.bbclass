@@ -5,7 +5,6 @@ inherit retroarch-checks
 inherit retroarch-paths
 
 require files/libretro-git-fetcher.inc
-require files/libretro-tested-revs.inc
 
 SECTION = "emulators"
 

@@ -9,5 +9,6 @@ VIRTUAL-RUNTIME_init_manager = "systemd"
 VIRTUAL-RUNTIME_initscripts = "systemd-compat-units"
 
 DISTROOVERRIDES:prepend = "${@bb.utils.contains('DISTRO_FEATURES', 'rauc', 'rauc-integration:', '', d)}"
+DISTROOVERRIDES:prepend = "${@bb.utils.contains('DISTRO_FEATURES', 'libretro-latest', 'libretro-latest:', '', d)}"
 
 SANITY_TESTED_DISTROS:append = "gentoo \n"
