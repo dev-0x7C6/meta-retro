@@ -74,6 +74,9 @@ LIBRETRO_FINAL_MAKEFLAGS ?= " \
 
 inherit libretro-vulkan-deps
 
+ARCH = "${LIBRETRO_CPU_ARCH}"
+export ARCH
+
 DEPENDS:append = " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'virtual/libgles2 virtual/egl', '', d)} \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles3', 'virtual/libgles2 virtual/egl', '', d)} \
