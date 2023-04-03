@@ -19,6 +19,7 @@ CCACHE_DISABLE = "1"
 
 LIBRETRO_CORE_SOURCE_PATH ?= ""
 LIBRETRO_CORE_FILENAME ?= "${LIBRETRO_CORE}_libretro.so"
+LIBRETRO_CMAKE_BUILD_TYPE ?= "Release"
 
 # Flags
 
@@ -27,6 +28,8 @@ inherit libretro-cflags
 # Depends
 
 inherit libretro-vulkan-deps
+
+EXTRA_OECMAKE:append = " -DCMAKE_BUILD_TYPE=${LIBRETRO_CMAKE_BUILD_TYPE}"
 
 DEPENDS:append = " \
   ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-gles', 'virtual/libgles2 virtual/egl', '', d)} \
