@@ -14,9 +14,6 @@ SECTION = "emulators"
 
 LIBRETRO_CORE ?= "${@d.getVar("PN").split('-libretro')[0].replace('-', '_')}"
 
-OECMAKE_FIND_ROOT_PATH_MODE_PROGRAM = "BOTH"
-CCACHE_DISABLE = "1"
-
 LIBRETRO_CORE_SOURCE_PATH ?= ""
 LIBRETRO_CORE_FILENAME ?= "${LIBRETRO_CORE}_libretro.so"
 LIBRETRO_CMAKE_BUILD_TYPE ?= "Release"
