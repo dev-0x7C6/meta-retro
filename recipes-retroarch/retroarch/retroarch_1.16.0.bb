@@ -13,7 +13,7 @@ LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
 SRC_URI = "gitsm://github.com/libretro/RetroArch.git;protocol=https;branch=master"
-SRCREV = "938ab716bd290b0f469068500966a834b5782929"
+SRCREV = "041ae3010332da1155d1ac6d6368dd05d2c3003e"
 S = "${WORKDIR}/git"
 
 PR = "r1"
