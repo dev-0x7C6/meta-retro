@@ -4,7 +4,7 @@ HOMEPAGE = "https://www.retroarch.com/"
 BUGTRACKER = "https://github.com/libretro/libretro-super/issues"
 
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://COPYING;md5=5400ab930bc7a77040ea8e75206294c4"
+LIC_FILES_CHKSUM = "file://COPYING;md5=48b1b91e4c96bbd2fc18f6bf852d8929"
 
 SRC_URI = "git://github.com/libretro/libretro-super.git;protocol=https;branch=master"
 
