@@ -8,7 +8,6 @@ LIBRETRO_ARCADE_CORES ?= " \
   fbalpha2012-libretro \
   fbalpha2012-neogeo-libretro \
   fbneo-libretro \
-  mame-libretro \
   mame2000-libretro \
   mame2003-libretro \
   mame2003-plus-libretro \
