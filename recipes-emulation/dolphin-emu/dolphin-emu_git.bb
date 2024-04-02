@@ -24,7 +24,6 @@ PACKAGECONFIG ?= " \
 "
 
 DEPENDS += " \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'sfml', '', d)} \
     curl \
     hidapi \
     lzo \
@@ -37,6 +36,7 @@ FILES:${PN} += "${datadir}/icons"
 CCACHE_DISABLE = "1"
 
 EXTRA_OECMAKE += "-DDISTRIBUTOR="${DISTRO_NAME}""
+DEPENDS += "fmt"
 
 PACKAGECONFIG[alsa] = "-DENABLE_ALSA=ON,-DENABLE_ALSA=OFF,alsa-lib"
 PACKAGECONFIG[analytics] = "-DENABLE_ANALYTICS=ON,-DENABLE_ANALYTICS=OFF"
