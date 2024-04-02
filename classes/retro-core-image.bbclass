@@ -10,6 +10,7 @@ RETRO_WAYLAND_COMPOSITOR ??= "weston"
 IMAGE_INSTALL:append = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'polkit systemd', 'rtkit', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', 'pulseaudio-server', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'retro-home-resize', 'retro-repart-conf', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-automount', 'udev-extraconf', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-autostart systemd', 'retroarch-service', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'retroarch-firmware', 'firmware-libretro', '', d)} \
@@ -20,6 +21,8 @@ IMAGE_INSTALL:append = " \
     kernel-modules \
     packagegroup-libretro-cores \
     retro-cpufreq-tune \
+    mesa-megadriver \
+    mesa-vulkan-drivers \
     retroarch \
     retroarch-cg-shaders \
     retroarch-glsl-shaders \
