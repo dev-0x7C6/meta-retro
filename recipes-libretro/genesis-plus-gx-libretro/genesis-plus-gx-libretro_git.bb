@@ -2,7 +2,7 @@ SUMMARY = "Sega Mega Drive / Genesis emulator"
 DESCRIPTION = "Sega Mega Drive / Genesis emulator - Genesis-Plus-GX"
 
 LICENSE = "LGPL-2.1-only"
-LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=b1a7fd51d37f7b7ac0052c1eb94ac3f1"
+LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=eb39740e4fefb2dca99a700b7afdc3a8"
 
 inherit libretro
 inherit tune-blacklist

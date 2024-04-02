@@ -1,0 +1,28 @@
+From e6b111ec0e666dce8e659345f154bbcd258f4e43 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bart=C5=82omiej=20Burdukiewicz?=
+ <bartlomiej.burdukiewicz@gmail.com>
+Date: Fri, 22 Mar 2024 17:25:58 +0100
+Subject: [PATCH] Fixed missing GL_PIXEL_BUFFER_BARRIER_BIT define
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Bartłomiej Burdukiewicz <bartlomiej.burdukiewicz@gmail.com>
+---
+ yabause/src/libretro/glsym_private.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/yabause/src/libretro/glsym_private.h b/yabause/src/libretro/glsym_private.h
+index 133f3c6ca..0f5f82df4 100644
+--- a/yabause/src/libretro/glsym_private.h
++++ b/yabause/src/libretro/glsym_private.h
+@@ -74,6 +74,9 @@ extern RGLSYMGLTEXTUREBARRIERPROC __rglgen_glTextureBarrier;
+ #ifndef GL_SHADER_IMAGE_ACCESS_BARRIER_BIT
+ #define GL_SHADER_IMAGE_ACCESS_BARRIER_BIT 0x00000020
+ #endif
++#ifndef GL_PIXEL_BUFFER_BARRIER_BIT
++#define GL_PIXEL_BUFFER_BARRIER_BIT        0x00000080
++#endif
+ #ifndef GL_BUFFER_UPDATE_BARRIER_BIT
+ #define GL_BUFFER_UPDATE_BARRIER_BIT       0x00000200
+ #endif

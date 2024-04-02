@@ -1,0 +1,28 @@
+From 4d411aae742eb2f03e296bdaf22bcf0489eb165e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bart=C5=82omiej=20Burdukiewicz?=
+ <bartlomiej.burdukiewicz@gmail.com>
+Date: Fri, 22 Mar 2024 21:28:02 +0100
+Subject: [PATCH] Fixed issue with "_TIME_BITS=64 is allowed only with
+ _FILE_OFFSET_BITS=64"
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Bartłomiej Burdukiewicz <bartlomiej.burdukiewicz@gmail.com>
+---
+ src/burner/libretro/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/burner/libretro/Makefile b/src/burner/libretro/Makefile
+index 7d7002b3b..9da18bbaf 100644
+--- a/src/burner/libretro/Makefile
++++ b/src/burner/libretro/Makefile
+@@ -520,7 +520,7 @@ FBNEO_SOBJ := $(SOURCES_S:.S=.o)
+ OBJS := $(FBNEO_COBJ) $(FBNEO_CXXOBJ) $(FBNEO_SOBJ)
+ 
+ FBNEO_DEFINES += -D__LIBRETRO__ \
+-	-DNO_VIZ -D_LARGEFILE64_SOURCE=0 -D_FILE_OFFSET_BITS=32 \
++	-DNO_VIZ -D_LARGEFILE64_SOURCE=1 -D_FILE_OFFSET_BITS=64 \
+ 	$(ENDIANNESS_DEFINES) \
+ 	$(PLATFORM_DEFINES) \
+ 	$(NEON_FLAGS) \
