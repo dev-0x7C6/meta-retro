@@ -1,0 +1,9 @@
+# short-description: Create an EFI disk image with systemd-boot
+# long-description: Creates a partitioned EFI disk image that the user
+# can directly dd to boot media. The selected bootloader is systemd-boot.
+
+part /boot --source bootimg-efi --sourceparams="loader=systemd-boot" --label msdos --active --align 4096 --use-uuid
+part / --source rootfs --fstype=ext4 --label platform --align 4096 --use-uuid --exclude-path=home/
+part /home --source rootfs --change-directory=home --fstype=ext4 --use-uuid --label homefs --align 4096 --size 256
+
+bootloader --ptable gpt --timeout=5 --append="rootwait rootfstype=ext4 console=ttyS0,115200 console=tty0"
