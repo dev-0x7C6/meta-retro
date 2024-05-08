@@ -9,6 +9,7 @@ LICENSE = "CC-BY-SA-4.0"
 LIC_FILES_CHKSUM = "file://COPYING;md5=7bd61880991ed797753fcc00acae2c51"
 
 SRC_URI = "gitsm://github.com/libretro/retroarch-assets.git;protocol=https;branch=master"
+SRCREV = "923b711dc6772a168d83dc8915e9260730fcf3a1"
 
 inherit retroarch-allarch
 
@@ -24,9 +25,7 @@ COMPONENTS = " \
   ${PN}-xmb-dot-art \
   ${PN}-xmb-flatui \
   ${PN}-xmb-monochrome \
-  ${PN}-xmb-neoactive \
   ${PN}-xmb-pixel \
-  ${PN}-xmb-retroactive \
   ${PN}-xmb-retrosystem \
   ${PN}-xmb-systematic \
 "
@@ -43,9 +42,7 @@ FILES:${PN}-xmb-automatic = "${RETROARCH_ASSETS_DIR}/xmb/automatic"
 FILES:${PN}-xmb-dot-art = "${RETROARCH_ASSETS_DIR}/xmb/dot-art"
 FILES:${PN}-xmb-flatui = "${RETROARCH_ASSETS_DIR}/xmb/flatui"
 FILES:${PN}-xmb-monochrome = "${RETROARCH_ASSETS_DIR}/xmb/monochrome"
-FILES:${PN}-xmb-neoactive = "${RETROARCH_ASSETS_DIR}/xmb/neoactive"
 FILES:${PN}-xmb-pixel = "${RETROARCH_ASSETS_DIR}/xmb/pixel"
-FILES:${PN}-xmb-retroactive = "${RETROARCH_ASSETS_DIR}/xmb/retroactive"
 FILES:${PN}-xmb-retrosystem = "${RETROARCH_ASSETS_DIR}/xmb/retrosystem"
 FILES:${PN}-xmb-systematic = "${RETROARCH_ASSETS_DIR}/xmb/systematic"
 
@@ -60,7 +57,7 @@ do_patch() {
 # FIXME: files with character [ or ] failing at rpm package stage
 # BUG-REPORT: https://bugzilla.yoctoproject.org/show_bug.cgi?id=13746
 # WORKAROUND: drop problematic files
-  find ${S} -type f \( -name "*[*" -o -name "*]*" \) -delete
+#  find ${S} -type f \( -name "*[*" -o -name "*]*" \) -delete
 }
 
 do_install() {
