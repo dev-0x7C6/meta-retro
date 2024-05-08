@@ -87,11 +87,6 @@ do_patch() {
 
 # flycast expects lowercase directory
     [ -d "${S}/DC" ] && mv ${S}/DC ${S}/dc
-
-# FIXME: files with character [ or ] failing at rpm package stage
-# BUG-REPORT: https://bugzilla.yoctoproject.org/show_bug.cgi?id=13746
-# WORKAROUND: drop problematic files
-    find ${S} -type f \( -name "*[*" -o -name "*]*" \) -delete
 }
 
 do_install() {
