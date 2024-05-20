@@ -18,6 +18,4 @@ LIBRETRO_ARCADE_CORES:remove:arm32 = "mame2010-libretro mame2016-libretro mame-l
 LIBRETRO_ARCADE_CORES:remove:arm64 = "mame2000-libretro mame2010-libretro mame2016-libretro mame-libretro"
 LIBRETRO_ARCADE_CORES:remove:x86 = "mame2016-libretro mame2010-libretro"
 
-LIBRETRO_ARCADE_CORES:remove:python2-deprecated = "mame-libretro mame2016-libretro"
-
 RRECOMMENDS:${PN} = "${LIBRETRO_ARCADE_CORES}"

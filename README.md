@@ -94,7 +94,6 @@ For more information see file: [retroarch.inc](recipes-retroarch/retroarch/retro
 | :arrow_right_hook:                                                               | meta-multimedia    | :heavy_check_mark: | :heavy_check_mark: |                    |
 | :arrow_right_hook:                                                               | meta-python        | :heavy_check_mark: | :heavy_check_mark: |                    |
 | :arrow_right_hook:                                                               | meta-networking    | :heavy_check_mark: | :heavy_check_mark: |                    |
-| [meta-python2](https://git.openembedded.org/meta-python2)                        | .                  | :heavy_check_mark: | :heavy_check_mark: |                    |
 | [meta-qt5](https://code.qt.io/cgit/yocto/meta-qt5.git)                           | .                  | :heavy_check_mark: | :heavy_check_mark: |                    |
 | [meta-kodi](https://github.com/dev-0x7C6/meta-kodi)                              | .                  |                    | :heavy_check_mark: |                    |
 | [meta-raspberrypi](https://github.com/agherzan/meta-raspberrypi)                 | .                  |                    | :heavy_check_mark: | :heavy_check_mark: |
