@@ -1,7 +1,7 @@
 DESCRIPTION = "SHARP X68000 Emulator"
 
 LICENSE = "GPL-3.0-only"
-LIC_FILES_CHKSUM = "file://README.MD;md5=effab21f24c6d2805b27a80942340363"
+LIC_FILES_CHKSUM = "file://README.MD;md5=c682d0727fafde51bbc866aaa7b5b438"
 
 inherit libretro
 
