@@ -10,7 +10,7 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://COPYING;md5=459277d80461c2908b4cf14949f8dcd5"
 
 SRC_URI = "gitsm://github.com/libretro/libretro-database.git;protocol=https;branch=master"
-SRCREV = "977612e2cd284f67fc0d121d9d94c5982a49f61e"
+SRCREV = "7c8a78882f4a9d44808e2ca1ecccb2f823be9f39"
 
 PR = "r3"
 

@@ -9,7 +9,7 @@ LICENSE = "CC-BY-SA-4.0"
 LIC_FILES_CHKSUM = "file://COPYING;md5=7bd61880991ed797753fcc00acae2c51"
 
 SRC_URI = "gitsm://github.com/libretro/retroarch-assets.git;protocol=https;branch=master"
-SRCREV = "923b711dc6772a168d83dc8915e9260730fcf3a1"
+SRCREV = "771e60b1eacd4edc57c19b61ab2c713200af0a3f"
 
 inherit retroarch-allarch
 

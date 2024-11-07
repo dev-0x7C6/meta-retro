@@ -10,7 +10,7 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://COPYING;md5=459277d80461c2908b4cf14949f8dcd5"
 
 SRC_URI = "gitsm://github.com/libretro/retroarch-joypad-autoconfig.git;protocol=https;branch=master"
-SRCREV = "4e1261f85d26bd235a0febaca083f592eb1da60f"
+SRCREV = "b64b14be7d5a5da4000fe2db03fd1ba67f7adca3"
 
 inherit retroarch-allarch
 
