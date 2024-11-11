@@ -1,0 +1,1 @@
+RRECOMMENDS:${PN} += "dolphin-emu"
