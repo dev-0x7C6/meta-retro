@@ -8,5 +8,3 @@ inherit libretro
 
 LIBRETRO_GIT_REPO = "github.com/RobLoach/libretro-dolphin-launcher.git"
 LIBRETRO_INFO_FILE = "dolphin_launcher_libretro.info"
-
-RRECOMMENDS:${PN} += "dolphin-emu"
